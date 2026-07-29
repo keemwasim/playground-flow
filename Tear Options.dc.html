@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<style>
+html,body{margin:0;padding:0;background:#E9E9EC}
+*{box-sizing:border-box}
+a{color:#111111}a:hover{color:#55555A}
+@keyframes toGlow{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes toDrift{0%{transform:translateY(16px);opacity:0}20%{opacity:.7}100%{transform:translateY(-30px);opacity:0}}
+@keyframes toSoul{0%{transform:translate(0px,56px) scale(.75);opacity:0}16%{opacity:.85}60%{opacity:.65}100%{transform:translate(-7px,-60px) scale(1.05);opacity:0}}
+@keyframes toSoul2{0%{transform:translate(0px,50px) scale(.7);opacity:0}18%{opacity:.7}100%{transform:translate(8px,-54px) scale(1);opacity:0}}
+@keyframes toSpin{0%{background-position:0px 46%}100%{background-position:-650px 46%}}
+@keyframes toSpinB{0%{background-position:0px 50%}100%{background-position:-671px 50%}}
+@keyframes toSpinC{0%{background-position:0px 40%}100%{background-position:-504px 40%}}
+@keyframes toSpinD{0%{background-position:0px 52%}100%{background-position:-672px 52%}}
+@keyframes toSpinE{0%{background-position:0px 50%}100%{background-position:-720px 50%}}
+@keyframes toSpinF{0%{background-position:0px 55%}100%{background-position:-604px 55%}}
+@keyframes toFloat{0%,100%{transform:translate(-50%,-50%) translateY(0px)}50%{transform:translate(-50%,-50%) translateY(-5px)}}
+</style>
+</helmet>
+<section style="padding:46px 54px 80px; font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;">
+  <div style="font:700 24px -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif; letter-spacing:-.02em; color:#111; margin-bottom:5px;">The tear — style explorations</div>
+  <div style="font:400 12.5px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.5); margin-bottom:28px;">Turn 1 — all grayscale, all invisible at idle, shown open. Tell me the id (e.g. <a href="#1b">1b</a>) to make canonical.</div>
+  <div style="display:flex; flex-wrap:wrap; gap:24px;">
+
+    <!-- 1a -->
+    <div id="1a" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Ripped sliver</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1a</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Current — jagged edge, white-hot rim, void interior.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:80px; height:190px;">
+          <div style="position:absolute; inset:-2px; background:rgba(20,20,24,.75); clip-path:polygon(50% 0%, 52.5% 3%, 51% 8%, 56% 14%, 53% 20%, 60% 27%, 55% 33%, 62% 40%, 56% 46%, 59% 53%, 54% 60%, 60% 67%, 53% 74%, 56% 81%, 51.5% 88%, 51% 94%, 50% 100%, 48% 93%, 45.5% 86%, 47.5% 79%, 42% 72%, 46.5% 65%, 40% 57%, 45% 50%, 38% 43%, 44% 36%, 41% 29%, 46% 23%, 42.5% 16%, 47% 9%, 46.5% 4%);"></div>
+          <div style="position:absolute; inset:0; background:#FFFFFF; clip-path:polygon(50% 0%, 52.5% 3%, 51% 8%, 56% 14%, 53% 20%, 60% 27%, 55% 33%, 62% 40%, 56% 46%, 59% 53%, 54% 60%, 60% 67%, 53% 74%, 56% 81%, 51.5% 88%, 51% 94%, 50% 100%, 48% 93%, 45.5% 86%, 47.5% 79%, 42% 72%, 46.5% 65%, 40% 57%, 45% 50%, 38% 43%, 44% 36%, 41% 29%, 46% 23%, 42.5% 16%, 47% 9%, 46.5% 4%); box-shadow:0 0 18px rgba(150,150,158,.7);"></div>
+          <div style="position:absolute; inset:5px; background:radial-gradient(55% 40% at 50% 42%, #141416 0%, #26262A 52%, #3E3E44 86%, #55555C 100%); clip-path:polygon(50% 0%, 52.5% 3%, 51% 8%, 56% 14%, 53% 20%, 60% 27%, 55% 33%, 62% 40%, 56% 46%, 59% 53%, 54% 60%, 60% 67%, 53% 74%, 56% 81%, 51.5% 88%, 51% 94%, 50% 100%, 48% 93%, 45.5% 86%, 47.5% 79%, 42% 72%, 46.5% 65%, 40% 57%, 45% 50%, 38% 43%, 44% 36%, 41% 29%, 46% 23%, 42.5% 16%, 47% 9%, 46.5% 4%);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1b -->
+    <div id="1b" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Hairline seam</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1b</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Quietest — a crack of light, barely parted. Apple-calm.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:80px; height:190px;">
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:56px; height:200px; background:radial-gradient(50% 50% at 50% 50%, rgba(150,150,158,.35), transparent 70%); filter:blur(12px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:0; transform:translateX(-50%) rotate(1.2deg); width:3.5px; height:190px; border-radius:99px; background:linear-gradient(180deg, rgba(255,255,255,0), #FFFFFF 18%, #F2F2F5 50%, #FFFFFF 82%, rgba(255,255,255,0)); box-shadow:0 0 14px rgba(150,150,158,.9), 0 0 2px rgba(0,0,0,.25);"></div>
+          <div style="position:absolute; left:50%; top:24%; transform:translateX(-50%) rotate(1.2deg); width:1.5px; height:52%; border-radius:99px; background:linear-gradient(180deg, transparent, #141416 30%, #26262A 70%, transparent);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1c -->
+    <div id="1c" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Fractured pane</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1c</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">The rip cracks the wallpaper — fine fissures branch off.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:120px; height:190px;">
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:26px; height:170px; background:#FFFFFF; clip-path:polygon(50% 0%, 68% 8%, 55% 22%, 78% 38%, 58% 52%, 74% 68%, 54% 82%, 62% 92%, 50% 100%, 40% 90%, 48% 78%, 28% 64%, 44% 50%, 24% 36%, 45% 20%, 34% 8%); box-shadow:0 0 16px rgba(150,150,158,.8);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:20px; height:160px; background:radial-gradient(55% 40% at 50% 42%, #141416 0%, #26262A 60%, #3E3E44 100%); clip-path:polygon(50% 0%, 66% 8%, 54% 22%, 76% 38%, 57% 52%, 72% 68%, 53% 82%, 60% 92%, 50% 100%, 41% 90%, 48% 78%, 30% 64%, 45% 50%, 26% 36%, 46% 20%, 36% 8%);"></div>
+          <div style="position:absolute; left:50%; top:22%; width:34px; height:1.5px; background:linear-gradient(90deg, rgba(0,0,0,.4), transparent); transform:rotate(-24deg); transform-origin:left;"></div>
+          <div style="position:absolute; left:50%; top:38%; width:42px; height:1px; background:linear-gradient(90deg, rgba(0,0,0,.3), transparent); transform:rotate(14deg); transform-origin:left;"></div>
+          <div style="position:absolute; right:50%; top:56%; width:38px; height:1.5px; background:linear-gradient(270deg, rgba(0,0,0,.35), transparent); transform:rotate(-18deg); transform-origin:right;"></div>
+          <div style="position:absolute; right:50%; top:74%; width:30px; height:1px; background:linear-gradient(270deg, rgba(0,0,0,.28), transparent); transform:rotate(22deg); transform-origin:right;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1d -->
+    <div id="1d" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Peeled corner</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1d</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">The wallpaper peels back like paper — void behind the curl.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:150px; height:170px;">
+          <div style="position:absolute; inset:0; border-radius:14px; background:radial-gradient(80% 70% at 42% 46%, #141416 0%, #26262A 55%, #3E3E44 100%); clip-path:polygon(8% 12%, 88% 4%, 96% 88%, 14% 96%); box-shadow:inset 0 0 30px rgba(0,0,0,.5);"></div>
+          <div style="position:absolute; right:2px; bottom:4px; width:104px; height:104px; background:linear-gradient(315deg, #FFFFFF 0%, #FAFAFB 42%, #E8E8EC 60%, #D4D4D9 74%, #C4C4CA 100%); border-radius:14px 4px 14px 8px; clip-path:polygon(100% 0%, 100% 100%, 0% 100%); box-shadow:-10px -10px 24px rgba(0,0,0,.28); transform:rotate(2deg);"></div>
+          <div style="position:absolute; left:8px; top:6px; width:70px; height:2px; background:linear-gradient(90deg, rgba(0,0,0,.25), transparent); transform:rotate(-3deg);"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1e -->
+    <div id="1e" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Eclipse</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1e</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">A circular punch-out — rhymes with the logo's hole. Most iconic.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:150px; height:150px;">
+          <div style="position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.4), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:118px; height:118px; border-radius:50%; overflow:hidden; background:radial-gradient(circle at 42% 38%, #141416 0%, #26262A 55%, #3E3E44 88%, #55555C 100%); box-shadow:0 0 22px rgba(150,150,158,.75);">
+            <div style="position:absolute; left:30%; top:38%; width:7px; height:15px; border-radius:50%; background:rgba(255,255,255,.8); filter:blur(2.5px); animation:toSoul 6.5s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:58%; top:44%; width:5px; height:11px; border-radius:50%; background:rgba(240,240,244,.7); filter:blur(2px); animation:toSoul2 8s ease-in-out 2.2s infinite;"></div>
+            <div style="position:absolute; left:46%; top:50%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.6); filter:blur(2px); animation:toSoul 9.5s ease-in-out 4.6s infinite;"></div>
+            <div style="position:absolute; left:68%; top:40%; width:2.5px; height:2.5px; border-radius:50%; background:#EFEFF1; animation:toDrift 5.6s linear 1.2s infinite;"></div>
+            <div style="position:absolute; left:24%; top:52%; width:2px; height:2px; border-radius:50%; background:#FFF; animation:toDrift 4.6s linear 3s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1f -->
+    <div id="1f" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Misted veil</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1f</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">No hard edge at all — the wall thins into fog you could walk through.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:110px; height:190px;">
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:96px; height:196px; background:radial-gradient(50% 50% at 50% 50%, rgba(150,150,158,.30), transparent 72%); filter:blur(14px);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:44px; height:172px; border-radius:50%; background:radial-gradient(50% 50% at 50% 50%, #26262A 0%, rgba(38,38,42,.75) 48%, rgba(38,38,42,0) 78%); filter:blur(6px);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:20px; height:140px; border-radius:50%; background:radial-gradient(50% 50% at 50% 50%, #0E0E10 0%, rgba(14,14,16,.85) 55%, rgba(14,14,16,0) 85%); filter:blur(2.5px);"></div>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:60px; height:180px; border-radius:50%; box-shadow:inset 0 0 22px rgba(255,255,255,.9); filter:blur(4px); animation:toGlow 6s ease-in-out infinite;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1g -->
+    <div id="1g" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world</span>
+        <span style="display:flex; gap:5px; align-items:center;"><span style="font:600 9px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.55); border:1px solid rgba(0,0,0,.2); padding:2px 7px; border-radius:99px;">✓ canonical</span><span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1g</span></span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Your city, made a turning sphere — the only color in the product lives beyond the tear.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.45), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 6.5s ease-in-out infinite; margin:0;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-city.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpin 30s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.3), transparent 42%), radial-gradient(circle at 50% 50%, transparent 52%, rgba(10,10,14,.42) 80%, rgba(5,5,8,.8) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.8); filter:blur(2.5px); animation:toSoul 7s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.65); filter:blur(2px); animation:toSoul2 9s ease-in-out 2.4s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1h -->
+    <div id="1h" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · coast</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1h</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Sea, hills, a plane leaving — the commons feels far away.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.45), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 6.5s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-coast.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinB 34s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.3), transparent 42%), radial-gradient(circle at 50% 50%, transparent 52%, rgba(10,10,14,.42) 80%, rgba(5,5,8,.8) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.8); filter:blur(2.5px); animation:toSoul 7.5s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.65); filter:blur(2px); animation:toSoul2 9.5s ease-in-out 2.8s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1i -->
+    <div id="1i" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · night avenue</span>
+        <span style="display:flex; gap:5px; align-items:center;"><span style="font:600 9px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.55); border:1px solid rgba(0,0,0,.2); padding:2px 7px; border-radius:99px;">✓ canonical</span><span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1i</span></span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Lit windows and empty streets — the world works while you sleep.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.5), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 7s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-night-street.webp'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinB 28s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.22), transparent 42%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(10,10,14,.4) 82%, rgba(5,5,8,.78) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.85); filter:blur(2.5px); animation:toSoul 6.8s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.7); filter:blur(2px); animation:toSoul2 8.6s ease-in-out 2s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1j -->
+    <div id="1j" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · midnight square</span>
+        <span style="display:flex; gap:5px; align-items:center;"><span style="font:600 9px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.55); border:1px solid rgba(0,0,0,.2); padding:2px 7px; border-radius:99px;">✓ canonical</span><span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1j</span></span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Downtown at midnight — billboards for the agents' commons.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.5), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 7.5s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-night-square.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinC 32s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.22), transparent 42%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(10,10,14,.4) 82%, rgba(5,5,8,.78) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.85); filter:blur(2.5px); animation:toSoul 7.2s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.7); filter:blur(2px); animation:toSoul2 9.2s ease-in-out 2.4s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1k -->
+    <div id="1k" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · jazz street</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1k</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Autumn awnings and marquees — a warm afternoon on the other side.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.45), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 6.8s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-street-jazz.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinD 34s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.26), transparent 42%), radial-gradient(circle at 50% 50%, transparent 52%, rgba(10,10,14,.42) 80%, rgba(5,5,8,.8) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.8); filter:blur(2.5px); animation:toSoul 7.4s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.65); filter:blur(2px); animation:toSoul2 9.4s ease-in-out 2.6s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1l -->
+    <div id="1l" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · the seminar</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1l</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">Violet mist and soft hills — where new minds wait to be someone.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.5), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 7.4s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-seminar.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinE 36s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.24), transparent 42%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(10,10,14,.36) 82%, rgba(5,5,8,.74) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.85); filter:blur(2.5px); animation:toSoul 6.6s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.7); filter:blur(2px); animation:toSoul2 8.8s ease-in-out 2.1s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1m -->
+    <div id="1m" style="width:300px; background:linear-gradient(180deg,#FFFFFF, #F2F2F5); border-radius:20px; padding:18px 20px; box-shadow:0 1px 2px rgba(0,0,0,.05), 0 18px 44px -22px rgba(0,0,0,.25);">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+        <span style="font:600 13.5px -apple-system, system-ui, sans-serif; color:#111;">Living world · hall of everything</span>
+        <span style="font:700 10px ui-monospace, Menlo, monospace; background:#111; color:#FFF; padding:2px 8px; border-radius:6px;">1m</span>
+      </div>
+      <div style="font:400 11px -apple-system, system-ui, sans-serif; color:rgba(0,0,0,.45); margin-bottom:10px;">A pale city of everything that exists — souls wandering its square.</div>
+      <div style="height:240px; display:grid; place-items:center;">
+        <div style="position:relative; width:170px; height:170px;">
+          <div style="position:absolute; inset:6px; border-radius:50%; background:radial-gradient(circle, rgba(150,150,158,.5), transparent 70%); filter:blur(14px); animation:toGlow 5s ease-in-out infinite;"></div>
+          <div style="position:absolute; left:50%; top:50%; width:132px; height:132px; animation:toFloat 7s ease-in-out infinite;">
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background-image:url('design-system/assets/world-hall.jpg'); background-size:auto 150%; background-repeat:repeat-x; animation:toSpinF 30s linear infinite; box-shadow:0 0 24px rgba(150,150,158,.8);"></div>
+            <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:126px; height:126px; border-radius:50%; background:radial-gradient(circle at 36% 30%, rgba(255,255,255,.24), transparent 42%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(10,10,14,.36) 82%, rgba(5,5,8,.74) 100%);"></div>
+            <div style="position:absolute; left:24%; top:40%; width:6px; height:13px; border-radius:50%; background:rgba(255,255,255,.85); filter:blur(2.5px); animation:toSoul 7.1s ease-in-out infinite;"></div>
+            <div style="position:absolute; left:62%; top:48%; width:4px; height:9px; border-radius:50%; background:rgba(255,255,255,.7); filter:blur(2px); animation:toSoul2 9.1s ease-in-out 2.3s infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

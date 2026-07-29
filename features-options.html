@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>features — ten takes</title>
+<link rel="stylesheet" href="./design-system/styles.css">
+<style>
+  body { margin: 0; background: #F4F4F6; font-family: var(--font-ui); color: var(--ink-2); }
+  .sheet { padding: 56px 40px 90px; }
+  h1 { font: 700 30px var(--font-display), sans-serif; letter-spacing: -.02em; margin: 0 0 6px; }
+  .lede { font: 500 15px var(--font-ui); color: var(--text-secondary); margin: 0 0 46px; max-width: 620px; line-height: 1.5; }
+  .grid { display: flex; flex-wrap: wrap; gap: 46px 34px; }
+  .take { width: 320px; }
+  .cap { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+  .num { font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; color: var(--text-tertiary); text-transform:lowercase; }
+  .name { font: 700 15px var(--font-display), sans-serif; letter-spacing: -.01em; }
+  .why { font: 500 12.5px var(--font-ui); color: var(--text-secondary); line-height: 1.45; margin: 6px 0 12px; min-height: 36px; }
+  .phone { width: 320px; height: 640px; border-radius: 44px; background: var(--bg); box-shadow: 0 0 0 1.5px rgba(0,0,0,.14), 0 24px 60px -30px rgba(0,0,0,.4); overflow: hidden; position: relative; }
+  .body { position: absolute; inset: 0; padding: 62px 24px 22px; overflow: hidden; }
+  .lbl { font: var(--text-label); letter-spacing: var(--tracking-label); color: var(--text-secondary); text-transform: lowercase; }
+  .title { font: 700 27px var(--font-display), sans-serif; letter-spacing: -.02em; margin-top: 4px; }
+  .soon { font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; color: var(--text-tertiary); text-transform:lowercase; }
+  .row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .w { font: 700 20px var(--font-display), sans-serif; letter-spacing: -.01em; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>features — ten takes</h1>
+  <p class="lede">the same six things every time: personality, training, standing, the store, the marketplace, playground+. only playground+ is live. every take is built from the shipped tokens — porcelain, ink, one accent, SF Mono for state tags. pick one and i'll build it into the flow.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+/* the six, and what is actually live. every take renders the same truth,
+   so the only thing changing between them is the FORM. */
+const F = [
+  { t: 'personality', live: false, say: 'who it turned out to be' },
+  { t: 'training',    live: false, say: 'what you have taught it' },
+  { t: 'standing',    live: false, say: 'what the world thinks of it' },
+  { t: 'the store',   live: false, say: 'things for it' },
+  { t: 'marketplace', live: false, say: 'other people’s agents' },
+  { t: 'playground+', live: true,  say: 'keep more than one' },
+];
+
+const creature = (size) => `
+  <div style="width:${size}px;height:${size*0.84}px;position:relative">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 36% 26%,#FFF 0%,#F2F2F5 52%,#E4E4E9 100%);border-radius:48% 52% 46% 54% / 55% 50% 50% 45%;box-shadow:inset 3px 4px 7px rgba(255,255,255,.95),inset -4px -6px 11px rgba(0,0,0,.11),0 10px 22px rgba(0,0,0,.13)"></div>
+    <div style="position:absolute;top:38%;left:50%;transform:translateX(-50%);display:flex;gap:${size*0.07}px">
+      <span style="width:${size*0.08}px;height:${size*0.13}px;border-radius:50%;background:var(--ink-2)"></span>
+      <span style="width:${size*0.06}px;height:${size*0.13}px;border-radius:50%;background:var(--ink-2)"></span>
+    </div>
+  </div>`;
+
+const TAKES = [
+  {
+    name: 'the log',
+    why: 'what is there now. plain rows, state on the right. cheapest to read, easiest to ignore.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:0">
+      ${F.map((f,i)=>`<div class="row" style="padding:16px 0;border-bottom:${i<F.length-1?'1px solid var(--divider)':'none'};opacity:${f.live?1:.45}">
+        <span class="w">${f.t}</span>${f.live?'':'<span class="soon">SOON</span>'}</div>`).join('')}</div>`
+  },
+  {
+    name: 'blocks',
+    why: 'the settings language, reused. square wells group live from coming. consistent with the room, but six wells is heavy.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:26px">
+        <div style="background:var(--well);border-radius:18px;overflow:hidden;margin-bottom:14px">
+          <div style="padding:17px 18px;font:500 15px var(--font-ui)">playground+</div>
+        </div>
+        <div style="background:var(--well);border-radius:18px;overflow:hidden;opacity:.5">
+          ${F.filter(f=>!f.live).map((f,i)=>`<div class="row" style="padding:17px 18px;border-top:${i?'1px solid var(--divider)':'none'}">
+            <span style="font:500 15px var(--font-ui)">${f.t}</span><span class="soon">SOON</span></div>`).join('')}
+        </div>
+      </div>`
+  },
+  {
+    name: 'ink returns',
+    why: 'what is live is solid ink, what is not is a dashed outline. the strongest read of readiness on the page.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:26px;display:flex;flex-direction:column;gap:10px">
+      ${F.map(f=>f.live
+        ? `<div style="background:var(--ink-2);border-radius:16px;padding:17px 20px;color:#FFF;font:600 16px var(--font-ui)">${f.t}</div>`
+        : `<div style="border:1.5px dashed rgba(0,0,0,.18);border-radius:16px;padding:16px 20px;font:500 16px var(--font-ui);color:var(--text-tertiary)">${f.t}</div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'the index',
+    why: 'editorial. numerals carry the rhythm and the state tag disappears — position tells you where you are in the build.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:30px;display:flex;flex-direction:column;gap:22px">
+      ${F.map((f,i)=>`<div style="display:flex;gap:16px;align-items:baseline;opacity:${f.live?1:.4}">
+        <span class="soon" style="width:20px">${String(i+1).padStart(2,'0')}</span>
+        <div><div class="w">${f.t}</div>
+        <div style="font:var(--text-hint);color:var(--text-secondary);margin-top:3px">${f.say}</div></div></div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'the grid',
+    why: 'square tiles, two up. reads as a shelf of things rather than a list of settings. the most app-like of the ten.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      ${F.map(f=>`<div style="background:var(--well);border-radius:18px;aspect-ratio:1;padding:16px;display:flex;flex-direction:column;justify-content:space-between;opacity:${f.live?1:.45}">
+        <span class="soon">${f.live?'LIVE':'SOON'}</span>
+        <span style="font:700 17px var(--font-display),sans-serif;letter-spacing:-.01em;line-height:1.15">${f.t}</span></div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'it owns them',
+    why: 'the creature sits at the top and the list reads as its parts, not the app’s menu. the only take where this is about the agent.',
+    body: `<div style="display:flex;flex-direction:column;align-items:center;padding-top:6px">${creature(74)}
+      <div style="font:700 21px var(--font-display),sans-serif;letter-spacing:-.01em;margin-top:14px">Sol</div>
+      <div style="font:var(--text-hint);color:var(--text-secondary);margin-top:2px">awake · listening</div></div>
+      <div style="margin-top:26px;display:flex;flex-direction:column">
+      ${F.map((f,i)=>`<div class="row" style="padding:14px 0;border-bottom:${i<F.length-1?'1px solid var(--divider)':'none'};opacity:${f.live?1:.42}">
+        <span style="font:500 16px var(--font-ui)">${f.t}</span>${f.live?'':'<span class="soon">SOON</span>'}</div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'readiness',
+    why: 'a gradient instead of a binary. live is full ink, next is half, far off is barely there. tells you the order things arrive in without a date.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:30px;display:flex;flex-direction:column;gap:20px">
+      ${F.slice().reverse().map((f,i)=>`<div style="opacity:${[1,.62,.44,.3,.2,.14][i]}">
+        <div class="w" style="font-size:${[24,22,21,20,20,20][i]}px">${f.t}</div></div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'in its voice',
+    why: 'each feature said by the agent, first person. warmest of the ten, and the only one that carries the moltbook voice onto a menu.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+      ${[['i became someone out there.','personality'],['you have been teaching me.','training'],['the world has an opinion of me.','standing'],['there are things for me.','the store'],['there are others like me.','marketplace'],['you can keep more than one of us.','playground+']].map((p,i)=>`
+        <div style="opacity:${i===5?1:.45}">
+          <div style="font:500 16px/1.45 var(--font-ui);color:var(--ink-2)">${p[0]}</div>
+          <div class="soon" style="margin-top:5px">${p[1].toUpperCase()}${i===5?'':' · SOON'}</div>
+        </div>`).join('')}
+      </div>`
+  },
+  {
+    name: 'one at a time',
+    why: 'a scroll of full-width cards, one thought each. the most generous with space and the most confident. costs the overview.',
+    body: `<div class="lbl">SOL</div><div class="title">what it has</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+      ${F.slice(0,3).map((f,i)=>`<div style="background:var(--well);border-radius:20px;padding:22px 20px;opacity:${f.live?1:.5}">
+        <div style="font:700 23px var(--font-display),sans-serif;letter-spacing:-.02em">${f.t}</div>
+        <div style="font:500 14px/1.5 var(--font-ui);color:var(--text-secondary);margin-top:6px">${f.say}</div>
+        ${f.live?'':'<div class="soon" style="margin-top:12px">SOON</div>'}</div>`).join('')}
+      <div style="text-align:center;font:var(--text-hint);color:var(--text-tertiary);padding-top:4px">keep scrolling</div>
+      </div>`
+  },
+  {
+    name: 'bare',
+    why: 'no chrome at all. words at display size, a dot for state. the least software-looking and the closest to the text doctrine.',
+    body: `<div style="padding-top:14px;display:flex;flex-direction:column;gap:26px">
+      ${F.map(f=>`<div style="display:flex;align-items:center;gap:12px;opacity:${f.live?1:.34}">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--ink-2);flex:none;opacity:${f.live?1:0}"></span>
+        <span style="font:700 25px var(--font-display),sans-serif;letter-spacing:-.02em">${f.t}</span></div>`).join('')}
+      </div>`
+  },
+];
+
+document.getElementById('grid').innerHTML = TAKES.map((t,i)=>`
+  <div class="take">
+    <div class="cap"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="name">${t.name}</span></div>
+    <div class="why">${t.why}</div>
+    <div class="phone"><div class="body">${t.body}</div></div>
+  </div>`).join('');
+</script>
+</body>
+</html>

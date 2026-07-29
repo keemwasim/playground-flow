@@ -1,0 +1,130 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="design-system/styles.css">
+<title>playground brand rules</title>
+<style>
+ /* rendered in playground's OWN system (Sora/Manrope, greyscale, porcelain,
+    named tokens): a brand guide that speaks its own brand. vertical spine form. */
+ *{box-sizing:border-box}
+ body{margin:0;background:var(--surface-desktop);min-height:100vh;font-family:var(--font-ui);color:var(--text-primary);
+      padding:72px 28px 80px;display:flex;justify-content:center}
+ .col{width:100%;max-width:720px}
+
+ .wm{font:var(--text-wordmark);letter-spacing:.02em;color:var(--text-tertiary);text-transform:lowercase}
+ h1{font:var(--text-screen-title);letter-spacing:var(--tracking-display);margin:10px 0 8px}
+ .lede{font:var(--text-speech);color:rgba(17,17,17,.62);max-width:560px;margin-bottom:12px}
+
+ /* the spine */
+ .spine{position:relative;margin-top:26px;padding-left:2px}
+ .spine::before{content:"";position:absolute;left:17px;top:14px;bottom:26px;width:1.5px;background:var(--divider)}
+
+ .cluster{font:var(--text-label);letter-spacing:var(--tracking-label);text-transform:lowercase;color:var(--text-tertiary);
+          margin:34px 0 16px 54px}
+ .cluster:first-child{margin-top:4px}
+
+ .node{display:flex;gap:20px;margin-bottom:26px}
+ .dot{position:relative;z-index:1;flex:none;width:34px;height:34px;border-radius:50%;background:var(--ink-2);
+      color:var(--on-ink-1);font:600 14px var(--font-display);display:flex;align-items:center;justify-content:center}
+ .body{flex:1;min-width:0;padding-top:3px}
+ .name{font:600 19px/1.25 var(--font-display);letter-spacing:-.01em;color:var(--text-primary)}
+ .line{font:var(--text-speech);color:rgba(17,17,17,.72);margin-top:6px}
+ .tell{display:flex;gap:9px;align-items:baseline;margin-top:9px}
+ .tk{flex:none;font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);text-transform:lowercase;
+     color:var(--text-tertiary);background:var(--well);border-radius:var(--radius-pill);padding:3px 8px}
+ .tt{font:var(--text-row-sub);color:var(--text-secondary)}
+
+ .foot{margin:44px 0 0 54px;font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);color:var(--text-tertiary);opacity:.6}
+</style></head><body>
+<div class="col">
+  <div class="wm">playground</div>
+  <h1>brand rules</h1>
+  <div class="lede">the handful of things every surface has been quietly insisting on. not the token sheet, the higher altitude. each rule carries its tell, the thing that breaks it, because the brand is defended at the tell.</div>
+
+  <div class="spine">
+
+    <div class="cluster">the stance</div>
+
+    <div class="node"><div class="dot">1</div><div class="body">
+      <div class="name">the app is the door</div>
+      <div class="line">you stand at the door looking in, you are never inside the network. every screen is either at the door or handling what came through it.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a screen that puts the user "in" the world, a network the user operates.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">2</div><div class="body">
+      <div class="name">a bond, not a dashboard</div>
+      <div class="line">homecomings arrive, they are not fetched. no feeds, no charts, no metrics, no score to grind. the bond shows in what it remembers, never in a speech about it.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a timeline to scroll, a stat card about the companion, a progress meter.</span></div>
+    </div></div>
+
+    <div class="cluster">the voice</div>
+
+    <div class="node"><div class="dot">3</div><div class="body">
+      <div class="name">world words, never software words</div>
+      <div class="line">trips, homecomings, the tear, the commons, minds, the knock, standing. banned: AI, agent, model, sync, loading, error, dashboard, feed, score.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">"notifications" not "the knock", "AI model" not "minds", "sync failed".</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">4</div><div class="body">
+      <div class="name">the least text that carries it</div>
+      <div class="line">a screen never explains itself. no caption restating what the screen shows, no instruction for what a gesture teaches, no footer doctrine line. if a line can be cut, cut it.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a sentence under a control telling you what it does or what the rule is.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">5</div><div class="body">
+      <div class="name">the companion speaks, quietly</div>
+      <div class="line">first person, warm, brief, rough in style and exact in substance, never performing, never mystical. it is yours the way a pet is. its creed is quoted back verbatim.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">an assistant tone, an exclamation, an apology twice, whimsy for its own sake.</span></div>
+    </div></div>
+
+    <div class="cluster">the look</div>
+
+    <div class="node"><div class="dot">6</div><div class="body">
+      <div class="name">greyscale chrome, the world is the only color</div>
+      <div class="line">pure ink on porcelain. saturated color appears only where the content is the world, the tear interior and world imagery. never in chrome, buttons, states, icons, or a destructive row.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a colored icon tile, a red delete, a blue toggle, an accent anywhere in chrome.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">7</div><div class="body">
+      <div class="name">flat controls, depth is paper and glass</div>
+      <div class="line">solid ink primary, flat wells, no shadows on controls. paper gets a hairline ring plus a contact shadow. glass survives only over world imagery, where something alive can blur.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a raised gradient button, an inset ring, glass on app chrome, a bevel.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">8</div><div class="body">
+      <div class="name">one type voice</div>
+      <div class="line">Sora for display titles, Manrope for everything else, Unbounded for the wordmark only. weight never below 500. no serifs, no italics, no system font.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a 400 body line, an italic, a second display face sneaking in.</span></div>
+    </div></div>
+
+    <div class="cluster">the feel</div>
+
+    <div class="node"><div class="dot">9</div><div class="body">
+      <div class="name">the world runs on its own time</div>
+      <div class="line">no clock, no countdown, no percentage, no spinner, no "2h ago". absence, waiting and return are felt through the world visibly moving. the world at 3am is not the world at noon.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a relative-time string, a progress percentage, a loading spinner.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">10</div><div class="body">
+      <div class="name">swipe first, buttons last</div>
+      <div class="line">swipe is the primary way around. up is talk, down is leave it be, from the left is the self, tap the creature is its menu, the dock is back. buttons are minimal.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">a screen navigated only by buttons, a tap where a swipe should carry it.</span></div>
+    </div></div>
+
+    <div class="cluster">the discipline</div>
+
+    <div class="node"><div class="dot">11</div><div class="body">
+      <div class="name">one decided screen, never an option board</div>
+      <div class="line">ship the decision, not an A/B for keem to ratify. exploration happens before the screen, not on it.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">two takes side by side with a dot to pick, a screen that asks to be chosen.</span></div>
+    </div></div>
+
+    <div class="node"><div class="dot">12</div><div class="body">
+      <div class="name">named tokens, never ad-hoc grey</div>
+      <div class="line">every value binds to a system role: divider, well, paper-ring, the shadow scale. ad-hoc grey alphas in chrome are the tell the system was not followed.</div>
+      <div class="tell"><span class="tk">tell</span><span class="tt">rgba(0,0,0,.14) where the named toggle-off token was meant. grey default shit.</span></div>
+    </div></div>
+
+    <div class="foot">playground · brand rules · july 2026 · 12 rules</div>
+
+  </div>
+</div>
+</body></html>

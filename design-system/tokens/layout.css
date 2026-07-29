@@ -1,0 +1,37 @@
+/* Playground — layout tokens: spacing, z-ladder, hit targets. */
+:root {
+  /* spacing scale (px) */
+  --space-1: 4px;   /* icon internals */
+  --space-2: 7px;   /* chip gaps */
+  --space-3: 10px;  /* row gaps */
+  --space-4: 14px;  /* card padding unit */
+  --space-5: 20px;  /* screen gutter (iOS) */
+  --space-6: 28px;  /* section gaps */
+  --space-7: 44px;  /* hero spacing */
+
+  --screen-gutter: 20px;
+  --screen-margin: 26px;       /* layout law (v3): screen margin */
+  --sheet-inset: 6px;          /* sheet floats inside screen edges */
+  --safe-top: 62px;            /* layout law (v3) */
+  --safe-bottom: 34px;         /* layout law (v3) */
+  --hit-min: 44px;             /* minimum touch target */
+  --icon-box: 14px;            /* constructed icon bounding box */
+  --avatar-row: 30px;          /* roster avatar width */
+
+  /* z ladder (habitat) */
+  --z-desk: 2;                 /* tear, folders, notes */
+  --z-creature: 5;
+  --z-header: 6;
+  --z-screen: 7;               /* full-screen tabs */
+  --z-dock: 8;
+  --z-notice: 9;               /* banner, live activity */
+  --z-scrim: 10;
+  --z-sheet: 11;
+  --z-menu: 13;
+  --z-boot: 30;
+
+  /* July 2026 audit additions */
+  --space-0: 2px;              /* hairline gaps */
+  --content-card: 452px;       /* spec/desktop card width */
+  --notice-w: 330px;           /* banner plus live activity width */
+}

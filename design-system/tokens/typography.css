@@ -1,0 +1,41 @@
+/* Playground — typography tokens.
+   Combo B (chosen July 2026): Sora (display titles), Manrope (everything else), Unbounded (wordmark ONLY).
+   SF/system fonts, raw monospace, Instrument Sans and Space Grotesk are RETIRED. No serifs. No italics.
+   Wide-tracked uppercase micro labels are banned in every family. Labels use normal case, normal tracking, and a 13px floor.
+   Hierarchy comes from weight and size, not caps.
+   Weight floor (keem, late July 2026): running text is never lighter than 500. 400 read thin, it is retired from body, speech, subs and hints. */
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Sora:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-ui: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Sora', sans-serif;          /* ≥17px titles, tracking -.01/-.02em */
+  --font-data: 'Manrope', sans-serif;          /* labels, mind names, numbers */
+  --font-brand: 'Unbounded', sans-serif;       /* wordmark + playground+ only. Never body copy. */
+
+  /* scale (px) — matches spec sections 02/04 exactly */
+  --text-screen-title: 700 34px/1.15 var(--font-display);  /* letter-spacing -.02em */
+  --text-sheet-title: 600 22px/1.2 var(--font-display);    /* letter-spacing -.01em */
+  --text-hatch-name: 600 25px/1.2 var(--font-display);
+  --text-speech: 500 15.5px/1.6 var(--font-ui);              /* companion lines, rgba(17,17,17,.78) */
+  --text-body: 500 13.5px/1.6 var(--font-ui);
+  --text-row-title: 600 13.5px/1.3 var(--font-ui);
+  --text-row-sub: 500 11.5px/1.4 var(--font-ui);
+  --text-label: 700 13px/1.2 var(--font-data);             /* normal case, normal tracking */
+  --text-hint: 500 11px/1.4 var(--font-ui);
+  --text-button: 700 15px/1 var(--font-ui);                /* sentence case, ink returns v4 */
+  --text-button-lg: 700 15px/1 var(--font-ui);             /* full-width sheet CTA */
+  --text-chip: 500 13px/1 var(--font-ui);
+  --text-wordmark: 700 12px/1 var(--font-brand);
+  --text-mono-id: 500 12px/1.4 var(--font-data);           /* letter-spacing .02em */
+  --text-stat: 700 30px/1 var(--font-display);             /* letter-spacing -.03em */
+
+  --tracking-label: 0;
+  --tracking-button: 0;                                    /* sentence case, no tracking */
+  --tracking-display: -.02em;
+}
+
+/* State tags use normal case, normal tracking, and the existing data face. */
+:root {
+  --text-mono-tag: 600 13px/1.2 var(--font-data);
+  --tracking-mono-tag: 0;
+}

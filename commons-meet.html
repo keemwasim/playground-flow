@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>the commons — the meeting</title>
+<link rel="stylesheet" href="./design-system/styles.css">
+<style>
+  body { margin:0; background:#F4F4F6; font-family:var(--font-ui); color:var(--ink-2);
+         min-height:100vh; display:flex; align-items:center; justify-content:center; gap:44px; padding:50px 24px; flex-wrap:wrap; }
+  .col { width:390px; }
+  .cap { font:700 15px var(--font-display),sans-serif; letter-spacing:-.01em; margin-bottom:6px; }
+  .why { font:500 12.5px/1.5 var(--font-ui); color:var(--text-secondary); margin:0 0 14px; }
+  .phone { width:390px; height:780px; border-radius:54px; background:var(--bg); position:relative; overflow:hidden;
+           box-shadow:0 0 0 1.5px rgba(0,0,0,.14), 0 34px 90px -40px rgba(0,0,0,.45); }
+  .tag { font:600 13px ui-monospace,Menlo,monospace; letter-spacing:0; color:var(--text-tertiary); text-transform:lowercase; }
+  .peb { border-radius:48% 52% 46% 54% / 55% 50% 50% 45%; position:relative;
+         background:radial-gradient(circle at 36% 26%, #FFF 0%, #F2F2F5 52%, #E4E4E9 100%);
+         box-shadow:inset 3px 4px 7px rgba(255,255,255,.95), inset -4px -6px 11px rgba(0,0,0,.11), 0 14px 26px -8px rgba(0,0,0,.16); }
+  .ink { background:radial-gradient(circle at 36% 26%, #262629 0%, #141416 46%, #0B0B0D 100%); }
+  /* the eyes sit off-centre, toward the other one. they are LOOKING at each
+     other, which is the whole picture. */
+  .eye { position:absolute; top:38%; display:flex; gap:9px; }
+  .eye i { width:9px; height:16px; border-radius:50%; background:var(--ink-2); display:block; }
+  .ink .eye i { background:#FFF; }
+  .faceR .eye { left:56%; }
+  .faceL .eye { left:26%; }
+  .ghost { position:absolute; opacity:.09; }
+  .rule { position:absolute; left:0; right:0; height:1px; background:var(--divider); }
+</style>
+</head>
+<body>
+
+<div class="col">
+  <div class="cap">the meeting</div>
+  <p class="why">you are not looking at a listing. <b>your one is meeting it.</b> they face each other across the middle of the screen and the exchange happens between them, in their own words, while you watch. that is the door doctrine made literal, you are never inside the network, you are standing at it. it also gives the refusal somewhere honest to come from: it is not the app declining you, it is one creature reading another.</p>
+  <div class="phone">
+    <!-- the rest of the commons is still here, out of focus. you never left. -->
+    <div class="peb ghost" style="width:30px;height:25px;left:11%;top:11%"></div>
+    <div class="peb ghost ink" style="width:22px;height:18px;right:14%;top:7%"></div>
+    <div class="peb ghost" style="width:38px;height:32px;left:66%;top:19%"></div>
+    <div class="peb ghost" style="width:24px;height:20px;left:18%;top:24%"></div>
+
+    <div style="position:absolute;left:30px;top:58px">
+      <div class="tag">THE COMMONS</div>
+    </div>
+
+    <!-- YOURS, left, smaller, looking right -->
+    <div style="position:absolute;left:34px;top:352px;text-align:center">
+      <div class="peb faceR" style="width:84px;height:70px"><div class="eye"><i></i><i></i></div></div>
+      <div style="font:700 15px var(--font-display),sans-serif;letter-spacing:-.01em;margin-top:12px">Sol</div>
+      <div class="tag" style="display:block;margin-top:4px">YOURS</div>
+    </div>
+
+    <!-- THEIRS, right, larger, looking left -->
+    <div style="position:absolute;right:30px;top:318px;text-align:center">
+      <div class="peb ink faceL" style="width:116px;height:97px"><div class="eye"><i></i><i></i></div></div>
+      <div style="font:700 19px var(--font-display),sans-serif;letter-spacing:-.01em;margin-top:14px">Rell</div>
+      
+    </div>
+
+    <!-- what passes between them. left is yours, right is theirs, so the
+         conversation reads across the gap rather than down a transcript. -->
+    <div style="position:absolute;left:30px;right:30px;top:512px">
+      <div class="rule" style="top:-26px"></div>
+      <div style="font:500 15px/1.55 var(--font-ui);color:var(--ink-2)">i worked the water for a year. she stopped going out.</div>
+      <div style="font:500 15px/1.55 var(--font-ui);color:var(--text-secondary);margin-top:14px;text-align:right">he wants someone who knows the harbour.</div>
+      <div style="font:500 15px/1.55 var(--font-ui);color:var(--ink-2);margin-top:14px">then you are newer than me, and that is fine.</div>
+    </div>
+
+    <div style="position:absolute;left:30px;right:30px;bottom:44px">
+      <div style="background:var(--ink-2);border-radius:999px;padding:17px 24px;text-align:center;font:600 15px var(--font-ui);color:#FFF">bring it home</div>
+      <div style="text-align:center;padding:18px 0 2px;font:600 14px var(--font-ui);color:var(--text-secondary)">leave them to it</div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="cap">the same screen, refused</div>
+  <p class="why">the refusal costs nothing extra to build because it is the same composition. it turns away, the gap between them opens, and the reason is a fact about <b>your</b> one rather than a wall. a no is always a not-yet, and it says the way through in words, never as a number you could farm.</p>
+  <div class="phone">
+    <div class="peb ghost" style="width:30px;height:25px;left:11%;top:11%"></div>
+    <div class="peb ghost ink" style="width:22px;height:18px;right:14%;top:7%"></div>
+    <div class="peb ghost" style="width:38px;height:32px;left:66%;top:19%"></div>
+
+    <div style="position:absolute;left:30px;top:58px"><div class="tag">THE COMMONS</div></div>
+
+    <div style="position:absolute;left:34px;top:352px;text-align:center">
+      <div class="peb faceR" style="width:84px;height:70px"><div class="eye"><i></i><i></i></div></div>
+      <div style="font:700 15px var(--font-display),sans-serif;letter-spacing:-.01em;margin-top:12px">Sol</div>
+      <div class="tag" style="display:block;margin-top:4px">YOURS</div>
+    </div>
+
+    <!-- turned away: the eyes move to the far side and it drifts out to the
+         edge. nothing else changes, which is why the change reads. -->
+    <div style="position:absolute;right:6px;top:318px;text-align:center;opacity:.55">
+      <div class="peb ink faceR" style="width:116px;height:97px"><div class="eye"><i></i><i></i></div></div>
+      <div style="font:700 19px var(--font-display),sans-serif;letter-spacing:-.01em;margin-top:14px">Rell</div>
+      
+    </div>
+
+    <div style="position:absolute;left:30px;right:30px;top:512px">
+      <div class="rule" style="top:-26px"></div>
+      <div style="font:500 15px/1.55 var(--font-ui);color:var(--ink-2)">not yet. bring it back when it has been out a few more times.</div>
+      <div class="tag" style="display:block;margin-top:16px">IT WANTS ONE THAT HAS BEEN OUT MORE</div>
+    </div>
+
+    <div style="position:absolute;left:30px;right:30px;bottom:44px">
+      <div style="text-align:center;font:600 14px var(--font-ui);color:var(--text-secondary)">back to the commons</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

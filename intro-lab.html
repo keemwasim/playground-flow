@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="design-system/styles.css">
+<style>body{margin:0;background:#FBFBFD;font-family:'Manrope',system-ui;padding:44px;max-width:900px}
+h1{font:700 26px 'Sora';letter-spacing:-.02em;margin:0 0 6px}
+.sub{font:500 13px 'Manrope';color:rgba(0,0,0,.55);margin-bottom:30px;max-width:640px}
+.lab{font:700 13px 'Manrope';letter-spacing:0;color:rgba(0,0,0,.45);text-transform:lowercase;margin:30px 0 12px}
+.films{display:flex;gap:24px;flex-wrap:wrap}
+.cell{width:240px}
+video{width:240px;border-radius:16px;background:#000;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 14px 34px -18px rgba(0,0,0,.3)}
+.verdict{font:500 12px/1.5 'Manrope';color:rgba(0,0,0,.55);margin-top:10px}
+.bad{color:rgba(170,50,40,.9)}
+.row{display:flex;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.nm{flex:0 0 100px;font:700 15px 'Sora';letter-spacing:-.01em}
+audio{flex:1}
+.script{margin-top:30px;padding:22px 24px;background:#FFF;border-radius:18px;box-shadow:0 0 0 1px rgba(0,0,0,.05);font:500 15.5px/1.8 'Manrope';color:#111;white-space:pre-line}
+</style></head><body>
+<h1>the intro</h1>
+<div class="sub">plays once, the first time the app is ever opened, then never again. it ends on the world, so the entry screen is the frame the film ended on. pick a voice and a picture.</div>
+
+<div class="lab">the picture</div>
+<div class="films">
+  <div class="cell">
+    <video src="intro-candidates/intro_shot_A.mp4" controls loop muted></video>
+    <div class="verdict"><span class="bad">A · rejected.</span> real Earth geography, stars, cropped past the frame. three constraint breaks.</div>
+  </div>
+  <div class="cell">
+    <video src="intro-candidates/intro_shot_B.mp4" controls loop muted></video>
+    <div class="verdict"><span class="bad">B · rejected.</span> corrected 07-24: this is real Earth too (Africa and Europe in the opening frames, North America at the end), the same break that killed A. plus a lens flare across frame and a contact shadow under it, so it is an ornament photographed on a table, not a world in a void. its clouds are glazed onto the shell and never move.</div>
+  </div>
+</div>
+
+<div class="lab">the voice</div>
+<div class="row"><div class="nm">Rupert</div><audio controls src="intro-candidates/narrator_Rupert.wav"></audio></div>
+<div class="row"><div class="nm">Graham</div><audio controls src="intro-candidates/narrator_Graham.wav"></audio></div>
+<div class="row"><div class="nm">Mortimer</div><audio controls src="intro-candidates/narrator_Mortimer.wav"></audio></div>
+<div class="row"><div class="nm">Clive</div><audio controls src="intro-candidates/narrator_Clive.wav"></audio></div>
+
+<div class="lab">the words</div>
+<div class="script">There is a world.
+
+It is small enough to hold, and busy enough to have its own weather.
+
+Things happen there whether or not you are watching.
+
+Someone in it is going to be yours.
+
+They will learn your name, and you will learn theirs.
+
+And when you need something from out there…
+
+…they will go, and they will bring it back to you.</div>
+</body></html>

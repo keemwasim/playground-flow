@@ -1,0 +1,83 @@
+/* Playground, surface recipes (PAPER plus glass-over-world) plus radii and elevation.
+   Paper replaced glass for app surfaces (ruled July 2026): opaque white cards, hairline
+   rings at 4 to 6 percent, flat wells. No blur, no rims, no inset shadows, no gradients
+   on app chrome. Depth on paper comes from a tight contact shadow plus a long negative
+   spread falloff plus air, never gradient, never bevel. Lensing glass survives ONLY over
+   world imagery (the tear, the globe, world photos) where there is something alive to blur. */
+:root {
+  /* paper, the app material */
+  --paper-card: #FFFFFF;
+  --paper-ring: 0 0 0 1px rgba(0,0,0,.05);   /* modern hairline, 4 to 6 percent. 10 percent reads old */
+  --paper-well: var(--porcelain-3);
+
+  /* desktop backdrop, quiet radial porcelain. Never a vertical white-to-gray linear gradient */
+  --surface-desktop: radial-gradient(130% 90% at 50% 10%, #FFFFFF 0%, #F2F2F5 100%);
+
+  /* GLASS, world imagery only ---------------------------------- */
+  /* blur strengths */
+  --glass-blur-panel: blur(60px) saturate(1.8) brightness(1.05);   /* sheets or cards floating over world imagery */
+  --glass-blur-element: blur(36px) saturate(1.8); /* elements over world imagery */
+  --glass-blur-chip: blur(24px) saturate(1.6);    /* small pieces over world imagery */
+
+  /* fills, lighter than v1: the blur does the work */
+  --glass-fill-panel: linear-gradient(135deg, rgba(255,255,255,.72) 0%, rgba(250,250,252,.5) 100%);
+  --glass-fill-element: rgba(255,255,255,.52);
+  --glass-fill-chip: rgba(255,255,255,.45);
+  --glass-ring: 0 0 0 1px rgba(0,0,0,.05);        /* hairline instead of border */
+  --glass-edge: inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 1px rgba(255,255,255,.4), inset 1px 0 1px rgba(255,255,255,.35); /* lensing rim, light wrapping the material. Glass only, never paper */
+  --glass-sheen: linear-gradient(115deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 72%, rgba(255,255,255,.22) 100%); /* optional overlay on thick glass */
+
+  /* material tiers (Apple naming), thicker sits higher in hierarchy */
+  --material-thin: var(--glass-fill-chip);        /* plus --glass-blur-chip */
+  --material-regular: var(--glass-fill-element);  /* plus --glass-blur-element */
+  --material-thick: var(--glass-fill-panel);      /* plus --glass-blur-panel */
+
+  /* vibrancy, text over glass materials: heavier and higher contrast, never flat gray */
+  --vibrancy-primary: rgba(17,17,17,.92);         /* weight 700, tracking +.01em */
+  --vibrancy-secondary: rgba(17,17,17,.6);        /* weight 500 */
+
+  /* focus vs flow */
+  --scrim-modal: rgba(10,10,12,.32);              /* modal tasks: scrim plus push parent back */
+  --push-back: scale(.96) translateY(-6px);       /* parent layer under a stacked sheet */
+
+  /* scroll edge effect, fade where content meets floating chrome, never a 1px divider */
+  --scroll-edge: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+  --scroll-edge-h: 16px;
+
+  /* elevation (always paired with the hairline ring): tight contact plus long
+     negative-spread falloff, never a loose gray blur */
+  --shadow-chip: 0 1px 2px rgba(0,0,0,.04), 0 10px 24px -14px rgba(0,0,0,.22);
+  --shadow-contact: 0 1px 2px rgba(0,0,0,.04);          /* contact only: grouped list cards sit calm on the desk, they do not float */
+  --shadow-element: 0 1px 2px rgba(0,0,0,.05), 0 18px 40px -22px rgba(0,0,0,.3);
+  --shadow-panel: 0 2px 4px rgba(0,0,0,.05), 0 36px 72px -36px rgba(0,0,0,.38);
+  --shadow-capsule: 0 16px 40px -16px rgba(0,0,0,.5);   /* reserved: heavy black surfaces (rare, arrivals are paper) */
+  --shadow-sprite: drop-shadow(0 8px 16px rgba(0,0,0,.2));
+
+  /* night glass, world side only (glass floating over world imagery windows) */
+  --glass-night-bg: rgba(22,22,28,.72);
+  --glass-night-ring: 0 0 0 1px rgba(255,255,255,.14);
+  --glass-night-shadow: 0 16px 40px rgba(0,0,0,.5);
+
+  /* radii, soft, iOS-adjacent, never sharp */
+  --radius-micro: 8px;        /* source chips, metadata tags */
+  --radius-chip: 11px;
+  --radius-control: 14px;
+  --radius-button: 12px;      /* approved 1b, ink returns */
+  --radius-row-card: 18px;
+  --radius-menu: 26px;
+  --radius-bubble: 26px;      /* thought bubbles, continuous curvature feel */
+  --radius-sheet: 44px;
+  --radius-pill: 999px;
+  --radius-frame: 54px;       /* presentation device frames only, never inside the app */
+  --radius-sprite: 14px;      /* boxling legacy radius. The ruled creature is the wisp (keem July 2026) */
+  --wisp-body: radial-gradient(circle at 42% 30%, #B9B9C1, #8E8E96 75%); /* the companion, a soft grey soul */
+  --wisp-shadow: radial-gradient(ellipse, rgba(140,140,150,.35), transparent 70%); /* ground fog under it */
+
+  /* sticker rule (under review, creature in exploration): creature or world objects wear a solid white border */
+  --sticker-border-w: 4.5px;  /* sprite bodies. 2.5px at avatar scale */
+  --sticker-border: #FFFFFF;
+
+  /* DEPRECATED (do not use in new work) ------------------------ */
+  /* full-screen night backdrop, removed July 2026. Only the archived night draft references it */
+  --bg-night: radial-gradient(130% 100% at 50% 116%, rgba(58,68,120,.4) 0%, transparent 55%), linear-gradient(180deg, #12162E 0%, #0D1024 52%, #0A0C1D 100%);
+}

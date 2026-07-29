@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+  body { margin: 0; background: #FBFBFD; font-family: 'Manrope', -apple-system, system-ui, sans-serif; padding: 40px; max-width: 900px; }
+  h1 { font: 700 26px 'Sora', sans-serif; letter-spacing: -.02em; color: #111; margin: 0 0 6px; }
+  .sub { font: 500 13px 'Manrope'; color: rgba(0,0,0,.55); margin-bottom: 30px; max-width: 680px; }
+  .grp { font: 700 13px 'Manrope'; letter-spacing: 0; color: rgba(0,0,0,.45); text-transform: lowercase; margin: 26px 0 10px; }
+  .rowline { display: flex; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+  .nm { flex: 0 0 150px; font: 700 14px 'Sora'; letter-spacing: -.01em; color: #111; }
+  .desc { flex: 1; font: 500 12px/1.4 'Manrope'; color: rgba(0,0,0,.55); }
+  .opts { display: flex; gap: 8px; }
+  button { all: unset; cursor: pointer; font: 600 12px 'Manrope'; color: #111; padding: 7px 14px; border-radius: 999px; background: rgba(0,0,0,.045); }
+  button:active { transform: scale(.96); }
+  button.picked { background: #111; color: #FFF; }
+  .hint { font: 500 12px 'Manrope'; color: rgba(0,0,0,.45); margin-top: 26px; }
+</style>
+</head>
+<body>
+<h1>sound gym</h1>
+<div class="sub">every interaction, three candidate voices. tap to hear, tap the same one twice to mark it as your pick (goes ink). option A is what the flow plays today. tell me the picks and they get baked in.</div>
+<div id="gym"></div>
+<div class="hint">picks are marked on this page only, nothing changes until you say so. volume up.</div>
+<script>
+let ctx = null;
+const ac = () => (ctx = ctx || new (window.AudioContext || window.webkitAudioContext)());
+const out = (c) => { const g = c.createGain(); g.gain.value = 0.24; g.connect(c.destination); return g; };
+function tone(c, o, { f = 440, type = 'sine', t0 = 0, a = 0.01, d = 0.3, g = 0.5, glide = null }) {
+  const os = c.createOscillator(); const gn = c.createGain();
+  os.type = type; os.frequency.setValueAtTime(f, c.currentTime + t0);
+  if (glide) os.frequency.exponentialRampToValueAtTime(glide, c.currentTime + t0 + d);
+  gn.gain.setValueAtTime(0, c.currentTime + t0);
+  gn.gain.linearRampToValueAtTime(g, c.currentTime + t0 + a);
+  gn.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + t0 + d);
+  os.connect(gn); gn.connect(o); os.start(c.currentTime + t0); os.stop(c.currentTime + t0 + d + 0.05);
+}
+function noise(c, o, { t0 = 0, d = 0.4, g = 0.4, lpFrom = 2000, lpTo = null, hp = null }) {
+  const len = Math.ceil(c.sampleRate * d); const buf = c.createBuffer(1, len, c.sampleRate);
+  const ch = buf.getChannelData(0); for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
+  const src = c.createBufferSource(); src.buffer = buf;
+  const lp = c.createBiquadFilter(); lp.type = 'lowpass';
+  lp.frequency.setValueAtTime(lpFrom, c.currentTime + t0);
+  if (lpTo) lp.frequency.exponentialRampToValueAtTime(lpTo, c.currentTime + t0 + d);
+  const gn = c.createGain();
+  gn.gain.setValueAtTime(0, c.currentTime + t0);
+  gn.gain.linearRampToValueAtTime(g, c.currentTime + t0 + d * 0.3);
+  gn.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + t0 + d);
+  let head = src;
+  if (hp) { const h = c.createBiquadFilter(); h.type = 'highpass'; h.frequency.value = hp; src.connect(h); head = h; }
+  head.connect(lp); lp.connect(gn); gn.connect(o); src.start(c.currentTime + t0);
+}
+
+/* three voices per interaction: A = current flow voice, B and C = alternates */
+const GYM = [
+  ['THE BIG MOMENTS', [
+    ['engulf', 'the world takes the screen', {
+      A: (c,o)=>{ noise(c,o,{d:.9,g:.5,lpFrom:300,lpTo:2200}); tone(c,o,{f:70,d:.9,a:.25,g:.35,glide:45}); },
+      B: (c,o)=>{ noise(c,o,{d:1.1,g:.4,lpFrom:200,lpTo:900}); tone(c,o,{f:55,d:1.1,a:.4,g:.45,glide:80}); },
+      C: (c,o)=>{ tone(c,o,{f:110,d:.9,a:.3,g:.3,glide:60,type:'triangle'}); tone(c,o,{f:220,d:.9,a:.35,g:.15,glide:110}); noise(c,o,{d:.5,t0:.35,g:.2,lpFrom:600,lpTo:1800}); },
+    }],
+    ['dive', 'the creature folds into the world', {
+      A: (c,o)=>{ tone(c,o,{f:500,glide:1800,d:.5,a:.02,g:.2}); tone(c,o,{f:2400,t0:.32,d:.18,g:.12,type:'triangle'}); },
+      B: (c,o)=>{ tone(c,o,{f:700,glide:2600,d:.4,a:.01,g:.15,type:'sine'}); tone(c,o,{f:3200,t0:.28,d:.1,g:.08}); tone(c,o,{f:4200,t0:.36,d:.08,g:.05}); },
+      C: (c,o)=>{ tone(c,o,{f:400,glide:900,d:.55,a:.05,g:.2,type:'triangle'}); noise(c,o,{t0:.3,d:.25,g:.1,lpFrom:3000,hp:900}); },
+    }],
+    ['adopt', 'a creature appears', {
+      A: (c,o)=>{ tone(c,o,{f:130,glide:190,d:.45,a:.09,g:.4}); },
+      B: (c,o)=>{ tone(c,o,{f:160,glide:240,d:.5,a:.12,g:.3}); tone(c,o,{f:480,t0:.22,d:.25,a:.03,g:.1,type:'triangle'}); },
+      C: (c,o)=>{ noise(c,o,{d:.3,g:.12,lpFrom:400,lpTo:1200}); tone(c,o,{f:196,d:.4,a:.06,g:.35}); },
+    }],
+    ['name', 'the name is taken', {
+      A: (c,o)=>{ tone(c,o,{f:880,d:.28,a:.004,g:.25,type:'triangle'}); tone(c,o,{f:1760,d:.12,a:.004,g:.08}); },
+      B: (c,o)=>{ tone(c,o,{f:659,d:.35,a:.005,g:.22,type:'sine'}); tone(c,o,{f:988,t0:.09,d:.28,a:.005,g:.14}); },
+      C: (c,o)=>{ tone(c,o,{f:1047,d:.2,a:.003,g:.2,type:'triangle'}); },
+    }],
+    ['home', 'it is back in the room', {
+      A: (c,o)=>{ tone(c,o,{f:196,d:.22,a:.01,g:.32}); tone(c,o,{f:147,t0:.18,d:.3,a:.01,g:.32}); },
+      B: (c,o)=>{ tone(c,o,{f:262,d:.2,a:.01,g:.25}); tone(c,o,{f:196,t0:.15,d:.25,a:.01,g:.3}); tone(c,o,{f:131,t0:.32,d:.35,a:.01,g:.3}); },
+      C: (c,o)=>{ tone(c,o,{f:98,d:.4,a:.02,g:.4}); tone(c,o,{f:98,t0:.22,d:.5,a:.02,g:.3}); },
+    }],
+    ['knock', 'word arrives from out there', {
+      A: (c,o)=>{ noise(c,o,{d:.07,g:.5,lpFrom:400}); noise(c,o,{t0:.16,d:.07,g:.42,lpFrom:350}); },
+      B: (c,o)=>{ tone(c,o,{f:180,d:.08,a:.002,g:.4,type:'triangle'}); tone(c,o,{f:160,t0:.17,d:.09,a:.002,g:.35,type:'triangle'}); },
+      C: (c,o)=>{ noise(c,o,{d:.05,g:.45,lpFrom:600}); noise(c,o,{t0:.12,d:.05,g:.4,lpFrom:550}); noise(c,o,{t0:.24,d:.06,g:.3,lpFrom:450}); },
+    }],
+  ]],
+  ['THE TALK', [
+    ['send', 'your line goes', {
+      A: (c,o)=>{ noise(c,o,{d:.13,g:.12,lpFrom:6000,hp:1200}); },
+      B: (c,o)=>{ tone(c,o,{f:520,glide:780,d:.12,a:.01,g:.1,type:'sine'}); },
+      C: (c,o)=>{ noise(c,o,{d:.09,g:.1,lpFrom:9000,hp:2500}); tone(c,o,{f:1400,d:.06,a:.005,g:.05}); },
+    }],
+    ['speech', 'it begins to answer', {
+      A: (c,o)=>{ tone(c,o,{f:220,d:.25,a:.12,g:.1}); },
+      B: (c,o)=>{ tone(c,o,{f:294,glide:330,d:.3,a:.1,g:.08}); },
+      C: (c,o)=>{ noise(c,o,{d:.2,g:.05,lpFrom:800,lpTo:2000}); },
+    }],
+  ]],
+  ['THE INTERACTION LAYER', [
+    ['tick', 'the smallest touch', {
+      A: (c,o)=>{ tone(c,o,{f:620,d:.06,a:.003,g:.08,type:'triangle'}); },
+      B: (c,o)=>{ tone(c,o,{f:820,d:.045,a:.002,g:.07,type:'sine'}); },
+      C: (c,o)=>{ noise(c,o,{d:.03,g:.15,lpFrom:2500,hp:800}); },
+    }],
+    ['slide', 'a surface arrives', {
+      A: (c,o)=>{ noise(c,o,{d:.22,g:.09,lpFrom:900,lpTo:2600,hp:300}); },
+      B: (c,o)=>{ tone(c,o,{f:300,glide:520,d:.2,a:.03,g:.07}); },
+      C: (c,o)=>{ noise(c,o,{d:.3,g:.07,lpFrom:500,lpTo:3500,hp:200}); },
+    }],
+    ['settle', 'a surface leaves', {
+      A: (c,o)=>{ noise(c,o,{d:.18,g:.06,lpFrom:2200,lpTo:600,hp:250}); },
+      B: (c,o)=>{ tone(c,o,{f:520,glide:290,d:.16,a:.02,g:.06}); },
+      C: (c,o)=>{ noise(c,o,{d:.14,g:.05,lpFrom:1500,lpTo:400}); },
+    }],
+    ['mist', 'the room fogs over', {
+      A: (c,o)=>{ noise(c,o,{d:.4,g:.07,lpFrom:500,lpTo:1400}); tone(c,o,{f:165,d:.4,a:.18,g:.06}); },
+      B: (c,o)=>{ noise(c,o,{d:.6,g:.05,lpFrom:300,lpTo:900}); },
+      C: (c,o)=>{ tone(c,o,{f:220,d:.5,a:.25,g:.06}); tone(c,o,{f:277,d:.5,a:.3,g:.04}); },
+    }],
+  ]],
+];
+
+const gym = document.getElementById('gym');
+GYM.forEach(([grp, rows]) => {
+  const g = document.createElement('div'); g.className = 'grp'; g.textContent = grp; gym.appendChild(g);
+  rows.forEach(([id, desc, voices]) => {
+    const r = document.createElement('div'); r.className = 'rowline';
+    r.innerHTML = '<div class="nm">' + id + '</div><div class="desc">' + desc + '</div>';
+    const opts = document.createElement('div'); opts.className = 'opts';
+    ['A', 'B', 'C'].forEach((v) => {
+      const b = document.createElement('button'); b.textContent = v;
+      b.addEventListener('click', () => {
+        const c = ac(); if (c.state === 'suspended') c.resume();
+        if (b.dataset.last === '1') { opts.querySelectorAll('button').forEach(x => x.classList.remove('picked')); b.classList.add('picked'); }
+        opts.querySelectorAll('button').forEach(x => { x.dataset.last = '0'; });
+        b.dataset.last = '1';
+        voices[v](c, out(c));
+      });
+      opts.appendChild(b);
+    });
+    r.appendChild(opts); gym.appendChild(r);
+  });
+});
+</script>
+</body>
+</html>

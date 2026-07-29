@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#FFFFFF}
+*{box-sizing:border-box}
+a{color:#111111}a:hover{color:#55555A}
+</style>
+</helmet>
+<section style="padding:64px 56px 120px; font-family:var(--font-ui); -webkit-font-smoothing:antialiased;">
+  <div style="font:700 30px/1.1 var(--font-display); letter-spacing:-.02em; color:#111;">Button styles</div>
+  <div style="font:400 13.5px/1.6 var(--font-ui); color:rgba(0,0,0,.5); margin:8px 0 40px; max-width:600px;">Decision record — <span style="font-weight:700;">1b Ink returns was chosen (July 2026)</span> and rolled through the system (tokens, Button.jsx, spec, gallery, screens). The other seven directions are kept as history; do not copy patterns from them.</div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start;">
+
+    <div id="1a" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1a</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Hairline</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">the quietest possible</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="font:700 14px var(--font-ui); color:#111; padding:13px 22px; border-radius:14px; box-shadow:inset 0 0 0 1.5px #111;">Send Sol through</span>
+        <span style="font:500 14px var(--font-ui); color:rgba(0,0,0,.6); padding:13px 20px; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">pressed = ring thickens to 2.5px · fill stays empty</div>
+    </div>
+
+    <div id="1b" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1b · CHOSEN</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Ink returns</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">rolled through the system</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="font:700 14px var(--font-ui); background:#111; color:#FFF; padding:13px 22px; border-radius:12px;">Send Sol through</span>
+        <span style="font:600 14px var(--font-ui); background:#F3F3F5; color:rgba(17,17,17,.8); padding:13px 20px; border-radius:12px;">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">pressed = ink-0 + scale .97 · no shadows anywhere</div>
+    </div>
+
+    <div id="1c" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1c</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Underline</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">editorial, no boxes</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px; align-items:flex-start; padding:6px 0;">
+        <span style="font:700 15px var(--font-ui); color:#111; border-bottom:2.5px solid #111; padding-bottom:4px;">Send Sol through</span>
+        <span style="font:500 14px var(--font-ui); color:rgba(0,0,0,.6); border-bottom:1.5px solid rgba(0,0,0,.25); padding-bottom:4px;">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.45);">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">pressed = underline doubles · text never moves</div>
+    </div>
+
+    <div id="1d" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1d</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Flat wells</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">duotone, zero shadow</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="font:700 14px var(--font-ui); background:#DADADE; color:#111; padding:13px 22px; border-radius:14px;">Send Sol through</span>
+        <span style="font:600 14px var(--font-ui); background:#F3F3F5; color:rgba(17,17,17,.75); padding:13px 20px; border-radius:14px;">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">emphasis = porcelain depth (p-6 vs p-3) · pressed = p-6 darkens</div>
+    </div>
+
+    <div id="1e" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1e</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Pill &amp; arrow</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">one verb, one direction</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="display:inline-flex; align-items:center; gap:10px; font:700 14px var(--font-ui); background:#111; color:#FFF; padding:13px 15px 13px 22px; border-radius:999px;">Send Sol through<span style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; background:#FFF; color:#111; font:700 13px var(--font-ui);">→</span></span>
+        <span style="font:600 14px var(--font-ui); color:rgba(17,17,17,.75); padding:13px 20px; border-radius:999px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">the arrow coin slides right on press · only sends get the coin</div>
+    </div>
+
+    <div id="1f" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1f</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Split border</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">the door, literally</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="position:relative; font:700 14px var(--font-ui); color:#111; padding:13px 22px; border-radius:14px; box-shadow:inset 0 0 0 1.5px #111; overflow:hidden;"><span style="position:absolute; left:0; top:0; bottom:0; width:5px; background:#111;"></span>Send Sol through</span>
+        <span style="position:relative; font:500 14px var(--font-ui); color:rgba(0,0,0,.65); padding:13px 20px; border-radius:14px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.18); overflow:hidden;"><span style="position:absolute; left:0; top:0; bottom:0; width:3px; background:rgba(0,0,0,.25);"></span>Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">the ink edge is the door-jamb · pressed = edge widens</div>
+    </div>
+
+    <div id="1g" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1g</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Stitched</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">the ticket family</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
+        <span style="font:700 14px var(--font-ui); color:#111; background:#FFFFFF; padding:13px 22px; border-radius:14px; box-shadow:0 0 0 1px rgba(0,0,0,.14); outline:1.5px dashed rgba(0,0,0,.35); outline-offset:-6px;">Send Sol through</span>
+        <span style="font:600 14px var(--font-ui); color:rgba(17,17,17,.7); background:#F7F7F9; padding:13px 20px; border-radius:14px; box-shadow:0 0 0 1px rgba(0,0,0,.1);">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">perforation = commitment (matches the claim ticket) · pressed = stitch tightens</div>
+    </div>
+
+    <div id="1h" style="width:310px; border-radius:18px; box-shadow:0 0 0 1px rgba(0,0,0,.05); padding:20px 22px 22px;">
+      <div style="display:flex; align-items:baseline; gap:9px; margin-bottom:14px;">
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">1h</span>
+        <span style="font:700 15px var(--font-display); color:#111;">Ink shadow</span>
+        <span style="font:400 11px var(--font-ui); color:rgba(0,0,0,.45);">flat face, hard drop</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px; align-items:flex-start;">
+        <span style="font:700 14px var(--font-ui); background:#FFFFFF; color:#111; padding:13px 22px; border-radius:12px; box-shadow:0 0 0 1.5px #111, 3px 3px 0 #111;">Send Sol through</span>
+        <span style="font:600 14px var(--font-ui); background:#FFFFFF; color:rgba(17,17,17,.7); padding:13px 20px; border-radius:12px; box-shadow:0 0 0 1px rgba(0,0,0,.3), 2px 2px 0 rgba(0,0,0,.3);">Later</span>
+        <span style="font:500 13px var(--font-ui); color:rgba(0,0,0,.5); padding:6px 2px;">let it find its own way</span>
+      </div>
+      <div style="font:400 11px/1.5 var(--font-ui); color:rgba(0,0,0,.4); margin-top:12px;">pressed = button meets its shadow (translate 3,3) · playful but dry</div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

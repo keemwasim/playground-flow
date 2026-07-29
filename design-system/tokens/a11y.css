@@ -1,0 +1,31 @@
+/* Playground, accessibility tokens and rules (July 2026 completion pack). */
+:root {
+  --focus-ring: 0 0 0 3px rgba(17,17,17,.22);   /* :focus-visible ONLY, never on click */
+  --focus-ring-night: 0 0 0 3px rgba(255,255,255,.35); /* focus over world imagery windows */
+  /* minimum tap target is --hit-min (44px), defined in layout.css */
+  /* contrast pairs on porcelain (AA at size): */
+  --contrast-body: #111111;                      /* 12:1 or better */
+  --contrast-secondary: rgba(0,0,0,.55);         /* 4.6:1 or better, 11.5px and up */
+  --contrast-floor: rgba(0,0,0,.45);             /* 3.2:1 or better, 700-weight 13px labels only */
+  --glass-opaque-fallback: #F5F5F7;              /* reduced transparency: swap glass fills to this, drop blur */
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-fill-panel: var(--glass-opaque-fallback);
+    --glass-fill-element: var(--glass-opaque-fallback);
+    --glass-fill-chip: var(--glass-opaque-fallback);
+    --glass-night-bg: #16161C;
+    --glass-blur-panel: none;
+    --glass-blur-element: none;
+    --glass-blur-chip: none;
+    --glass-sheen: none;
+  }
+}

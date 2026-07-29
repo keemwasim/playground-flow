@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>leaving playground+ — six ways out</title>
+<link rel="stylesheet" href="./design-system/styles.css">
+<style>
+  body { margin: 0; background: #F4F4F6; font-family: var(--font-ui); color: var(--ink-2); }
+  .sheet { padding: 56px 40px 90px; }
+  h1 { font: 700 30px var(--font-display), sans-serif; letter-spacing: -.02em; margin: 0 0 6px; }
+  .lede { font: 500 15px var(--font-ui); color: var(--text-secondary); margin: 0 0 46px; max-width: 660px; line-height: 1.5; }
+  .grid { display: flex; flex-wrap: wrap; gap: 46px 34px; }
+  .take { width: 320px; }
+  .cap { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .num { font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; color: var(--text-tertiary); text-transform:lowercase; }
+  .name { font: 700 15px var(--font-display), sans-serif; letter-spacing: -.01em; }
+  .why { font: 500 12.5px var(--font-ui); color: var(--text-secondary); line-height: 1.5; margin: 0 0 8px; min-height: 54px; }
+  .cost { font: 600 11px var(--font-ui); color: var(--text-tertiary); margin: 0 0 12px; min-height: 32px; }
+  .phone { width: 320px; height: 600px; border-radius: 44px; background: var(--bg); box-shadow: 0 0 0 1.5px rgba(0,0,0,.14), 0 24px 60px -30px rgba(0,0,0,.4); overflow: hidden; position: relative; }
+  .body { position: absolute; inset: 0; padding: 54px 22px 20px; display: flex; flex-direction: column; }
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .title { font: 700 26px var(--font-display), sans-serif; letter-spacing: -.02em; }
+  .sub { font: 500 15px var(--font-ui); color: var(--text-secondary); margin-top: 8px; }
+  .cta { background: var(--ink-2); border-radius: 999px; padding: 16px 22px; display: flex; align-items: baseline; justify-content: space-between; }
+  .cta b { font: 600 15px var(--font-ui); color: #FFF; }
+  .cta i { font: 500 13px var(--font-ui); color: rgba(255,255,255,.6); font-style: normal; }
+  .legal { display: flex; justify-content: center; gap: 18px; margin-top: 14px; }
+  .legal span { font: 500 12.5px var(--font-ui); color: var(--text-tertiary); }
+  .crowd { display: flex; align-items: flex-end; height: 62px; margin-bottom: 22px; }
+  .peb { border-radius: 48% 52% 46% 54% / 55% 50% 50% 45%; background: radial-gradient(circle at 36% 26%, #FFF 0%, #F2F2F5 52%, #E4E4E9 100%); box-shadow: inset 3px 4px 7px rgba(255,255,255,.95), inset -4px -6px 11px rgba(0,0,0,.11), 0 10px 22px rgba(0,0,0,.13); position: relative; }
+  .peb::after { content:''; position:absolute; top:38%; left:34%; width:12%; height:20%; border-radius:50%; background:var(--ink-2); box-shadow: 9px 0 0 var(--ink-2); }
+  .note { position: absolute; font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; color: var(--text-tertiary); text-transform:lowercase; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>leaving playground+ — six ways out</h1>
+  <p class="lede">the grab bar is gone, so the offer currently has no visible exit at all. it slides off if you drag it, and nothing on the screen says so. six candidates below, each with what it costs. the phones show the exit affordance in place, not the whole page.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+const crowd = `<div class="crowd">
+  <div class="peb" style="width:38px;height:32px"></div>
+  <div class="peb" style="width:46px;height:39px;margin-left:-8px"></div>
+  <div class="peb" style="width:54px;height:45px;margin-left:-8px"></div>
+  <div class="peb" style="width:42px;height:35px;margin-left:-8px"></div>
+</div>`;
+
+const page = (top, bottom) => `
+  <div class="body">
+    ${top || ''}
+    <div class="mid">
+      ${crowd}
+      <div class="title">playground+</div>
+      <div class="sub">keep more than one of them.</div>
+    </div>
+    <div>
+      <div class="cta"><b>get playground+</b><i>$4.99 / month</i></div>
+      <div class="legal"><span>restore</span><span>terms</span><span>privacy</span></div>
+      ${bottom || ''}
+    </div>
+  </div>`;
+
+const TAKES = [
+  {
+    name: 'a word under the price',
+    why: 'one plain line beneath the legal row: <b>not now</b>. it is the only take where the way out is written in language, so nobody has to discover a gesture.',
+    cost: 'costs a line of text on a page the doctrine wants near-silent, and it sits low, where a thumb reaching for the ink button can graze it.',
+    html: page('', `<div style="text-align:center;padding:20px 0 4px;font:600 14px var(--font-ui);color:var(--text-secondary)">not now</div>`),
+  },
+  {
+    name: 'the creature waits at the top',
+    why: 'your own one peeks in at the top edge, half out of frame, still in the room you left. tap it and you are back with it. the exit is the thing you are going back to.',
+    cost: 'the softest and the least literal. a first-time user may not read a peeking creature as a door, so it wants the swipe working underneath it as the real mechanism.',
+    html: page(`<div style="display:flex;justify-content:center;margin:-40px 0 0"><div class="peb" style="width:52px;height:44px"></div></div>`, ''),
+  },
+  {
+    name: 'the room behind, dimmed',
+    why: 'the offer sits as a card over the room rather than replacing it. the room is visible at the top and dimmed. tapping it puts the card away. standard, instantly legible, and it never hides where you came from.',
+    cost: 'it makes the offer a modal instead of a place, which weakens it as a page. and a dimming scrim is the first bit of non-porcelain surface in the app.',
+    html: `<div class="body" style="padding:0">
+      <div style="height:96px;background:var(--bg-desk);position:relative">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,.22)"></div>
+        <div style="position:absolute;left:22px;top:26px;font:var(--text-label);letter-spacing:var(--tracking-label);color:rgba(255,255,255,.7);text-transform:lowercase">home</div>
+      </div>
+      <div style="flex:1;background:var(--bg);border-radius:26px 26px 0 0;margin-top:-14px;padding:34px 22px 20px;display:flex;flex-direction:column">
+        <div class="mid">${crowd}<div class="title">playground+</div><div class="sub">keep more than one of them.</div></div>
+        <div><div class="cta"><b>get playground+</b><i>$4.99 / month</i></div>
+        <div class="legal"><span>restore</span><span>terms</span><span>privacy</span></div></div>
+      </div></div>`,
+  },
+  {
+    name: 'the handle you came through',
+    why: 'the edge handle that opened it stays on screen, flipped to point back. the door you walked through is still there and still a door. it is the only take that reuses an affordance the app already taught.',
+    cost: 'a 30px target at the frame edge is easy to miss on a page you land on cold, and the handles were designed for the room, not for a sheet on top of it.',
+    html: page(`<div style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:30px;height:54px;border-radius:0 18px 18px 0;background:var(--paper-card);box-shadow:var(--paper-ring),0 12px 26px -16px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ink-2)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>`, ''),
+  },
+  {
+    name: 'swipe from the left edge',
+    why: 'no chrome at all. the native iOS back gesture, from the left edge, with the page tracking your finger. every iPhone owner already has this in their hands.',
+    cost: 'invisible. it teaches nobody, and it is the exact failure the app already had once, when settings shipped with a swipe and no visible exit.',
+    html: page(`<div style="position:absolute;left:0;top:0;bottom:0;width:26px;background:linear-gradient(to right,rgba(0,0,0,.05),transparent)"></div>`, ''),
+  },
+  {
+    name: 'the offer ends, the room resumes',
+    why: 'no exit control. scroll past the offer and the room is underneath it, continuous. leaving is just carrying on. the most confident answer and the least software-like.',
+    cost: 'demands the page be short enough to scroll past in one flick, and it will confuse anyone who does not scroll. also the hardest of the six to build.',
+    html: page('', `<div style="text-align:center;padding:18px 0 2px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>`),
+  },
+];
+
+document.getElementById('grid').innerHTML = TAKES.map((t,i)=>`
+  <div class="take">
+    <div class="cap"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="name">${t.name}</span></div>
+    <div class="why">${t.why}</div>
+    <div class="cost">COSTS · ${t.cost}</div>
+    <div class="phone">${t.html}</div>
+  </div>`).join('');
+</script>
+</body>
+</html>

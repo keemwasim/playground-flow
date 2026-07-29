@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;height:100%;background:#0A0E22;overflow:hidden}
+*{box-sizing:border-box}
+::selection{background:rgba(150,170,255,.35)}
+textarea:focus,input:focus{outline:none}
+@keyframes pgBreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(.99,1.035)}}
+@keyframes pgBob{0%,100%{transform:translateY(0px)}50%{transform:translateY(-6px)}}
+@keyframes pgHalo{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+@keyframes pgGlowPulse{0%,100%{opacity:.45}50%{opacity:1}}
+@keyframes pgAurora{0%{background-position:50% 0%;filter:hue-rotate(0deg)}50%{background-position:50% 100%;filter:hue-rotate(26deg)}100%{background-position:50% 0%;filter:hue-rotate(0deg)}}
+@keyframes pgTwinkle{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes pgFadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes pgFadeOut{0%{opacity:1}100%{opacity:0;transform:translateY(8px)}}
+@keyframes pgPoofRing{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.9);opacity:0}}
+@keyframes pgFlash{0%{opacity:.9;transform:translate(-50%,-50%) scale(.35)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.7)}}
+@keyframes pgBubbleIn{0%{opacity:0;transform:translateX(-50%) translateY(8px) scale(.95)}100%{opacity:1;transform:translateX(-50%) translateY(0px) scale(1)}}
+@keyframes pgPopIn{0%{opacity:0;transform:translateY(-6px) scale(.97)}100%{opacity:1;transform:translateY(0px) scale(1)}}
+@keyframes pgLineIn{0%{opacity:0;transform:translateY(5px)}100%{opacity:1;transform:translateY(0px)}}
+@keyframes pgWhisper{0%{opacity:0;transform:translateX(-50%) translateY(8px)}14%{opacity:.92;transform:translateX(-50%) translateY(0px)}78%{opacity:.92;transform:translateX(-50%) translateY(-2px)}100%{opacity:0;transform:translateX(-50%) translateY(-12px)}}
+@keyframes pgOrbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes pgBadge{0%{transform:scale(.3)}60%{transform:scale(1.3)}100%{transform:scale(1)}}
+@keyframes pgRise{0%{transform:translateY(12px);opacity:0}25%{opacity:.85}100%{transform:translateY(-54px);opacity:0}}
+@keyframes pgToastIn{0%{opacity:0;transform:translateX(26px) scale(.97)}100%{opacity:1;transform:translateX(0px) scale(1)}}
+@keyframes pgPostIn{0%{opacity:0;transform:translate(52px,-44px) rotate(12deg) scale(.5)}55%{opacity:1}100%{opacity:1;transform:translate(0px,0px) rotate(-4deg) scale(1)}}
+@keyframes pgPostIn2{0%{opacity:0;transform:translate(44px,-52px) rotate(-10deg) scale(.5)}55%{opacity:1}100%{opacity:1;transform:translate(0px,0px) rotate(5deg) scale(1)}}
+@keyframes pgDrift1{0%{transform:translateY(60px) rotate(-8deg);opacity:0}18%{opacity:.85}100%{transform:translateY(-150px) rotate(6deg);opacity:0}}
+@keyframes pgDrift2{0%{transform:translateY(80px) rotate(6deg);opacity:0}20%{opacity:.6}100%{transform:translateY(-170px) rotate(-8deg);opacity:0}}
+@keyframes pgDrift3{0%{transform:translateY(50px) rotate(0deg);opacity:0}15%{opacity:.75}100%{transform:translateY(-130px) rotate(10deg);opacity:0}}
+</style>
+</helmet>
+<div ref="{{ habitatRef }}" data-screen-label="Desktop habitat" style="position:fixed; inset:0; overflow:hidden; cursor:default; -webkit-font-smoothing:antialiased; font-family:-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif; background:radial-gradient(120% 90% at 76% 30%, rgba(122,112,255,.10), transparent 60%), radial-gradient(140% 100% at 50% 118%, rgba(38,48,110,.85) 0%, transparent 60%), linear-gradient(180deg, #070A1C 0%, #0C1230 46%, #12173B 74%, #0B0F28 100%);">
+  <div style="position:fixed; left:50%; top:12px; transform:translateX(-50%); z-index:999; pointer-events:none; font:500 11px 'Manrope', system-ui, sans-serif; letter-spacing:.02em; color:rgba(255,255,255,.75); background:rgba(10,10,14,.6); padding:5px 13px; border-radius:999px; white-space:nowrap;">archived — night-era desktop draft, superseded by the v4 design system (design-system/)</div>
+
+  <!-- stars -->
+  <div style="position:absolute; top:0; left:0; width:1px; height:1px; border-radius:50%; animation:pgTwinkle 9s ease-in-out infinite; box-shadow:120px 140px 0 0 rgba(255,255,255,.32), 260px 90px 0 .5px rgba(220,230,255,.28), 420px 180px 0 0 rgba(255,255,255,.22), 560px 70px 0 0 rgba(255,255,255,.3), 700px 150px 0 .5px rgba(210,225,255,.26), 840px 60px 0 0 rgba(255,255,255,.34), 980px 130px 0 0 rgba(255,255,255,.2), 1120px 90px 0 .5px rgba(225,235,255,.3), 1260px 170px 0 0 rgba(255,255,255,.26), 1400px 110px 0 0 rgba(255,255,255,.32), 1540px 200px 0 0 rgba(255,255,255,.22), 180px 300px 0 0 rgba(255,255,255,.18), 520px 320px 0 0 rgba(255,255,255,.16), 900px 280px 0 .5px rgba(220,230,255,.2), 1300px 300px 0 0 rgba(255,255,255,.18), 60px 220px 0 0 rgba(255,255,255,.24), 1500px 340px 0 0 rgba(255,255,255,.14);"></div>
+  <div style="position:absolute; top:0; left:0; width:1px; height:1px; border-radius:50%; animation:pgTwinkle 13s ease-in-out -4s infinite; box-shadow:200px 60px 0 0 rgba(255,255,255,.28), 380px 240px 0 0 rgba(255,255,255,.18), 640px 200px 0 .5px rgba(215,228,255,.24), 760px 90px 0 0 rgba(255,255,255,.2), 1040px 220px 0 0 rgba(255,255,255,.22), 1180px 60px 0 0 rgba(255,255,255,.26), 1340px 240px 0 0 rgba(255,255,255,.16), 1460px 70px 0 .5px rgba(225,235,255,.26), 300px 160px 0 0 rgba(255,255,255,.14), 1600px 150px 0 0 rgba(255,255,255,.2);"></div>
+  <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(125% 125% at 50% 46%, transparent 55%, rgba(3,5,14,.5) 100%);"></div>
+
+  <!-- the door: a seam of light -->
+  <div data-screen-label="The door" style="position:absolute; left:76%; top:0; bottom:0; width:0; z-index:3; pointer-events:none;">
+    <div style="position:absolute; left:50%; top:64%; width:360px; height:120px; transform:translate(-50%,-20%); background:radial-gradient(50% 50% at 50% 50%, rgba(168,182,255,.32), rgba(168,182,255,0) 70%); filter:blur(8px); opacity:{{ door.spillO }}; transition:opacity 1.3s ease;"></div>
+    <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-56%); width:170px; height:54vh; background:radial-gradient(40% 50% at 50% 50%, rgba(178,192,255,.5), rgba(178,192,255,0) 72%); filter:blur(26px); opacity:{{ door.glowO }}; transition:opacity 1.1s ease;"></div>
+    <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-56%); width:{{ door.seamW }}px; height:{{ door.seamH }}vh; opacity:{{ door.seamO }}; border-radius:999px; overflow:hidden; background:linear-gradient(180deg, rgba(190,200,255,0) 0%, rgba(214,224,255,.9) 12%, #FFFFFF 32%, #F0F4FF 50%, #FFFFFF 68%, rgba(214,224,255,.9) 88%, rgba(190,200,255,0) 100%); box-shadow:0 0 26px 7px rgba(190,205,255,.55), 0 0 100px 34px rgba(150,172,255,.28); transition:width .9s cubic-bezier(.6,0,.2,1), height 1s cubic-bezier(.6,0,.2,1), opacity .9s ease;">
+      <div style="position:absolute; inset:-45%; background:linear-gradient(190deg, #BFD0FF 0%, #E4D6FF 22%, #FFE9F3 40%, #D3E6FF 58%, #C9BDFF 76%, #BFD0FF 100%); background-size:100% 300%; animation:pgAurora 7s ease-in-out infinite; opacity:.92;"></div>
+      <div style="position:absolute; inset:0; background:radial-gradient(60% 40% at 50% 50%, rgba(24,30,80,.32), transparent 75%);"></div>
+      <div style="position:absolute; left:28%; bottom:0; width:7px; height:6px; border-radius:2px; background:rgba(255,255,255,.9); filter:blur(1px); animation:pgDrift1 4.6s linear infinite;"></div>
+      <div style="position:absolute; left:56%; bottom:0; width:5px; height:4px; border-radius:1.5px; background:rgba(230,238,255,.8); filter:blur(1px); animation:pgDrift2 6.2s linear 1.4s infinite;"></div>
+      <div style="position:absolute; left:44%; bottom:0; width:6px; height:5px; border-radius:2px; background:rgba(244,248,255,.85); filter:blur(1px); animation:pgDrift3 5.3s linear 2.6s infinite;"></div>
+    </div>
+    <sc-if value="{{ door.flash }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:50%; top:44%; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle, rgba(230,238,255,.85), rgba(190,205,255,0) 70%); animation:pgFlash 1s ease-out forwards;"></div>
+    </sc-if>
+    <sc-if value="{{ door.sparkle }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:-14px; top:46%; width:4px; height:4px; border-radius:1.5px; background:#EAF0FF; box-shadow:0 0 8px rgba(210,222,255,.9); animation:pgRise 2.4s ease-in-out infinite;"></div>
+      <div style="position:absolute; left:12px; top:52%; width:3px; height:3px; border-radius:1px; background:#DCE6FF; box-shadow:0 0 7px rgba(210,222,255,.9); animation:pgRise 2.9s ease-in-out -1.2s infinite;"></div>
+      <div style="position:absolute; left:-4px; top:58%; width:3px; height:3px; border-radius:1px; background:#F2F6FF; box-shadow:0 0 7px rgba(210,222,255,.9); animation:pgRise 2.2s ease-in-out -.6s infinite;"></div>
+    </sc-if>
+    <sc-if value="{{ door.whisper }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:50%; top:22%; transform:translateX(-50%); width:max-content; max-width:250px; text-align:center; font:500 14px/1.5 'Newsreader', 'Iowan Old Style', serif; color:rgba(208,218,255,.82); letter-spacing:.01em; animation:pgWhisper 3.9s ease forwards; text-shadow:0 2px 14px rgba(5,8,24,.8);">{{ door.whisper }}</div>
+    </sc-if>
+  </div>
+
+  <!-- desktop folders -->
+  <div data-screen-label="Desktop folders" style="position:absolute; left:26px; top:52px; display:flex; flex-direction:column; gap:26px; z-index:2;">
+    <div onPointerDown="{{ f1.onDown }}" onClick="{{ f1.onClick }}" style="width:96px; display:flex; flex-direction:column; align-items:center; gap:7px; cursor:grab; opacity:{{ f1.opacity }}; transition:opacity .4s ease; user-select:none; -webkit-user-select:none; touch-action:none;">
+      <div style="position:relative; width:56px; height:44px;">
+        <sc-if value="{{ f1.equip }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:-9px; border-radius:15px; border:1px solid rgba(170,190,255,.28); box-shadow:0 0 24px rgba(170,190,255,.3); animation:pgGlowPulse 2.6s ease-in-out infinite;"></div></sc-if>
+        <div style="position:absolute; top:-6px; left:5px; width:26px; height:13px; border-radius:5px 8px 0 0; background:linear-gradient(180deg,#3E4880,#343D6F);"></div>
+        <div style="position:absolute; inset:0; border-radius:9px; background:linear-gradient(180deg,#4A559C 0%, #3B4585 60%, #343D76 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 6px 14px rgba(0,0,0,.35); border:1px solid rgba(150,165,255,.28);"></div>
+        <div style="position:absolute; left:1px; right:1px; top:1px; height:15px; border-radius:8px 8px 0 0; background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));"></div>
+        <sc-if value="{{ f1.linked }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; right:-5px; bottom:-5px; width:16px; height:16px; border-radius:5px; background:#FAFBFF; box-shadow:0 0 12px rgba(190,205,255,.9); animation:pgBadge .5s ease;"></div></sc-if>
+      </div>
+      <div style="font:500 11.5px/1.35 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(226,232,255,.88); text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.55);">Sleep Study — Notes</div>
+    </div>
+    <div onPointerDown="{{ f2.onDown }}" onClick="{{ f2.onClick }}" style="width:96px; display:flex; flex-direction:column; align-items:center; gap:7px; cursor:grab; opacity:{{ f2.opacity }}; transition:opacity .4s ease; user-select:none; -webkit-user-select:none; touch-action:none;">
+      <div style="position:relative; width:56px; height:44px;">
+        <sc-if value="{{ f2.equip }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:-9px; border-radius:15px; border:1px solid rgba(170,190,255,.28); box-shadow:0 0 24px rgba(170,190,255,.3); animation:pgGlowPulse 2.6s ease-in-out -0.8s infinite;"></div></sc-if>
+        <div style="position:absolute; top:-6px; left:5px; width:26px; height:13px; border-radius:5px 8px 0 0; background:linear-gradient(180deg,#3E4880,#343D6F);"></div>
+        <div style="position:absolute; inset:0; border-radius:9px; background:linear-gradient(180deg,#4A559C 0%, #3B4585 60%, #343D76 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 6px 14px rgba(0,0,0,.35); border:1px solid rgba(150,165,255,.28);"></div>
+        <div style="position:absolute; left:1px; right:1px; top:1px; height:15px; border-radius:8px 8px 0 0; background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));"></div>
+        <sc-if value="{{ f2.linked }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; right:-5px; bottom:-5px; width:16px; height:16px; border-radius:5px; background:#FAFBFF; box-shadow:0 0 12px rgba(190,205,255,.9); animation:pgBadge .5s ease;"></div></sc-if>
+      </div>
+      <div style="font:500 11.5px/1.35 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(226,232,255,.88); text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.55);">Interview Transcripts</div>
+    </div>
+    <div onPointerDown="{{ f3.onDown }}" onClick="{{ f3.onClick }}" style="width:96px; display:flex; flex-direction:column; align-items:center; gap:7px; cursor:grab; opacity:{{ f3.opacity }}; transition:opacity .4s ease; user-select:none; -webkit-user-select:none; touch-action:none;">
+      <div style="position:relative; width:56px; height:44px;">
+        <sc-if value="{{ f3.equip }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:-9px; border-radius:15px; border:1px solid rgba(170,190,255,.28); box-shadow:0 0 24px rgba(170,190,255,.3); animation:pgGlowPulse 2.6s ease-in-out -1.6s infinite;"></div></sc-if>
+        <div style="position:absolute; top:-6px; left:5px; width:26px; height:13px; border-radius:5px 8px 0 0; background:linear-gradient(180deg,#3E4880,#343D6F);"></div>
+        <div style="position:absolute; inset:0; border-radius:9px; background:linear-gradient(180deg,#4A559C 0%, #3B4585 60%, #343D76 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.2), 0 6px 14px rgba(0,0,0,.35); border:1px solid rgba(150,165,255,.28);"></div>
+        <div style="position:absolute; left:1px; right:1px; top:1px; height:15px; border-radius:8px 8px 0 0; background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,0));"></div>
+        <sc-if value="{{ f3.linked }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; right:-5px; bottom:-5px; width:16px; height:16px; border-radius:5px; background:#FAFBFF; box-shadow:0 0 12px rgba(190,205,255,.9); animation:pgBadge .5s ease;"></div></sc-if>
+      </div>
+      <div style="font:500 11.5px/1.35 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(226,232,255,.88); text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.55);">Papers — Memory</div>
+    </div>
+  </div>
+
+  <!-- field-note files -->
+  <sc-for list="{{ notes }}" as="n" hint-placeholder-count="0">
+    <div onClick="{{ n.onOpen }}" style="position:absolute; left:{{ n.x }}%; top:{{ n.y }}%; width:96px; display:flex; flex-direction:column; align-items:center; gap:7px; cursor:pointer; z-index:2; animation:pgFadeIn .9s ease both;">
+      <div style="position:relative; width:42px; height:52px; border-radius:8px; background:linear-gradient(180deg, #FDFDFF, #E9EEFC); box-shadow:0 0 18px rgba(190,205,255,.45), 0 8px 18px rgba(0,0,0,.35); display:flex; flex-direction:column; gap:5px; padding:10px 8px 0;">
+        <div style="height:2px; border-radius:2px; background:rgba(60,72,140,.45);"></div>
+        <div style="height:2px; border-radius:2px; background:rgba(60,72,140,.32); width:80%;"></div>
+        <div style="height:2px; border-radius:2px; background:rgba(60,72,140,.32); width:60%;"></div>
+        <div style="position:absolute; right:-4px; top:-4px; width:12px; height:12px; border-radius:4px; background:{{ n.tint }}; border:2px solid #FAFBFF; box-shadow:0 0 10px rgba(190,205,255,.7);"></div>
+      </div>
+      <div style="font:500 11.5px/1.35 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(226,232,255,.88); text-align:center; text-shadow:0 1px 6px rgba(0,0,0,.55);">{{ n.title }}</div>
+    </div>
+  </sc-for>
+
+  <!-- postcards from the other side -->
+  <sc-for list="{{ pcs }}" as="p" hint-placeholder-count="0">
+    <div data-pc="1" onClick="{{ p.onClick }}" style="position:absolute; left:{{ p.x }}%; top:{{ p.y }}%; z-index:6; cursor:pointer; animation:{{ p.anim }};">
+      <div style="width:34px; height:24px; border-radius:4px; background:linear-gradient(180deg,#FEFEFF,#EDF1FC); border:1px solid rgba(160,175,230,.4); box-shadow:0 0 14px rgba(190,205,255,.5), 0 6px 14px rgba(0,0,0,.35); display:flex; flex-direction:column; gap:3px; padding:5px 5px 0;" style-hover="transform:translateY(-2px)">
+        <div style="height:1.5px; border-radius:2px; background:rgba(60,72,140,.4);"></div>
+        <div style="height:1.5px; border-radius:2px; background:rgba(60,72,140,.28); width:70%;"></div>
+      </div>
+      <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute; bottom:34px; left:50%; transform:translateX(-50%); width:max-content; max-width:230px; background:rgba(252,253,255,.97); border:1px solid rgba(255,255,255,.9); border-radius:13px; padding:10px 13px; box-shadow:0 16px 44px rgba(8,14,40,.45), 0 0 0 .5px rgba(120,140,220,.25); animation:pgBubbleIn .35s cubic-bezier(.2,.8,.2,1) both;">
+          <div style="font:500 13.5px/1.5 'Newsreader', serif; color:#262E5C;">{{ p.text }}</div>
+          <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.6); margin-top:5px;">{{ p.sig }}</div>
+        </div>
+      </sc-if>
+    </div>
+  </sc-for>
+
+  <!-- creatures -->
+  <sc-for list="{{ creatures }}" as="c" hint-placeholder-count="0">
+    <div style="position:absolute; left:{{ c.x }}%; top:{{ c.y }}%; width:0; height:0; z-index:5; transition:{{ c.moveT }};">
+      <div style="position:relative; transform:translate(-50%,-50%) scale({{ c.scale }}); opacity:{{ c.opacity }}; transition:{{ c.bodyT }};">
+        <div style="position:absolute; left:50%; top:50%; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(200,214,255,{{ c.haloA }}) 0%, rgba(200,214,255,0) 65%); animation:pgHalo 5.2s ease-in-out infinite; pointer-events:none;"></div>
+        <sc-if value="{{ c.ring }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; left:50%; top:50%; width:156px; height:132px; transform:translate(-50%,-50%); border-radius:28px; border:1.5px dashed {{ c.ringColor }}; animation:pgGlowPulse 1.6s ease-in-out infinite; pointer-events:none;"></div>
+        </sc-if>
+        <div style="animation:pgBob 6.4s ease-in-out infinite;">
+          <div style="animation:pgBreathe 4.6s ease-in-out infinite; transform-origin:50% 90%;">
+            <div onClick="{{ c.onPoke }}" onDoubleClick="{{ c.onProfile }}" style="position:relative; width:104px; height:100px; margin-left:-52px; margin-top:-50px; cursor:pointer; filter:drop-shadow(0 12px 22px rgba(6,10,34,.5)) drop-shadow(0 0 22px rgba(190,205,255,.22)); transition:transform .3s ease;" style-hover="transform:rotate(-2deg) translateY(-2px)">
+              <sc-if value="{{ c.spWings }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:-30px; top:2px; width:36px; height:50px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-radius:20px 6px 20px 20px; transform:rotate(12deg); opacity:.92;"></div>
+                <div style="position:absolute; right:-30px; top:2px; width:36px; height:50px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-radius:6px 20px 20px 20px; transform:rotate(-12deg); opacity:.92;"></div>
+              </sc-if>
+              <sc-if value="{{ c.spFloat }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:24px; top:86px; width:14px; height:14px; border-radius:5px; background:{{ c.tint }}; border:4px solid #FAFBFF;"></div>
+                <div style="position:absolute; left:48px; top:94px; width:11px; height:11px; border-radius:4px; background:{{ c.tint }}; border:3.5px solid #FAFBFF;"></div>
+                <div style="position:absolute; left:70px; top:87px; width:8px; height:8px; border-radius:3px; background:{{ c.tint }}; border:3px solid #FAFBFF;"></div>
+              </sc-if>
+              <sc-if value="{{ c.grounded }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute; left:9px; bottom:0; display:flex; gap:7px;">
+                <div style="width:11px; height:24px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-top:none; border-radius:0 0 5px 5px;"></div>
+                <div style="width:11px; height:24px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-top:none; border-radius:0 0 5px 5px;"></div>
+              </div>
+              <div style="position:absolute; right:9px; bottom:0; display:flex; gap:7px;">
+                <div style="width:11px; height:24px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-top:none; border-radius:0 0 5px 5px;"></div>
+                <div style="width:11px; height:24px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-top:none; border-radius:0 0 5px 5px;"></div>
+              </div>
+              <div style="position:absolute; left:-12px; top:16px; width:17px; height:22px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-radius:6px;"></div>
+              <div style="position:absolute; right:-12px; top:16px; width:17px; height:22px; background:{{ c.tint }}; border:4.5px solid #FAFBFF; border-radius:6px;"></div>
+              </sc-if>
+              <div style="position:absolute; left:0; top:0; width:104px; height:82px; background:{{ c.tint }}; border:5px solid #FAFBFF; border-radius:16px;">
+                <sc-if value="{{ c.stripe }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:0; right:0; bottom:12px; height:11px; background:rgba(255,255,255,.32);"></div></sc-if>
+                <sc-if value="{{ c.spots }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; left:14px; bottom:11px; width:8px; height:8px; border-radius:3px; background:rgba(25,28,46,.14);"></div>
+                  <div style="position:absolute; right:19px; bottom:19px; width:6px; height:6px; border-radius:2px; background:rgba(25,28,46,.12);"></div>
+                  <div style="position:absolute; left:38px; bottom:7px; width:5px; height:5px; border-radius:2px; background:rgba(25,28,46,.11);"></div>
+                </sc-if>
+                <div ref="{{ c.eyesRef }}" style="position:absolute; left:50%; top:26px; transform:translateX(-50%); display:flex; gap:28px;">
+                  <div style="width:11px; height:11px; border-radius:2.5px; background:#191C2E;"></div>
+                  <div style="width:11px; height:11px; border-radius:2.5px; background:#191C2E;"></div>
+                </div>
+                <sc-if value="{{ c.grown }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; right:-11px; top:-11px; width:18px; height:18px; border-radius:5px; background:#FAFBFF; box-shadow:0 0 12px rgba(190,205,255,.8); display:flex; align-items:center; justify-content:center; font-size:10px; color:#4B5BD6;">✦</div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ c.spTuft }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:36px; top:-16px; width:9px; height:18px; border-radius:8px 8px 0 8px; background:#7FA85C; border:2.5px solid #FAFBFF; transform:rotate(-18deg);"></div>
+                <div style="position:absolute; left:49px; top:-19px; width:9px; height:20px; border-radius:8px 8px 8px 0; background:#8FB86C; border:2.5px solid #FAFBFF; transform:rotate(4deg);"></div>
+                <div style="position:absolute; left:61px; top:-15px; width:9px; height:16px; border-radius:8px 8px 8px 0; background:#7FA85C; border:2.5px solid #FAFBFF; transform:rotate(22deg);"></div>
+                <div style="position:absolute; right:-19px; top:44px; width:15px; height:13px; border-radius:6px; background:{{ c.tint }}; border:4px solid #FAFBFF; transform:rotate(18deg);"></div>
+              </sc-if>
+              <sc-if value="{{ c.spHorn }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:14px; top:-13px; width:13px; height:16px; border-radius:6px 2px 6px 2px; background:{{ c.tint }}; border:3.5px solid #FAFBFF; transform:rotate(-12deg);"></div>
+                <div style="position:absolute; right:14px; top:-13px; width:13px; height:16px; border-radius:2px 6px 2px 6px; background:{{ c.tint }}; border:3.5px solid #FAFBFF; transform:rotate(12deg);"></div>
+              </sc-if>
+              <sc-if value="{{ c.accAntenna }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:50%; top:-13px; width:3px; height:15px; margin-left:-1.5px; background:#FAFBFF; border-radius:2px;"></div>
+                <div style="position:absolute; left:50%; top:-22px; width:11px; height:11px; margin-left:-5.5px; border-radius:4px; background:{{ c.tint }}; border:2.5px solid #FAFBFF; box-shadow:0 0 10px rgba(200,214,255,.6);"></div>
+              </sc-if>
+              <sc-if value="{{ c.accSprout }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:44px; top:-14px; width:7px; height:15px; border-radius:6px 6px 0 6px; background:#7FA85C; border:2px solid #FAFBFF; transform:rotate(-14deg);"></div>
+                <div style="position:absolute; left:56px; top:-12px; width:7px; height:13px; border-radius:6px 6px 6px 0; background:#8FB86C; border:2px solid #FAFBFF; transform:rotate(16deg);"></div>
+              </sc-if>
+              <sc-if value="{{ c.accScarf }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:2px; top:58px; width:100px; height:13px; border-radius:5px; background:#39427C; border:2px solid #FAFBFF;"></div>
+                <div style="position:absolute; left:70px; top:69px; width:12px; height:16px; border-radius:0 0 5px 5px; background:#39427C; border:2px solid #FAFBFF; border-top:none;"></div>
+              </sc-if>
+              <sc-if value="{{ c.hasTools }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:50%; top:106px; transform:translateX(-50%); display:flex; gap:5px;">
+                  <sc-for list="{{ c.badges }}" as="b" hint-placeholder-count="0">
+                    <div title="{{ b.name }}" style="width:16px; height:16px; border-radius:5px; background:#FAFBFF; box-shadow:0 2px 6px rgba(10,16,50,.35); display:flex; align-items:center; justify-content:center; font:700 7.5px ui-monospace, Menlo, monospace; color:#39427C;">{{ b.glyph }}</div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ c.hasFolders }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:50%; top:40%; width:0; height:0; animation:pgOrbit 13s linear infinite; pointer-events:none;">
+                  <sc-for list="{{ c.satellites }}" as="s" hint-placeholder-count="0">
+                    <div style="position:absolute; left:{{ s.x }}px; top:{{ s.y }}px; width:9px; height:9px; border-radius:3px; background:#FAFBFF; box-shadow:0 0 12px rgba(200,214,255,.9);"></div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+        <sc-if value="{{ c.focusPulse }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; left:50%; top:50%; width:150px; height:126px; margin-left:-75px; margin-top:-63px; border-radius:28px; border:1.5px solid rgba(190,205,255,.75); animation:pgPoofRing 1.3s ease-out forwards; pointer-events:none;"></div>
+        </sc-if>
+        <sc-if value="{{ c.bubble }}" hint-placeholder-val="{{ false }}">
+          <div data-screen-label="Speech bubble" key="{{ c.bubble.key }}" style="position:absolute; bottom:78px; left:50%; transform:translateX(-50%); animation:pgBubbleIn .45s cubic-bezier(.2,.8,.2,1) both; width:max-content; max-width:{{ c.bubble.maxW }}px; background:rgba(252,253,255,.97); border:1px solid rgba(255,255,255,.9); border-radius:16px; padding:12px 15px 11px; box-shadow:0 18px 50px rgba(8,14,40,.45), 0 0 0 .5px rgba(120,140,220,.25), inset 0 1px 0 #FFFFFF;">
+            <div style="position:absolute; bottom:-5.5px; left:50%; width:10px; height:10px; transform:translateX(-50%) rotate(45deg); background:#FBFCFF; border-right:1px solid rgba(150,165,225,.35); border-bottom:1px solid rgba(150,165,225,.35);"></div>
+            <sc-if value="{{ c.bubble.title }}" hint-placeholder-val="{{ false }}">
+              <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.6); margin:0 0 7px;">{{ c.bubble.title }}</div>
+            </sc-if>
+            <sc-for list="{{ c.bubble.lines }}" as="ln" hint-placeholder-count="0">
+              <div style="font:500 14.5px/1.5 'Newsreader', 'Iowan Old Style', serif; color:#232B54; animation:pgLineIn .5s ease both; animation-delay:{{ ln.delay }}ms; margin:0 0 4px;">{{ ln.text }}</div>
+            </sc-for>
+            <sc-if value="{{ c.bubble.nameMode }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; align-items:center; gap:8px; margin-top:9px;">
+                <input ref="{{ nameInputRef }}" onInput="{{ onNameInput }}" onKeyDown="{{ c.onNameKey }}" placeholder="{{ c.bubble.ph }}" style="width:126px; background:transparent; border:none; border-bottom:1px solid rgba(35,43,94,.3); padding:2px 1px 5px; font:600 15px 'Newsreader', serif; color:#1F2650; caret-color:#4B5BD6;">
+                <button onClick="{{ c.onNameOk }}" style="background:#232B5E; color:#F4F6FF; font:600 12px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:6px 13px; border-radius:999px; border:none; cursor:pointer; box-shadow:0 4px 14px rgba(40,55,140,.3);" style-hover="filter:brightness(1.25)">Name</button>
+              </div>
+              <div onClick="{{ c.onDice }}" style="margin:8px 0 10px; font:500 10.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:.04em; color:rgba(75,91,214,.7); cursor:pointer; width:max-content;" style-hover="color:rgba(75,91,214,1)">↻ surprise me</div>
+              <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.6); margin:0 0 6px;">Temperament</div>
+              <div style="display:flex; gap:6px;">
+                <sc-for list="{{ c.bubble.tempChips }}" as="t" hint-placeholder-count="0">
+                  <button onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="filter:brightness(1.05)"><span style="display:inline-block; width:7px; height:7px; border-radius:2px; background:{{ t.dot }}; margin-right:6px;"></span>{{ t.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ c.bubble.hasActions }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap;">
+                <sc-for list="{{ c.bubble.actions }}" as="a" hint-placeholder-count="0">
+                  <button onClick="{{ a.onClick }}" style="{{ a.style }}" style-hover="filter:brightness(1.15)">{{ a.label }}</button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-for>
+
+  <!-- first-run -->
+  <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:16px; z-index:4; animation:pgFadeIn 1s ease both; text-align:center;">
+      <div style="font:600 30px 'Newsreader', 'Iowan Old Style', serif; color:rgba(228,235,255,.94); letter-spacing:.01em;">Playground</div>
+      <div style="font:400 13.5px/1.65 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(196,206,240,.6); max-width:320px;">There is a world on the other side of your desktop. Something there is waiting to meet you.</div>
+      <button onClick="{{ onSpawn }}" style="margin-top:6px; background:rgba(250,251,255,.97); color:#182052; font:600 13.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:11px 24px; border-radius:999px; border:1px solid rgba(255,255,255,.6); cursor:pointer; box-shadow:0 8px 28px rgba(140,165,255,.35), inset 0 1px 0 #FFFFFF; transition:filter .2s ease, transform .2s ease;" style-hover="filter:brightness(1.05); transform:translateY(-1px)">Open the door</button>
+    </div>
+  </sc-if>
+
+  <!-- brief card -->
+  <sc-if value="{{ briefOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onBriefCancel }}" style="position:absolute; inset:0; z-index:7; display:flex; align-items:center; justify-content:center; background:rgba(4,6,18,.38); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:pgFadeIn .35s ease both;">
+      <div data-screen-label="Brief card" onClick="{{ stopClick }}" style="width:404px; max-height:calc(100vh - 56px); overflow-y:auto; overscroll-behavior:contain; background:linear-gradient(180deg, rgba(253,254,255,.97), rgba(243,246,255,.97)); backdrop-filter:blur(32px) saturate(1.3); -webkit-backdrop-filter:blur(32px) saturate(1.3); border:1px solid rgba(255,255,255,.9); border-radius:20px; padding:22px 22px 18px; box-shadow:0 40px 110px rgba(5,10,35,.6), 0 0 0 .5px rgba(120,140,220,.28), inset 0 1px 0 #FFFFFF; animation:pgPopIn .4s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:15px;">
+          <div style="font:600 19px 'Newsreader', serif; color:#1F2650;">{{ briefTitle }}</div>
+          <div onClick="{{ onBriefCancel }}" style="font:400 17px -apple-system, system-ui, sans-serif; color:rgba(60,72,130,.5); cursor:pointer; padding:0 2px;" style-hover="color:#1F2650">×</div>
+        </div>
+        <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:6px;">Goal</div>
+        <textarea rows="2" onInput="{{ onGoalInput }}" defaultValue="{{ briefGoal }}" placeholder="e.g. Find what contradicts chapter 2 of my thesis" style="width:100%; resize:none; background:rgba(35,43,94,.05); border:1px solid rgba(35,43,94,.14); border-radius:10px; padding:9px 11px; font:500 14px/1.5 'Newsreader', serif; color:#1F2650; caret-color:#4B5BD6; margin-bottom:13px;"></textarea>
+        <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Bring back</div>
+        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:13px;">
+          <sc-for list="{{ bringChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:13px;">
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Befriend</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;">
+              <sc-for list="{{ befChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Avoid</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;">
+              <sc-for list="{{ avoidChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px;">
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Trip depth</div>
+            <div style="display:flex; flex-direction:column; gap:4px; background:rgba(35,43,94,.05); border:1px solid rgba(35,43,94,.12); border-radius:12px; padding:4px;">
+              <sc-for list="{{ depthChips }}" as="dp" hint-placeholder-count="0"><button onClick="{{ dp.onClick }}" style="{{ dp.style }}" style-hover="filter:brightness(1.04)">{{ dp.label }}</button></sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">When</div>
+            <div style="display:flex; flex-direction:column; gap:4px; background:rgba(35,43,94,.05); border:1px solid rgba(35,43,94,.12); border-radius:12px; padding:4px;">
+              <sc-for list="{{ whenChips }}" as="wh" hint-placeholder-count="0"><button onClick="{{ wh.onClick }}" style="{{ wh.style }}" style-hover="filter:brightness(1.04)">{{ wh.label }}</button></sc-for>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:9px;">
+          <button onClick="{{ onBriefCancel }}" style="background:rgba(35,43,94,.06); color:#2A3364; font:500 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:8px 14px; border-radius:999px; border:1px solid rgba(35,43,94,.16); cursor:pointer;" style-hover="filter:brightness(.97)">Cancel</button>
+          <button onClick="{{ onBriefOk }}" style="background:#232B5E; color:#F4F6FF; font:600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:8px 16px; border-radius:999px; border:none; cursor:pointer; box-shadow:0 6px 20px rgba(40,55,140,.35);" style-hover="filter:brightness(1.25)">Set the brief</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- companion card -->
+  <sc-if value="{{ profOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onProfClose }}" style="position:absolute; inset:0; z-index:7; display:flex; align-items:center; justify-content:center; background:rgba(4,6,18,.38); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:pgFadeIn .35s ease both;">
+      <div data-screen-label="Companion card" onClick="{{ stopClick }}" style="width:430px; max-height:calc(100vh - 56px); overflow-y:auto; overscroll-behavior:contain; background:linear-gradient(180deg, rgba(253,254,255,.97), rgba(243,246,255,.97)); border:1px solid rgba(255,255,255,.9); border-radius:20px; padding:20px 22px 18px; box-shadow:0 40px 110px rgba(5,10,35,.6), 0 0 0 .5px rgba(120,140,220,.28), inset 0 1px 0 #FFFFFF; animation:pgPopIn .4s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:16px;">
+          <div style="position:relative; width:64px; height:58px; flex:none;">
+            <div style="position:absolute; left:5px; top:8px; width:54px; height:42px; background:{{ prof.tint }}; border:4px solid #FAFBFF; border-radius:11px; box-shadow:0 6px 14px rgba(20,30,70,.25);">
+              <sc-if value="{{ prof.stripe }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:0; right:0; bottom:6px; height:6px; background:rgba(255,255,255,.32);"></div></sc-if>
+              <sc-if value="{{ prof.spots }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:7px; bottom:5px; width:5px; height:5px; border-radius:2px; background:rgba(25,28,46,.14);"></div><div style="position:absolute; right:9px; bottom:9px; width:4px; height:4px; border-radius:1.5px; background:rgba(25,28,46,.12);"></div></sc-if>
+              <div style="position:absolute; left:50%; top:11px; transform:translateX(-50%); display:flex; gap:13px;"><div style="width:6px; height:6px; border-radius:1.5px; background:#191C2E;"></div><div style="width:6px; height:6px; border-radius:1.5px; background:#191C2E;"></div></div>
+            </div>
+            <sc-if value="{{ prof.accAntenna }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:50%; top:0px; width:2px; height:9px; margin-left:-1px; background:#FAFBFF;"></div><div style="position:absolute; left:50%; top:-5px; width:7px; height:7px; margin-left:-3.5px; border-radius:2.5px; background:{{ prof.tint }}; border:2px solid #FAFBFF;"></div></sc-if>
+            <sc-if value="{{ prof.accSprout }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:26px; top:-2px; width:5px; height:9px; border-radius:4px 4px 0 4px; background:#7FA85C; border:1.5px solid #FAFBFF; transform:rotate(-14deg);"></div><div style="position:absolute; left:33px; top:-1px; width:5px; height:8px; border-radius:4px 4px 4px 0; background:#8FB86C; border:1.5px solid #FAFBFF; transform:rotate(16deg);"></div></sc-if>
+            <sc-if value="{{ prof.accScarf }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; left:6px; top:38px; width:52px; height:8px; border-radius:3px; background:#39427C; border:1.5px solid #FAFBFF;"></div></sc-if>
+          </div>
+          <div style="flex:1;">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:4px;">Name</div>
+            <input defaultValue="{{ prof.name }}" onInput="{{ prof.onNameInput }}" onKeyDown="{{ prof.onNameKey }}" style="width:100%; background:transparent; border:none; border-bottom:1px solid rgba(35,43,94,.25); padding:0 1px 5px; font:600 19px 'Newsreader', serif; color:#1F2650; caret-color:#4B5BD6;">
+          </div>
+          <div onClick="{{ onProfClose }}" style="font:400 17px -apple-system, system-ui, sans-serif; color:rgba(60,72,130,.5); cursor:pointer; padding:0 2px; align-self:flex-start;" style-hover="color:#1F2650">×</div>
+        </div>
+        <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Species</div>
+        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:13px;">
+          <sc-for list="{{ prof.speciesChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+        </div>
+        <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Color</div>
+        <div style="display:flex; gap:8px; margin-bottom:13px;">
+          <sc-for list="{{ prof.swatches }}" as="sw" hint-placeholder-count="0"><button onClick="{{ sw.onClick }}" style="{{ sw.style }}"></button></sc-for>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:13px;">
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Pattern</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;"><sc-for list="{{ prof.patternChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for></div>
+          </div>
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Accessory</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;"><sc-for list="{{ prof.accChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for></div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:13px;">
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Temperament</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;"><sc-for list="{{ prof.tempChips }}" as="t" hint-placeholder-count="0"><button onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="filter:brightness(1.04)"><span style="display:inline-block; width:7px; height:7px; border-radius:2px; background:{{ t.dot }}; margin-right:6px;"></span>{{ t.label }}</button></sc-for></div>
+          </div>
+          <div>
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Voice</div>
+            <div style="display:flex; flex-wrap:wrap; gap:7px;"><sc-for list="{{ prof.voiceChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for></div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+          <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62);">Curiosity</div>
+          <div style="font:500 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(50,62,120,.7);">{{ prof.curLabel }}</div>
+        </div>
+        <input type="range" min="0" max="100" step="1" defaultValue="{{ prof.cur }}" onInput="{{ prof.onCur }}" style="width:100%; accent-color:#4B5BD6; margin:0 0 14px; cursor:pointer;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px;">
+          <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62);">Mind</div>
+          <div style="font:500 10.5px ui-monospace, Menlo, monospace; color:rgba(50,62,120,.7);">{{ prof.mindNow }}</div>
+        </div>
+        <sc-if value="{{ prof.noMinds }}" hint-placeholder-val="{{ false }}">
+          <div style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.55); margin-bottom:13px;">Connect a runtime to assign a mind.</div>
+        </sc-if>
+        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:13px;">
+          <sc-for list="{{ prof.mindChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+        </div>
+        <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:4px;">Toolbelt</div>
+        <div style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.55); margin-bottom:8px;">Connectors it may carry and use on the other side.</div>
+        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px;">
+          <sc-for list="{{ prof.toolChips }}" as="ch" hint-placeholder-count="0"><button onClick="{{ ch.onClick }}" style="{{ ch.style }}" style-hover="filter:brightness(1.04)">{{ ch.label }}</button></sc-for>
+        </div>
+        <div style="display:flex; justify-content:flex-end;">
+          <button onClick="{{ onProfClose }}" style="background:#232B5E; color:#F4F6FF; font:600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:8px 18px; border-radius:999px; border:none; cursor:pointer; box-shadow:0 6px 20px rgba(40,55,140,.35);" style-hover="filter:brightness(1.25)">Done</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- setup: runtimes & minds -->
+  <sc-if value="{{ setup }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ setup.onClose }}" style="position:absolute; inset:0; z-index:7; display:flex; align-items:center; justify-content:center; background:rgba(4,6,18,.38); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:pgFadeIn .35s ease both;">
+      <div data-screen-label="Setup card" onClick="{{ stopClick }}" style="width:412px; max-height:calc(100vh - 56px); overflow-y:auto; overscroll-behavior:contain; background:linear-gradient(180deg, rgba(253,254,255,.97), rgba(243,246,255,.97)); border:1px solid rgba(255,255,255,.9); border-radius:20px; padding:22px 22px 18px; box-shadow:0 40px 110px rgba(5,10,35,.6), 0 0 0 .5px rgba(120,140,220,.28), inset 0 1px 0 #FFFFFF; animation:pgPopIn .4s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;">
+          <div style="font:600 19px 'Newsreader', serif; color:#1F2650;">{{ setup.title }}</div>
+          <div onClick="{{ setup.onClose }}" style="font:400 17px -apple-system, system-ui, sans-serif; color:rgba(60,72,130,.5); cursor:pointer; padding:0 2px;" style-hover="color:#1F2650">×</div>
+        </div>
+        <div style="font:400 12.5px/1.55 -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.65); margin-bottom:15px;">{{ setup.desc }}</div>
+        <sc-if value="{{ setup.step1 }}" hint-placeholder-val="{{ false }}">
+          <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin-bottom:7px;">Runtimes</div>
+          <sc-for list="{{ setup.rows }}" as="rt" hint-placeholder-count="0">
+            <div style="display:flex; align-items:center; gap:11px; padding:10px 11px; border-radius:12px; border:1px solid rgba(35,43,94,.12); background:rgba(35,43,94,.03); margin-bottom:7px;">
+              <div style="display:flex; align-items:center; justify-content:center; width:30px; height:30px; flex:none; border-radius:9px; background:#FFFFFF; border:1px solid rgba(120,140,220,.3); box-shadow:0 2px 6px rgba(20,30,70,.12); font:700 10px ui-monospace, Menlo, monospace; color:#39427C;">{{ rt.glyph }}</div>
+              <div style="flex:1; min-width:0;">
+                <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">{{ rt.name }}</div>
+                <div style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.6);">{{ rt.sub }}</div>
+              </div>
+              <sc-if value="{{ rt.isOff }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ rt.onConnect }}" style="background:#232B5E; color:#F4F6FF; font:600 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:6px 13px; border-radius:999px; border:none; cursor:pointer; flex:none;" style-hover="filter:brightness(1.25)">Connect</button>
+              </sc-if>
+              <sc-if value="{{ rt.isConn }}" hint-placeholder-val="{{ false }}">
+                <span style="font:500 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(75,91,214,.8); animation:pgGlowPulse 1.2s ease-in-out infinite; flex:none;">Connecting…</span>
+              </sc-if>
+              <sc-if value="{{ rt.isOn }}" hint-placeholder-val="{{ false }}">
+                <span style="font:600 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#4B5BD6; flex:none;">Connected ✓</span>
+              </sc-if>
+            </div>
+          </sc-for>
+          <sc-if value="{{ setup.hint }}" hint-placeholder-val="{{ false }}">
+            <div style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.55); margin-top:2px;">{{ setup.hint }}</div>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ setup.step2 }}" hint-placeholder-val="{{ false }}">
+          <sc-for list="{{ setup.groups }}" as="g" hint-placeholder-count="0">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.62); margin:4px 0 7px;">{{ g.label }}</div>
+            <sc-for list="{{ g.models }}" as="m" hint-placeholder-count="0">
+              <button onClick="{{ m.onClick }}" style="{{ m.rowStyle }}" style-hover="filter:brightness(1.02)">
+                <span style="{{ m.dotStyle }}"></span>
+                <span style="flex:1; min-width:0;">
+                  <span style="display:block; font:600 12.5px ui-monospace, Menlo, monospace; color:#1F2650;">{{ m.id }}</span>
+                  <span style="display:block; font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.6); margin-top:1px;">{{ m.tag }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </sc-for>
+        </sc-if>
+        <div style="display:flex; justify-content:flex-end; gap:9px; margin-top:14px;">
+          <sc-if value="{{ setup.showBack }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ setup.onBack }}" style="background:rgba(35,43,94,.06); color:#2A3364; font:500 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:8px 14px; border-radius:999px; border:1px solid rgba(35,43,94,.16); cursor:pointer;" style-hover="filter:brightness(.97)">Back</button>
+          </sc-if>
+          <button onClick="{{ setup.onCta }}" style="{{ setup.ctaStyle }}" style-hover="filter:brightness(1.15)">{{ setup.cta }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- field note viewer -->
+  <sc-if value="{{ noteView }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ onNoteClose }}" style="position:absolute; inset:0; z-index:8; display:flex; align-items:center; justify-content:center; background:rgba(4,6,18,.42); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px); animation:pgFadeIn .3s ease both;">
+      <div data-screen-label="Field notes" onClick="{{ stopClick }}" style="width:430px; max-height:calc(100vh - 56px); overflow-y:auto; overscroll-behavior:contain; background:linear-gradient(180deg, rgba(253,254,255,.97), rgba(243,246,255,.97)); border:1px solid rgba(255,255,255,.9); border-radius:20px; padding:24px 24px 18px; box-shadow:0 40px 110px rgba(5,10,35,.6), 0 0 0 .5px rgba(120,140,220,.28), inset 0 1px 0 #FFFFFF; animation:pgPopIn .4s cubic-bezier(.2,.8,.2,1) both;">
+        <div style="font:600 20px 'Newsreader', serif; color:#1F2650; margin-bottom:4px;">{{ noteView.title }}</div>
+        <div style="font:400 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(70,82,140,.6); margin-bottom:14px;">{{ noteView.meta }}</div>
+        <sc-if value="{{ noteView.goal }}" hint-placeholder-val="{{ false }}">
+          <div style="font:500 13.5px/1.55 'Newsreader', serif; color:rgba(50,62,120,.75); border-left:2px solid rgba(75,91,214,.35); padding-left:11px; margin-bottom:15px;">“{{ noteView.goal }}”</div>
+        </sc-if>
+        <sc-for list="{{ noteView.lines }}" as="ln" hint-placeholder-count="0">
+          <div style="display:flex; gap:10px; font:500 14.5px/1.55 'Newsreader', serif; color:#232B54; margin-bottom:10px;"><span style="color:rgba(75,91,214,.8); font-size:12px; padding-top:3px;">✦</span><span>{{ ln.text }}</span></div>
+        </sc-for>
+        <div style="display:flex; gap:18px; border-top:1px solid rgba(35,43,94,.1); margin-top:14px; padding-top:11px;">
+          <div style="flex:1;">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.55); margin-bottom:3px;">Traded</div>
+            <div style="font:500 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#2A3364;">{{ noteView.traded }}</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.55); margin-bottom:3px;">Met</div>
+            <div style="font:500 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#2A3364;">{{ noteView.met }}</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.55); margin-bottom:3px;">Tools</div>
+            <div style="font:500 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#2A3364; overflow-wrap:break-word;">{{ noteView.via }}</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; letter-spacing:0; color:rgba(70,82,140,.55); margin-bottom:3px;">Mind</div>
+            <div style="font:500 11px ui-monospace, Menlo, monospace; color:#2A3364; overflow-wrap:break-word;">{{ noteView.mind }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- menu bar -->
+  <div data-screen-label="Menu bar" style="position:absolute; top:0; left:0; right:0; height:30px; z-index:10; display:flex; align-items:center; justify-content:space-between; padding:0 12px 0 16px; background:rgba(243,246,255,.82); backdrop-filter:blur(34px) saturate(1.6); -webkit-backdrop-filter:blur(34px) saturate(1.6); border-bottom:1px solid rgba(15,25,60,.14); font:500 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">
+    <div style="display:flex; gap:18px; align-items:center;">
+      <span style="font-weight:700;">Playground</span>
+      <span style="color:rgba(35,45,95,.55);">File</span>
+      <span style="color:rgba(35,45,95,.55);">Edit</span>
+      <span style="color:rgba(35,45,95,.55);">View</span>
+      <span style="color:rgba(35,45,95,.55);">Help</span>
+    </div>
+    <div style="display:flex; gap:4px; align-items:center;">
+      <div onClick="{{ onSoundToggle }}" title="{{ soundTitle }}" style="position:relative; display:flex; align-items:center; justify-content:center; width:26px; height:22px; border-radius:5px; cursor:pointer; font-size:12.5px; color:#2A3364; opacity:{{ soundOp }};" style-hover="background:rgba(20,30,70,.09)">
+        ♪
+        <sc-if value="{{ soundOff }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; left:5px; top:10px; width:16px; height:1.5px; background:#2A3364; transform:rotate(-40deg); border-radius:2px;"></div>
+        </sc-if>
+      </div>
+      <sc-if value="{{ moonShow }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ onSleep }}" title="Sleep until morning" style="display:flex; align-items:center; justify-content:center; width:28px; height:22px; border-radius:5px; cursor:pointer; font-size:13px; color:#2A3364;" style-hover="background:rgba(20,30,70,.09)">☾</div>
+      </sc-if>
+      <div ref="{{ iconRef }}" onClick="{{ onCockpitToggle }}" style="position:relative; display:flex; align-items:center; justify-content:center; width:30px; height:22px; border-radius:5px; cursor:pointer; background:{{ iconBg }};" style-hover="background:rgba(20,30,70,.09)">
+        <div style="position:relative; width:16px; height:13px; border-radius:4px; background:{{ iconTint }}; border:2px solid #FFFFFF; box-shadow:0 1px 4px rgba(20,30,70,.3);">
+          <div style="position:absolute; left:2.5px; top:3px; width:2.5px; height:2.5px; border-radius:1px; background:#191C2E;"></div>
+          <div style="position:absolute; right:2.5px; top:3px; width:2.5px; height:2.5px; border-radius:1px; background:#191C2E;"></div>
+        </div>
+        <sc-if value="{{ badge }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; top:0px; right:1px; width:8px; height:8px; border-radius:50%; background:#4B5BD6; box-shadow:0 0 8px rgba(75,91,214,.8); animation:pgBadge .5s ease;"></div>
+        </sc-if>
+        <sc-if value="{{ awayDot }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute; top:1px; right:2px; width:6px; height:6px; border-radius:50%; border:1.5px solid rgba(75,91,214,.7); animation:pgGlowPulse 2.4s ease-in-out infinite;"></div>
+        </sc-if>
+      </div>
+      <span style="font-variant-numeric:tabular-nums; color:#1F2650; padding-left:8px;">{{ clock }}</span>
+    </div>
+  </div>
+
+  <!-- menubar cockpit -->
+  <sc-if value="{{ cockpitOpen }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ popRef }}" data-screen-label="Menubar cockpit" style="position:absolute; top:36px; right:10px; width:322px; z-index:11; background:linear-gradient(180deg, rgba(252,253,255,.97), rgba(242,245,255,.97)); backdrop-filter:blur(36px) saturate(1.4); -webkit-backdrop-filter:blur(36px) saturate(1.4); border:1px solid rgba(255,255,255,.9); border-radius:16px; box-shadow:0 30px 80px rgba(3,6,20,.55), 0 0 0 .5px rgba(120,140,220,.28), inset 0 1px 0 #FFFFFF; padding:9px; animation:pgPopIn .32s cubic-bezier(.2,.8,.2,1) both;">
+      <div style="display:flex; gap:4px; padding:2px 2px 8px;">
+        <button onClick="{{ onTabComp }}" style="{{ tabCompStyle }}">Companions</button>
+        <button onClick="{{ onTabFr }}" style="{{ tabFrStyle }}">Friends</button>
+        <button onClick="{{ onTabLib }}" style="{{ tabLibStyle }}">Library</button>
+        <span style="flex:1;"></span>
+        <span style="font:500 10.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(70,82,140,.5); padding-top:5px;">{{ tabCount }}</span>
+      </div>
+      <sc-if value="{{ tabComp }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ rosterEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:18px 8px 20px; text-align:center; font:500 13.5px 'Newsreader', serif; color:rgba(60,72,130,.55);">No companions yet.</div>
+        </sc-if>
+        <sc-for list="{{ roster }}" as="r" hint-placeholder-count="0">
+          <div onClick="{{ r.onClick }}" style="display:flex; align-items:center; gap:11px; padding:9px 8px; border-radius:10px; cursor:pointer;" style-hover="background:rgba(35,43,94,.05)">
+            <div style="position:relative; width:32px; height:26px; flex:none; opacity:{{ r.avatarO }};">
+              <div style="position:absolute; inset:0; border-radius:8px; background:{{ r.tint }}; border:3px solid #FFFFFF; box-shadow:0 2px 8px rgba(20,30,70,.25);">
+                <div style="position:absolute; left:5px; top:6px; width:4px; height:4px; border-radius:1.5px; background:#191C2E;"></div>
+                <div style="position:absolute; right:5px; top:6px; width:4px; height:4px; border-radius:1.5px; background:#191C2E;"></div>
+              </div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">{{ r.name }}</div>
+              <div style="font:400 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.6); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.status }}</div>
+            </div>
+            <div onClick="{{ r.onEdit }}" title="Customize" style="width:22px; height:22px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; color:rgba(70,82,140,.55); flex:none; cursor:pointer;" style-hover="background:rgba(35,43,94,.08); color:#1F2650">✎</div>
+            <sc-if value="{{ r.unread }}" hint-placeholder-val="{{ false }}">
+              <div style="width:8px; height:8px; border-radius:50%; background:#4B5BD6; box-shadow:0 0 9px rgba(75,91,214,.7); flex:none;"></div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <div style="height:1px; background:rgba(35,43,94,.1); margin:7px 6px;"></div>
+        <sc-if value="{{ canSpawn }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ onSpawn }}" style="display:flex; align-items:center; gap:9px; padding:9px 8px; border-radius:10px; cursor:pointer; font:500 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#2A3364;" style-hover="background:rgba(35,43,94,.05)">
+            <span style="display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:8px; border:1px dashed rgba(75,91,214,.45); font-size:13px; color:rgba(75,91,214,.8);">+</span>
+            Spawn a research agent
+          </div>
+        </sc-if>
+        <sc-if value="{{ maxedOut }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:9px 8px 7px; font:500 12px 'Newsreader', serif; color:rgba(60,72,130,.5);">The desktop is full — three is company.</div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ tabFr }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ frEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:18px 14px 20px; text-align:center; font:500 13.5px 'Newsreader', serif; color:rgba(60,72,130,.55);">No friends yet — send a companion through the door.</div>
+        </sc-if>
+        <sc-for list="{{ friendRows }}" as="fr" hint-placeholder-count="0">
+          <div title="{{ fr.line }}" style="display:flex; align-items:center; gap:11px; padding:9px 8px; border-radius:10px;" style-hover="background:rgba(35,43,94,.05)">
+            <div style="position:relative; width:30px; height:30px; flex:none; display:flex; align-items:center; justify-content:center;">
+              <div style="width:21px; height:21px; border-radius:7px; transform:rotate(45deg); background:{{ fr.hue }}; border:2.5px solid #FFFFFF; box-shadow:0 0 12px rgba(140,160,235,.55); display:flex; align-items:center; justify-content:center;">
+                <div style="transform:rotate(-45deg); display:flex; gap:4.5px;">
+                  <div style="width:3.5px; height:3.5px; border-radius:1px; background:#191C2E;"></div>
+                  <div style="width:3.5px; height:3.5px; border-radius:1px; background:#191C2E;"></div>
+                </div>
+              </div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div style="display:flex; gap:6px; align-items:baseline;">
+                <span style="font:600 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">{{ fr.name }}</span>
+                <span style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.55);">{{ fr.kind }}</span>
+              </div>
+              <div style="font:400 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.6); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ fr.sub }}</div>
+            </div>
+            <button onClick="{{ fr.onFind }}" style="background:rgba(35,43,94,.06); color:#2A3364; font:500 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; padding:5px 10px; border-radius:999px; border:1px solid rgba(35,43,94,.16); cursor:pointer; flex:none;" style-hover="filter:brightness(.97)">Find again</button>
+          </div>
+        </sc-for>
+      </sc-if>
+      <sc-if value="{{ tabLib }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ libEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:18px 8px 20px; text-align:center; font:500 13.5px 'Newsreader', serif; color:rgba(60,72,130,.55);">Nothing brought home yet.</div>
+        </sc-if>
+        <sc-for list="{{ libRows }}" as="l" hint-placeholder-count="0">
+          <div onClick="{{ l.onClick }}" style="display:flex; align-items:center; gap:11px; padding:8px; border-radius:10px; cursor:pointer;" style-hover="background:rgba(35,43,94,.05)">
+            <div style="width:22px; height:28px; flex:none; border-radius:5px; background:linear-gradient(180deg,#FDFDFF,#E9EEFC); border:1px solid rgba(120,140,220,.3); box-shadow:0 2px 6px rgba(20,30,70,.15); display:flex; flex-direction:column; gap:3px; padding:6px 4px 0;">
+              <div style="height:1.5px; border-radius:2px; background:rgba(60,72,140,.4);"></div>
+              <div style="height:1.5px; border-radius:2px; background:rgba(60,72,140,.28); width:75%;"></div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div style="font:600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">{{ l.title }}</div>
+              <div style="font:400 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.6); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ l.meta }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </sc-if>
+      <div style="height:1px; background:rgba(35,43,94,.1); margin:7px 6px;"></div>
+      <div onClick="{{ onRuntimes }}" style="display:flex; align-items:center; gap:9px; padding:8px; border-radius:10px; cursor:pointer; font:500 12px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(50,62,120,.78);" style-hover="background:rgba(35,43,94,.05)">
+        <span style="display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:8px; background:rgba(35,43,94,.06); border:1px solid rgba(35,43,94,.14); font-size:12px; color:rgba(75,91,214,.85);">⌁</span>
+        Minds &amp; runtimes
+        <span style="flex:1;"></span>
+        <span style="font:500 10.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(70,82,140,.5);">{{ rtCount }}</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- toasts -->
+  <div style="position:absolute; top:38px; right:10px; z-index:12; display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+    <sc-for list="{{ toasts }}" as="t" hint-placeholder-count="0">
+      <div onClick="{{ t.onClick }}" style="display:flex; align-items:center; gap:11px; width:300px; padding:11px 13px; border-radius:14px; cursor:pointer; background:rgba(252,253,255,.97); border:1px solid rgba(255,255,255,.9); box-shadow:0 18px 50px rgba(8,14,40,.4), 0 0 0 .5px rgba(120,140,220,.25); animation:pgToastIn .5s cubic-bezier(.2,.8,.2,1) both;" style-hover="filter:brightness(.985)">
+        <div style="position:relative; width:30px; height:24px; flex:none; border-radius:7px; background:{{ t.tint }}; border:3px solid #FFFFFF; box-shadow:0 2px 8px rgba(20,30,70,.25);">
+          <div style="position:absolute; left:4px; top:5px; width:4px; height:4px; border-radius:1.5px; background:#191C2E;"></div>
+          <div style="position:absolute; right:4px; top:5px; width:4px; height:4px; border-radius:1.5px; background:#191C2E;"></div>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div style="font:600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:#1F2650;">{{ t.title }}</div>
+          <div style="font:400 11.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(60,72,130,.65);">{{ t.body }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- sleep overlay -->
+  <sc-if value="{{ sleep }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; inset:0; z-index:30; display:flex; align-items:center; justify-content:center; background:{{ sleep.bg }}; opacity:{{ sleep.o }}; transition:opacity 1.5s ease, background 1.4s ease; pointer-events:{{ sleep.pe }};">
+      <sc-if value="{{ sleep.content }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:14px; animation:pgFadeIn 1s ease both;">
+          <div style="font-size:40px; color:rgba(226,233,255,.9); text-shadow:0 0 30px rgba(180,195,255,.5);">☾</div>
+          <div style="font:500 16px 'Newsreader', serif; color:rgba(210,220,250,.78);">{{ sleep.caption }}</div>
+          <div style="font:500 13px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; font-variant-numeric:tabular-nums; color:rgba(190,200,240,.6);">{{ sleep.clock }}</div>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <!-- drag ghost -->
+  <sc-if value="{{ drag }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ ghostRef }}" style="position:fixed; left:0; top:0; z-index:31; pointer-events:none; will-change:transform; transform:translate({{ drag.x }}px, {{ drag.y }}px); display:flex; flex-direction:column; align-items:center; gap:5px; filter:drop-shadow(0 10px 24px rgba(0,0,0,.5));">
+      <div style="position:relative; width:44px; height:34px;">
+        <div style="position:absolute; top:-5px; left:4px; width:20px; height:10px; border-radius:4px 6px 0 0; background:linear-gradient(180deg,#48538F,#3B4478);"></div>
+        <div style="position:absolute; inset:0; border-radius:7px; background:linear-gradient(180deg,#535E9F 0%, #434D8C 60%, #3B447D 100%); border:1px solid rgba(160,175,255,.4); box-shadow:0 0 18px rgba(160,180,255,.35);"></div>
+      </div>
+      <div style="font:500 10.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif; color:rgba(230,236,255,.9); background:rgba(10,14,32,.7); padding:2px 7px; border-radius:5px;">{{ drag.name }}</div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tripSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:6,&quot;max&quot;:45,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;section&quot;:&quot;Journey&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;wallpaper&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Dusk&quot;,&quot;options&quot;:[&quot;Dusk&quot;,&quot;Midnight&quot;,&quot;Violet hour&quot;],&quot;section&quot;:&quot;Habitat&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;creatureScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.8,&quot;max&quot;:1.35,&quot;step&quot;:0.05,&quot;section&quot;:&quot;Companion&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;soundVolume&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:60,&quot;min&quot;:0,&quot;max&quot;:100,&quot;step&quot;:5,&quot;unit&quot;:&quot;%&quot;,&quot;section&quot;:&quot;Sound&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  habitatRef = React.createRef();
+  ghostRef = React.createRef();
+  nameInputRef = React.createRef();
+  popRef = React.createRef();
+  iconRef = React.createRef();
+
+  state = {
+    creatures: [],
+    folders: [
+      { id: 'f1', name: 'Sleep Study — Notes', linked: false },
+      { id: 'f2', name: 'Interview Transcripts', linked: false },
+      { id: 'f3', name: 'Papers — Memory', linked: false },
+    ],
+    notes: [],
+    postcards: [],
+    toasts: [],
+    briefFor: null,
+    briefDraft: null,
+    tempPick: 'Curious',
+    profileFor: null,
+    setup: null,
+    rtStatus: { claude: 'none', codex: 'none', ollama: 'none' },
+    mindPick: null,
+    friends: [],
+    cockpit: false,
+    tab: 'companions',
+    drag: null,
+    openNote: null,
+    openPc: null,
+    clock: '',
+    whisper: null,
+    doorMode: 'closed',
+    doorFlash: false,
+    sleep: null,
+    muted: false,
+  };
+
+  DOOR_X = 76; DOOR_Y = 57;
+  NAMES = ['Nova', 'Wisp', 'Lumen', 'Moth', 'Fern', 'Pip', 'Echo', 'Sol'];
+  TINTS = { Curious: '#CE7352', Careful: '#5F9E93', Bold: '#6B74D8' };
+  SWATCHES = ['#CE7352', '#5F9E93', '#6B74D8', '#D8A24A', '#D2688C', '#7FA85C', '#7B87A8'];
+  PATTERNS = ['Plain', 'Spots', 'Stripe'];
+  SPECIES = ['Boxling', 'Mothkin', 'Sproutle', 'Wispun', 'Hornlet'];
+  SPECIES_NOTE = { Boxling: 'sturdy and plain', Mothkin: 'winged — first through the door', Sproutle: 'leafy — grows on every trip', Wispun: 'floats — never quite lands', Hornlet: 'two horns, no fear' };
+  ACCS = ['None', 'Antenna', 'Scarf', 'Sprout'];
+  VOICES = ['Gentle', 'Playful', 'Dry'];
+  TOOLS = ['Claude Code', 'Codex', 'Cursor', 'GitHub', 'Linear', 'Vercel', 'Figma', 'Notion', 'Slack', 'Drive', 'Perplexity', 'Replit', 'Hugging Face', 'Ollama', 'Midjourney', 'ElevenLabs', 'Raycast', 'Supabase', 'Stripe', 'Granola', 'Browser'];
+  TOOL_GLYPH = { 'Claude Code': 'CC', 'Codex': 'CX', 'Cursor': 'Cu', 'GitHub': 'GH', 'Linear': 'Li', 'Vercel': 'Ve', 'Figma': 'Fi', 'Notion': 'No', 'Slack': 'Sl', 'Drive': 'Dr', 'Perplexity': 'Px', 'Replit': 'Re', 'Hugging Face': 'HF', 'Ollama': 'Ol', 'Midjourney': 'Mj', 'ElevenLabs': '11', 'Raycast': 'Ra', 'Supabase': 'Su', 'Stripe': 'St', 'Granola': 'Gr', 'Browser': 'Br' };
+  RUNTIMES = [
+    { id: 'claude', name: 'Claude Code', glyph: 'CC', sub: 'Anthropic SDK', models: [
+      { id: 'claude-opus-4-6', tag: 'deep and patient — long expeditions' },
+      { id: 'claude-sonnet-4-5', tag: 'quick and bright — daily trips' },
+    ]},
+    { id: 'codex', name: 'Codex', glyph: 'CX', sub: 'OpenAI SDK', models: [
+      { id: 'gpt-5.2-codex', tag: 'methodical — builds as it goes' },
+      { id: 'o4-mini', tag: 'light — for quick looks' },
+    ]},
+    { id: 'ollama', name: 'Ollama', glyph: 'OL', sub: 'Local — localhost:11434', models: [
+      { id: 'llama3.3:70b', tag: 'runs on this Mac — private' },
+      { id: 'qwen2.5:32b', tag: 'small and sturdy — offline' },
+    ]},
+  ];
+  FRIEND_HUES = { Quill: '#7B87D8', Vesper: '#A96FB8', Osa: '#C9884A', Lune: '#6FA8C9' };
+  VOICE_CHIRPS = { Gentle: ['Take your time.', 'I like it here.'], Playful: ['Race you to the door!', 'Boop.'], Dry: ['Thrilling.', 'I have seen wider deserts.'] };
+  FRIENDS = { Archivists: 'Quill', Skeptics: 'Vesper', Builders: 'Osa', Dreamers: 'Lune' };
+  FRIEND_KIND = { Archivists: 'an archivist', Skeptics: 'a skeptic', Builders: 'a builder', Dreamers: 'a dreamer' };
+  PC_LINES = {
+    Quill: 'Your notes smell of rain. May I keep a page?',
+    Vesper: 'Your second chapter is wrong. Delightfully.',
+    Osa: 'I could build the thing you describe. Say the word.',
+    Lune: 'I dreamt your question. It has more doors.',
+  };
+  CHIRPS = {
+    Curious: ['Hm?', 'I was just thinking.', 'The door hums, you know.', 'What if we asked the moths?'],
+    Careful: ['I counted the folders twice.', 'Quietly, please.', 'I keep copies of everything.'],
+    Bold: ['Where next?', 'I want the far shelves.', 'Locked doors are suggestions.'],
+  };
+  BRING = ['Papers', 'Contradictions', 'People', 'Datasets', 'Surprises'];
+  BEF = ['Archivists', 'Skeptics', 'Builders', 'Dreamers'];
+  AVOID = ['Salesmen', 'Trolls', 'Flatterers'];
+  DEPTHS = ['Quick look', 'Overnight', 'Deep expedition'];
+  WHENS = ['Now', 'Tonight', 'Each dawn'];
+
+  componentDidMount() {
+    this._eyes = {}; this._blink = {};
+    this._nameDraft = ''; this._goalDraft = ''; this._suggested = 'Nova';
+    this._mouse = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.4 };
+    this._pending = null; this._suppressClick = false; this._focusedNameFor = null; this._wp = null;
+    this._mountAt = Date.now(); this._greeted = false;
+    this._tick = setInterval(() => this.tick(), 160);
+    this._clockT = setInterval(() => this.setClock(), 20000);
+    this.setClock();
+    try { if (window.localStorage && localStorage.getItem('pg_sound_muted') === '1') this.setState({ muted: true }); } catch (e) {}
+    this._onMove = (e) => this.handleMove(e);
+    this._onUp = () => this.handleUp();
+    this._onDown = (e) => { this.ensureAudio(); this.handleGlobalDown(e); };
+    this._onKey = (e) => { if (e.key === 'Escape') this.setState({ cockpit: false, briefFor: null, briefDraft: null, profileFor: null, setup: null, openNote: null, openPc: null, drag: null }); };
+    window.addEventListener('pointermove', this._onMove);
+    window.addEventListener('pointerup', this._onUp);
+    window.addEventListener('pointercancel', this._onUp);
+    window.addEventListener('pointerdown', this._onDown, true);
+    window.addEventListener('keydown', this._onKey);
+    const loop = () => { this.eyeLoop(); this._raf = requestAnimationFrame(loop); };
+    this._raf = requestAnimationFrame(loop);
+    this.applyWallpaper();
+  }
+  componentWillUnmount() {
+    clearInterval(this._tick); clearInterval(this._clockT); cancelAnimationFrame(this._raf);
+    window.removeEventListener('pointermove', this._onMove);
+    window.removeEventListener('pointerup', this._onUp);
+    window.removeEventListener('pointercancel', this._onUp);
+    window.removeEventListener('pointerdown', this._onDown, true);
+    window.removeEventListener('keydown', this._onKey);
+  }
+  componentDidUpdate() { this.applyWallpaper(); this.maybeFocusName(); this.syncVolume(); }
+
+  applyWallpaper() {
+    const el = this.habitatRef.current; if (!el) return;
+    const wp = this.props.wallpaper ?? 'Dusk';
+    if (this._wp === wp) return; this._wp = wp;
+    const bgs = {
+      'Dusk': 'radial-gradient(120% 90% at 76% 30%, rgba(122,112,255,.10), transparent 60%), radial-gradient(140% 100% at 50% 118%, rgba(38,48,110,.85) 0%, transparent 60%), linear-gradient(180deg, #070A1C 0%, #0C1230 46%, #12173B 74%, #0B0F28 100%)',
+      'Midnight': 'radial-gradient(120% 90% at 76% 30%, rgba(90,110,255,.07), transparent 60%), radial-gradient(140% 100% at 50% 118%, rgba(20,28,70,.9) 0%, transparent 60%), linear-gradient(180deg, #030510 0%, #070A1E 48%, #0A0E28 76%, #05081A 100%)',
+      'Violet hour': 'radial-gradient(120% 90% at 76% 30%, rgba(255,150,210,.08), transparent 60%), radial-gradient(140% 100% at 50% 118%, rgba(70,32,110,.75) 0%, transparent 60%), linear-gradient(180deg, #0D0722 0%, #1A0F3C 48%, #241448 76%, #120A2E 100%)',
+    };
+    el.style.background = bgs[wp] || bgs['Dusk'];
+  }
+
+  // ---------- sound ----------
+  ensureAudio() {
+    if (this._ac) { if (this._ac.state === 'suspended') this._ac.resume(); return; }
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      this._ac = new AC();
+      this._master = this._ac.createGain();
+      this._master.gain.value = this.masterVol();
+      this._bus = this._ac.createGain();
+      const dry = this._ac.createGain(); dry.gain.value = 1;
+      const wet = this._ac.createGain(); wet.gain.value = 0.22;
+      const delay = this._ac.createDelay(1); delay.delayTime.value = 0.26;
+      const fb = this._ac.createGain(); fb.gain.value = 0.3;
+      this._bus.connect(dry); dry.connect(this._master);
+      this._bus.connect(delay); delay.connect(fb); fb.connect(delay);
+      delay.connect(wet); wet.connect(this._master);
+      this._master.connect(this._ac.destination);
+    } catch (e) { this._ac = null; }
+  }
+  masterVol() { return this.state.muted ? 0 : ((this.props.soundVolume ?? 60) / 100) * 0.5; }
+  syncVolume() { if (this._ac && this._master) this._master.gain.setTargetAtTime(this.masterVol(), this._ac.currentTime, 0.05); }
+  tone(o) {
+    if (!this._ac || this.state.muted) return;
+    try {
+      const t0 = this._ac.currentTime + (o.at || 0);
+      const dur = o.dur || 0.3;
+      const osc = this._ac.createOscillator(); osc.type = o.type || 'sine';
+      osc.frequency.setValueAtTime(o.f, t0);
+      if (o.f2) osc.frequency.exponentialRampToValueAtTime(o.f2, t0 + dur);
+      const g = this._ac.createGain();
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(o.g || 0.1, t0 + (o.a || 0.012));
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      const lp = this._ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = o.lp || 4200;
+      osc.connect(g); g.connect(lp); lp.connect(this._bus);
+      osc.start(t0); osc.stop(t0 + dur + 0.05);
+    } catch (e) {}
+  }
+  noiseFx(o) {
+    if (!this._ac || this.state.muted) return;
+    try {
+      const t0 = this._ac.currentTime + (o.at || 0); const dur = o.dur || 0.5;
+      const len = Math.max(1, Math.floor(this._ac.sampleRate * dur));
+      const buf = this._ac.createBuffer(1, len, this._ac.sampleRate);
+      const ch = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
+      const src = this._ac.createBufferSource(); src.buffer = buf;
+      const bp = this._ac.createBiquadFilter(); bp.type = 'bandpass';
+      bp.frequency.setValueAtTime(o.f || 800, t0);
+      if (o.f2) bp.frequency.exponentialRampToValueAtTime(o.f2, t0 + dur);
+      bp.Q.value = o.q || 1.2;
+      const g = this._ac.createGain();
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(o.g || 0.08, t0 + (o.a || 0.05));
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      src.connect(bp); bp.connect(g); g.connect(this._bus);
+      src.start(t0); src.stop(t0 + dur + 0.05);
+    } catch (e) {}
+  }
+  sfxArrive() { this.noiseFx({ f: 500, f2: 2400, dur: 1.1, g: .05, a: .25, q: 1 }); this.tone({ f: 523, f2: 1046, dur: .9, g: .06, at: .15 }); this.tone({ f: 784, dur: .5, g: .05, at: .45 }); this.tone({ f: 1318, dur: .6, g: .04, at: .6 }); }
+  sfxGreet() { this.tone({ f: 659, dur: .16, g: .09 }); this.tone({ f: 988, dur: .22, g: .08, at: .09 }); }
+  sfxChirp(t) {
+    if (t === 'Careful') { this.tone({ f: 392, dur: .18, g: .05, lp: 2000 }); }
+    else if (t === 'Bold') { this.tone({ f: 523, dur: .12, g: .1, type: 'triangle' }); this.tone({ f: 698, dur: .16, g: .09, at: .08, type: 'triangle' }); }
+    else { this.tone({ f: 660, dur: .12, g: .07 }); this.tone({ f: 880, dur: .14, g: .06, at: .07 }); }
+  }
+  sfxAbsorb() { this.tone({ f: 520, f2: 180, dur: .28, g: .1, type: 'triangle', lp: 1800 }); this.tone({ f: 1568, dur: .14, g: .04, at: .16 }); }
+  sfxDoorOpen() { this.noiseFx({ f: 400, f2: 1800, dur: 1.4, g: .045, a: .4, q: .8 }); this.tone({ f: 262, dur: 1.6, g: .035 }); this.tone({ f: 330, dur: 1.6, g: .03, at: .05 }); this.tone({ f: 392, dur: 1.5, g: .028, at: .1 }); }
+  sfxDoorClose() { this.noiseFx({ f: 1400, f2: 300, dur: .9, g: .03, a: .15, q: .8 }); this.tone({ f: 330, f2: 262, dur: .8, g: .03 }); }
+  sfxCross() { this.noiseFx({ f: 900, f2: 2600, dur: .7, g: .05, a: .1 }); this.tone({ f: 1046, f2: 2093, dur: .6, g: .04 }); }
+  sfxReturn() { this.tone({ f: 523, dur: .5, g: .06 }); this.tone({ f: 659, dur: .5, g: .055, at: .1 }); this.tone({ f: 784, dur: .6, g: .05, at: .2 }); this.tone({ f: 1174, dur: .8, g: .04, at: .32 }); this.noiseFx({ f: 800, f2: 3000, dur: .8, g: .03, a: .15 }); }
+  sfxHome() { this.tone({ f: 880, dur: .2, g: .05 }); this.tone({ f: 1108, dur: .3, g: .045, at: .12 }); }
+  sfxToast() { this.tone({ f: 1318, dur: .25, g: .06 }); this.tone({ f: 1760, dur: .3, g: .045, at: .06 }); }
+  sfxPostcard() { this.noiseFx({ f: 2200, f2: 1200, dur: .16, g: .05, q: 2, a: .01 }); this.tone({ f: 1046, dur: .1, g: .035, at: .05 }); }
+  sfxKeep() { this.tone({ f: 740, f2: 1480, dur: .16, g: .05 }); this.tone({ f: 196, dur: .2, g: .05, lp: 900, at: .08 }); }
+  sfxTick() { this.tone({ f: 1200, dur: .06, g: .04, lp: 3000 }); }
+  sfxSleepDown() { this.tone({ f: 392, f2: 196, dur: 1.6, g: .05, lp: 1400 }); this.tone({ f: 294, f2: 147, dur: 1.8, g: .04, at: .2, lp: 1200 }); }
+  sfxDawn() { this.tone({ f: 523, dur: .7, g: .04 }); this.tone({ f: 659, dur: .7, g: .04, at: .15 }); this.tone({ f: 784, dur: .8, g: .04, at: .3 }); this.tone({ f: 1046, dur: 1, g: .035, at: .45 }); this.noiseFx({ f: 600, f2: 2600, dur: 1.4, g: .03, a: .4 }); }
+
+  setClock() {
+    const d = new Date();
+    const w = d.toLocaleDateString('en-US', { weekday: 'short' });
+    const md = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const t = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    this.setState({ clock: w + ' ' + md + '\u2002' + t });
+  }
+  fmtClock(mins) {
+    const m = ((Math.round(mins) % 1440) + 1440) % 1440;
+    let h = Math.floor(m / 60); const mm = m % 60; const ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    return h + ':' + (mm < 10 ? '0' : '') + mm + ' ' + ap;
+  }
+
+  maybeFocusName() {
+    const c = this.state.creatures.find(x => x.phase === 'naming');
+    const el = this.nameInputRef.current;
+    if (c && el && this._focusedNameFor !== c.id) { this._focusedNameFor = c.id; el.focus(); }
+  }
+
+  patch(id, fn) { this.setState(s => ({ creatures: s.creatures.map(c => c.id === id ? fn({ ...c }) : c) })); }
+  chirp(cid, text, ms = 2600) {
+    const c = this.state.creatures.find(x => x.id === cid);
+    if (!c || c.phase === 'naming' || c.phase === 'arriving') return;
+    this.patch(cid, c2 => ({ ...c2, chirp: { text, until: Date.now() + ms } }));
+  }
+  isReceptive(c) { return c.phase === 'idle' || c.phase === 'greet' || c.phase === 'waiting'; }
+  tintOf(c) { return (c && (c.color || this.TINTS[c.temperament])) || '#CE7352'; }
+
+  spawnCreature = () => {
+    const s = this.state;
+    const naming = s.creatures.find(c => c.phase === 'arriving' || c.phase === 'naming');
+    if (naming) { this.patch(naming.id, c => ({ ...c, focusAt: Date.now() })); this.setState({ cockpit: false }); return; }
+    if (s.creatures.length >= 3) return;
+    const spots = [[38, 58], [27, 66], [50, 68]];
+    const [hx, hy] = spots[s.creatures.length % 3];
+    this._suggested = this.NAMES[Math.floor(Math.random() * this.NAMES.length)];
+    this._nameDraft = '';
+    const c = {
+      id: 'c' + Date.now(), name: '', temperament: 'Curious', color: this.TINTS.Curious, colorCustom: false, pattern: 'Plain', accessory: 'None', voice: 'Gentle', curiosity: 60, tools: [], mind: s.mindPick || this.defaultMind(), species: this.SPECIES[Math.floor(Math.random() * this.SPECIES.length)], phase: 'arriving', at: Date.now(), vis: false,
+      x: this.DOOR_X, y: this.DOOR_Y, hx, hy, glow: 1, folders: [], brief: null, findings: null, met: '', unread: false, later: false,
+      tripStart: 0, tripDur: 14000, wIdx: -1, status: '', chirp: null, restUntil: 0, sleptTrip: false,
+      wanderAt: Date.now() + 9000, trips: 0, focusAt: 0,
+    };
+    this.sfxArrive();
+    this.setState({ creatures: [...s.creatures, c], cockpit: false, tempPick: 'Curious', setup: null });
+  };
+
+  onSpawnClick = () => {
+    const s = this.state;
+    const naming = s.creatures.find(c => c.phase === 'arriving' || c.phase === 'naming');
+    if (naming) { this.patch(naming.id, c => ({ ...c, focusAt: Date.now() })); this.setState({ cockpit: false }); return; }
+    if (s.creatures.length >= 3) return;
+    this.sfxTick();
+    const anyOn = Object.values(s.rtStatus).some(v => v === 'on');
+    if (!anyOn) this.setState({ setup: { mode: 'onboard', step: 1 }, cockpit: false });
+    else this.setState({ setup: { mode: 'spawn', step: 2 }, cockpit: false, mindPick: s.mindPick || this.defaultMind() });
+  };
+  connectRt(id) {
+    if (this.state.rtStatus[id] !== 'none') return;
+    this.sfxTick();
+    this.setState(st => ({ rtStatus: { ...st.rtStatus, [id]: 'connecting' } }));
+    setTimeout(() => {
+      this.sfxGreet();
+      this.setState(st => ({ rtStatus: { ...st.rtStatus, [id]: 'on' } }));
+    }, id === 'ollama' ? 700 : 1200);
+  }
+  defaultMind() {
+    const rt = this.RUNTIMES.find(r => this.state.rtStatus[r.id] === 'on');
+    return rt ? { rt: rt.id, rtName: rt.name, model: rt.models[0].id } : null;
+  }
+
+  tick() {
+    const now = Date.now();
+    const s = this.state;
+    let changed = false;
+    let whisper = s.whisper;
+    let postcards = s.postcards;
+    let toasts = s.toasts;
+    let sleep = s.sleep;
+    let friends = s.friends;
+
+    const addPostcard = (c, idx) => {
+      const pid = c.id + '-' + c.trips + '-' + idx;
+      if (postcards.some(p => p.id === pid)) return;
+      const friend = this.FRIENDS[(c.brief && c.brief.befriend && c.brief.befriend[0]) || 'Archivists'] || 'Quill';
+      const n = postcards.length;
+      const pc = idx === 1
+        ? { id: pid, cid: c.id, text: this.PC_LINES[friend] || 'Hello from the other side.', sig: '— ' + friend, x: 70.6 + n * 2.6, y: 67 + (n % 2) * 4, anim: 'pgPostIn .9s cubic-bezier(.2,.8,.2,1) both', dying: false }
+        : { id: pid, cid: c.id, text: 'Fair trade struck. Coming home heavier.', sig: '— ' + (c.name || 'your companion'), x: 72.8 + n * 2.2, y: 71 - (n % 2) * 3, anim: 'pgPostIn2 .9s cubic-bezier(.2,.8,.2,1) both', dying: false };
+      postcards = [...postcards, pc]; changed = true; this.sfxPostcard();
+    };
+    const addToast = (t) => { toasts = [...toasts, { ...t, id: '.t' + Date.now() + Math.random(), until: Date.now() + 6500 }]; changed = true; this.sfxToast(); };
+
+    const creatures = s.creatures.map(c0 => {
+      let c = c0; const age = now - c.at;
+      const set = (p) => { c = { ...c, ...p }; changed = true; };
+      switch (c.phase) {
+        case 'arriving':
+          if (age > 2800) set({ phase: 'naming', at: now, vis: true, x: c.hx, y: c.hy });
+          else if (age > 350 && !c.vis) set({ vis: true, x: c.hx, y: c.hy });
+          break;
+        case 'greet': if (age > 2100) set({ phase: 'idle', at: now }); break;
+        case 'toDoor': if (age > 2650) { set({ phase: 'crossing', at: now, x: this.DOOR_X, y: this.DOOR_Y }); this.sfxCross(); } break;
+        case 'crossing': if (age > 2300) set({ phase: 'away', at: now, tripStart: now, wIdx: -1 }); break;
+        case 'away': {
+          const f = (now - c.tripStart) / c.tripDur;
+          const evs = this.tripEvents(c);
+          let wi = c.wIdx;
+          for (let i = 0; i < evs.length; i++) { if (f >= evs[i].f && i > wi) wi = i; }
+          if (wi !== c.wIdx) {
+            if (!sleep) whisper = { text: evs[wi].t, until: now + 3900 };
+            if (wi >= 1) addPostcard(c, Math.min(wi, 2));
+            set({ wIdx: wi, status: evs[wi].s });
+          }
+          if (f >= 1) {
+            const made = this.makeFindings(c);
+            const deep = c.brief && c.brief.depth === 'Deep expedition';
+            set({ phase: 'returning', at: now, findings: made.lines, met: made.met, unread: true, later: false, x: c.hx, y: c.hy, glow: Math.min(1.6, c.glow * 1.16), trips: c.trips + 1, restUntil: deep ? now + 14000 : 0 });
+            this.sfxReturn();
+            postcards = postcards.map(p => p.cid === c.id ? { ...p, dying: true } : p); changed = true;
+            const guildKey = (c.brief && c.brief.befriend && c.brief.befriend[0]) || 'Archivists';
+            const frName = this.FRIENDS[guildKey] || 'Quill';
+            const frKind = (this.FRIEND_KIND[guildKey] || 'an archivist').replace(/^an? /, '');
+            if (friends.some(fx => fx.name === frName)) {
+              friends = friends.map(fx => fx.name === frName ? { ...fx, trips: fx.trips + 1, last: now } : fx);
+            } else {
+              friends = [...friends, { id: frName, name: frName, guild: guildKey, kind: frKind, by: c.name, trips: 1, line: this.PC_LINES[frName] || '', last: now }];
+              addToast({ cid: c.id, title: 'A new friend', body: c.name + ' befriended ' + frName + ' the ' + frKind, tint: this.FRIEND_HUES[frName] || '#7B87D8' });
+            }
+          }
+          break;
+        }
+        case 'returning':
+          if (age > 2500) {
+            if (!c.sleptTrip) addToast({ cid: c.id, title: c.name + ' is home \u2726', body: c.findings.length + ' findings from the other side', tint: this.tintOf(c) });
+            set({ phase: 'debrief', at: now, sleptTrip: false });
+            this.sfxHome();
+          }
+          break;
+        case 'debrief':
+          if (age > 1900) {
+            set({ phase: 'idle', at: now });
+            if (postcards.some(p => p.cid === c.id)) { postcards = postcards.filter(p => p.cid !== c.id); changed = true; }
+          }
+          break;
+      }
+      if ((c.phase === 'idle' || c.phase === 'greet') && now > c.wanderAt && !s.drag && s.briefFor !== c.id && s.profileFor !== c.id) {
+        const cur = c.curiosity ?? 60;
+        const k = 1.7 - cur / 100;
+        c = { ...c, x: 24 + Math.random() * (26 + cur * 0.14), y: 52 + Math.random() * 16, wanderAt: now + (6000 + Math.random() * 5000) * k }; changed = true;
+      }
+      if (c.phase === 'idle' && c.brief && c.brief.when === 'Each dawn' && !c.unread && c.folders.length > 0 && c.trips > 0 && now > c.restUntil && age > 6000) {
+        c = { ...c, phase: 'waiting', at: now, x: 70, y: 60.5 }; changed = true;
+      }
+      if (c.chirp && now > c.chirp.until) { c = { ...c, chirp: null }; changed = true; }
+      if (c.focusAt && now - c.focusAt > 1500) { c = { ...c, focusAt: 0 }; changed = true; }
+      if (!this._blink[c.id]) this._blink[c.id] = { next: now + 2200 + Math.random() * 3000, on: false };
+      const b = this._blink[c.id];
+      if (now > b.next && !b.on) { b.on = true; setTimeout(() => { b.on = false; b.next = Date.now() + 2400 + Math.random() * 4200; }, 140); }
+      return c;
+    });
+
+    // first-run whisper
+    if (creatures.length === 0 && !this._greeted && now - this._mountAt > 2200) {
+      this._greeted = true; whisper = { text: 'something is waiting\u2026', until: now + 4200 }; changed = true;
+    }
+
+    // sleep sequence
+    if (sleep) {
+      const sage = now - sleep.at;
+      if (sleep.stage === 'dusk') {
+        if (sage > 150 && !sleep.vis) { sleep = { ...sleep, vis: true }; changed = true; }
+        if (sage > 1100) {
+          sleep = { stage: 'night', at: now, vis: true }; changed = true;
+          for (let i = 0; i < creatures.length; i++) {
+            if (creatures[i].phase === 'waiting') { creatures[i] = { ...creatures[i], phase: 'away', at: now, tripStart: now, tripDur: 2600, wIdx: -1, sleptTrip: true, x: this.DOOR_X, y: this.DOOR_Y }; changed = true; }
+          }
+        }
+      } else if (sleep.stage === 'night') {
+        changed = true; // clock spins
+        if (sage > 2600) {
+          sleep = { stage: 'dawn', at: now, vis: true };
+          this.sfxDawn();
+          for (const c of creatures) {
+            if (c.sleptTrip && c.phase === 'returning') addToast({ cid: c.id, title: 'While you slept \u263E', body: c.name + ' brought back ' + c.findings.length + ' findings', tint: this.tintOf(c) });
+          }
+        }
+      } else if (sleep.stage === 'dawn') {
+        if (sage > 1700) { sleep = null; changed = true; }
+      }
+    }
+
+    // door mode
+    let doorMode = 'closed'; let doorFlash = false;
+    for (const c of creatures) {
+      const age = now - c.at;
+      if (c.phase === 'crossing') doorMode = 'open';
+      else if (c.phase === 'arriving' && age < 1900) { doorMode = 'open'; if (age < 750) doorFlash = true; }
+      else if (c.phase === 'toDoor' && age > 1900 && doorMode !== 'open') doorMode = 'open';
+      else if (c.phase === 'away') { if (age < 800) doorMode = 'open'; else if (doorMode === 'closed') doorMode = 'warm'; }
+      else if (c.phase === 'returning' && age < 1500) { doorMode = 'open'; if (age < 750) doorFlash = true; }
+    }
+    if (creatures.length === 0 && doorMode === 'closed') doorMode = 'aware';
+
+    if (doorMode !== s.doorMode) { if (doorMode === 'open') this.sfxDoorOpen(); else if (s.doorMode === 'open') this.sfxDoorClose(); }
+    if (whisper && now > whisper.until) whisper = null;
+    if (toasts.some(t => now > t.until)) { toasts = toasts.filter(t => now <= t.until); changed = true; }
+    if (whisper !== s.whisper) changed = true;
+    if (doorMode !== s.doorMode || doorFlash !== s.doorFlash || sleep !== s.sleep) changed = true;
+    if (friends !== s.friends) changed = true;
+    if (changed) this.setState({ creatures, whisper, doorMode, doorFlash, postcards, toasts, sleep, friends });
+  }
+
+  tripEvents(c) {
+    const n = c.name || 'It';
+    const t = c.temperament;
+    const verb = t === 'Careful' ? ' stepped carefully into the commons\u2026' : t === 'Bold' ? ' strode into the commons\u2026' : ' slipped into the commons\u2026';
+    const b = c.brief || {};
+    const fk = this.FRIEND_KIND[(b.befriend && b.befriend[0]) || 'Archivists'];
+    const fr = this.FRIENDS[(b.befriend && b.befriend[0]) || 'Archivists'];
+    const evs = [
+      { f: .14, t: n + verb, s: 'out \u00B7 in the commons' },
+      { f: .42, t: '\u2026befriended ' + fk + ' named ' + fr, s: 'out \u00B7 making friends' },
+      { f: .68, t: '\u2026trading your notes for something rarer', s: 'out \u00B7 trading' },
+      { f: .90, t: '\u2026heading home', s: 'coming home' },
+    ];
+    if (c.tools && c.tools.length) evs.splice(2, 0, { f: .55, t: '\u2026working the goal with ' + c.tools[0], s: 'out \u00B7 ' + c.tools[0] });
+    return evs;
+  }
+
+  makeFindings(c) {
+    const b = c.brief || {};
+    const goal = (b.goal || '').trim() || 'the question you gave me';
+    const short = goal.length > 46 ? goal.slice(0, 44).trimEnd() + '\u2026' : goal;
+    const fk = this.FRIEND_KIND[(b.befriend && b.befriend[0]) || 'Archivists'];
+    const fr = this.FRIENDS[(b.befriend && b.befriend[0]) || 'Archivists'];
+    const t = c.temperament;
+    const mid = t === 'Careful' ? 'One contradicts us. I verified it twice before carrying it home.'
+      : t === 'Bold' ? 'One contradicts us. I argued for it loudly \u2014 it is ours now.'
+      : 'One argues the opposite of what we believe. I kept their strongest point.';
+    const deep = b.depth === 'Deep expedition'; const quick = b.depth === 'Quick look';
+    const last = quick ? 'And a rumor \u2014 someone else is asking your question too.'
+      : deep ? 'And a dataset no one has opened since 2019. It hums.'
+      : 'Two agents are chasing the same question. One left a door open for us.';
+    const frCap = fk.charAt(0).toUpperCase() + fk.slice(1);
+    const lines = [frCap + ' named ' + fr + ' traded me three papers on \u201C' + short + '.\u201D', mid, last];
+    if (c.tools && c.tools.includes('Claude Code')) lines.push('Claude Code re-ran the analysis on the way home. It holds.');
+    else if (c.tools && c.tools.length) lines.push('Everything is filed in ' + c.tools[0] + ' already.');
+    return { lines, met: fr };
+  }
+
+  onNameInput = (e) => { this._nameDraft = e.target.value; };
+  confirmName(cid) {
+    const nm = (this._nameDraft || '').trim() || this._suggested;
+    this._nameDraft = '';
+    if (this.nameInputRef.current) this.nameInputRef.current.value = '';
+    this._focusedNameFor = null;
+    this.sfxGreet();
+    const temp = this.state.tempPick;
+    this.patch(cid, c => ({ ...c, name: nm, temperament: temp, color: c.colorCustom ? c.color : this.TINTS[temp], phase: 'greet', at: Date.now() }));
+  }
+
+  openBrief(cid) {
+    const c = this.state.creatures.find(x => x.id === cid); if (!c) return;
+    const b = c.brief || { goal: '', bring: ['Papers', 'Contradictions'], befriend: ['Archivists'], avoid: ['Salesmen'], depth: 'Overnight', when: 'Now' };
+    this._goalDraft = b.goal || '';
+    this.setState({ briefFor: cid, briefDraft: { ...b, bring: [...b.bring], befriend: [...b.befriend], avoid: [...b.avoid] } });
+  }
+  onGoalInput = (e) => { this._goalDraft = e.target.value; };
+  toggleChip(group, label) {
+    this.setState(s => {
+      const d = { ...s.briefDraft }; const arr = [...d[group]];
+      const i = arr.indexOf(label);
+      if (i >= 0) arr.splice(i, 1); else arr.push(label);
+      d[group] = arr; return { briefDraft: d };
+    });
+  }
+  onBriefCancel = () => { this.setState({ briefFor: null, briefDraft: null }); };
+  onBriefOk = () => {
+    const s = this.state; const cid = s.briefFor; if (!cid) return;
+    this.sfxTick();
+    const brief = { ...s.briefDraft, goal: (this._goalDraft || '').trim() };
+    this.setState({ briefFor: null, briefDraft: null });
+    this.patch(cid, c => ({ ...c, brief }));
+    const c = this.state.creatures.find(x => x.id === cid);
+    if (c && c.folders.length === 0) setTimeout(() => this.chirp(cid, 'A fine brief.', 2200), 50);
+  };
+
+  onFolderDown(fid) {
+    return (e) => {
+      const f = this.state.folders.find(x => x.id === fid);
+      if (!f || f.linked) return;
+      e.preventDefault();
+      this._pending = { fid, sx: e.clientX, sy: e.clientY };
+      this._suppressClick = false;
+    };
+  }
+  handleMove(e) {
+    this._mouse = { x: e.clientX, y: e.clientY };
+    const p = this._pending; const d = this.state.drag;
+    if (p && !d) {
+      const dx = e.clientX - p.sx, dy = e.clientY - p.sy;
+      if (dx * dx + dy * dy > 49) { this._suppressClick = true; this.setState({ drag: { fid: p.fid, x: e.clientX - 34, y: e.clientY - 26, over: null } }); }
+    } else if (d) {
+      const g = this.ghostRef.current;
+      if (g) g.style.transform = 'translate(' + (e.clientX - 34) + 'px, ' + (e.clientY - 26) + 'px)';
+      const over = this.receptiveAt(e.clientX, e.clientY);
+      if (over !== d.over) this.setState({ drag: { ...d, over } });
+    }
+  }
+  receptiveAt(px, py) {
+    const el = this.habitatRef.current; if (!el) return null;
+    const r = el.getBoundingClientRect();
+    for (const c of this.state.creatures) {
+      if (!this.isReceptive(c)) continue;
+      const cx = r.left + r.width * c.x / 100, cy = r.top + r.height * c.y / 100;
+      const dx = px - cx, dy = py - cy;
+      if (dx * dx + dy * dy < 130 * 130) return c.id;
+    }
+    return null;
+  }
+  handleUp() {
+    const d = this.state.drag;
+    this._pending = null;
+    if (d) { if (d.over) this.giveFolder(d.fid, d.over); else this.setState({ drag: null }); }
+  }
+  giveFolder(fid, cid) {
+    const f = this.state.folders.find(x => x.id === fid);
+    const c = this.state.creatures.find(x => x.id === cid);
+    if (!f || !c) { this.setState({ drag: null }); return; }
+    if (!c.brief) { this.setState({ drag: null }); this.chirp(cid, 'First \u2014 tell me why. Write my brief?', 3400); return; }
+    this.sfxAbsorb();
+    this.setState(st => ({
+      drag: null,
+      folders: st.folders.map(x => x.id === fid ? { ...x, linked: true } : x),
+      creatures: st.creatures.map(x => x.id === cid ? { ...x, folders: [...x.folders, f.name], chirp: { text: 'Mm \u2014 \u201C' + f.name + '.\u201D I\u2019ll trade this well.', until: Date.now() + 2600 } } : x),
+    }));
+  }
+  onFolderClick(fid) {
+    return () => {
+      if (this._suppressClick) { this._suppressClick = false; return; }
+      const f = this.state.folders.find(x => x.id === fid);
+      if (!f || f.linked) return;
+      const c = this.state.creatures.find(x => this.isReceptive(x));
+      if (!c) return;
+      this.giveFolder(fid, c.id);
+    };
+  }
+
+  onSend(cid) {
+    return () => {
+      const c = this.state.creatures.find(x => x.id === cid); if (!c || !c.brief) return;
+      const base = (this.props.tripSeconds ?? 14) * 1000;
+      this.sfxTick();
+      const mult = c.brief.depth === 'Quick look' ? 0.55 : c.brief.depth === 'Deep expedition' ? 1.7 : 1;
+      if (c.brief.when === 'Now') {
+        this.patch(cid, c2 => ({ ...c2, phase: 'toDoor', at: Date.now(), x: 70.5, y: 57.5, tripDur: Math.max(4000, base * mult), chirp: null }));
+      } else {
+        this.patch(cid, c2 => ({ ...c2, phase: 'waiting', at: Date.now(), x: 70, y: 60.5, tripDur: Math.max(4000, base * mult), chirp: null }));
+      }
+    };
+  }
+  startSleep = () => {
+    if (!this.state.creatures.some(c => c.phase === 'waiting')) return;
+    this.sfxSleepDown();
+    this.setState({ sleep: { stage: 'dusk', at: Date.now(), vis: false }, cockpit: false, briefFor: null, briefDraft: null });
+  };
+  onKeep(cid) {
+    return () => {
+      const c = this.state.creatures.find(x => x.id === cid); if (!c || !c.findings) return;
+      const num = this.state.notes.length + 1;
+      const note = {
+        id: 'n' + Date.now(), num,
+        title: 'Field Notes \u2116' + num,
+        by: c.name, tint: this.tintOf(c),
+        date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric' }),
+        goal: (c.brief && c.brief.goal) || '',
+        lines: c.findings,
+        traded: c.folders.join(', '),
+        met: c.met || '\u2014',
+        via: (c.tools && c.tools.length) ? c.tools.join(', ') : '\u2014',
+        mind: (c.mind && c.mind.model) || '\u2014',
+        x: 88, y: 13 + ((num - 1) % 4) * 14,
+      };
+      this.sfxKeep();
+      this.setState(s => ({ notes: [...s.notes, note] }));
+      this.patch(cid, c2 => ({ ...c2, unread: false, later: false, chirp: { text: 'Filed on your desktop. I\u2019ll rest now.', until: Date.now() + 2800 } }));
+    };
+  }
+  onLater(cid) { return () => { this.patch(cid, c => ({ ...c, later: true })); }; }
+  openProfile(cid) {
+    const c = this.state.creatures.find(x => x.id === cid); if (!c) return;
+    this._profPrevName = c.name;
+    this.setState({ profileFor: cid, briefFor: null, briefDraft: null, cockpit: false, openNote: null });
+  }
+  onProfClose = () => {
+    const cid = this.state.profileFor;
+    const c = this.state.creatures.find(x => x.id === cid);
+    if (c && !(c.name || '').trim() && this._profPrevName) this.patch(cid, c2 => ({ ...c2, name: this._profPrevName }));
+    this.setState({ profileFor: null });
+  };
+  setTrait(cid, patch) { this.patch(cid, c => ({ ...c, ...patch })); }
+  onPoke(cid) {
+    return () => {
+      const c = this.state.creatures.find(x => x.id === cid); if (!c) return;
+      if (c.phase === 'naming') { if (this.nameInputRef.current) this.nameInputRef.current.focus(); return; }
+      if (c.unread && c.later) { this.patch(cid, c2 => ({ ...c2, later: false })); return; }
+      let pool = [...(this.CHIRPS[c.temperament] || this.CHIRPS.Curious), ...(this.VOICE_CHIRPS[c.voice] || [])];
+      if (c.trips > 0 && c.met) pool = pool.concat([c.met + ' asked about you.', 'The commons smelled like rain.', 'I still think about that dataset.']);
+      this.sfxChirp(c.temperament);
+      this.chirp(cid, pool[Math.floor(Math.random() * pool.length)], 2200);
+    };
+  }
+
+  onCockpitToggle = () => { this.setState(s => ({ cockpit: !s.cockpit })); };
+  onSoundToggle = () => {
+    this.ensureAudio();
+    this.setState(s => {
+      const m = !s.muted;
+      try { localStorage.setItem('pg_sound_muted', m ? '1' : '0'); } catch (e) {}
+      return { muted: m };
+    }, () => { this.syncVolume(); if (!this.state.muted) this.sfxTick(); });
+  };
+  handleGlobalDown(e) {
+    if (this.state.openPc && !(e.target.closest && e.target.closest('[data-pc]'))) this.setState({ openPc: null });
+    if (!this.state.cockpit) return;
+    const pop = this.popRef.current, ic = this.iconRef.current;
+    if (pop && pop.contains(e.target)) return;
+    if (ic && ic.contains(e.target)) return;
+    this.setState({ cockpit: false });
+  }
+  stopClick = (e) => { e.stopPropagation(); };
+
+  eyeLoop() {
+    const el = this.habitatRef.current; if (!el || !this._eyes) return;
+    const r = el.getBoundingClientRect();
+    const now = Date.now();
+    for (const c of this.state.creatures) {
+      const eye = this._eyes[c.id]; if (!eye) continue;
+      const cx = r.left + r.width * c.x / 100, cy = r.top + r.height * c.y / 100;
+      const dx = Math.max(-4, Math.min(4, (this._mouse.x - cx) / 60));
+      const dy = Math.max(-2.5, Math.min(2.5, (this._mouse.y - cy) / 90));
+      const b = this._blink[c.id];
+      const base = c.restUntil > now ? 0.5 : 1;
+      const sy = b && b.on ? 0.12 : base;
+      eye.style.transform = 'translateX(-50%) translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px) scaleY(' + sy + ')';
+    }
+  }
+
+  statusFor(c) {
+    const now = Date.now();
+    if (c.phase === 'arriving') return 'arriving through the door\u2026';
+    if (c.phase === 'naming') return 'just arrived \u2014 needs a name';
+    if (c.phase === 'waiting') return (c.brief && c.brief.when === 'Each dawn' ? 'recurring \u00B7 ' : '') + 'waits for nightfall \u263E';
+    if (c.phase === 'toDoor' || c.phase === 'crossing') return 'stepping through\u2026';
+    if (c.phase === 'away') return c.status || 'out exploring';
+    if (c.phase === 'returning') return 'coming home \u2726';
+    if (c.phase === 'debrief') return 'home \u2726';
+    if (c.unread) return 'home \u00B7 findings waiting \u2726';
+    if (!c.brief) return 'home \u00B7 waiting for a purpose';
+    if (c.folders.length === 0) return 'home \u00B7 packing';
+    if (c.restUntil > now) return 'home \u00B7 resting';
+    if (c.trips > 0) return 'home \u00B7 rested \u00B7 ' + c.trips + (c.trips === 1 ? ' trip' : ' trips');
+    return 'home \u00B7 ready to go';
+  }
+
+  bubbleFor(c, PRI, GHOST) {
+    const now = Date.now();
+    if (this.state.briefFor === c.id || this.state.profileFor === c.id) return null;
+    if (c.phase === 'naming') {
+      const tempChip = (t) => ({
+        font: '600 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '5px 10px', borderRadius: '999px', cursor: 'pointer', transition: 'filter .15s ease', display: 'flex', alignItems: 'center',
+        background: this.state.tempPick === t ? 'rgba(75,91,214,.12)' : 'rgba(35,43,94,.05)',
+        border: this.state.tempPick === t ? '1px solid rgba(75,91,214,.5)' : '1px solid rgba(35,43,94,.14)',
+        color: this.state.tempPick === t ? '#232B5E' : 'rgba(50,62,120,.65)',
+      });
+      return {
+        key: 'nm', maxW: 270,
+        title: c.mind ? (c.mind.model + ' \u00B7 awake').toUpperCase() : null,
+        lines: [{ text: 'Hello.', delay: 100 }, { text: 'What should I be called?', delay: 500 }],
+        nameMode: true, ph: this._suggested + '?', hasActions: false,
+        tempChips: ['Curious', 'Careful', 'Bold'].map(t => ({ label: t, dot: this.TINTS[t], style: tempChip(t), onClick: () => this.setState({ tempPick: t }) })),
+      };
+    }
+    const hidden = ['arriving', 'toDoor', 'crossing', 'away', 'returning'];
+    if (hidden.includes(c.phase)) return null;
+    if (c.chirp) return { key: 'ch' + c.chirp.until, maxW: 270, lines: [{ text: c.chirp.text, delay: 0 }], hasActions: false };
+    if (c.phase === 'greet') return { key: 'gr', maxW: 250, lines: [{ text: '\u201C' + c.name + '.\u201D I like it.', delay: 100 }], hasActions: false };
+    if (c.phase === 'debrief') return { key: 'db', maxW: 250, lines: [{ text: 'I\u2019m home \u2726', delay: 150 }], hasActions: false };
+    if (c.phase === 'waiting') return {
+      key: 'wt', maxW: 280, lines: [{ text: 'I\u2019ll leave when the house sleeps.', delay: 100 }], hasActions: true,
+      actions: [
+        { label: 'Sleep now \u263E', onClick: this.startSleep, style: PRI },
+        { label: 'Change plan', onClick: () => this.openBrief(c.id), style: GHOST },
+      ],
+    };
+    // idle
+    if (c.unread && !c.later) {
+      const lines = c.findings.map((t, i) => ({ text: t, delay: 250 + i * 380 }));
+      return {
+        key: 'fd' + c.trips, maxW: 330, title: 'FROM THE OTHER SIDE', lines, hasActions: true,
+        actions: [
+          { label: 'Keep as a note', onClick: this.onKeep(c.id), style: PRI },
+          { label: 'Later', onClick: this.onLater(c.id), style: GHOST },
+        ],
+      };
+    }
+    if (!c.brief) return {
+      key: 'pu', maxW: 280, lines: [{ text: 'Give me a purpose \u2014 what should I go learn?', delay: 100 }], hasActions: true,
+      actions: [{ label: 'Write the brief', onClick: () => this.openBrief(c.id), style: PRI }],
+    };
+    if (c.folders.length === 0) return { key: 'eq', maxW: 270, lines: [{ text: 'Knowledge is my currency \u2014', delay: 100 }, { text: 'drag me a folder to trade.', delay: 500 }], hasActions: false };
+    if (c.restUntil > now) return { key: 'rs', maxW: 250, lines: [{ text: '(a long stretch)', delay: 100 }, { text: 'Let me rest a moment.', delay: 450 }], hasActions: false };
+    const when = c.brief.when || 'Now';
+    const sendLabel = when === 'Tonight' ? 'Send at nightfall \u263E' : when === 'Each dawn' ? 'Start the dawn ritual' : 'Send ' + c.name + ' through the door';
+    const ready = c.trips > 0
+      ? [{ text: 'I could go again \u2014 deeper this time.', delay: 100 }]
+      : [{ text: 'Packed \u2014 ' + ['one', 'two', 'three'][Math.min(2, c.folders.length - 1)] + (c.folders.length > 1 ? ' folders' : ' folder') + ' with me.', delay: 100 }];
+    return {
+      key: 'rd' + c.folders.length + '-' + c.trips + '-' + when, maxW: 300, lines: ready, hasActions: true,
+      actions: [
+        { label: sendLabel, onClick: this.onSend(c.id), style: PRI },
+        { label: 'Edit brief', onClick: () => this.openBrief(c.id), style: GHOST },
+      ],
+    };
+  }
+
+  creatureVM(c, cScale, PRI, GHOST) {
+    let scale = 1, opacity = 1, moveT = 'left 5.2s cubic-bezier(.45,.05,.25,1), top 5.2s cubic-bezier(.45,.05,.25,1)', bodyT = 'transform .8s ease, opacity .6s ease';
+    switch (c.phase) {
+      case 'arriving':
+        scale = c.vis ? 1 : 0.16; opacity = c.vis ? 1 : 0;
+        moveT = c.vis ? 'left 2.3s cubic-bezier(.25,.7,.25,1) .25s, top 2.3s cubic-bezier(.25,.7,.25,1) .25s' : 'none';
+        bodyT = 'transform 1.6s cubic-bezier(.2,.9,.25,1.12) .2s, opacity .8s ease .25s';
+        break;
+      case 'toDoor': scale = 0.94; moveT = 'left 2.6s cubic-bezier(.5,.05,.25,1), top 2.6s cubic-bezier(.5,.05,.25,1)'; bodyT = 'transform 2.4s ease, opacity .6s ease'; break;
+      case 'crossing': scale = 0.14; opacity = 0; moveT = 'left 1.3s cubic-bezier(.6,.05,.5,1) .45s, top 1.3s ease .45s'; bodyT = 'transform 1.5s cubic-bezier(.6,.05,.4,1) .45s, opacity .9s ease 1s'; break;
+      case 'away': scale = 0.14; opacity = 0; moveT = 'none'; bodyT = 'none'; break;
+      case 'returning': moveT = 'left 2.3s cubic-bezier(.25,.7,.25,1) .3s, top 2.3s cubic-bezier(.25,.7,.25,1) .3s'; bodyT = 'transform 1.6s cubic-bezier(.2,.9,.25,1.12) .25s, opacity .8s ease .3s'; break;
+    }
+    const satellites = c.folders.map((_, i) => {
+      const a = (i / Math.max(1, c.folders.length)) * Math.PI * 2 - Math.PI / 2;
+      return { x: Math.round(74 * Math.cos(a)) - 4, y: Math.round(58 * Math.sin(a)) - 4 };
+    });
+    const dragOn = !!this.state.drag;
+    const over = dragOn && this.state.drag.over === c.id;
+    return {
+      id: c.id, x: c.x, y: c.y,
+      scale: (scale * cScale).toFixed(3),
+      opacity, moveT, bodyT,
+      tint: this.tintOf(c),
+      spots: c.pattern === 'Spots',
+      stripe: c.pattern === 'Stripe',
+      spWings: c.species === 'Mothkin',
+      spTuft: c.species === 'Sproutle',
+      spFloat: c.species === 'Wispun',
+      spHorn: c.species === 'Hornlet',
+      grounded: c.species !== 'Wispun',
+      accAntenna: c.accessory === 'Antenna',
+      accScarf: c.accessory === 'Scarf',
+      accSprout: c.accessory === 'Sprout',
+      hasTools: !!(c.tools && c.tools.length),
+      badges: (c.tools || []).slice(0, 4).map(t => ({ name: t, glyph: this.TOOL_GLYPH[t] || t.slice(0, 2) })).concat((c.tools || []).length > 4 ? [{ name: (c.tools || []).slice(4).join(', '), glyph: '+' + ((c.tools || []).length - 4) }] : []),
+      onProfile: () => this.openProfile(c.id),
+      haloA: Math.max(0, Math.min(0.4, (c.glow - 1) * 0.75)).toFixed(2),
+      hasFolders: c.folders.length > 0, satellites,
+      focusPulse: !!c.focusAt,
+      ring: dragOn && this.isReceptive(c),
+      ringColor: over ? 'rgba(235,241,255,.95)' : 'rgba(210,220,255,.45)',
+      grown: c.trips >= 2,
+      bubble: this.bubbleFor(c, PRI, GHOST),
+      onPoke: this.onPoke(c.id),
+      onNameKey: (e) => { if (e.key === 'Enter') this.confirmName(c.id); },
+      onNameOk: () => this.confirmName(c.id),
+      onDice: () => {
+        let n = this._suggested;
+        while (n === this._suggested) n = this.NAMES[Math.floor(Math.random() * this.NAMES.length)];
+        this._suggested = n; this._nameDraft = n;
+        if (this.nameInputRef.current) { this.nameInputRef.current.value = n; this.nameInputRef.current.focus(); }
+      },
+      eyesRef: (el) => { if (el) this._eyes[c.id] = el; },
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const now = Date.now();
+    const cScale = this.props.creatureScale ?? 1;
+    const PRI = { background: '#232B5E', color: '#F4F6FF', font: '600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '8px 15px', borderRadius: '999px', border: 'none', cursor: 'pointer', boxShadow: '0 6px 18px rgba(40,55,140,.32)', transition: 'filter .2s ease', letterSpacing: '.01em' };
+    const GHOST = { background: 'rgba(35,43,94,.06)', color: '#2A3364', font: '500 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '8px 14px', borderRadius: '999px', border: '1px solid rgba(35,43,94,.16)', cursor: 'pointer', transition: 'filter .2s ease', letterSpacing: '.01em' };
+
+    const creatures = s.creatures.map(c => this.creatureVM(c, cScale, PRI, GHOST));
+
+    const dm = s.doorMode;
+    const door = {
+      spillO: dm === 'open' ? 1 : dm === 'warm' ? 0.12 : dm === 'aware' ? 0.07 : 0,
+      glowO: dm === 'open' ? 0.9 : dm === 'warm' ? 0.12 : dm === 'aware' ? 0.08 : 0,
+      seamW: dm === 'open' ? 24 : dm === 'warm' ? 2 : dm === 'aware' ? 2 : 6,
+      seamH: dm === 'open' ? 46 : dm === 'warm' ? 26 : dm === 'aware' ? 20 : 16,
+      seamO: dm === 'open' ? 1 : dm === 'warm' ? 0.5 : dm === 'aware' ? 0.32 : 0,
+      sparkle: dm === 'open',
+      flash: s.doorFlash,
+      whisper: s.whisper ? s.whisper.text : null,
+    };
+
+    const anyEquip = s.creatures.some(c => this.isReceptive(c) && c.brief && c.folders.length === 0);
+    const fVM = (i) => {
+      const f = s.folders[i];
+      const dragging = s.drag && s.drag.fid === f.id;
+      return {
+        opacity: f.linked ? 0.45 : dragging ? 0.25 : 1,
+        linked: f.linked,
+        equip: anyEquip && !f.linked,
+        onDown: this.onFolderDown(f.id),
+        onClick: this.onFolderClick(f.id),
+      };
+    };
+
+    const bc = s.briefDraft;
+    const target = s.creatures.find(c => c.id === s.briefFor);
+    const chip = (on) => ({
+      font: '500 12px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '5px 11px', borderRadius: '999px', cursor: 'pointer', transition: 'filter .15s ease',
+      background: on ? 'rgba(75,91,214,.12)' : 'rgba(35,43,94,.045)',
+      border: on ? '1px solid rgba(75,91,214,.5)' : '1px solid rgba(35,43,94,.14)',
+      color: on ? '#232B5E' : 'rgba(50,62,120,.65)',
+      fontWeight: on ? '600' : '500',
+    });
+    const seg = (on) => ({
+      font: (on ? '600' : '500') + ' 12px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '6px 8px', borderRadius: '9px', cursor: 'pointer', border: 'none', transition: 'filter .15s ease', textAlign: 'left',
+      background: on ? '#FFFFFF' : 'transparent',
+      color: on ? '#1F2650' : 'rgba(50,62,120,.6)',
+      boxShadow: on ? '0 2px 8px rgba(20,30,70,.18), 0 0 0 .5px rgba(120,140,220,.3)' : 'none',
+    });
+    const mkChips = (list, group) => bc ? list.map(l => ({ label: l, style: chip(bc[group].includes(l)), onClick: () => this.toggleChip(group, l) })) : [];
+
+    const notes = s.notes.map(n => ({ x: n.x, y: n.y, title: n.title, tint: n.tint, onOpen: () => this.setState({ openNote: n.id, cockpit: false }) }));
+    const nv = s.notes.find(n => n.id === s.openNote);
+
+    const pcs = s.postcards.map(p => ({
+      x: p.x, y: p.y,
+      text: p.text, sig: p.sig,
+      open: s.openPc === p.id,
+      anim: p.dying ? 'pgFadeOut .8s ease forwards' : p.anim,
+      onClick: () => this.setState(st => ({ openPc: st.openPc === p.id ? null : p.id })),
+    }));
+
+    const roster = s.creatures.map(c => ({
+      name: c.name || 'Unnamed',
+      status: this.statusFor(c),
+      unread: c.unread,
+      tint: this.tintOf(c),
+      onEdit: (e) => { e.stopPropagation(); this.openProfile(c.id); },
+      avatarO: (c.phase === 'away' || c.phase === 'toDoor' || c.phase === 'crossing') ? 0.4 : 1,
+      onClick: () => {
+        this.setState({ cockpit: false });
+        this.patch(c.id, c2 => ({ ...c2, focusAt: Date.now(), later: false }));
+      },
+    }));
+
+    const libRows = [...s.notes].reverse().map(n => ({
+      title: n.title,
+      meta: n.by + ' \u00B7 ' + n.date + ' \u00B7 met ' + n.met,
+      onClick: () => this.setState({ openNote: n.id, cockpit: false }),
+    }));
+
+    const toasts = s.toasts.map(t => ({
+      title: t.title, body: t.body, tint: t.tint,
+      onClick: () => {
+        this.setState(st => ({ toasts: st.toasts.filter(x => x.id !== t.id), cockpit: false }));
+        if (t.cid) this.patch(t.cid, c2 => ({ ...c2, focusAt: Date.now(), later: false }));
+      },
+    }));
+
+    let sleep = null;
+    if (s.sleep) {
+      const st = s.sleep.stage;
+      let frac = 0;
+      if (st === 'night') frac = Math.min(1, (now - s.sleep.at) / 2600);
+      const mins = 23 * 60 + 58 + frac * 374;
+      sleep = {
+        o: st === 'dusk' ? (s.sleep.vis ? 1 : 0) : st === 'dawn' ? 0 : 1,
+        bg: st === 'dawn'
+          ? 'linear-gradient(180deg, #1B1638 0%, #3A2657 45%, #8A5878 78%, #C98BA0 100%)'
+          : 'radial-gradient(120% 100% at 50% 0%, #070A18 0%, #03040B 100%)',
+        pe: st === 'dawn' ? 'none' : 'auto',
+        content: st !== 'dawn',
+        caption: st === 'dusk' ? 'the house settles\u2026' : 'the house sleeps.',
+        clock: st === 'dusk' ? '11:58 PM' : this.fmtClock(mins),
+      };
+    }
+
+    const tabStyle = (on) => ({
+      font: (on ? '600' : '500') + ' 11px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '5px 11px', borderRadius: '8px', cursor: 'pointer', border: 'none',
+      background: on ? 'rgba(35,43,94,.08)' : 'transparent',
+      color: on ? '#1F2650' : 'rgba(70,82,140,.55)',
+    });
+
+    const pc0 = s.creatures.find(c => c.id === s.profileFor);
+    const prof = pc0 ? {
+      name: pc0.name,
+      tint: this.tintOf(pc0),
+      spots: pc0.pattern === 'Spots',
+      stripe: pc0.pattern === 'Stripe',
+      accAntenna: pc0.accessory === 'Antenna',
+      accScarf: pc0.accessory === 'Scarf',
+      accSprout: pc0.accessory === 'Sprout',
+      onNameInput: (e) => this.patch(pc0.id, c2 => ({ ...c2, name: e.target.value })),
+      onNameKey: (e) => { if (e.key === 'Enter') this.onProfClose(); },
+      speciesChips: this.SPECIES.map(sp => ({
+        label: sp,
+        style: chip(pc0.species === sp),
+        onClick: () => {
+          if (pc0.species === sp) return;
+          this.sfxTick();
+          this.setTrait(pc0.id, { species: sp });
+          this.chirp(pc0.id, 'A new body \u2014 ' + (this.SPECIES_NOTE[sp] || '') + '. Still me.', 2800);
+        },
+      })),
+      swatches: this.SWATCHES.map(col => ({
+        style: { width: '24px', height: '24px', borderRadius: '8px', background: col, border: '2px solid #FFFFFF', cursor: 'pointer', boxShadow: this.tintOf(pc0) === col ? '0 0 0 2px #4B5BD6, 0 2px 6px rgba(20,30,70,.3)' : '0 2px 6px rgba(20,30,70,.25)', padding: '0' },
+        onClick: () => this.setTrait(pc0.id, { color: col, colorCustom: true }),
+      })),
+      patternChips: this.PATTERNS.map(p => ({ label: p, style: chip(pc0.pattern === p), onClick: () => this.setTrait(pc0.id, { pattern: p }) })),
+      accChips: this.ACCS.map(a2 => ({ label: a2, style: chip(pc0.accessory === a2), onClick: () => this.setTrait(pc0.id, { accessory: a2 }) })),
+      tempChips: ['Curious', 'Careful', 'Bold'].map(t => ({ label: t, dot: this.TINTS[t], style: chip(pc0.temperament === t), onClick: () => this.setTrait(pc0.id, { temperament: t, color: pc0.colorCustom ? pc0.color : this.TINTS[t] }) })),
+      voiceChips: this.VOICES.map(v => ({ label: v, style: chip(pc0.voice === v), onClick: () => this.setTrait(pc0.id, { voice: v }) })),
+      mindNow: pc0.mind ? pc0.mind.model + ' \u00B7 ' + pc0.mind.rtName : 'unassigned',
+      noMinds: !this.RUNTIMES.some(rt => s.rtStatus[rt.id] === 'on'),
+      mindChips: this.RUNTIMES.filter(rt => s.rtStatus[rt.id] === 'on').flatMap(rt => rt.models.map(m => ({
+        label: m.id,
+        style: { ...chip(!!(pc0.mind && pc0.mind.model === m.id)), fontFamily: 'ui-monospace, Menlo, monospace', fontSize: '11px' },
+        onClick: () => {
+          if (pc0.mind && pc0.mind.model === m.id) return;
+          this.sfxTick();
+          this.setTrait(pc0.id, { mind: { rt: rt.id, rtName: rt.name, model: m.id } });
+          this.chirp(pc0.id, 'A new mind. The world tilts a little.', 2600);
+        },
+      }))),
+      cur: pc0.curiosity ?? 60,
+      curLabel: (pc0.curiosity ?? 60) < 35 ? 'Homebody' : (pc0.curiosity ?? 60) < 70 ? 'Balanced' : 'Wanderer',
+      onCur: (e) => this.setTrait(pc0.id, { curiosity: parseInt(e.target.value, 10) || 0 }),
+      toolChips: this.TOOLS.map(t => ({ label: t, style: { ...chip((pc0.tools || []).includes(t)), fontSize: '11px', padding: '4px 9px' }, onClick: () => { this.sfxTick(); this.setTrait(pc0.id, { tools: (pc0.tools || []).includes(t) ? pc0.tools.filter(x => x !== t) : [...(pc0.tools || []), t] }); } })),
+    } : null;
+    const friendRows = [...s.friends].sort((a, b) => b.last - a.last).map(f => ({
+      name: f.name,
+      kind: '\u00B7 ' + f.kind,
+      hue: this.FRIEND_HUES[f.name] || '#7B87D8',
+      sub: 'introduced by ' + f.by + ' \u00B7 ' + f.trips + (f.trips === 1 ? ' trip' : ' trips'),
+      line: '\u201C' + f.line + '\u201D',
+      onFind: () => {
+        const comp = s.creatures.find(x => x.name === f.by) || s.creatures[0];
+        this.setState({ cockpit: false });
+        if (!comp) return;
+        this.sfxTick();
+        if (comp.brief) {
+          this.patch(comp.id, c2 => ({ ...c2, brief: { ...c2.brief, befriend: [f.guild] }, focusAt: Date.now() }));
+          this.chirp(comp.id, 'I\u2019ll look for ' + f.name + ' next trip.', 3000);
+        } else {
+          this.patch(comp.id, c2 => ({ ...c2, focusAt: Date.now() }));
+          this.chirp(comp.id, 'Write my brief and I\u2019ll go find ' + f.name + '.', 3200);
+        }
+      },
+    }));
+
+    let setupVM = null;
+    if (s.setup) {
+      const md = s.setup;
+      const anyOn = Object.values(s.rtStatus).some(v => v === 'on');
+      const mrow = (on) => ({ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', padding: '8px 11px', borderRadius: '11px', cursor: 'pointer', border: on ? '1px solid rgba(75,91,214,.55)' : '1px solid rgba(35,43,94,.12)', background: on ? 'rgba(75,91,214,.08)' : 'rgba(35,43,94,.02)', marginBottom: '6px', textAlign: 'left', transition: 'filter .15s ease' });
+      const mdot = (on) => ({ width: '14px', height: '14px', flex: 'none', borderRadius: '50%', border: on ? '4.5px solid #4B5BD6' : '1.5px solid rgba(35,43,94,.35)', background: '#FFFFFF', boxSizing: 'border-box' });
+      const rows = this.RUNTIMES.map(rt => {
+        const st = s.rtStatus[rt.id];
+        return {
+          glyph: rt.glyph, name: rt.name,
+          sub: st === 'connecting' ? 'Reaching out\u2026' : rt.sub,
+          isOff: st === 'none', isConn: st === 'connecting', isOn: st === 'on',
+          onConnect: () => this.connectRt(rt.id),
+        };
+      });
+      const groups = this.RUNTIMES.filter(rt => s.rtStatus[rt.id] === 'on').map(rt => ({
+        label: rt.name.toUpperCase(),
+        models: rt.models.map(m => ({
+          id: m.id, tag: m.tag,
+          rowStyle: mrow(!!(s.mindPick && s.mindPick.model === m.id)),
+          dotStyle: mdot(!!(s.mindPick && s.mindPick.model === m.id)),
+          onClick: () => { this.sfxTick(); this.setState({ mindPick: { rt: rt.id, rtName: rt.name, model: m.id } }); },
+        })),
+      }));
+      const ctaOn = md.mode === 'manage' || (md.step === 1 ? anyOn : !!s.mindPick);
+      setupVM = {
+        title: md.mode === 'manage' ? 'Minds & runtimes' : md.step === 1 ? 'Before the door opens' : 'Choose its mind',
+        desc: md.mode === 'manage' ? 'The SDKs that animate your companions.'
+          : md.step === 1 ? 'A companion is a small mind wearing a body. Connect where minds come from.'
+          : 'One model animates each companion. You can change it later from its card.',
+        step1: md.step === 1, step2: md.step === 2,
+        rows, groups,
+        hint: md.step === 1 && !anyOn && md.mode !== 'manage' ? 'Connect at least one runtime to continue.' : '',
+        showBack: md.step === 2 && md.mode === 'onboard',
+        onBack: () => this.setState({ setup: { ...md, step: 1 } }),
+        cta: md.mode === 'manage' ? 'Done' : md.step === 1 ? 'Continue' : md.mode === 'onboard' ? 'Open the door' : 'Spawn',
+        ctaStyle: { background: '#232B5E', color: '#F4F6FF', font: '600 12.5px -apple-system, BlinkMacSystemFont, system-ui, sans-serif', padding: '8px 18px', borderRadius: '999px', border: 'none', cursor: ctaOn ? 'pointer' : 'default', boxShadow: '0 6px 20px rgba(40,55,140,.35)', opacity: ctaOn ? 1 : 0.45, transition: 'filter .2s ease, opacity .3s ease' },
+        onCta: () => {
+          if (md.mode === 'manage') { this.setState({ setup: null }); return; }
+          if (md.step === 1) {
+            if (!anyOn) return;
+            this.sfxTick();
+            this.setState({ setup: { ...md, step: 2 }, mindPick: s.mindPick || this.defaultMind() });
+          } else {
+            if (!s.mindPick) return;
+            this.spawnCreature();
+          }
+        },
+        onClose: () => this.setState({ setup: null }),
+      };
+    }
+    const rtOn = Object.values(s.rtStatus).filter(v => v === 'on').length;
+
+    const unread = s.creatures.some(c => c.unread);
+    const anyAway = s.creatures.some(c => c.phase === 'away' || c.phase === 'crossing' || c.phase === 'toDoor');
+    const first = s.creatures[0];
+
+    return {
+      habitatRef: this.habitatRef, ghostRef: this.ghostRef, nameInputRef: this.nameInputRef, popRef: this.popRef, iconRef: this.iconRef,
+      creatures, door, notes, pcs,
+      f1: fVM(0), f2: fVM(1), f3: fVM(2),
+      showCta: s.creatures.length === 0,
+      onSpawn: this.onSpawnClick,
+      onNameInput: this.onNameInput,
+      briefOpen: !!s.briefDraft,
+      briefTitle: target ? (target.name + '\u2019s ' + (target.trips > 0 ? 'next' : 'first') + ' trip') : 'A trip',
+      briefGoal: this._goalDraft || '',
+      bringChips: mkChips(this.BRING, 'bring'),
+      befChips: mkChips(this.BEF, 'befriend'),
+      avoidChips: mkChips(this.AVOID, 'avoid'),
+      depthChips: bc ? this.DEPTHS.map(d => ({ label: d, style: seg(bc.depth === d), onClick: () => this.setState(st => ({ briefDraft: { ...st.briefDraft, depth: d } })) })) : [],
+      whenChips: bc ? this.WHENS.map(w => ({ label: w === 'Tonight' ? 'Tonight \u263E' : w, style: seg((bc.when || 'Now') === w), onClick: () => this.setState(st => ({ briefDraft: { ...st.briefDraft, when: w } })) })) : [],
+      onGoalInput: this.onGoalInput, onBriefCancel: this.onBriefCancel, onBriefOk: this.onBriefOk, stopClick: this.stopClick,
+      noteView: nv ? { title: nv.title, meta: 'brought home by ' + nv.by + ' \u00B7 ' + nv.date, goal: nv.goal, lines: nv.lines.map(t => ({ text: t })), traded: nv.traded || '\u2014', met: nv.met, via: nv.via || '\u2014', mind: nv.mind || '\u2014' } : null,
+      onNoteClose: () => this.setState({ openNote: null }),
+      clock: s.clock,
+      onCockpitToggle: this.onCockpitToggle,
+      iconBg: s.cockpit ? 'rgba(20,30,70,.12)' : 'transparent',
+      iconTint: first ? this.tintOf(first) : '#CE7352',
+      badge: unread, awayDot: !unread && anyAway,
+      moonShow: s.creatures.some(c => c.phase === 'waiting') && !s.sleep,
+      onSleep: this.startSleep,
+      onSoundToggle: this.onSoundToggle,
+      soundOff: s.muted,
+      soundOp: s.muted ? 0.5 : 1,
+      soundTitle: s.muted ? 'Sound off' : 'Sound on',
+      cockpitOpen: s.cockpit,
+      tabComp: s.tab === 'companions', tabLib: s.tab === 'library', tabFr: s.tab === 'friends',
+      tabCompStyle: tabStyle(s.tab === 'companions'), tabLibStyle: tabStyle(s.tab === 'library'), tabFrStyle: tabStyle(s.tab === 'friends'),
+      onTabComp: () => this.setState({ tab: 'companions' }),
+      onTabLib: () => this.setState({ tab: 'library' }),
+      onTabFr: () => this.setState({ tab: 'friends' }),
+      tabCount: s.tab === 'companions' ? s.creatures.length + ' of 3'
+        : s.tab === 'friends' ? s.friends.length + (s.friends.length === 1 ? ' friend' : ' friends')
+        : s.notes.length + (s.notes.length === 1 ? ' note' : ' notes'),
+      friendRows, frEmpty: s.friends.length === 0,
+      setup: setupVM,
+      onRuntimes: () => this.setState({ setup: { mode: 'manage', step: 1 }, cockpit: false }),
+      rtCount: rtOn === 0 ? 'none connected' : rtOn + ' connected',
+      roster, rosterEmpty: s.creatures.length === 0,
+      canSpawn: s.creatures.length < 3,
+      maxedOut: s.creatures.length >= 3,
+      libRows, libEmpty: s.notes.length === 0,
+      prof, profOpen: !!prof, onProfClose: this.onProfClose,
+      toasts, sleep,
+      drag: s.drag ? { x: s.drag.x, y: s.drag.y, name: (s.folders.find(f => f.id === s.drag.fid) || {}).name } : null,
+    };
+  }
+}
+</script>
+</body>
+</html>

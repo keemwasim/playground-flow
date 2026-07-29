@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#FFFFFF;overflow:hidden}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="margin:0;padding:0;background:#FFFFFF;">
+  <div style="display:none;">
+    <x-import component-from-global-scope="PG.Globe" from="./design-system/components/Globe.jsx" hint-size="10px,10px"></x-import>
+  </div>
+  <x-import component-from-global-scope="PG.Film" from="./intro-film.jsx" hint-size="1080px,1920px"></x-import>
+</div>
+</x-dc>
+<script>
+/* deterministic capture. the page has no clock of its own: __seek moves the
+   camera, __freeze pins every css animation to the same instant, so frame N
+   is the same pixels every time it is rendered. */
+window.__origDelay = new WeakMap();
+window.__freeze = function (t) {
+  var els = document.querySelectorAll('#film-stage, #film-stage *');
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    var cs = getComputedStyle(el);
+    if (!cs.animationName || cs.animationName === 'none') continue;
+    var orig = window.__origDelay.get(el);
+    if (orig === undefined) {
+      orig = (cs.animationDelay || '0s').split(',').map(function (d) { return parseFloat(d) || 0; });
+      window.__origDelay.set(el, orig);
+    }
+    el.style.animationDelay = orig.map(function (d) { return (d - t) + 's'; }).join(',');
+    el.style.animationPlayState = 'paused';
+  }
+  return els.length;
+};
+window.__ready = function () { return !!(window.__seek && document.getElementById("film-stage")); };
+</script>
+</body>
+</html>

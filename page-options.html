@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>page options</title>
+<link rel="stylesheet" href="./design-system/styles.css">
+<style>
+  html { background: var(--well); }
+  body { margin: 0; background: var(--well); color: var(--ink-2); font-family: var(--font-ui); }
+  .sheet { width: 1736px; padding: 56px 40px 96px; }
+  .sheet-title { margin: 0 0 6px; font: 700 34px var(--font-display), sans-serif; letter-spacing: -.02em; }
+  .sheet-copy { width: 620px; margin: 0; color: var(--text-secondary); font: 500 15px/1.5 var(--font-ui); }
+  .group { margin-top: 72px; padding-top: 52px; border-top: 1px solid var(--divider); }
+  .group-head { width: 660px; margin-bottom: 28px; }
+  .group-title { margin: 0 0 6px; font: 700 28px var(--font-display), sans-serif; letter-spacing: -.02em; }
+  .group-copy { margin: 0; color: var(--text-secondary); font: 500 14px/1.5 var(--font-ui); }
+  .grid { display: flex; flex-wrap: nowrap; gap: 34px; }
+  .take { width: 320px; flex: none; }
+  .cap { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .num, .tag { color: var(--text-tertiary); font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; text-transform: lowercase; }
+  .name { font: 700 15px var(--font-display), sans-serif; letter-spacing: -.01em; }
+  .why { height: 58px; margin: 0 0 12px; color: var(--text-secondary); font: 500 12px/1.45 var(--font-ui); }
+  .phone { position: relative; width: 320px; height: 640px; overflow: hidden; border-radius: 44px; background: var(--bg); box-shadow: 0 0 0 1.5px rgba(0,0,0,.14), 0 24px 60px -30px rgba(0,0,0,.4); }
+  .body { position: absolute; inset: 0; overflow: hidden; padding: 62px 24px 24px; }
+  .body.flush { padding: 0; }
+  .top { display: flex; flex-direction: column; gap: 4px; }
+  .title { margin: 0; font: 700 27px/1.15 var(--font-display), sans-serif; letter-spacing: -.02em; }
+  .display { font: 700 32px/1.18 var(--font-display), sans-serif; letter-spacing: -.02em; }
+  .speech { color: var(--ink-2); font: 500 15.5px/1.6 var(--font-ui); }
+  .copy { color: var(--text-secondary); font: 500 13px/1.5 var(--font-ui); }
+  .hint { color: var(--text-tertiary); font: 500 11px/1.4 var(--font-ui); }
+  .link { color: var(--text-secondary); font: 600 13.5px/1 var(--font-ui); }
+  .hairline { height: 1px; background: var(--divider); }
+  .well { background: var(--well); border-radius: 18px; }
+  .paper { background: var(--bg); border-radius: 18px; box-shadow: var(--paper-ring), var(--shadow-chip); }
+  .ink-action { background: var(--ink-2); color: var(--on-ink-1); border-radius: 12px; font: 700 14px/1 var(--font-ui); text-align: center; padding: 16px 18px; }
+  .soft-action { background: var(--well); color: var(--ink-2); border-radius: 14px; font: 600 13px/1 var(--font-ui); text-align: center; padding: 14px 16px; }
+  .actions { display: flex; gap: 18px; color: var(--text-secondary); font: 600 12.5px/1 var(--font-ui); }
+  .bottom { position: absolute; left: 24px; right: 24px; bottom: 26px; }
+  .dent { width: 100px; height: 24px; margin: auto; border-radius: 999px; background: radial-gradient(ellipse, rgba(0,0,0,.1), rgba(0,0,0,0) 72px); filter: blur(2px); }
+  .dent.large { width: 146px; height: 34px; }
+  .being { position: relative; width: 86px; height: 72px; flex: none; }
+  .being.small { width: 42px; height: 35px; }
+  .being.large { width: 112px; height: 94px; }
+  .being-body { position: absolute; inset: 0; border-radius: 48px 52px 46px 54px; background: radial-gradient(circle at 32px 20px, var(--bg), var(--well) 54px, rgba(0,0,0,.13)); box-shadow: inset 3px 4px 7px rgba(255,255,255,.95), inset -4px -6px 11px rgba(0,0,0,.1), 0 10px 22px rgba(0,0,0,.12); }
+  .being.small .being-body { border-radius: 24px; }
+  .eye { position: absolute; top: 30px; width: 8px; height: 12px; border-radius: 999px; background: var(--ink-2); }
+  .being.small .eye { top: 14px; width: 4px; height: 6px; }
+  .being.large .eye { top: 38px; width: 10px; height: 15px; }
+  .eye.left { left: 29px; }
+  .eye.right { right: 29px; }
+  .being.small .eye.left { left: 14px; }
+  .being.small .eye.right { right: 14px; }
+  .being.large .eye.left { left: 38px; }
+  .being.large .eye.right { right: 38px; }
+  .mono-world { position: relative; width: 112px; height: 112px; margin: auto; overflow: hidden; border-radius: 999px; background: radial-gradient(circle at 38px 32px, var(--bg), var(--well) 70px, rgba(0,0,0,.18)); box-shadow: var(--paper-ring), var(--shadow-chip); }
+  .mono-world.large { width: 180px; height: 180px; }
+  .mono-land { position: absolute; width: 78px; height: 28px; border-radius: 999px; background: var(--ink-9); opacity: .55; transform: rotate(-12deg); }
+  .mono-land.one { left: -12px; top: 31px; }
+  .mono-land.two { right: -16px; bottom: 28px; }
+  .pin { position: absolute; width: 8px; height: 8px; border-radius: 999px; background: var(--ink-2); box-shadow: 0 0 0 5px rgba(0,0,0,.08); }
+  .route { height: 1px; background: var(--divider); }
+  .world { position: relative; width: 214px; height: 214px; margin: auto; overflow: hidden; border-radius: 999px; background: var(--globe-sea); box-shadow: var(--globe-glow); }
+  .world.large { width: 336px; height: 336px; }
+  .world.small { width: 152px; height: 152px; }
+  .world-land { position: absolute; width: 122px; height: 50px; border-radius: 999px; background: var(--globe-land); transform: rotate(-16deg); }
+  .world-land.one { left: -18px; top: 42px; }
+  .world-land.two { right: -28px; bottom: 48px; background: var(--globe-land-warm); }
+  .cloud { position: absolute; width: 72px; height: 18px; border-radius: 999px; background: var(--globe-cloud); opacity: .78; }
+  .cloud.one { right: 26px; top: 54px; }
+  .cloud.two { left: 24px; bottom: 50px; }
+  .room-line { height: 7px; border-radius: 999px; background: var(--divider); }
+  .reply { padding: 13px 15px; border-radius: 16px 16px 5px 16px; background: var(--well); color: var(--ink-2); font: 600 13px/1.35 var(--font-ui); }
+  .reply small { display: block; margin-top: 4px; color: var(--text-secondary); font: 500 11px/1.4 var(--font-ui); }
+  .permit { padding: 18px; border-radius: 18px; background: var(--bg); box-shadow: var(--paper-ring), var(--shadow-element); }
+  .permit-row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--divider); color: var(--text-secondary); font: 500 12px/1.3 var(--font-ui); }
+  .permit-row strong { color: var(--ink-2); font-weight: 600; }
+  .seal { display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; margin: auto; border-radius: 999px; background: var(--ink-2); color: var(--on-ink-1); font: 700 18px var(--font-display), sans-serif; }
+  .price { font: 700 54px/1 var(--font-display), sans-serif; letter-spacing: -.03em; }
+  .place-card { overflow: hidden; border-radius: 20px; background: var(--bg); box-shadow: var(--paper-ring), var(--shadow-element); }
+  .place-image { height: 158px; background: radial-gradient(circle at 210px 42px, var(--bg), var(--well) 74px, var(--divider)); }
+  .place-copy { padding: 16px 18px 18px; }
+  .person { display: flex; align-items: center; gap: 14px; }
+  .portrait { display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; flex: none; border-radius: 999px; background: var(--well); color: var(--ink-2); font: 700 18px var(--font-display), sans-serif; }
+  .agent-row { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--divider); }
+  .agent-copy { flex: 1; }
+  .agent-name { font: 700 17px/1.2 var(--font-display), sans-serif; letter-spacing: -.01em; }
+  .agent-state { margin-top: 3px; color: var(--text-secondary); font: 500 11px/1.35 var(--font-ui); }
+  .agent-tools { display: flex; gap: 14px; margin-top: 10px; color: var(--text-secondary); font: 600 11px/1 var(--font-ui); }
+  .locked { opacity: .4; }
+  .locked-mark { width: 40px; height: 40px; flex: none; border: 1.5px dashed var(--ink-2); border-radius: 999px; }
+  .room-card { padding: 16px; border-radius: 20px; background: var(--well); }
+  .entry-brand { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .wordmark { font: 700 13px/1 var(--font-brand); }
+  .apple { display: flex; align-items: center; justify-content: center; gap: 9px; height: 52px; border-radius: 999px; background: var(--ink-2); color: var(--on-ink-1); font: 600 15px/1 var(--font-ui); }
+  .apple svg { width: 14px; height: 17px; fill: var(--on-ink-1); }
+  .legal { margin-top: 9px; text-align: center; color: var(--text-tertiary); font: 500 11px/1.3 var(--font-ui); }
+  .logo { width: 42px; height: 46px; object-fit: contain; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <h1 class="sheet-title">page options</h1>
+  <p class="sheet-copy">six pages, five real answers each. every phone keeps the same light habitat, type, frame, and token rules.</p>
+  <div id="groups"><p class="sheet-copy">the sheet could not draw.</p></div>
+</main>
+<script>
+const being = (size = '') => `<div class="being ${size}"><div class="being-body"><span class="eye left"></span><span class="eye right"></span></div></div>`;
+
+const mono = (size = '') => `<div class="mono-world ${size}"><span class="mono-land one"></span><span class="mono-land two"></span><span class="pin" style="right:27px;top:30px"></span></div>`;
+
+const world = (size = '') => `<div class="world ${size}"><span class="world-land one"></span><span class="world-land two"></span><span class="cloud one"></span><span class="cloud two"></span></div>`;
+
+const apple = `<div class="apple"><svg viewBox="0 0 814 1000" aria-hidden="true"><path d="M788 341c-6 4-108 62-108 190 0 148 130 200 134 201-1 3-21 71-69 141-43 62-88 123-156 123s-86-40-165-40c-77 0-104 41-167 41s-107-57-157-127C42 787 0 664 0 547c0-187 122-286 242-286 64 0 117 42 157 42 38 0 97-45 169-45 27 0 125 3 220 83zM554 172c32-38 55-90 55-143 0-7-1-15-2-21-52 2-114 35-152 78-29 33-56 86-56 139 0 8 1 16 2 19 3 1 9 2 14 2 47 0 106-31 139-74z"/></svg><span>sign in with apple</span></div><div class="legal">terms · privacy</div>`;
+
+const agents = {
+  sol: `<div class="agent-row">${being('small')}<div class="agent-copy"><div class="agent-name">sol</div><div class="agent-state">here with you</div></div></div>`,
+  moss: `<div class="agent-row">${being('small')}<div class="agent-copy"><div class="agent-name">moss</div><div class="agent-state">out · the spice market</div></div></div>`,
+  rue: `<div class="agent-row">${being('small')}<div class="agent-copy"><div class="agent-name">rue</div><div class="agent-state">out · east quay</div></div></div>`,
+  locked: `<div class="agent-row locked"><div class="locked-mark"></div><div class="agent-copy"><div class="agent-name">another agent</div><div class="agent-state">playground+</div></div></div>`
+};
+
+const groups = [
+  {
+    key: 'away',
+    title: 'away',
+    purpose: 'home while sol is out. the room must hold the absence, the place, and the way home, with no clock.',
+    takes: [
+      {
+        name: 'the dent',
+        why: 'keem, the empty dent does the feeling. cost: the place stays quiet.',
+        body: `<div class="body"><div class="top"><span class="tag">HOME</span><h3 class="title">sol</h3><span class="copy">out · the lantern district</span></div><div style="margin-top:112px">${mono()}</div><div style="margin-top:50px" class="dent large"></div><div class="bottom" style="text-align:center"><span class="link">call sol back</span></div></div>`
+      },
+      {
+        name: 'the moving world',
+        why: 'keem, the world carries the wait. cost: the room itself feels farther away.',
+        body: `<div class="body"><div class="top" style="align-items:center;text-align:center"><span class="tag">SOL IS OUT</span><h3 class="title">the lantern district</h3></div><div style="margin-top:52px">${mono('large')}</div><div style="margin-top:48px" class="dent"></div><div class="bottom" style="text-align:center"><span class="link">call sol back</span></div></div>`
+      },
+      {
+        name: 'the place',
+        why: 'keem, the destination becomes the hero. cost: the empty room becomes a softer clue.',
+        body: `<div class="body"><span class="tag">OUT</span><div class="display" style="margin-top:18px">the lantern<br>district</div><div class="copy" style="margin-top:12px">sol went there</div><div style="margin-top:106px" class="dent large"></div><div style="margin-top:34px;display:flex;justify-content:center">${mono()}</div><div class="bottom"><div class="hairline" style="margin-bottom:18px"></div><span class="link">call sol back</span></div></div>`
+      },
+      {
+        name: 'the empty room',
+        why: 'keem, the room keeps sol’s place untouched. cost: the world reads as a distant detail.',
+        body: `<div class="body"><div class="top"><span class="tag">HOME</span><h3 class="title">sol is out</h3><span class="copy">the lantern district</span></div><div style="margin-top:94px;height:160px;border-radius:24px;background:var(--well);padding:22px"><div class="room-line" style="width:84px"></div><div class="room-line" style="width:132px;margin-top:10px"></div><div style="margin-top:56px" class="dent"></div></div><div class="bottom" style="text-align:center"><span class="link">call sol back</span></div></div>`
+      },
+      {
+        name: 'the open line',
+        why: 'keem, one sentence makes the trap obvious. cost: it relies most on words.',
+        body: `<div class="body" style="display:flex;flex-direction:column;justify-content:center"><div style="margin-bottom:50px" class="dent large"></div><div class="speech" style="text-align:center">i’m in the lantern district.</div><div class="hint" style="margin-top:8px;text-align:center">sol is out</div><div style="margin-top:56px;display:flex;justify-content:center">${mono()}</div><div class="bottom" style="text-align:center"><span class="link">call sol back</span></div></div>`
+      }
+    ]
+  },
+  {
+    key: 'handover',
+    title: 'the handover',
+    purpose: 'sol brings a lived-world thing into the talk, then learns whether it was the thing.',
+    takes: [
+      {
+        name: 'said plainly',
+        why: 'keem, the handover stays inside the talk. cost: the thing has no physical weight.',
+        body: `<div class="body"><div style="display:flex;justify-content:center">${being('large')}</div><div class="speech" style="margin-top:52px">i found marlow house. the courtyard room is $186.</div><div class="copy" style="margin-top:10px">lisbon</div><div class="actions" style="margin-top:26px"><span>that’s it</span><span>not that</span></div></div>`
+      },
+      {
+        name: 'the room key',
+        why: 'keem, the thing arrives as an object between you. cost: it feels more booked than spoken.',
+        body: `<div class="body"><div class="speech">i brought this home.</div><div class="place-card" style="margin-top:28px"><div class="place-image"></div><div class="place-copy"><span class="tag">MARLOW HOUSE</span><div class="title" style="margin-top:8px">$186</div><div class="copy" style="margin-top:4px">courtyard room · lisbon</div></div></div><div class="actions" style="margin-top:24px"><span>that’s it</span><span>not that</span></div></div>`
+      },
+      {
+        name: 'the price first',
+        why: 'keem, the answer is visible before the sentence. cost: the place loses some character.',
+        body: `<div class="body"><span class="tag">SOL BROUGHT</span><div class="price" style="margin-top:74px">$186</div><div class="title" style="margin-top:18px">marlow house</div><div class="copy" style="margin-top:8px">a quiet courtyard room in lisbon</div><div style="margin-top:72px;display:flex;justify-content:flex-end">${being()}</div><div class="bottom"><div class="actions"><span>that’s it</span><span>not that</span></div></div></div>`
+      },
+      {
+        name: 'the person',
+        why: 'keem, a person makes the world feel inhabited. cost: prices need a second beat.',
+        body: `<div class="body"><div style="display:flex;justify-content:center">${being()}</div><div class="speech" style="margin-top:38px">i found noa. she restores old radios near east quay.</div><div class="paper" style="margin-top:26px;padding:18px"><div class="person"><div class="portrait">n</div><div><div class="title" style="font-size:21px">noa vale</div><div class="copy">east quay · repairs</div></div></div></div><div class="actions" style="margin-top:24px"><span>that’s it</span><span>not that</span></div></div>`
+      },
+      {
+        name: 'put in your hand',
+        why: 'keem, the paper in sol’s hands makes the exchange literal. cost: the speech is smaller.',
+        body: `<div class="body"><div style="display:flex;justify-content:center;margin-top:46px;position:relative">${being('large')}<div class="paper" style="position:absolute;right:42px;top:58px;width:104px;padding:12px;transform:rotate(5deg)"><span class="tag">NORTH PIER</span><div style="font:700 22px var(--font-display),sans-serif;margin-top:6px">$740</div></div></div><div class="speech" style="margin-top:74px">the silver bike is still there.</div><div class="actions" style="margin-top:24px"><span>that’s it</span><span>not that</span></div></div>`
+      }
+    ]
+  },
+  {
+    key: 'adoption',
+    title: 'adoption',
+    purpose: 'one question at a time. three takes show the asking, two show the seal.',
+    takes: [
+      {
+        name: 'the asking',
+        why: 'keem, sol interviews you in the talk. cost: comparing every choice takes more reading.',
+        body: `<div class="body"><div style="display:flex;justify-content:center">${being()}</div><div class="speech" style="margin-top:36px;text-align:center">how should i carry myself with strangers?</div><div style="margin-top:28px;display:flex;flex-direction:column;gap:9px"><div class="reply">curious<small>i wander past the first answer</small></div><div class="reply">skeptical<small>i doubt first and check twice</small></div><div class="reply">say it your way<small>your words give me a start</small></div></div></div>`
+      },
+      {
+        name: 'the voice deck',
+        why: 'keem, one voice fills the screen at a time. cost: the creature steps out of the moment.',
+        body: `<div class="body"><span class="tag">VOICE</span><div class="hint" style="margin-top:12px">how should i sound?</div><div style="margin-top:62px;display:flex;flex-direction:column;gap:24px"><div class="display" style="color:var(--text-tertiary)">soft</div><div class="display">plain spoken</div><div class="display" style="color:var(--text-tertiary)">wry</div><div class="display" style="color:var(--text-tertiary)">formal</div></div><div class="bottom"><div class="route"></div><div class="hint" style="margin-top:12px">or say it your way</div></div></div>`
+      },
+      {
+        name: 'the chase',
+        why: 'keem, the question starts with desire, not traits. cost: it gives less preview of behavior.',
+        body: `<div class="body"><div style="display:flex;justify-content:flex-end">${being()}</div><div class="display" style="margin-top:54px">what should<br>i chase?</div><div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:10px"><span class="soft-action">the rare thing</span><span class="soft-action">the honest price</span><span class="soft-action">the right person</span></div><div class="bottom"><div class="reply">in your words</div></div></div>`
+      },
+      {
+        name: 'the permit',
+        why: 'keem, the seal closes a real adoption paper. cost: it feels official before it feels alive.',
+        body: `<div class="body"><div class="permit"><div class="person">${being('small')}<div><div class="title" style="font-size:21px">sol</div><div class="copy">your expectation</div></div></div><div style="margin-top:16px"><div class="permit-row"><span>temperament</span><strong>gentle</strong></div><div class="permit-row"><span>voice</span><strong>plain spoken</strong></div><div class="permit-row"><span>chases</span><strong>the truth</strong></div><div class="permit-row" style="border:0"><span>creed</span><strong>be kind</strong></div></div></div><div style="margin-top:30px" class="seal">p</div><div class="bottom"><div class="ink-action">seal it</div></div></div>`
+      },
+      {
+        name: 'it says itself',
+        why: 'keem, sol speaks the expectation back in its own voice. cost: the keepsake stays offscreen.',
+        body: `<div class="body"><div style="display:flex;justify-content:center;margin-top:28px">${being('large')}</div><div class="speech" style="margin-top:50px;text-align:center">i’m sol. gentle, you said. plain spoken. i chase the truth. i’ll grow from there.</div><div class="bottom"><div class="ink-action">that’s you</div><div class="hint" style="text-align:center;margin-top:14px">start over</div></div></div>`
+      }
+    ]
+  },
+  {
+    key: 'failure',
+    title: 'failure',
+    purpose: 'sol returns without the thing, says why in its own voice, and gives the next move.',
+    takes: [
+      {
+        name: 'came back light',
+        why: 'keem, the empty hands lead and the next place is ready. cost: the reason stays brief.',
+        body: `<div class="body"><div style="display:flex;justify-content:center">${being('large')}</div><div class="speech" style="margin-top:54px">i came back without the camera. the seller changed their mind.</div><div class="copy" style="margin-top:10px">i can ask the next shop.</div><div class="bottom"><div class="soft-action">ask the next shop</div><div class="hint" style="text-align:center;margin-top:14px">leave it</div></div></div>`
+      },
+      {
+        name: 'the empty handover',
+        why: 'keem, the missing object is visible before the reason. cost: it is the quietest next step.',
+        body: `<div class="body"><span class="tag">HOME</span><div style="margin-top:80px" class="paper"><div style="height:170px;display:flex;align-items:center;justify-content:center"><div class="dent large"></div></div></div><div class="speech" style="margin-top:34px">the bike was gone when i got there.</div><div class="actions" style="margin-top:22px"><span>try another place</span><span>stop here</span></div></div>`
+      },
+      {
+        name: 'the next door',
+        why: 'keem, the answer and the recovery share one sentence. cost: there is no separate choice to pause.',
+        body: `<div class="body"><div class="display" style="margin-top:52px">not this<br>place.</div><div class="speech" style="margin-top:24px">i found the hotel, not the quiet room. i can ask across the square.</div><div style="margin-top:74px;display:flex;justify-content:flex-end">${being()}</div><div class="bottom"><div class="ink-action">ask across the square</div></div></div>`
+      },
+      {
+        name: 'the honest return',
+        why: 'keem, sol names the limit without sounding broken. cost: changing the ask takes equal weight.',
+        body: `<div class="body"><div style="display:flex;justify-content:center;margin-top:20px">${being()}</div><div class="speech" style="margin-top:48px;text-align:center">i asked everyone i trust there. no one has the red table.</div><div class="well" style="margin-top:34px;padding:18px"><div class="copy">i can look beyond the district.</div><div class="agent-tools" style="margin-top:16px"><span>go wider</span><span>change the ask</span></div></div></div>`
+      },
+      {
+        name: 'the changed plan',
+        why: 'keem, the next move becomes the thing sol brings home. cost: the original miss feels softer.',
+        body: `<div class="body"><span class="tag">SOL CAME HOME</span><div class="title" style="margin-top:20px">i couldn’t get the table.</div><div class="copy" style="margin-top:12px">the maker will build one in ash instead.</div><div class="paper" style="margin-top:42px;padding:22px"><span class="tag">NEXT</span><div class="speech" style="margin-top:10px">i can ask the price.</div></div><div class="bottom"><div class="actions"><span>ask the price</span><span>leave it</span></div></div></div>`
+      }
+    ]
+  },
+  {
+    key: 'entry',
+    title: 'entry',
+    purpose: 'the first door. the blue world may carry color, while account terms stay visible.',
+    takes: [
+      {
+        name: 'the living world',
+        why: 'keem, the current balance gives the world one clean focal point. cost: the account layer is clearly separate.',
+        body: `<div class="body"><div class="entry-brand"><span class="wordmark">playground</span><span class="copy">the other side is awake</span></div><div style="margin-top:72px">${world()}</div><div class="copy" style="margin-top:48px;text-align:center;font-weight:600">tap to enter</div><div class="bottom">${apple}</div></div>`
+      },
+      {
+        name: 'the horizon',
+        why: 'keem, the world rises into the phone like a place. cost: the wordmark loses the center.',
+        body: `<div class="body flush"><div style="position:absolute;left:26px;top:72px"><span class="wordmark">playground</span><div class="copy" style="margin-top:10px">the other side is awake</div></div><div style="position:absolute;left:-8px;bottom:112px">${world('large')}</div><div style="position:absolute;left:26px;bottom:184px;color:var(--bg);font:600 13px var(--font-ui)">tap to enter</div><div class="bottom">${apple}</div></div>`
+      },
+      {
+        name: 'the counter',
+        why: 'keem, the world appears to come through the mark. cost: the world itself is smaller.',
+        body: `<div class="body"><div style="display:flex;justify-content:center"><img class="logo" src="./design-system/assets/logo.svg" alt="playground"></div><div style="margin-top:36px">${world('small')}</div><div class="entry-brand" style="margin-top:38px"><span class="wordmark">playground</span><span class="copy">the other side is awake</span><span class="copy" style="font-weight:600;margin-top:22px">tap to enter</span></div><div class="bottom">${apple}</div></div>`
+      },
+      {
+        name: 'the near world',
+        why: 'keem, the world feels close enough to touch. cost: the legal line sits nearer the edge.',
+        body: `<div class="body flush"><div style="position:absolute;left:84px;top:82px">${world('large')}</div><div style="position:absolute;left:26px;top:68px"><span class="wordmark">playground</span></div><div style="position:absolute;left:26px;top:414px"><div class="title">the other side<br>is awake</div><div class="copy" style="margin-top:14px;font-weight:600">tap to enter</div></div><div class="bottom">${apple}</div></div>`
+      },
+      {
+        name: 'the quiet door',
+        why: 'keem, the world sits low and the promise leads. cost: the entry feels calmer than cinematic.',
+        body: `<div class="body"><div class="display" style="margin-top:22px">the other side<br>is awake</div><div class="wordmark" style="margin-top:14px">playground</div><div style="margin-top:60px">${world('small')}</div><div class="copy" style="margin-top:30px;text-align:center;font-weight:600">tap to enter</div><div class="bottom">${apple}</div></div>`
+      }
+    ]
+  },
+  {
+    key: 'management',
+    title: 'management',
+    purpose: 'the place for every one you keep, where each one is, and what you can do with it.',
+    takes: [
+      {
+        name: 'the common case',
+        why: 'keem, no reorder or use rank. retired ones move to past rooms. cost: switch is ceremonial with one.',
+        body: `<div class="body"><div class="top"><span class="tag">YOURS</span><h3 class="title">the one you keep</h3></div><div style="margin-top:30px">${agents.sol}<div class="agent-tools"><span>switch</span><span>rename</span><span>retire</span></div><div style="margin-top:18px">${agents.locked}</div></div></div>`
+      },
+      {
+        name: 'the roster',
+        why: 'keem, manual reorder and current use stay visible. retired ones move to past rooms. cost: rows feel practical.',
+        body: `<div class="body"><div class="top"><span class="tag">YOURS</span><h3 class="title">the ones you keep</h3></div><div style="margin-top:22px">${agents.sol}${agents.moss}${agents.rue}${agents.locked}</div><div class="bottom"><span class="tag">MOSS</span><div class="agent-tools"><span>switch to it</span><span>rename</span><span>retire</span><span>reorder</span></div></div></div>`
+      },
+      {
+        name: 'used first',
+        why: 'keem, use decides the order and hold reorders it. retired ones move to past rooms. cost: location is smaller.',
+        body: `<div class="body"><div class="top"><span class="tag">YOURS</span><h3 class="title">closest first</h3></div><div style="margin-top:28px;display:flex;flex-direction:column;gap:12px"><div class="room-card"><div class="tag">USED MOST · HERE</div><div class="person" style="margin-top:12px">${being('small')}<div class="agent-name">sol</div></div><div class="agent-tools"><span>switch</span><span>rename</span><span>retire</span></div></div><div class="room-card"><div class="tag">OUT · SPICE MARKET</div><div class="person" style="margin-top:12px">${being('small')}<div class="agent-name">moss</div></div></div>${agents.locked}</div><div class="bottom"><span class="hint">hold a room to reorder</span></div></div>`
+      },
+      {
+        name: 'the rooms',
+        why: 'keem, rooms can be reordered and show use by size. retired rooms fold into past. cost: three agents fill the screen.',
+        body: `<div class="body"><div class="top"><span class="tag">YOURS</span><h3 class="title">rooms</h3></div><div style="margin-top:26px;display:grid;grid-template-columns:148px 100px;gap:10px"><div class="room-card" style="height:142px"><div class="tag">HERE</div><div style="margin-top:18px">${being('small')}</div><div class="agent-name" style="margin-top:10px">sol</div></div><div class="room-card" style="height:142px"><div class="tag">OUT</div><div class="agent-name" style="margin-top:58px">moss</div></div><div class="room-card" style="height:98px"><div class="tag">OUT · EAST QUAY</div><div class="agent-name" style="margin-top:30px">rue</div></div><div class="room-card locked" style="height:98px"><div class="tag">PLAYGROUND+</div><div class="agent-name" style="margin-top:24px">another agent</div></div></div><div class="bottom"><span class="tag">SOL</span><div class="agent-tools"><span>switch</span><span>rename</span><span>retire</span><span>reorder</span></div></div></div>`
+      },
+      {
+        name: 'one in hand',
+        why: 'keem, manual reorder and last use sit in the list. retired ones stay under past rooms. cost: actions need a chosen row.',
+        body: `<div class="body"><div class="top"><span class="tag">YOURS</span><h3 class="title">the ones you keep</h3></div><div style="margin-top:22px">${agents.sol}${agents.moss}${agents.rue}${agents.locked}</div><div class="paper bottom" style="padding:18px"><div class="person">${being('small')}<div><div class="agent-name">moss</div><div class="agent-state">out · the spice market</div></div></div><div class="agent-tools" style="margin-top:16px"><span>switch to it</span><span>rename</span><span>retire</span><span>reorder</span></div></div></div>`
+      }
+    ]
+  }
+];
+
+document.getElementById('groups').innerHTML = groups.map((group) => `
+  <div class="group" id="${group.key}">
+    <div class="group-head">
+      <h2 class="group-title">${group.title}</h2>
+      <p class="group-copy">${group.purpose}</p>
+    </div>
+    <div class="grid">
+      ${group.takes.map((take, index) => `
+        <article class="take">
+          <div class="cap"><span class="num">${group.key.toUpperCase()} ${String(index + 1).padStart(2, '0')}</span><span class="name">${take.name}</span></div>
+          <p class="why">${take.why}</p>
+          <div class="phone">${take.body}</div>
+        </article>
+      `).join('')}
+    </div>
+  </div>
+`).join('');
+</script>
+</body>
+</html>

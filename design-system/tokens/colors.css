@@ -1,0 +1,71 @@
+/* Playground, color tokens (v3.1 audit, July 2026). One mode: light. No night mode.
+   Structure: PRIMITIVES (ink, porcelain, one accent) then ROLES (semantic). Component
+   recipes live in tokens/components.css. Rules: ink owns actions and text. Porcelain owns
+   structure. The single accent owns warmth (facts, tints), never actions. Saturated
+   color belongs to the world imagery alone (tear interior, world photos). */
+:root {
+  /* PRIMITIVES ------------------------------------------------ */
+  /* ink ramp */
+  --ink-0: #000000;
+  --ink-1: #0A0A0A;
+  --ink-2: #111111;   /* THE ink: text, primary actions */
+  --ink-3: #1C1C1E;
+  --ink-4: #2C2C2E;
+  --ink-5: #3A3A3C;
+  --ink-6: #48484A;
+  --ink-7: #6E6E73;
+  --ink-8: #8E8E93;
+  --ink-9: #AEAEB2;
+
+  /* porcelain ramp (backgrounds and structure) */
+  --porcelain-0: #FFFFFF;
+  --porcelain-1: #FCFCFC;
+  --porcelain-2: #F7F7F9;
+  --porcelain-3: #F3F3F5;
+  --porcelain-4: #ECECEE;
+  --porcelain-5: #E5E5EA;
+  --porcelain-6: #DADADE;
+
+  /* accent RETIRED (keem, July 2026): fully greyscale, world imagery is the
+     only color anywhere. Names kept as greyscale aliases for back-compat. */
+  --accent-wash: var(--porcelain-3);
+  --accent-ink: var(--ink-7);
+
+  /* ROLES ------------------------------------------------------ */
+  --bg: var(--porcelain-0);
+  --bg-desk: var(--porcelain-2);
+  --surface: var(--porcelain-0);         /* paper cards */
+  --text-primary: var(--ink-2);
+  --text-secondary: rgba(0,0,0,.55);
+  --text-tertiary: rgba(0,0,0,.4);
+  --divider: rgba(0,0,0,.09);
+  --well: var(--porcelain-3);            /* secondary buttons, chip wells, segmented tracks, inputs */
+  --tag-bg: var(--porcelain-4);          /* metadata tags, source chips */
+  --track: var(--porcelain-5);           /* progress tracks */
+  --disabled-fg: var(--ink-9);
+  --glow-silver: rgba(150,150,158,.8);   /* tear rim, world side, the only glow */
+
+  /* text on ink surfaces */
+  --on-ink-1: #FFFFFF;
+  --on-ink-2: rgba(255,255,255,.55);
+  --on-ink-3: rgba(255,255,255,.16);
+
+  /* WORLD-SIDE TEXT (allowed only inside world imagery windows:
+     the tear interior, world photos, live-activity world backdrops).
+     Never on app chrome. */
+  --on-night-1: #F2F3F9;
+  --on-night-2: rgba(230,235,255,.55);
+  --on-night-3: rgba(230,235,255,.4);
+
+  /* DEPRECATED (do not use in new work) ------------------------ */
+  /* earth ramp reduced to the accent pair, aliases for older code */
+  --earth-1: var(--accent-wash);
+  --earth-5: var(--accent-ink);
+  /* night mode removed July 2026. Only the archived night draft
+     (Playground Screens.dc.html, screens.html) references these. */
+  --night-0: #0A0C1D;
+  --night-1: #0D1024;
+  --night-2: #12162E;
+  --night-3: #1A1F33;
+  --star: rgba(235,240,255,.5);
+}

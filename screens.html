@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#ECEDF1}
+*{box-sizing:border-box}
+a{color:#111111}a:hover{color:#55555A}
+</style>
+</helmet>
+<div style="min-height:100vh; padding:72px 64px 120px; font-family:var(--font-ui); -webkit-font-smoothing:antialiased;">
+
+  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+    <svg width="18" viewBox="0 0 120 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color:#111;"><rect x="26" y="16" width="30" height="104" rx="15" fill="currentColor"></rect><circle cx="66" cy="52" r="40" fill="currentColor"></circle><circle cx="72" cy="52" r="17" fill="#ECEDF1"></circle></svg>
+    <span style="font:700 12px var(--font-brand); color:#111;">playground</span>
+  </div>
+  <div style="font:700 34px/1.1 var(--font-display); letter-spacing:-.02em; color:#111;">The screens · paused for the version pick</div>
+  <div style="font:400 14px/1.6 var(--font-ui); color:rgba(0,0,0,.5); margin:10px 0 56px; max-width:620px;">Direction changed mid-build to <span style="font-weight:700;">light &amp; minimal</span> — pick a system version in Design System Versions (<span style="font-weight:700;">1a</span> porcelain minimal · <span style="font-weight:700;">1b</span> ink editorial · <span style="font-weight:700;">1c</span> soft clay) and this board gets rebuilt in it, all ten screens, one mode. The frames below are the abandoned night draft, kept for comparison.</div>
+
+  <div style="display:flex; flex-wrap:wrap; gap:64px; align-items:flex-start;">
+
+    <!-- 01 entry -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:10px; margin:0 0 14px 6px;">
+        <span style="font:700 12px var(--font-ui); color:rgba(0,0,0,.4);">01</span>
+        <span style="font:700 17px var(--font-display); letter-spacing:-.01em; color:#111;">The entry</span>
+      </div>
+      <div data-screen-label="Entry" style="position:relative; width:390px; height:844px; border-radius:54px; overflow:hidden; background:var(--bg-night); box-shadow:0 0 0 1.5px rgba(0,0,0,.35), 0 34px 90px -34px rgba(8,10,30,.7);">
+        <div style="position:absolute; top:0; left:0; width:1px; height:1px; border-radius:50%; box-shadow:52px 130px 0 0 var(--star), 140px 84px 0 .5px rgba(215,225,255,.4), 235px 150px 0 0 var(--star), 320px 90px 0 0 rgba(235,240,255,.3), 90px 250px 0 0 rgba(235,240,255,.35), 300px 240px 0 .5px rgba(215,225,255,.35), 60px 420px 0 0 rgba(235,240,255,.25), 340px 380px 0 0 rgba(235,240,255,.3), 180px 560px 0 0 rgba(235,240,255,.28), 90px 660px 0 0 rgba(235,240,255,.22);"></div>
+        <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); width:118px; height:34px; border-radius:999px; background:#000; z-index:9;"></div>
+        <div style="position:absolute; top:22px; left:34px; font:700 14px var(--font-ui); color:var(--on-night-1); z-index:9;">9:41</div>
+        <div style="position:absolute; top:120px; left:0; right:0; display:flex; flex-direction:column; align-items:center; gap:10px;">
+          <span style="font:700 13px var(--font-brand); color:#F2F3F9;">playground</span>
+          <span style="font:400 13px var(--font-ui); color:var(--on-night-3);">there is a world on the other side</span>
+        </div>
+        <div style="position:absolute; left:50%; top:47%; width:0; height:0;">
+          <div style="position:absolute; left:0; top:0; width:56px; height:62px; transform:translate(-50%,-50%); animation:pgLogoBirth .5s cubic-bezier(.2,.8,.2,1) both, pgLogoOpen .65s cubic-bezier(.6,.05,.4,1) 1.5s both; z-index:2; pointer-events:none;">
+            <svg width="56" viewBox="0 0 120 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color:#F2F3F9; display:block;">
+              <rect x="26" y="16" width="30" height="104" rx="15" fill="currentColor"></rect>
+              <circle cx="66" cy="52" r="40" fill="currentColor"></circle>
+              <circle cx="72" cy="52" r="17" fill="#3E97EC" style="transform-origin:72px 52px; animation:pgLogoWink 1.5s ease-in-out both;"></circle>
+            </svg>
+          </div>
+          <div style="position:absolute; left:50%; top:50%; width:300px; height:300px; border-radius:50%; background:var(--globe-halo); filter:blur(14px); animation:pgFadeIn 1.4s ease 1.9s both, pgHaloPulse 6s ease-in-out 3.3s infinite;"></div>
+          <div style="animation:pgBob 7s ease-in-out infinite;">
+            <div style="position:relative; width:210px; height:210px; margin:-105px 0 0 -105px; animation:pgGlobeEnter 1.2s cubic-bezier(.2,.9,.25,1.1) 1.55s both;">
+              <div style="position:absolute; left:26%; top:34%; width:6px; height:12px; border-radius:50%; background:var(--globe-soul); box-shadow:0 0 10px rgba(120,170,255,.9); filter:blur(1.5px); animation:pgGlobeRise 7s ease-in-out 2s infinite;"></div>
+              <div style="position:absolute; left:58%; top:40%; width:5px; height:9px; border-radius:50%; background:var(--globe-soul); box-shadow:0 0 9px rgba(120,170,255,.85); filter:blur(1.5px); animation:pgGlobeRise 9.5s ease-in-out 4.6s infinite;"></div>
+              <div style="position:absolute; inset:0; border-radius:50%; overflow:hidden; background:var(--globe-sea); box-shadow:var(--globe-glow);">
+                <div style="position:absolute; top:0; bottom:0; left:0; width:200%; animation:pgGlobeSpin 20s linear infinite;">
+                  <div style="position:absolute; left:4%; top:14%; width:8.5%; height:15%; border-radius:52% 48% 45% 55% / 48% 54% 46% 52%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:17%; top:26%; width:13%; height:23%; border-radius:48% 52% 55% 45% / 52% 46% 54% 48%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:7%; top:52%; width:11%; height:27%; border-radius:50% 50% 46% 54% / 55% 45% 52% 48%; background:var(--globe-land-warm);"></div>
+                  <div style="position:absolute; left:29%; top:58%; width:9%; height:17%; border-radius:46% 54% 52% 48% / 50% 50% 48% 52%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:37%; top:20%; width:7%; height:16%; border-radius:52% 48% 50% 50% / 48% 52% 50% 50%; background:var(--globe-land-warm);"></div>
+                  <div style="position:absolute; left:54%; top:14%; width:8.5%; height:15%; border-radius:52% 48% 45% 55% / 48% 54% 46% 52%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:67%; top:26%; width:13%; height:23%; border-radius:48% 52% 55% 45% / 52% 46% 54% 48%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:57%; top:52%; width:11%; height:27%; border-radius:50% 50% 46% 54% / 55% 45% 52% 48%; background:var(--globe-land-warm);"></div>
+                  <div style="position:absolute; left:79%; top:58%; width:9%; height:17%; border-radius:46% 54% 52% 48% / 50% 50% 48% 52%; background:var(--globe-land);"></div>
+                  <div style="position:absolute; left:87%; top:20%; width:7%; height:16%; border-radius:52% 48% 50% 50% / 48% 52% 50% 50%; background:var(--globe-land-warm);"></div>
+                </div>
+                <div style="position:absolute; inset:0; border-radius:50%; background:var(--globe-vignette); pointer-events:none;"></div>
+              </div>
+              <div style="position:absolute; left:-22px; top:34px; width:38px; height:15px; border-radius:11px; background:var(--globe-cloud); box-shadow:0 4px 10px rgba(4,6,16,.5); animation:pgCloudDrift 9s ease-in-out infinite;"></div>
+              <div style="position:absolute; right:-26px; top:92px; width:46px; height:17px; border-radius:12px; background:var(--globe-cloud); box-shadow:0 4px 10px rgba(4,6,16,.5); animation:pgCloudDrift 11s ease-in-out -4s infinite;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="position:absolute; left:0; right:0; bottom:64px; text-align:center;">
+          <div style="font:400 12.5px var(--font-ui); color:var(--on-night-3); animation:pgDriftUp 3.4s ease-in-out infinite;">tap to enter</div>
+        </div>
+        <div style="position:absolute; bottom:9px; left:50%; transform:translateX(-50%); width:132px; height:5px; border-radius:99px; background:rgba(255,255,255,.3); z-index:9;"></div>
+      </div>
+    </div>
+
+    <!-- 02 meeting -->
+    <div>
+      <div style="display:flex; align-items:baseline; gap:10px; margin:0 0 14px 6px;">
+        <span style="font:700 12px var(--font-ui); color:rgba(0,0,0,.4);">02</span>
+        <span style="font:700 17px var(--font-display); letter-spacing:-.01em; color:#111;">Meeting &amp; naming</span>
+      </div>
+      <div data-screen-label="Meeting" style="position:relative; width:390px; height:844px; border-radius:54px; overflow:hidden; background:var(--bg-night); box-shadow:0 0 0 1.5px rgba(0,0,0,.35), 0 34px 90px -34px rgba(8,10,30,.7);">
+        <div style="position:absolute; top:0; left:0; width:1px; height:1px; border-radius:50%; box-shadow:52px 130px 0 0 var(--star), 140px 84px 0 .5px rgba(215,225,255,.4), 235px 150px 0 0 var(--star), 320px 90px 0 0 rgba(235,240,255,.3), 90px 250px 0 0 rgba(235,240,255,.35), 300px 240px 0 .5px rgba(215,225,255,.35), 60px 420px 0 0 rgba(235,240,255,.25), 340px 380px 0 0 rgba(235,240,255,.3);"></div>
+        <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); width:118px; height:34px; border-radius:999px; background:#000; z-index:9;"></div>
+        <div style="position:absolute; top:22px; left:34px; font:700 14px var(--font-ui); color:var(--on-night-1); z-index:9;">9:41</div>
+        <div style="position:absolute; left:50%; top:56%; width:0; height:0;">
+          <div style="animation:pgBreathe 4.6s ease-in-out infinite; transform-origin:50% 90%;">
+            <div style="animation:pgBob 6s ease-in-out infinite;">
+              <div style="position:relative; width:96px; height:82px; margin:-41px 0 0 -48px; filter:drop-shadow(0 0 24px rgba(215,225,255,.4)) drop-shadow(0 10px 18px rgba(0,0,0,.5));">
+                <div style="position:absolute; inset:0; border-radius:46% 54% 52% 48% / 56% 46% 54% 44%; background:radial-gradient(circle at 38% 30%, #FFFFFF 0%, #F0F2F8 55%, #D9DCE8 100%);"></div>
+                <div style="position:absolute; left:0; right:0; top:28px; display:flex; justify-content:center; gap:22px;">
+                  <span style="width:8.5px; height:11px; border-radius:50%; background:#141420;"></span>
+                  <span style="width:8.5px; height:11px; border-radius:50%; background:#141420;"></span>
+                </div>
+                <div style="position:absolute; left:50%; top:47px; transform:translateX(-50%); width:7px; height:7px; border:2px solid rgba(20,20,32,.75); border-radius:50%;"></div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute; left:50%; bottom:70px; transform:translateX(-50%); width:270px; backdrop-filter:blur(28px) saturate(1.4); background:var(--glass-night-bg); box-shadow:var(--glass-night-ring), var(--glass-night-shadow); border-radius:22px; padding:14px 16px 13px;">
+            <div style="font:400 15px/1.6 var(--font-ui); color:rgba(240,243,255,.88);">Hello.</div>
+            <div style="font:400 15px/1.6 var(--font-ui); color:rgba(240,243,255,.88);">I don't have a name yet — give me one?</div>
+          </div>
+        </div>
+        <div style="position:absolute; left:24px; right:24px; bottom:46px; display:flex; align-items:center; gap:8px;">
+          <div style="flex:1; display:flex; align-items:center; gap:8px; backdrop-filter:blur(20px); background:rgba(255,255,255,.1); box-shadow:0 0 0 1px rgba(255,255,255,.16); border-radius:999px; padding:6px 7px 6px 16px;">
+            <span style="flex:1; font:600 16px var(--font-ui); color:rgba(245,246,252,.5);">Sol?</span>
+            <span style="font:400 13px var(--font-ui); color:rgba(255,255,255,.35); padding:0 6px;">↻</span>
+            <span style="display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#FFFFFF; color:#101014; font:600 14px var(--font-ui); box-shadow:0 0 14px rgba(255,255,255,.4);">↑</span>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:9px; left:50%; transform:translateX(-50%); width:132px; height:5px; border-radius:99px; background:rgba(255,255,255,.3); z-index:9;"></div>
+      </div>
+    </div>
+
+    <!-- 03a brief · sheet -->
+    <div id="3a">
+      <div style="display:flex; align-items:baseline; gap:10px; margin:0 0 14px 6px;">
+        <span style="font:700 12px var(--font-ui); color:rgba(0,0,0,.4);">03</span>
+        <span style="font:700 17px var(--font-display); letter-spacing:-.01em; color:#111;">The brief · sheet</span>
+        <span style="font:700 10px var(--font-ui); background:#111; color:#FFF; padding:3px 8px; border-radius:6px;">3a</span>
+      </div>
+      <div data-screen-label="Brief 3a sheet" style="position:relative; width:390px; height:844px; border-radius:54px; overflow:hidden; background:var(--bg-night); box-shadow:0 0 0 1.5px rgba(0,0,0,.35), 0 34px 90px -34px rgba(8,10,30,.7);">
+        <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); width:118px; height:34px; border-radius:999px; background:#000; z-index:9;"></div>
+        <div style="position:absolute; top:22px; left:34px; font:700 14px var(--font-ui); color:var(--on-night-1); z-index:9;">9:41</div>
+        <div style="position:absolute; left:50%; top:20%; transform:translate(-50%,0); width:70px; height:60px; opacity:.5;">
+          <div style="position:absolute; inset:0; border-radius:46% 54% 52% 48% / 56% 46% 54% 44%; background:radial-gradient(circle at 38% 30%, #FFFFFF 0%, #F0F2F8 55%, #D9DCE8 100%); filter:drop-shadow(0 0 18px rgba(215,225,255,.3));"></div>
+        </div>
+        <div style="position:absolute; inset:0; background:rgba(5,6,14,.35);"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; border-radius:34px 34px 0 0; backdrop-filter:blur(40px) saturate(1.4); background:linear-gradient(135deg, rgba(30,30,38,.92) 0%, rgba(20,20,26,.88) 100%); box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 -16px 50px rgba(0,0,0,.6); padding:14px 22px 30px;">
+          <div style="width:36px; height:4.5px; border-radius:99px; background:rgba(255,255,255,.2); margin:0 auto 16px;"></div>
+          <div style="font:600 22px var(--font-display); letter-spacing:-.01em; color:#F2F3F9; margin-bottom:4px;">Sol's first trip</div>
+          <div style="font:400 12.5px/1.55 var(--font-ui); color:rgba(230,235,255,.5); margin-bottom:16px;">a note to someone you trust — not a form</div>
+          <div style="font:700 13px var(--font-ui); letter-spacing:0; color:rgba(230,235,255,.45); text-transform:lowercase; margin-bottom:7px;">Goal</div>
+          <div style="background:rgba(255,255,255,.06); box-shadow:0 0 0 1px rgba(255,255,255,.14); border-radius:14px; padding:13px 14px; font:400 15px/1.55 var(--font-ui); color:#F5F6FC; margin-bottom:16px;">find what contradicts chapter 2 of my thesis</div>
+          <div style="font:700 13px var(--font-ui); letter-spacing:0; color:rgba(230,235,255,.45); text-transform:lowercase; margin-bottom:8px;">Bring back</div>
+          <div style="display:flex; flex-wrap:wrap; gap:7px; margin-bottom:16px;">
+            <span style="font:700 13px var(--font-ui); background:#FFFFFF; color:#101014; padding:8px 15px; border-radius:11px; box-shadow:0 2px 8px rgba(0,0,0,.4);">Papers</span>
+            <span style="font:700 13px var(--font-ui); background:#FFFFFF; color:#101014; padding:8px 15px; border-radius:11px; box-shadow:0 2px 8px rgba(0,0,0,.4);">Contradictions</span>
+            <span style="font:500 13px var(--font-ui); background:rgba(255,255,255,.07); color:rgba(240,243,255,.7); padding:8px 15px; border-radius:11px; box-shadow:0 0 0 1px rgba(255,255,255,.14);">People</span>
+            <span style="font:500 13px var(--font-ui); background:rgba(255,255,255,.07); color:rgba(240,243,255,.7); padding:8px 15px; border-radius:11px; box-shadow:0 0 0 1px rgba(255,255,255,.14);">Surprises</span>
+          </div>
+          <div style="font:700 13px var(--font-ui); letter-spacing:0; color:rgba(230,235,255,.45); text-transform:lowercase; margin-bottom:8px;">Trip depth</div>
+          <div style="display:flex; gap:5px; background:rgba(255,255,255,.07); border-radius:14px; padding:4px; margin-bottom:22px;">
+            <span style="flex:1; text-align:center; font:500 13px var(--font-ui); padding:10px 4px; color:rgba(230,235,255,.5);">Quick look</span>
+            <span style="flex:1; text-align:center; font:700 13px var(--font-ui); padding:10px 4px; border-radius:11px; background:#FFF; color:#101014; box-shadow:0 2px 8px rgba(0,0,0,.4);">Overnight</span>
+            <span style="flex:1; text-align:center; font:500 13px var(--font-ui); padding:10px 4px; color:rgba(230,235,255,.5);">Deep</span>
+          </div>
+          <div style="text-align:center; background:#FFFFFF; color:#101014; font:700 15px var(--font-ui); padding:15px 0; border-radius:999px; box-shadow:0 0 26px rgba(255,255,255,.3), 0 10px 24px -10px rgba(0,0,0,.6);">Send Sol through</div>
+          <div style="text-align:center; font:500 12px var(--font-ui); color:rgba(230,235,255,.4); margin-top:13px;">it packs its own desk — tap a folder to hold it back</div>
+        </div>
+        
+:absolute; bottom:9px; left:50%; transform:translateX(-50%); width:132px; height:5px; border-radius:99px; background:rgba(255,255,255,.3); z-index:9;"></div>
+      </div>
+    </div>
+
+  </div>
+</div></x-dc>
+</body>
+</html>

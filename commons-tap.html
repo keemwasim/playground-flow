@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>the commons — what happens when you reach for one</title>
+<link rel="stylesheet" href="./design-system/styles.css">
+<style>
+  body { margin:0; background:#F4F4F6; font-family:var(--font-ui); color:var(--ink-2); }
+  .sheet { padding:56px 40px 90px; }
+  h1 { font:700 30px var(--font-display),sans-serif; letter-spacing:-.02em; margin:0 0 6px; }
+  .lede { font:500 15px var(--font-ui); color:var(--text-secondary); margin:0 0 46px; max-width:700px; line-height:1.55; }
+  .grid { display:flex; flex-wrap:wrap; gap:46px 34px; }
+  .take { width:340px; }
+  .cap { display:flex; align-items:baseline; gap:10px; margin-bottom:10px; }
+  .num { font:600 13px ui-monospace,Menlo,monospace; letter-spacing:0; color:var(--text-tertiary); text-transform:lowercase; }
+  .name { font:700 15px var(--font-display),sans-serif; letter-spacing:-.01em; }
+  .why { font:500 12.5px var(--font-ui); color:var(--text-secondary); line-height:1.5; margin:0 0 8px; min-height:76px; }
+  .cost { font:600 11px var(--font-ui); color:var(--text-tertiary); line-height:1.5; margin:0 0 12px; min-height:46px; }
+  .phone { width:340px; height:680px; border-radius:46px; background:var(--bg); position:relative; overflow:hidden;
+           box-shadow:0 0 0 1.5px rgba(0,0,0,.14), 0 24px 60px -30px rgba(0,0,0,.4); }
+  .body { position:absolute; inset:0; padding:58px 26px 26px; display:flex; flex-direction:column; }
+  .tag { font:600 13px ui-monospace,Menlo,monospace; letter-spacing:0; color:var(--text-tertiary); text-transform:lowercase; }
+  .peb { border-radius:48% 52% 46% 54% / 55% 50% 50% 45%; position:relative; flex:none;
+         background:radial-gradient(circle at 36% 26%, #FFF 0%, #F2F2F5 52%, #E4E4E9 100%);
+         box-shadow:inset 3px 4px 7px rgba(255,255,255,.95), inset -4px -6px 11px rgba(0,0,0,.11), 0 10px 22px rgba(0,0,0,.13); }
+  .peb::after { content:''; position:absolute; top:38%; left:33%; width:11%; height:19%; border-radius:50%;
+                background:var(--ink-2); box-shadow:8px 0 0 var(--ink-2); }
+  .ink { background:radial-gradient(circle at 36% 26%, #262629 0%, #141416 46%, #0B0B0D 100%); }
+  .ink::after { background:#FFF; box-shadow:8px 0 0 #FFF; }
+  .ghost { position:absolute; opacity:.1; }
+  .row { display:flex; align-items:baseline; justify-content:space-between; gap:14px; padding:15px 0; border-bottom:1px solid var(--divider); }
+  .k { font:500 13.5px var(--font-ui); color:var(--text-secondary); }
+  .v { font:500 14px var(--font-ui); color:var(--ink-2); text-align:right; }
+  .ctaInk { background:var(--ink-2); border-radius:999px; padding:16px 22px; text-align:center; font:600 15px var(--font-ui); color:#FFF; }
+  .word { font:600 15px var(--font-ui); color:var(--text-secondary); text-align:center; padding:16px 0 2px; }
+  .said { font:500 16px/1.5 var(--font-ui); color:var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>the commons — what happens when you reach for one</h1>
+  <p class="lede">these are <b>second-hand</b>. someone raised each of them, and what it knows was learned with somebody else. so was the personality, and by your own ruling it can have gone wrong out there. three answers to the same moment, each a different idea of what taking on someone else's agent should feel like.</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+const ghosts = `
+  <div class="peb ghost" style="width:26px;height:22px;left:14%;top:18%"></div>
+  <div class="peb ghost ink" style="width:20px;height:17px;right:12%;top:12%"></div>
+  <div class="peb ghost" style="width:32px;height:27px;left:60%;top:30%"></div>
+  <div class="peb ghost" style="width:22px;height:19px;left:20%;top:38%"></div>`;
+
+const TAKES = [
+  {
+    name: 'it turns and speaks',
+    why: 'the commons falls away, it comes to the front, and it tells you one true thing about where it has been. no fields, no spec. the whole transaction is one sentence and one word.',
+    cost: 'costs every ability to compare. you cannot weigh two of them, and a beautiful sentence can sell you a bad agent. it also puts enormous weight on the writing, every time, forever.',
+    html: `<div class="body">${ghosts}
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="peb ink" style="width:104px;height:87px"></div>
+        <div style="font:700 28px var(--font-display),sans-serif;letter-spacing:-.022em;margin-top:26px">Rell</div>
+        <div class="said" style="margin-top:12px;text-align:center;max-width:250px">i worked the water for a year. she stopped going out.</div>
+        
+      </div>
+      <div class="word">take it home</div></div>`,
+  },
+  {
+    name: 'its history opens',
+    why: 'provenance. who kept it, how long, what it did there, where it is known now. buying a used instrument, where you can see the wear. the most honest expression of second-hand and the most useful before you commit.',
+    cost: 'costs the feeling, and it is one bad decision away from being a spec card, which the doctrine bans outright. the more fields it grows the less it is a creature and the more it is a listing.',
+    html: `<div class="body">${ghosts}
+      <div style="display:flex;align-items:center;gap:18px">
+        <div class="peb ink" style="width:64px;height:54px"></div>
+        <div><div style="font:700 24px var(--font-display),sans-serif;letter-spacing:-.02em">Rell</div>
+        </div>
+      </div>
+      <div class="said" style="margin-top:22px">i worked the water for a year.</div>
+      <div style="margin-top:20px">
+        <div class="row"><span class="k">kept by</span><span class="v">someone in the harbour</span></div>
+        <div class="row"><span class="k">for</span><span class="v">a year and a season</span></div>
+        <div class="row"><span class="k">learned</span><span class="v">boats, tides, who owes who</span></div>
+        <div class="row"><span class="k">known at</span><span class="v">the harbour, the square</span></div>
+        <div class="row" style="border-bottom:none"><span class="k">went wrong once</span><span class="v">it still argues about prices</span></div>
+      </div>
+      <div style="flex:1"></div>
+      <div class="ctaInk">take it home</div></div>`,
+  },
+  {
+    name: 'it decides too',
+    why: 'you reach and it answers. one that has been out a long time has options, so it can want to know what you would have it do before it says yes. the only take where the marketplace has teeth, and the only one where <b>your</b> one has to be worth saying yes to.',
+    cost: 'costs certainty, and it can read as a paywall wearing a costume if refusals are not genuinely earnable. the rule has to be that a no is always a not-yet, with a stated way through.',
+    html: `<div class="body">${ghosts}
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div class="peb ink" style="width:96px;height:81px"></div>
+        <div style="font:700 26px var(--font-display),sans-serif;letter-spacing:-.022em;margin-top:24px">Rell</div>
+        <div class="said" style="margin-top:12px;text-align:center;max-width:258px">i worked the water for a year. what would you have me do?</div>
+        <span class="tag" style="margin-top:16px">DECIDING</span>
+      </div>
+      <div>
+        <div style="background:var(--well);border-radius:999px;padding:14px 18px;font:500 15px var(--font-ui);color:var(--text-tertiary)">tell it</div>
+        <div class="word" style="padding-top:14px">leave it be</div>
+      </div></div>`,
+  },
+];
+
+document.getElementById('grid').innerHTML = TAKES.map((t,i)=>`
+  <div class="take">
+    <div class="cap"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="name">${t.name}</span></div>
+    <div class="why">${t.why}</div>
+    <div class="cost">COSTS · ${t.cost}</div>
+    <div class="phone">${t.html}</div>
+  </div>`).join('');
+</script>
+</body>
+</html>

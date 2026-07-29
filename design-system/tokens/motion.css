@@ -1,0 +1,109 @@
+/* Playground — motion tokens. Calm, breathing, expensive-feeling. Nothing snaps. */
+:root {
+  --ease-pop: cubic-bezier(.2,.8,.2,1);     /* panels, bubbles, banners entering */
+  --ease-travel: cubic-bezier(.4,.1,.3,1);  /* creature walking */
+  --ease-cross: cubic-bezier(.6,.05,.4,1);  /* shrinking into the tear */
+  --ease-emerge: cubic-bezier(.2,.9,.25,1.1); /* growing out of the tear (slight overshoot) */
+
+  --dur-tap: .25s;        /* toggles, chip states */
+  --dur-enter: .45s;      /* bubbles, menus */
+  --dur-sheet: .45s;      /* bottom sheets */
+  --dur-travel: 1.8s;     /* creature repositioning */
+  --dur-crossing: 1s;     /* shrink/grow through tear */
+  --dur-tear: .8s;        /* tear open/close */
+
+  /* idle life — the creature is never still */
+  --dur-breathe: 4.6s;    /* scale(.99,1.035), origin 50% 90% */
+  --dur-bob: 6s;          /* translateY(-5px) */
+  --dur-glowpulse: 2.6s;  /* tear sliver, waiting dots */
+}
+
+/* canonical keyframes — copy verbatim */
+@keyframes pgBreathe { 0%,100% { transform: scale(1,1); } 50% { transform: scale(.99,1.035); } }
+@keyframes pgBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes pgSway { 0%,100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } } /* inkling, a brushstroke swaying on its foot */
+@keyframes pgMorph { 0%,100% { border-radius: 50% 50% 44% 56% / 62% 62% 38% 38%; } 33% { border-radius: 54% 46% 48% 52% / 58% 64% 36% 42%; } 66% { border-radius: 48% 52% 52% 48% / 64% 58% 42% 36%; } } /* wisp body, it never holds one shape */
+@keyframes pgFadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes pgLineIn { 0% { opacity: 0; transform: translateY(5px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes pgBubbleIn { 0% { opacity: 0; transform: translateX(-50%) translateY(8px) scale(.95); } 100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); } }
+@keyframes pgSheetIn { 0% { transform: translateY(102%); } 100% { transform: translateY(0); } }
+@keyframes pgMenuIn { 0% { opacity: 0; transform: translateY(-8px) scale(.94); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes pgBannerIn { 0% { opacity: 0; transform: translate(-50%,-26px) scale(.96); } 100% { opacity: 1; transform: translate(-50%,0) scale(1); } }
+@keyframes pgGrow { 0% { transform: translate(-50%,-50%) scale(.14); opacity: 0; } 60% { opacity: 1; } 100% { transform: translate(-50%,-50%) scale(1); opacity: 1; } }
+@keyframes pgShrink { 0% { transform: translate(-50%,-50%) scale(1); opacity: 1; } 100% { transform: translate(-50%,-50%) scale(.14); opacity: 0; } }
+@keyframes pgEngulf { 0% { transform: translate(-50%,-50%) scale(1); } 100% { transform: translate(-50%,-50%) scale(5.6); } } /* the crossing, the world takes over the whole screen (keem, late July 2026). 5.6 so a 230px globe seated high on the entry buries the bottom corners of the 390x780 frame, rim and cap fully out of frame */
+@keyframes pgReturn { 0% { transform: translate(-50%,-50%) scale(4.2); opacity: 1; } 72% { opacity: 1; } 100% { transform: translate(-50%,-50%) scale(.08); opacity: 0; } } /* the world delivers you and recedes, the engulf played backwards (keem: the transition love is needed) */
+@keyframes pgCross { 0% { transform: translate(-50%,110px) scale(1); opacity: 1; } 45% { transform: translate(-50%,10px) scale(.72); opacity: 1; } 100% { transform: translate(-50%,-58px) scale(.1); opacity: 0; } } /* the crossing, the companion glides up and INTO the tear (keem, late July 2026) */
+@keyframes pgFlash { 0% { opacity: .9; transform: translate(-50%,-50%) scale(.3); } 100% { opacity: 0; transform: translate(-50%,-50%) scale(1.6); } }
+@keyframes pgGlowPulse { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
+@keyframes pgTrip { 0% { width: 4%; } 100% { width: 100%; } }
+@keyframes pgWorldSpinA { 0% { background-position: 0px 46%; } 100% { background-position: -746px 46%; } }
+@keyframes pgWorldSpinB { 0% { background-position: 0px 40%; } 100% { background-position: -560px 40%; } }
+@keyframes pgSoul { 0% { transform: translate(0px,44px) scale(.75); opacity: 0; } 16% { opacity: .85; } 60% { opacity: .65; } 100% { transform: translate(-6px,-48px) scale(1.05); opacity: 0; } }
+@keyframes pgSoul2 { 0% { transform: translate(0px,40px) scale(.7); opacity: 0; } 18% { opacity: .7; } 100% { transform: translate(6px,-44px) scale(1); opacity: 0; } }
+@keyframes pgIslIn { 0% { opacity: 0; transform: translateX(-50%) scale(.6); } 100% { opacity: 1; transform: translateX(-50%) scale(1); } }
+@keyframes pgLogoBlink { 0%, 86%, 100% { transform: scaleY(1); } 90% { transform: scaleY(.12); } 94% { transform: scaleY(1); } }
+@keyframes pgBootBar { 0% { width: 0%; } 18% { width: 9%; } 45% { width: 52%; } 70% { width: 71%; } 100% { width: 100%; } }
+
+/* feedback & ambient motion — July 2026 audit */
+:root {
+  --dur-ping: 2.8s;
+  --dur-shimmer: 2.2s;
+  --dur-spring: 3s;
+  --dur-drift: 3.4s;
+}
+@keyframes pgPulseDot { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+@keyframes pgShadow { 0%,100% { transform: scaleX(1); opacity: 1; } 50% { transform: scaleX(.88); opacity: .8; } } /* ground ellipse, synced to pgBob */
+@keyframes pgShimmer { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
+@keyframes pgPingRing { 0% { transform: scale(.5); opacity: .7; } 100% { transform: scale(1.55); opacity: 0; } }
+@keyframes pgSpring { 0%,70%,100% { transform: scale(1); } 78% { transform: scale(1.14); } 88% { transform: scale(.95); } }
+@keyframes pgDriftUp { 0%,100% { transform: translateY(3px); opacity: .4; } 50% { transform: translateY(-3px); opacity: .9; } }
+
+/* globe — the entry surface's toy world */
+@keyframes pgGlobeSpin { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+@keyframes pgGlobeRise { 0% { transform: translateY(44px) scale(.7); opacity: 0; } 16% { opacity: .9; } 70% { opacity: .7; } 100% { transform: translateY(-166px) scale(1.08); opacity: 0; } }
+@keyframes pgCloudDrift { 0%,100% { transform: translate(0px,0px); } 50% { transform: translate(6px,-5px); } }
+@keyframes pgHaloPulse { 0%,100% { opacity: .75; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.05); } }
+
+/* logo birth — the entry: the mark appears, winks, and the globe comes out of its counter.
+   logo: pgLogoBirth .5s both · pgLogoWink 1.5s both (hole, origin at counter) · pgLogoOpen .65s @1.5s both.
+   globe: pgGlobeEnter 1.2s (.2,.9,.25,1.1) @1.55s both · halo pgFadeIn @1.9s. */
+@keyframes pgLogoBirth { 0% { opacity: 0; transform: translate(-50%,-50%) scale(.6); } 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); } }
+@keyframes pgLogoWink { 0%,74%,100% { transform: scaleY(1); } 80%,86% { transform: scaleY(.1); } }
+@keyframes pgLogoOpen { 0% { opacity: 1; transform: translate(-50%,-50%) scale(1); } 100% { opacity: 0; transform: translate(-50%,-50%) scale(3.6); } }
+@keyframes pgGlobeEnter { 0% { transform: scale(.12) translateY(60px); opacity: 0; } 55% { opacity: 1; } 80% { transform: scale(1.04) translateY(-4px); } 100% { transform: scale(1) translateY(0px); opacity: 1; } }
+
+/* living-light moments — glass and glow, not cartoon squash (v2, July 2026) */
+@keyframes pgGlowSwell { 0%,100% { box-shadow: 0 0 0 0 rgba(150,150,158,0); } 50% { box-shadow: 0 0 22px 4px rgba(150,150,158,.55); } }
+@keyframes pgMaterialize { 0%,70%,100% { filter: blur(6px); opacity: 0; transform: scale(.92); } 82%,94% { filter: blur(0px); opacity: 1; transform: scale(1); } }
+@keyframes pgEclipse { 0%,100% { transform: translateX(0px); } 50% { transform: translateX(5px); } }
+@keyframes pgRippleLine { 0% { transform: scale(.5); opacity: .6; } 100% { transform: scale(1.9); opacity: 0; } }
+@keyframes pgWeightless { 0%,100% { transform: translate(0px,0px) rotate(0deg); } 33% { transform: translate(2px,-5px) rotate(1.4deg); } 66% { transform: translate(-2px,-2px) rotate(-1.2deg); } }
+@keyframes pgAfterimage { 0% { transform: translateX(-14px); opacity: 0; } 30% { opacity: .35; } 100% { transform: translateX(14px); opacity: 0; } }
+@keyframes pgExhale { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(.965); opacity: .82; } }
+
+/* v3, the world is somewhere: the arc a trip draws across the world */
+@keyframes pgArcDraw { 0% { stroke-dashoffset: 120; opacity: 0; } 15% { opacity: 1; } 60%, 78% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+
+/* the entry crossing must FLOW, not cut (team note 2026-07-25). the world
+   keeps expanding past the frame and blooms out to paper, home is already
+   underneath, so the swap happens inside white and is never seen. */
+@keyframes pgEngulfThrough { 0% { transform: translate(-50%,-50%) scale(1); } 100% { transform: translate(-50%,-50%) scale(11); } }
+@keyframes pgLand { 0% { opacity: 1; } 100% { opacity: 0; } }
+
+/* it sleeps when it is resting (team note 2026-07-25). worn, never written. */
+@keyframes pgZ { 0% { opacity: 0; transform: translate(0,0) rotate(-8deg); } 22% { opacity: .7; } 100% { opacity: 0; transform: translate(15px,-40px) rotate(12deg); } }
+/* same drift, without the opacity dip: pgDriftUp fades to .4 at the extremes,
+   which was quietly undoing the darker "tap to enter" (team note 2026-07-25). */
+@keyframes pgDriftUpSolid { 0%,100% { transform: translateY(3px); } 50% { transform: translateY(-3px); } }
+
+/* two of them, on the playground+ offer. they lean toward each other and take
+   turns, so having a second one reads as company rather than a second copy. */
+@keyframes pgLeanA { 0%,100% { transform: translate(0,0) rotate(0deg); } 28% { transform: translate(7px,-4px) rotate(6deg); } 55% { transform: translate(2px,0) rotate(1deg); } }
+@keyframes pgLeanB { 0%,100% { transform: translate(0,0) rotate(0deg); } 46% { transform: translate(-6px,-7px) rotate(-7deg); } 72% { transform: translate(-2px,-1px) rotate(-2deg); } }
+
+/* the edge handles breathe toward their own side, slowly, so they read as
+   doors that are open rather than chrome stuck to the frame. the translateY
+   has to live inside the keyframe or the animation would drop the centring. */
+@keyframes pgHandleL { 0%,100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(2.5px); } }
+@keyframes pgHandleR { 0%,100% { transform: translateY(-50%) translateX(0); } 50% { transform: translateY(-50%) translateX(-2.5px); } }

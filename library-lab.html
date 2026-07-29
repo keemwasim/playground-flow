@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+  body { margin: 0; background: #FBFBFD; font-family: 'Manrope', -apple-system, system-ui, sans-serif; padding: 40px; }
+  h1 { font: 700 26px 'Sora', sans-serif; letter-spacing: -.02em; color: #111; margin: 0 0 6px; }
+  .sub { font: 500 13px 'Manrope'; color: rgba(0,0,0,.55); margin-bottom: 34px; max-width: 720px; }
+  .row { display: flex; gap: 34px; flex-wrap: wrap; }
+  .cell { display: flex; flex-direction: column; gap: 12px; }
+  .tag { font: 700 13px 'Manrope'; letter-spacing: 0; color: rgba(0,0,0,.45); text-transform: lowercase; }
+  .note { font: 500 12px/1.5 'Manrope'; color: rgba(0,0,0,.55); max-width: 300px; }
+  .phone { position: relative; width: 300px; height: 620px; border-radius: 44px; overflow: hidden; background: #FBFBFD; box-shadow: 0 0 0 1.5px rgba(0,0,0,.3), 0 28px 70px -34px rgba(0,0,0,.45); }
+  .hlabel { font: 700 13px 'Manrope'; letter-spacing: 0; color: rgba(0,0,0,.45); text-transform:lowercase; }
+  .hname { font: 700 24px 'Sora'; letter-spacing: -.02em; color: #111; margin-top: 4px; }
+  .mono { font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: 0; color: rgba(0,0,0,.4); text-transform:lowercase; }
+  .pebble { width: 64px; height: 54px; position: relative; }
+  .pebble .body { position: absolute; inset: 0; background: radial-gradient(circle at 36% 26%, #FFF 0%, #F2F2F5 52%, #E4E4E9 100%); border-radius: 48% 52% 46% 54% / 55% 50% 50% 45%; box-shadow: inset 3px 4px 7px rgba(255,255,255,.95), inset -4px -6px 11px rgba(0,0,0,.11), 0 10px 22px rgba(0,0,0,.13); }
+  .eye { position: absolute; top: 38%; width: 7px; height: 9px; border-radius: 50%; background: #17171a; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes lineIn { 0% { opacity: 0; transform: translateY(5px); } 100% { opacity: 1; transform: translateY(0); } }
+  @keyframes twinkle { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+</style>
+</head>
+<body>
+<h1>library lab</h1>
+<div class="sub">what it has brought you: every ask, delivered (keem ruling: it hands you what you asked for, this is not research). four operable directions. monochrome by law, the newest delivery is the hero.</div>
+<div class="row">
+
+  <!-- A · the shelf of quotes -->
+  <div class="cell">
+    <div class="tag">A · the shelf of quotes</div>
+    <div class="phone" id="la">
+      <div style="position:absolute; top:56px; left:24px;"><div class="hlabel">LIBRARY</div><div class="hname">what Sol brought you</div></div>
+      <div style="position:absolute; top:130px; left:24px; right:24px; display:flex; flex-direction:column; gap:26px;">
+        <div class="q" style="cursor:pointer;">
+          <div style="font:700 20px/1.3 'Sora'; letter-spacing:-.01em; color:#111;">third floor of the maker’s hall. ask for June.</div>
+          <div class="mono" style="margin-top:6px;">YOU ASKED · A QUIET PLACE TO WORK</div>
+          <div class="say" style="display:none; font:500 12.5px/1.55 'Manrope'; color:rgba(0,0,0,.62); margin-top:8px;">she holds the corner desk for people i send.</div>
+        </div>
+        <div class="q" style="cursor:pointer; opacity:.75;">
+          <div style="font:600 15px/1.45 'Sora'; letter-spacing:-.01em; color:#111;">a cutter named Vess. she’ll do the trailer for a favor.</div>
+          <div class="mono" style="margin-top:5px;">YOU ASKED · SOMEONE TO CUT THE TRAILER</div>
+          <div class="say" style="display:none; font:500 12.5px/1.55 'Manrope'; color:rgba(0,0,0,.62); margin-top:8px;">she owes me one now. i spent it on you.</div>
+        </div>
+        <div class="q" style="cursor:pointer; opacity:.6;">
+          <div style="font:600 15px/1.45 'Sora'; letter-spacing:-.01em; color:#111;">the printer on the square does short runs, half price on thursdays</div>
+          <div class="mono" style="margin-top:5px;">UNASKED FOR</div>
+          <div class="say" style="display:none; font:500 12.5px/1.55 'Manrope'; color:rgba(0,0,0,.62); margin-top:8px;">you never asked. i thought you could use it.</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">the newest keep is the hero at display size, older ones settle smaller and quieter. tap a quote and the agent says why it kept it, in speech weight. swipe leaves.</div>
+  </div>
+
+  <!-- B · the pile of slips -->
+  <div class="cell">
+    <div class="tag">B · the pile of slips</div>
+    <div class="phone" id="lb">
+      <div style="position:absolute; top:56px; left:24px;"><div class="hlabel">LIBRARY</div><div class="hname">what Sol brought you</div></div>
+      <div style="position:absolute; left:0; right:0; top:200px; height:300px;">
+        <div class="slip" data-i="0" style="position:absolute; left:24px; top:60px; width:200px; padding:16px 18px; background:#FFF; border-radius:12px; box-shadow:0 0 0 1px rgba(0,0,0,.05), 0 10px 26px -12px rgba(0,0,0,.3); transform:rotate(-5deg); cursor:pointer; transition:transform .4s cubic-bezier(.2,.8,.2,1), top .4s cubic-bezier(.2,.8,.2,1), left .4s ease;">
+          <div style="font:600 13px/1.45 'Sora'; color:#111;">third floor of the maker’s hall. ask for June.</div>
+          <div class="mono" style="margin-top:5px;">YOU ASKED · A QUIET PLACE</div>
+        </div>
+        <div class="slip" data-i="1" style="position:absolute; left:52px; top:96px; width:200px; padding:16px 18px; background:#FFF; border-radius:12px; box-shadow:0 0 0 1px rgba(0,0,0,.05), 0 10px 26px -12px rgba(0,0,0,.3); transform:rotate(3deg); cursor:pointer; transition:transform .4s cubic-bezier(.2,.8,.2,1), top .4s cubic-bezier(.2,.8,.2,1), left .4s ease;">
+          <div style="font:600 13px/1.45 'Sora'; color:#111;">a cutter named Vess, for a favor</div>
+          <div class="mono" style="margin-top:5px;">YOU ASKED · SOMEONE TO CUT THE TRAILER</div>
+        </div>
+        <div class="slip" data-i="2" style="position:absolute; left:36px; top:140px; width:200px; padding:16px 18px; background:#FFF; border-radius:12px; box-shadow:0 0 0 1px rgba(0,0,0,.05), 0 10px 26px -12px rgba(0,0,0,.3); transform:rotate(-1.5deg); cursor:pointer; transition:transform .4s cubic-bezier(.2,.8,.2,1), top .4s cubic-bezier(.2,.8,.2,1), left .4s ease;">
+          <div style="font:600 13px/1.45 'Sora';color:#111;">the printer does half price thursdays</div>
+          <div class="mono" style="margin-top:5px;">UNASKED FOR</div>
+        </div>
+      </div>
+    </div>
+    <div class="note">keeps are paper slips in a loose pile, the way a creature would actually hoard things. tap a slip and it lifts to the top to be read. tactile, the skeuomorphic vector, still monochrome.</div>
+  </div>
+
+  <!-- C · it retells -->
+  <div class="cell">
+    <div class="tag">C · it retells</div>
+    <div class="phone" id="lc">
+      <div style="position:absolute; top:130px; left:50%; transform:translateX(-50%); animation:bob 6s ease-in-out infinite;">
+        <div class="pebble"><div class="body"></div><div class="eye" style="left:25%"></div><div class="eye" style="right:25%"></div></div>
+      </div>
+      <div id="lcline" style="position:absolute; top:230px; left:30px; right:30px; text-align:center; font:500 15.5px/1.65 'Manrope'; color:#111; animation:lineIn .5s ease both;">i keep three things for you.</div>
+      <div id="lcsrc" class="mono" style="position:absolute; top:342px; left:0; right:0; text-align:center;"></div>
+      <div class="mono" style="position:absolute; bottom:36px; left:0; right:0; text-align:center; opacity:.7;">TAP · THE NEXT DELIVERY</div>
+    </div>
+    <div class="note">no page at all: the agent retells its keeps one at a time in its own voice, tap for the next. the library is a conversation with memory. zero furniture, the most doctrine-pure.</div>
+  </div>
+
+  <!-- D · the constellation it carries -->
+  <div class="cell">
+    <div class="tag">D · the constellation it carries</div>
+    <div class="phone" id="ld">
+      <div style="position:absolute; top:56px; left:24px;"><div class="hlabel">LIBRARY</div><div class="hname">what Sol brought you</div></div>
+      <div style="position:absolute; top:250px; left:50%; transform:translateX(-50%); animation:bob 6s ease-in-out infinite; z-index:2;">
+        <div class="pebble"><div class="body"></div><div class="eye" style="left:25%"></div><div class="eye" style="right:25%"></div></div>
+      </div>
+      <div class="star" data-q="third floor of the maker’s hall. ask for June." data-s="YOU ASKED · A QUIET PLACE TO WORK" style="position:absolute; left:34%; top:200px; width:7px; height:7px; border-radius:50%; background:#17171a; cursor:pointer; animation:twinkle 4s ease-in-out infinite;"></div>
+      <div class="star" data-q="a cutter named Vess. she’ll do the trailer for a favor." data-s="YOU ASKED · SOMEONE TO CUT THE TRAILER" style="position:absolute; left:64%; top:230px; width:6px; height:6px; border-radius:50%; background:#17171a; cursor:pointer; animation:twinkle 5s ease-in-out 1s infinite;"></div>
+      <div class="star" data-q="the printer on the square does short runs, half price on thursdays" data-s="UNASKED FOR" style="position:absolute; left:48%; top:170px; width:5px; height:5px; border-radius:50%; background:#17171a; cursor:pointer; animation:twinkle 6s ease-in-out 2s infinite;"></div>
+      <div id="ldq" style="position:absolute; top:360px; left:30px; right:30px; text-align:center; font:700 17px/1.4 'Sora'; letter-spacing:-.01em; color:#111; opacity:0; transition:opacity .35s ease;"></div>
+      <div id="lds" class="mono" style="position:absolute; top:430px; left:0; right:0; text-align:center; opacity:0; transition:opacity .35s ease;"></div>
+    </div>
+    <div class="note">the wildcard: keeps orbit the creature as tiny ink stars, memory it physically carries. tap a star and its line unfolds beneath. the more it keeps, the richer its little sky.</div>
+  </div>
+
+</div>
+<script>
+  // A: tap a quote, the agent says why
+  document.querySelectorAll('#la .q').forEach(q => q.addEventListener('click', () => {
+    const s = q.querySelector('.say');
+    s.style.display = s.style.display === 'none' ? 'block' : 'none';
+  }));
+  // B: tap a slip, it lifts to the top of the pile
+  const slips = [...document.querySelectorAll('#lb .slip')];
+  slips.forEach(sl => sl.addEventListener('click', () => {
+    slips.forEach(o => { o.style.zIndex = 1; });
+    sl.style.zIndex = 5;
+    sl.style.top = '30px'; sl.style.left = '38px'; sl.style.transform = 'rotate(0deg) scale(1.06)';
+    slips.filter(o => o !== sl).forEach((o, i) => { o.style.top = (110 + i * 44) + 'px'; o.style.transform = 'rotate(' + (i ? 3 : -4) + 'deg) scale(1)'; });
+  }));
+  // C: tap for the next remembered line
+  const KEEPS = [
+    ['i brought you three things.', ''],
+    ['your quiet place. third floor of the maker’s hall, ask for June.', 'YOU ASKED · A QUIET PLACE TO WORK'],
+    ['your cutter. Vess. she’ll do the trailer for a favor, i already paid it.', 'YOU ASKED · SOMEONE TO CUT THE TRAILER'],
+    ['and one you never asked for. the printer on the square, half price thursdays.', 'UNASKED FOR'],
+  ];
+  let ci = 0;
+  document.getElementById('lc').addEventListener('click', () => {
+    ci = (ci + 1) % KEEPS.length;
+    const l = document.getElementById('lcline'), s = document.getElementById('lcsrc');
+    l.style.animation = 'none'; void l.offsetWidth; l.style.animation = 'lineIn .5s ease both';
+    l.textContent = KEEPS[ci][0]; s.textContent = KEEPS[ci][1];
+  });
+  // D: tap a star, its line unfolds
+  document.querySelectorAll('#ld .star').forEach(st => st.addEventListener('click', () => {
+    const q = document.getElementById('ldq'), s = document.getElementById('lds');
+    q.textContent = st.dataset.q; s.textContent = st.dataset.s;
+    q.style.opacity = 1; s.style.opacity = 1;
+  }));
+</script>
+</body>
+</html>

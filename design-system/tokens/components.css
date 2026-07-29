@@ -1,0 +1,249 @@
+/* Playground, component tokens. Every recipe the apps actually use, expressed
+   as custom properties over the base scales. An engineer should be able to build
+   any Playground surface from THIS file plus colors/typography/surfaces/motion. */
+:root {
+  /* Button, ink returns v4 (user-picked 1b, July 2026. Influence: minimal store-listing chrome,
+     flat wells, solid ink pills, zero decoration). Primary is solid ink, small radius, NO shadow.
+     Depth belongs to glass and paper, never controls. One primary per surface, sentence case. */
+  --button-radius: var(--radius-button);          /* 12, approved 1b */
+  --button-font: 700 15px/1 var(--font-ui);     /* sentence case */
+  --button-primary-bg: var(--ink-2);
+  --button-primary-fg: #FFFFFF;
+  --button-primary-shadow: none;
+  --button-pressed-bg: var(--ink-0);            /* pressed = ink-0 plus scale .97, no insets, no wells */
+  --button-primary-dark-bg: #FFFFFF;            /* on world imagery: luminous pill (radius-pill), the one exception */
+  --button-primary-dark-shadow: 0 0 26px rgba(255,255,255,.3), 0 10px 24px -10px rgba(0,0,0,.6);
+  --button-pad-lg: 14px 0;              /* full-width sheet CTA */
+  --button-pad-md: 14px 22px;
+  --button-ghost-bg: var(--well);               /* rests in the well, no outline, no blur */
+  --button-ghost-ring: none;
+  --button-ghost-fg: rgba(17,17,17,.8);
+  --button-quiet-fg: rgba(0,0,0,.55);           /* plain 600 text, weight is the affordance */
+  --button-pressed: scale(.97);                 /* plus bg var(--button-pressed-bg) on primary. Wells darken one step */
+  --button-disabled-bg: var(--porcelain-2);
+  --button-disabled-fg: var(--disabled-fg);
+  --button-send-size: 42px;             /* round send buttons. 30px inline in reply cards */
+
+  /* Chip (multi-select), gray well, chosen = solid ink (1b) */
+  --chip-bg: var(--well);
+  --chip-border: none;
+  --chip-fg: rgba(30,30,32,.7);
+  --chip-selected-bg: var(--ink-2);
+  --chip-selected-border: none;
+  --chip-selected-fg: #FFFFFF;
+  --chip-pad: 8px 15px;                 /* radius: var(--radius-chip) */
+
+  /* Segmented (single-choice track), the white sliding thumb survives (README ruling) */
+  --seg-track-bg: var(--well);
+  --seg-thumb-bg: #FFFFFF;
+  --seg-thumb-shadow: 0 2px 8px rgba(0,0,0,.14), 0 0 0 .5px rgba(0,0,0,.12);
+  --seg-pad: 4px;                       /* track radius: var(--radius-control), thumb 11px */
+
+  /* Speech bubble, the companion speaking (paper) */
+  --bubble-bg: var(--paper-card);
+  --bubble-blur: none;
+  --bubble-pad: 13px 15px 12px;         /* radius: var(--radius-bubble) */
+  --bubble-shadow: var(--paper-ring), var(--shadow-element);
+  --bubble-ink: rgba(17,17,17,.78);     /* speech text color, 400 15px/1.6 --font-ui */
+  --bubble-anchor: 84px;                /* bottom offset above creature center (iOS) */
+
+  /* Reply card, the user answering (incl. name-input variant), flat paper well */
+  --reply-radius: 16px 16px 4px 16px;   /* asymmetric corner points at the speaker */
+  --reply-bg: var(--paper-well);
+  --reply-blur: none;
+  --reply-ring: none;
+  --reply-pad: 10px 15px 9px;
+
+  /* Chat thread */
+  --chat-user-bg: var(--ink-2);
+  --chat-user-fg: var(--on-ink-1);
+  --chat-user-radius: 16px 16px 5px 16px;
+  --chat-companion-radius: 16px 16px 16px 5px;
+  --chat-bubble-max: 78%;
+  --chat-reply-delay: 850ms;            /* companion answers after a beat */
+
+  /* Sheet (bottom), paper */
+  --sheet-bg: var(--paper-card);
+  --sheet-blur: none;
+  --sheet-shadow: var(--paper-ring), 0 -16px 50px rgba(0,0,0,.14);
+  --sheet-grabber: rgba(0,0,0,.16);     /* 36 by 4.5, radius pill */
+  --sheet-pad: 14px 20px 22px;          /* radius: var(--radius-sheet). Inset: var(--sheet-inset) */
+  --sheet-max-h: 74%;
+
+  /* Menu (anchored dropdown), paper */
+  --menu-bg: var(--paper-card);
+  --menu-shadow: var(--paper-ring), var(--shadow-panel);
+  --menu-width: 284px;                  /* radius: var(--radius-menu). Origin: top right. pgMenuIn */
+
+  /* Arrivals (banner plus live activity), paper on app surfaces.
+     Glass only when floating over world imagery */
+  --notice-bg: var(--paper-card);
+  --notice-shadow: var(--paper-ring), var(--shadow-element);
+  --notice-radius-banner: var(--radius-row-card);   /* 18 */
+  --notice-radius-activity: var(--radius-menu);     /* 26 */
+  --notice-progress-track: var(--track);
+  --notice-progress-fill: var(--ink-2); /* animated by pgTrip over the trip duration */
+  --arrival-dwell: 5.5s;
+  /* width lives in layout.css as --notice-w */
+
+  /* Dock, paper */
+  --dock-bg: var(--paper-card);
+  --dock-tab-w: 52px;
+  --dock-tab-h: 40px;
+  --dock-active-bg: var(--ink-2);
+  --dock-active-fg: var(--on-ink-1);
+  --dock-offset-bottom: 24px;           /* above home indicator. Radius pill */
+
+  /* Header buttons (habitat chrome: chat, roster), paper */
+  --chrome-btn-size: 34px;
+  --chrome-btn-bg: var(--paper-card);
+  --chrome-btn-blur: none;
+  --chrome-btn-ring: var(--paper-ring);
+
+  /* Companion, provisional blob stand-in (final creature in exploration).
+     The creature is imagery, not chrome, so its soft radial shading is allowed */
+  --sprite-fill: radial-gradient(circle at 38% 30%, #FFFFFF 0%, #F0F2F8 55%, #D9DCE8 100%);
+  --sprite-fill-alt: #D9DCE8;
+  --sprite-eye: #141420;                /* 8.5 by 11. Height flexes with mood (6.5 to 12) */
+  --sprite-mouth: rgba(20,20,32,.75);   /* shape flexes with mood, see README moods */
+  --sprite-ground-shadow: rgba(0,0,0,.16); /* ellipse, pgShadow synced to bob */
+
+  /* Portal (the tear), world imagery */
+  --portal-diameter: 148px;
+  --portal-glow: var(--glow-silver);
+  --portal-vignette-hi: rgba(255,255,255,.22);
+  --portal-vignette-lo: rgba(5,5,8,.78);
+  --portal-soul: rgba(255,255,255,.85); /* pgSoul / pgSoul2 */
+
+  /* Input / Textarea, flat paper wells (ink returns: no inset rings on paper) */
+  --input-bg: var(--well);
+  --input-ring: none;
+  --input-radius: var(--radius-control);
+  --input-pad: 12px 14px;
+  --input-fg: var(--ink-2);
+  --input-placeholder: rgba(0,0,0,.32);
+
+  /* Toggle (44 by 26 iOS switch) */
+  --toggle-w: 44px;
+  --toggle-h: 26px;
+  --toggle-off-bg: rgba(0,0,0,.16);
+  --toggle-on-bg: var(--ink-2);
+  --toggle-knob: #FFFFFF;               /* 21px, shadow 0 2px 6px rgba(0,0,0,.3) */
+
+  /* List row (roster, settings, library) */
+  --row-pad: 9px 8px;
+  --row-gap: 11px;
+  --row-radius: 10px;
+  --row-divider: var(--divider);
+  --row-chevron: rgba(0,0,0,.25);
+
+  /* Grouped list section (Label + inset white card of ListRows).
+     The dock-level SETTINGS screen is the reference (../settings-lab.html).
+     Doctrine baked into this recipe (keem ruling, the settings revamp):
+     greyscale chrome only, world words not software words, ink switches,
+     NO colored icon tiles (rows are text-led), minimal text, one destructive
+     row alone in its own card stays INK (danger comes from isolation, never
+     red), and one decided screen, never an A/B option board. Named roles only,
+     never ad-hoc grey alphas. */
+  --section-label: var(--text-label);           /* normal case, normal tracking, --text-secondary */
+  --section-gap: var(--space-6);                 /* 28, between groups */
+  --section-card-bg: var(--paper-card);
+  --section-card-ring: var(--paper-ring);
+  --section-card-shadow: var(--shadow-contact);  /* calm on the desk, not floating */
+  --section-card-radius: var(--radius-row-card); /* 18 */
+  --section-row-pad: 12px 15px;                  /* roomier than --row-pad: text insets from the card edge */
+  --section-row-min: var(--hit-min);             /* 44 */
+  --section-tag-bg: var(--well);                 /* the quiet "soon" / value pill, never a colored badge */
+
+  /* Stat card (hero number: TRIPS / FRIENDS / FIELD NOTES).
+     Paper card, never a gray well inside a white card (two porcelain steps never stack) */
+  --stat-bg: var(--paper-card);
+  --stat-ring: var(--paper-ring);
+  --stat-shadow: var(--shadow-chip);
+  --stat-radius: 16px;
+  --stat-number: var(--text-stat);
+  --stat-label: 700 13px/1.2 var(--font-data);  /* normal case, normal tracking */
+
+  /* Permit (YOUR COMPANION keepsake). A warm record, never a form:
+     no label grid, no photo frame, no document rule lines (owner ruling July 2026) */
+  --permit-photo-w: 76px;
+  --permit-photo-h: 86px;                       /* the photo sits free, no frame */
+  --permit-name: 600 22px/1.2 var(--font-display); /* letter-spacing -.01em */
+
+  /* Progress plus status */
+  --progress-h: 3px;
+  --progress-track: var(--track);
+  --progress-fill: var(--ink-2);                /* pgTrip over trip duration. pgShimmer when live */
+  --led-size: 7px;                              /* pgPulseDot when live */
+  --ping-size: 22px;                            /* pgPingRing arrival marker */
+
+  /* Empty state */
+  --empty-fg: var(--text-tertiary);
+  --empty-pad: 18px 8px 20px;
+
+  /* Homecoming, findings wait sealed at the door (stub and wax-mark removed July 2026, plain paper card) */
+  --source-chip-bg: var(--tag-bg);
+  --source-chip-font: 500 11px/1 var(--font-data);
+  --finding-dash: rgba(0,0,0,.35);
+
+  /* Society, social facts, whispers, places (monochrome) */
+  --fact-bg: var(--well);
+  --fact-fg: rgba(17,17,17,.75);
+  --fact-font: 600 12px/1 var(--font-ui);
+  --whisper-fg: rgba(0,0,0,.45);
+  --whisper-fg-night: var(--on-night-2);        /* whispers floating over world imagery only */
+  --pin-size: 10px;
+  --place-microlabel: 500 10.5px/1 var(--font-data); /* quiet mono microlabel for place metadata, letter-spacing .04em */
+
+  /* Globe, three ruled treatments (keem July 2026, picked from the option set):
+     eclipse (ink world sliding over porcelain, a crescent of day left),
+     souls (ink sphere, no land, lives rising), relief (white on white raised
+     porcelain land). Monochrome, no grid, ever. Roles ruled (souls-forward):
+     souls owns entry + live activity, eclipse owns icon + chips, relief is a
+     spec-only alternate. */
+  --globe-size: 250px;
+  --globe-spin: 20s;                            /* pgGlobeSpin on a 200%-wide land strip */
+  --globe-ring: 0 0 0 1px rgba(0,0,0,.09);      /* sphere edge */
+  --globe-shadow: 0 1px 2px rgba(0,0,0,.05), 0 18px 40px -22px rgba(0,0,0,.3); /* contact plus falloff, no glow */
+  --globe-porcelain-sphere: radial-gradient(circle at 36% 30%, #FFFFFF 0%, #F3F3F6 55%, #E2E2E7 100%);
+  --globe-ink-sphere: radial-gradient(circle at 36% 30%, #26262B 0%, #131316 55%, #0A0A0C 100%);
+  --globe-eclipse-moon: radial-gradient(circle at 40% 40%, #1A1A1E 0%, #101013 100%);
+  --globe-relief-land: #FBFBFD;                 /* raised porcelain, shadows in the component */
+  --globe-soul: rgba(255,255,255,.85);          /* pgGlobeRise, lives rising off the night sphere */
+
+  /* Arrival aliases, world-word naming (legacy --notice-* kept for compat. New code uses these) */
+  --arrival-bg: var(--notice-bg);
+  --arrival-shadow: var(--notice-shadow);
+  --arrival-radius-banner: var(--notice-radius-banner);
+  --arrival-radius-activity: var(--notice-radius-activity);
+  --arrival-progress-track: var(--notice-progress-track);
+  --arrival-progress-fill: var(--notice-progress-fill);
+
+  /* Agent marks (provisional, exploration status shared with the creature) */
+  --agent-size: 34px;
+  --agent-ring: 1.5px solid var(--ink-2);
+  --agent-glyph: rgba(17,17,17,.75);
+  --agent-glyph-inverse: #FFFFFF;
+  --agent-rest-opacity: .35;
+
+  /* Interactive-state matrix, applies to chip, segmented, row, toggle, input.
+     Controls stay FLAT, no inset shadows on paper:
+     hover    bg shifts one porcelain step (well to p-4)
+     press    scale .97 plus bg one step darker (well to p-5), never an inset
+     focus    box-shadow var(--focus-ring), :focus-visible only
+     disabled fg var(--disabled-fg), bg var(--porcelain-2), no shadow */
+  --state-hover-well: var(--porcelain-4);
+  --state-press-well: var(--porcelain-5);
+
+  /* color globe, RE-RULED IN late July 2026 (keem: the blue world globe is
+     better). No longer deprecated. It is world imagery, the one sanctioned
+     color source, and it owns the entry hero as Globe variant world. The
+     archived prototypes and the spec pages also still render it */
+  --globe-sea: radial-gradient(circle at 36% 30%, #7CC8FF 0%, #3E97EC 42%, #1B6BD0 72%, #0E4BA6 100%);
+  --globe-land: radial-gradient(circle at 35% 28%, #57D488, #1E9C4E 75%);
+  --globe-land-warm: radial-gradient(circle at 35% 28%, #FFC06A, #EE8A2A 75%);
+  --globe-cloud: linear-gradient(180deg, #FFFFFF, #D9DCE8);
+  --globe-glow: 0 0 46px rgba(90,160,255,.55), 0 0 120px rgba(80,140,255,.28);
+  --globe-halo: radial-gradient(circle, rgba(90,160,255,.5) 0%, rgba(90,160,255,.16) 45%, transparent 68%);
+  --globe-vignette: radial-gradient(circle at 34% 26%, rgba(255,255,255,.5), transparent 40%), radial-gradient(circle at 50% 50%, transparent 55%, rgba(10,30,90,.35) 82%, rgba(6,18,60,.6) 100%);
+}
