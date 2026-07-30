@@ -37,9 +37,9 @@ function FriendsWorld() {
   return (
     <Frame>
       <div style={{ position: 'absolute', inset: 0, padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)', display: 'flex', flexDirection: 'column' }}>
-        <P.ScreenHeader label="friends" title="on the world" />
+        <P.ScreenHeader title="Friends" />
         <div style={{ position: 'relative', width: worldSize, height: worldSize, margin: 'var(--space-6) auto 0' }}>
-          <P.World size={worldSize} souls={5} depth="Overnight" />
+          <P.World size={worldSize} souls={5} depth={selected.depth} />
           {FRIENDS.map((friend) => (
             <button key={friend.name} type="button" aria-label={friend.name} onClick={() => setSelected(friend)}
               style={{ position: 'absolute', left: `${friend.x}%`, top: `${friend.y}%`, transform: 'translate(-50%, -50%)', width: 38, height: 38, padding: 0, border: 0, background: 'none', cursor: 'pointer' }}>
@@ -58,30 +58,28 @@ function FriendsWorld() {
 
 function FriendsRoster() {
   const P = (window.PG || {});
-  const [selected, setSelected] = React.useState(null);
 
   /* the guard lives BELOW every hook. above them it changed the hook order
      the moment a component loaded, and the whole surface died silently. */
-  if (!P.Section || !P.ListRow || !P.FriendDiamond || !P.SocialFact || !P.MiniGlobe || !P.ScreenHeader) {
+  if (!P.Section || !P.ListRow || !P.FriendDiamond || !P.SocialFact || !P.ScreenHeader) {
     return <div style={{ font: '500 13px var(--font-ui)', color: 'var(--text-tertiary)', padding: 40 }}>waking the world…</div>;
   }
 
   return (
     <Frame>
       <div style={{ position: 'absolute', inset: 0, overflow: 'auto', padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)' }}>
-        <P.ScreenHeader label="friends" title="the ones it knows" />
+        <P.ScreenHeader title="Friends" />
         <P.Section label="friends" style={{ marginTop: 'var(--space-7)' }}>
           {FRIENDS.map((friend, index) => (
-            <P.ListRow key={friend.name} onClick={() => setSelected(friend)}
+            <P.ListRow key={friend.name}
               leading={<P.FriendDiamond size={18} tone={friend.tone} />}
               title={friend.name}
-              sub={<span style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}><P.MiniGlobe size={18} /><span>{friend.place}</span></span>}
+              sub={friend.place}
               trailing={<P.SocialFact>{friend.fact}</P.SocialFact>}
               last={index === FRIENDS.length - 1}
               style={{ padding: 'var(--section-row-pad)', minHeight: 'var(--section-row-min)' }} />
           ))}
         </P.Section>
-        {selected && <div style={{ textAlign: 'center', marginTop: 'var(--space-5)', font: 'var(--text-hint)', color: 'var(--text-secondary)' }}>{selected.name}</div>}
       </div>
     </Frame>
   );
@@ -93,22 +91,26 @@ function FriendsSpotlight() {
 
   /* the guard lives BELOW every hook. above them it changed the hook order
      the moment a component loaded, and the whole surface died silently. */
-  if (!P.AgentMark || !P.FriendDiamond || !P.SocialFact || !P.ScreenHeader) {
+  if (!P.AgentMark || !P.FriendDiamond || !P.SocialFact || !P.MiniGlobe || !P.ScreenHeader) {
     return <div style={{ font: '500 13px var(--font-ui)', color: 'var(--text-tertiary)', padding: 40 }}>waking the world…</div>;
   }
 
   return (
     <Frame>
       <div style={{ position: 'absolute', inset: 0, padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ alignSelf: 'stretch' }}><P.ScreenHeader label="friends" title="one in view" /></div>
-          <div style={{ marginTop: 'var(--space-8)', width: 184, height: 184, borderRadius: 'var(--radius-row-card)', background: 'var(--paper-card)', boxShadow: 'var(--paper-ring), var(--shadow-contact)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ alignSelf: 'stretch' }}><P.ScreenHeader title="Friends" /></div>
+        <div style={{ marginTop: 'var(--space-8)', width: 184, height: 184, borderRadius: 'var(--radius-row-card)', background: 'var(--paper-card)', boxShadow: 'var(--paper-ring), var(--shadow-contact)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <P.AgentMark guild={selected.guild} trust={selected.trust} size={126} />
         </div>
         <div style={{ marginTop: 'var(--space-6)', textAlign: 'center' }}>
           <div style={{ font: 'var(--text-screen-title)', letterSpacing: 'var(--tracking-display)' }}>{selected.name}</div>
           <div style={{ marginTop: 'var(--space-3)' }}><P.SocialFact>{selected.fact}</P.SocialFact></div>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-3)', marginTop: 'var(--space-3)', font: 'var(--text-hint)', color: 'var(--text-secondary)' }}>
+            <P.MiniGlobe size={30} />
+            <span>{selected.place}</span>
+          </div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-4)', marginTop: 'auto', paddingBottom: 'var(--space-5)', flexWrap: 'wrap', maxWidth: 248 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-2)', marginTop: 'auto', paddingBottom: 'var(--space-5)', flexWrap: 'nowrap', maxWidth: 280 }}>
           {FRIENDS.map((friend) => (
             <button key={friend.name} type="button" aria-label={friend.name} onClick={() => setSelected(friend)}
               style={{ width: 32, height: 32, padding: 0, border: 0, background: 'none', cursor: 'pointer', opacity: selected.name === friend.name ? 1 : 'var(--agent-rest-opacity)' }}>
@@ -130,7 +132,7 @@ function FriendsEmpty() {
   return (
     <Frame>
       <div style={{ position: 'absolute', inset: 0, padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)' }}>
-        <P.ScreenHeader label="friends" title="the ones it knows" />
+        <P.ScreenHeader title="Friends" />
         <P.EmptyState style={{ marginTop: 'var(--space-10)' }}>everyone it meets will gather here</P.EmptyState>
       </div>
     </Frame>
@@ -161,9 +163,9 @@ function FriendsSheet() {
         {thumb('4 · EMPTY', <FriendsEmpty />)}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)', padding: 'var(--space-5)', background: 'var(--paper-card)', borderRadius: 'var(--radius-row-card)', boxShadow: 'var(--paper-ring), var(--shadow-contact)' }}>
-        <P.AgentMark guild="dreamer" trust=".32" size={38} />
-        <P.AgentMark guild="dreamer" trust=".68" size={38} />
-        <P.AgentMark guild="dreamer" trust=".94" size={38} />
+        <P.AgentMark guild="dreamer" trust={.32} size={38} />
+        <P.AgentMark guild="dreamer" trust={.68} size={38} />
+        <P.AgentMark guild="dreamer" trust={.94} size={38} />
         <P.FriendDiamond size={20} tone="var(--ink-4)" />
         <P.FriendDiamond size={20} tone="var(--ink-6)" />
         <P.SocialFact>trusted 92</P.SocialFact>

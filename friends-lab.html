@@ -23,7 +23,8 @@ h1{font:var(--text-sheet-title);letter-spacing:var(--tracking-display);margin:0 
 .variant{display:flex;flex-direction:column;gap:var(--space-3);align-items:center}
 .tag{font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);color:var(--text-tertiary);text-transform:lowercase}
 .note{font:var(--text-hint);color:var(--text-secondary);max-width:320px;text-align:center}
-.parts{display:flex;align-items:center;gap:var(--space-6);padding:var(--space-5);margin-top:var(--space-10);background:var(--paper-card);border-radius:var(--radius-row-card);box-shadow:var(--paper-ring),var(--shadow-contact)}
+.contact{display:block;margin-top:var(--space-10);padding-top:var(--space-6);background:var(--surface-desktop)}
+.contact x-import{display:block;margin-top:var(--space-3)}
 </style>
 </helmet>
 
@@ -46,38 +47,29 @@ h1{font:var(--text-sheet-title);letter-spacing:var(--tracking-display);margin:0 
   <div class="lab">
     <div class="variant">
       <div class="tag">1 · ON THE WORLD</div>
-      <x-import component-from-global-scope="PG.FriendsWorld" from="./friends.jsx?v=127a" hint-size="320px,680px"></x-import>
+      <x-import component-from-global-scope="PG.FriendsWorld" from="./friends.jsx?v=127b" hint-size="320px,680px"></x-import>
       <div class="note">friends placed where it met them</div>
     </div>
     <div class="variant">
       <div class="tag">2 · THE ROSTER</div>
-      <x-import component-from-global-scope="PG.FriendsRoster" from="./friends.jsx?v=127a" hint-size="320px,680px"></x-import>
+      <x-import component-from-global-scope="PG.FriendsRoster" from="./friends.jsx?v=127b" hint-size="320px,680px"></x-import>
       <div class="note">names it carried home</div>
     </div>
     <div class="variant">
       <div class="tag">3 · ONE IN VIEW</div>
-      <x-import component-from-global-scope="PG.FriendsSpotlight" from="./friends.jsx?v=127a" hint-size="320px,680px"></x-import>
+      <x-import component-from-global-scope="PG.FriendsSpotlight" from="./friends.jsx?v=127b" hint-size="320px,680px"></x-import>
       <div class="note">one friend, close at hand</div>
     </div>
     <div class="variant">
       <div class="tag">4 · EMPTY</div>
-      <x-import component-from-global-scope="PG.FriendsEmpty" from="./friends.jsx?v=127a" hint-size="320px,680px"></x-import>
+      <x-import component-from-global-scope="PG.FriendsEmpty" from="./friends.jsx?v=127b" hint-size="320px,680px"></x-import>
       <div class="note">before anyone has gathered</div>
     </div>
   </div>
 
-  <div style="margin-top:var(--space-10)">
+  <div class="contact">
     <div class="tag">contact sheet</div>
-    <x-import component-from-global-scope="PG.FriendsSheet" from="./friends.jsx?v=127a" hint-size="900px,500px"></x-import>
-  </div>
-
-  <div class="parts">
-    <span class="tag">parts</span>
-    <span><x-import component-from-global-scope="PG.AgentMark" from="./design-system/components/Agents.jsx?v=0729" hint-size="38px,38px"></x-import></span>
-    <span><x-import component-from-global-scope="PG.FriendDiamond" from="./design-system/components/Desk.jsx?v=0729" hint-size="28px,28px"></x-import></span>
-    <x-import component-from-global-scope="PG.SocialFact" from="./design-system/components/Society.jsx?v=0729" hint-size="120px,32px">trusted 92</x-import>
-    <x-import component-from-global-scope="PG.SocialFact" from="./design-system/components/Society.jsx?v=0729" hint-size="170px,32px">known in the commons</x-import>
-    <x-import component-from-global-scope="PG.MiniGlobe" from="./design-system/components/Society.jsx?v=0729" hint-size="30px,30px"></x-import>
+    <x-import component-from-global-scope="PG.FriendsSheet" from="./friends.jsx?v=127b" hint-size="900px,500px"></x-import>
   </div>
 </div>
 </x-dc>
