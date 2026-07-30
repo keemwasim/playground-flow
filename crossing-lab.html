@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html, body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+  background: var(--surface-desktop);
+}
+* { box-sizing: border-box; }
+.crossing-lab {
+  min-height: 100vh;
+  padding: 42px 36px 72px;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+}
+.crossing-header {
+  width: min(100%, 1056px);
+  margin: 0 auto 24px;
+}
+.crossing-kicker {
+  color: var(--text-secondary);
+  font: 700 13px/1.2 var(--font-ui);
+}
+.crossing-header h1 {
+  margin: 8px 0 0;
+  color: var(--text-primary);
+  font: 700 28px/1.1 var(--font-display);
+  letter-spacing: -.02em;
+}
+.crossing-contact-sheet {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 0 0 12px;
+}
+.crossing-card {
+  flex: 0 0 320px;
+}
+.crossing-frame {
+  position: relative;
+  width: 320px;
+  height: 680px;
+  overflow: hidden;
+  background: var(--paper-card);
+  border-radius: var(--radius-frame);
+  box-shadow: var(--paper-ring), var(--shadow-contact);
+}
+.crossing-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--paper-card);
+}
+.crossing-world {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  width: 320px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+.crossing-frame-shrink .crossing-world {
+  animation: crossing-shrink-world 3.8s var(--ease-cross) both;
+}
+.crossing-frame-bloom .crossing-world {
+  animation: crossing-bloom-world 3.8s var(--ease-cross) both;
+}
+.crossing-frame-engulf .crossing-world {
+  animation: crossing-engulf-world 3.8s var(--ease-cross) both;
+}
+.crossing-sprite {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, 104px);
+  transform-origin: 50% 50%;
+}
+.crossing-frame-shrink .crossing-sprite {
+  animation: crossing-shrink-sprite 3.8s var(--ease-cross) both;
+}
+.crossing-frame-bloom .crossing-sprite {
+  animation: crossing-bloom-sprite 3.8s var(--ease-cross) both;
+}
+.crossing-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 10px 4px 0;
+  color: var(--text-secondary);
+  font: 600 13px/1.2 var(--font-ui);
+}
+.crossing-card-foot button {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+  font: 700 13px/1 var(--font-ui);
+  cursor: pointer;
+}
+.crossing-card-foot button:active {
+  background: var(--button-pressed-bg);
+  transform: var(--button-pressed);
+}
+@keyframes crossing-shrink-sprite {
+  0%, 15% { opacity: 1; transform: translate(-50%, 104px) scale(1); }
+  48% { opacity: 1; transform: translate(-50%, 8px) scale(.72); }
+  100% { opacity: 0; transform: translate(-50%, -78px) scale(.08); }
+}
+@keyframes crossing-shrink-world {
+  0%, 33% { opacity: 1; transform: translate(-50%, -50%) scale(.14); }
+  46% { opacity: 1; transform: translate(-50%, -50%) scale(.7); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes crossing-bloom-sprite {
+  0%, 18% { opacity: 1; transform: translate(-50%, 104px) scale(1); }
+  48% { opacity: 1; transform: translate(-50%, 8px) scale(.52); }
+  100% { opacity: 0; transform: translate(-50%, -40px) scale(.08); }
+}
+@keyframes crossing-bloom-world {
+  0%, 22% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  48% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(5.6); }
+}
+@keyframes crossing-engulf-world {
+  0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(5.6); }
+}
+@media (max-width: 1080px) {
+  .crossing-lab { padding-left: 18px; padding-right: 18px; }
+  .crossing-contact-sheet { justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crossing-world, .crossing-sprite { animation-duration: .01ms !important; }
+}
+</style>
+</helmet>
+<div style="display:none;">
+  <x-import component-from-global-scope="PG.Tear" from="./design-system/components/Tear.jsx" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Globe" from="./design-system/components/Globe.jsx" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+</div>
+<x-import component-from-global-scope="PG.CrossingLab" from="./crossing.jsx" hint-size="1056px,760px"></x-import>
+</x-dc>
+</body>
+</html>
