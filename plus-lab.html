@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>playground+ lab</title>
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:var(--surface-desktop);color:var(--text-primary)}
+*{box-sizing:border-box}
+button{font-family:var(--font-ui)}
+
+.plus-lab{min-height:100vh;padding:44px 40px 80px}
+.plus-lab-header{max-width:700px;margin:0 auto 34px}
+.plus-lab-kicker{font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);text-transform:lowercase;color:var(--text-tertiary);margin-bottom:8px}
+.plus-lab-header h1{font:var(--text-sheet-title);letter-spacing:var(--tracking-display);margin:0;color:var(--text-primary)}
+.plus-phones{display:flex;align-items:flex-start;justify-content:center;gap:24px;flex-wrap:wrap}
+.plus-phone-wrap{width:320px}
+.plus-direction{height:28px;padding:0 6px;font:var(--text-label);letter-spacing:var(--tracking-label);text-transform:lowercase;color:var(--text-secondary)}
+.plus-phone{position:relative;width:320px;height:680px;border-radius:var(--radius-frame);overflow:hidden;background:var(--bg);box-shadow:0 0 0 1.5px rgba(0,0,0,.22),0 30px 70px -36px rgba(0,0,0,.45)}
+
+.plus-screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:var(--safe-top) var(--screen-gutter) var(--safe-bottom);font-family:var(--font-ui);color:var(--text-primary)}
+.plus-display{font:var(--text-screen-title);letter-spacing:var(--tracking-display);color:var(--ink-2);margin:0}
+.plus-line{font:var(--text-body);font-weight:500;color:var(--text-secondary);line-height:1.45;margin:10px 0 0}
+.plus-placeholder{padding:40px;font:var(--text-body);color:var(--text-tertiary)}
+
+/* the crowd stays quiet, so the offer is carried by the middle creature. */
+.plus-soft{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
+.plus-soft-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 8px}
+.plus-crowd{height:112px;display:flex;align-items:flex-end;margin:0 0 30px}
+.plus-creature{display:flex;align-items:flex-end;justify-content:center;position:relative}
+.plus-creature+.plus-creature{margin-left:-8px}
+.plus-creature-small{z-index:1;width:53px}
+.plus-creature-tall{z-index:2;width:58px}
+.plus-creature-center{z-index:4;width:70px}
+.plus-creature-mid{z-index:3;width:58px}
+.plus-soft-actions{flex:none;padding:0 0 4px}
+.plus-soft-actions button{font-weight:600}
+.plus-soft-actions>button:first-child{margin-bottom:8px}
+
+/* a label and card make the four held things readable at a glance. */
+.plus-list{padding-top:var(--safe-top);gap:var(--section-gap)}
+.plus-list-head{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 4px}
+.plus-list-head .plus-display{flex:none}
+.plus-list-head button{font-weight:500}
+.plus-section{margin-top:2px}
+.plus-section-label{font:var(--section-label);letter-spacing:var(--tracking-label);text-transform:lowercase;color:var(--text-secondary);padding:0 6px 8px}
+.plus-section-card{background:var(--section-card-bg);border-radius:var(--section-card-radius);box-shadow:var(--section-card-ring),var(--section-card-shadow)}
+.plus-row{display:flex;align-items:center;gap:var(--row-gap);min-height:var(--section-row-min);padding:var(--section-row-pad)}
+.plus-row+.plus-row{border-top:1px solid var(--row-divider)}
+.plus-row-title{flex:1;min-width:0;font:var(--text-row-title);font-weight:500;color:var(--text-primary)}
+.plus-row-lock{flex:none;font:var(--text-row-sub);color:var(--text-tertiary);display:flex;align-items:center}
+.plus-list>button:last-child{margin-top:auto;font-weight:600}
+
+/* the veil thins over the companion, never closing into a hard ticket. */
+.plus-locked{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
+.plus-locked-head{display:flex;justify-content:flex-end}
+.plus-locked-head button{font-weight:500}
+.plus-veil-stage{position:relative;flex:1;min-height:330px;display:flex;align-items:center;justify-content:center}
+.plus-held-companion{position:absolute;top:50%;left:50%;transform:translate(-50%,-42%);opacity:.72}
+.plus-misted-veil{position:absolute;width:214px;height:238px;top:50%;left:50%;transform:translate(-50%,-47%) rotate(-4deg);background:linear-gradient(to bottom,var(--bg) 0%,transparent 43%,var(--bg) 100%),linear-gradient(to right,var(--bg) 0%,transparent 35%,transparent 65%,var(--bg) 100%);opacity:.86}
+.plus-lock-subject{position:relative;z-index:2;width:72px;height:72px;border-radius:var(--radius-control);display:flex;align-items:center;justify-content:center;background:var(--paper-card);box-shadow:var(--paper-ring),var(--shadow-contact)}
+.plus-locked-copy{padding:0 8px 28px}
+.plus-locked-copy .plus-line{max-width:230px}
+.plus-locked>button{font-weight:600}
+
+.plus-contact{max-width:700px;margin:52px auto 0}
+.plus-contact-label{font:var(--text-label);letter-spacing:var(--tracking-label);text-transform:lowercase;color:var(--text-secondary);padding:0 6px 12px}
+.plus-contact-row{display:flex;align-items:flex-start;gap:18px}
+.plus-contact-phone{width:128px;height:272px;overflow:visible}
+.plus-contact-phone .plus-phone{transform:scale(.4);transform-origin:top left}
+
+@media (max-width:1100px){
+  .plus-lab{padding-left:20px;padding-right:20px}
+}
+@media (max-width:720px){
+  .plus-lab{padding:30px 16px 60px}
+  .plus-lab-header{margin-bottom:26px}
+  .plus-phone-wrap{width:min(320px,100%)}
+  .plus-phone{max-width:100%;height:680px}
+  .plus-contact{max-width:100%}
+  .plus-contact-row{gap:10px;justify-content:space-between}
+  .plus-contact-phone{width:calc((100% - 20px) / 3);height:272px}
+}
+</style>
+</helmet>
+
+<div style="display:none">
+  <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Button" from="./design-system/components/Button.jsx" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Chip" from="./design-system/components/Chip.jsx" hint-size="10px,10px"></x-import>
+</div>
+<x-import component-from-global-scope="PG.PlusLab" from="./plus.jsx" hint-size="320px,680px"></x-import>
+</x-dc>
+</body>
+</html>
