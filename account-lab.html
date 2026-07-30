@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<script src="./support.js"></script>
+<title>account lab</title>
+</head><body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:var(--surface-desktop);font-family:var(--font-ui);color:var(--text-primary)}
+*{box-sizing:border-box}
+body{padding:40px 40px 80px}
+h1{font:var(--text-sheet-title);letter-spacing:-.01em;margin:0 0 var(--space-1)}
+.sub{font:var(--text-body);color:var(--text-secondary);margin-bottom:var(--space-7)}
+.account-scr::-webkit-scrollbar{display:none}
+</style>
+</helmet>
+<h1>account lab</h1>
+<div class="sub">three account directions, held to the grouped-list rule.</div>
+<div style="display:flex;justify-content:center">
+  <div style="display:none">
+    <x-import component-from-global-scope="PG.Section" from="./design-system/components/Scaffold.jsx" title="x" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.ListRow" from="./design-system/components/ListRow.jsx" hint-size="10px,10px"></x-import>
+  </div>
+  <x-import component-from-global-scope="PG.AccountLab" from="./account.jsx" hint-size="1048px,720px"></x-import>
+</div>
+</x-dc>
+</body></html>
