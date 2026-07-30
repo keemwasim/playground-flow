@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+ /* the knock lab. five arrivals, one moment: it came home. the real
+    Banner / Sprite / Logo / SealedNote are mounted off window.PG, nothing is
+    redrawn here. every value is a named design-system token, zero ad-hoc grey.
+    presentation chrome only in this file: the desk, the frames, the labels. */
+ html,body{margin:0;padding:0}
+ *{box-sizing:border-box}
+ body{background:var(--surface-desktop);font-family:var(--font-ui);color:var(--text-primary);padding:var(--space-7) var(--space-7) 120px}
+ h1{font:var(--text-sheet-title);letter-spacing:-.01em;margin:0 0 var(--space-2)}
+ .sub{font:var(--text-body);color:var(--text-secondary);max-width:620px;margin:0 0 var(--space-7)}
+ .lbl{font:var(--text-label);letter-spacing:var(--tracking-label);color:var(--text-secondary);margin:0 0 var(--space-3)}
+ .row{display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:flex-start}
+ .cell{display:flex;flex-direction:column;gap:var(--space-3);width:320px}
+ .note{font:var(--text-body);color:var(--text-secondary)}
+ /* presentation frame only, radius-frame never appears inside the app */
+ .ph{position:relative;width:320px;height:680px;border-radius:var(--radius-frame);overflow:hidden;background:var(--bg);box-shadow:var(--paper-ring),var(--shadow-panel)}
+ .sheet{margin-top:var(--space-7);padding-top:var(--space-6);border-top:1px solid var(--divider)}
+</style>
+</helmet>
+
+<div style="min-height:100vh">
+  <h1>the knock, five arrivals</h1>
+  <div class="sub">one moment, five ways it reaches you: the house speaks, the face leans in, one line, the note itself, the wordmark. paper on every one of them, the room stays porcelain. tap any frame to let the knock arrive again.</div>
+
+  <!-- preload the real components so PG.Knock finds them mounted -->
+  <div style="display:none">
+    <x-import component-from-global-scope="PG.Logo" from="./design-system/components/Logo.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Banner" from="./design-system/components/Notice.jsx" title="x" body="x" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.SealedNote" from="./design-system/components/Homecoming.jsx" by="x" count="1" hint-size="10px,10px"></x-import>
+  </div>
+
+  <div class="row">
+    <div class="cell">
+      <div class="lbl">A · the house speaks</div>
+      <div class="ph"><x-import component-from-global-scope="PG.KnockScreen" from="./knock.jsx" variant="A" name="Sol" count="3" hint-size="320px,680px"></x-import></div>
+      <div class="note">the mark leads, the line follows. the arrival the design system already ships.</div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl">B · it leans in</div>
+      <div class="ph"><x-import component-from-global-scope="PG.KnockScreen" from="./knock.jsx" variant="B" name="Sol" count="3" hint-size="320px,680px"></x-import></div>
+      <div class="note">the companion clears the lip of the paper. the face arrives before the words.</div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl">C · one line</div>
+      <div class="ph"><x-import component-from-global-scope="PG.KnockScreen" from="./knock.jsx" variant="C" name="Sol" count="3" hint-size="320px,680px"></x-import></div>
+      <div class="note">no card at all. the least a homecoming can be and still be one.</div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl">D · the note itself</div>
+      <div class="ph"><x-import component-from-global-scope="PG.KnockScreen" from="./knock.jsx" variant="D" name="Sol" count="3" hint-size="320px,680px"></x-import></div>
+      <div class="note">the sealed note comes to the top of the room, with the way in on it.</div>
+    </div>
+
+    <div class="cell">
+      <div class="lbl">E · the wordmark</div>
+      <div class="ph"><x-import component-from-global-scope="PG.KnockScreen" from="./knock.jsx" variant="E" name="Sol" count="3" hint-size="320px,680px"></x-import></div>
+      <div class="note">the sparkle and the house as the lead-in, the name underneath.</div>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <h1>the contact sheet</h1>
+    <div class="sub">the five objects at arrival size, off the rooms, laid out in flow. this is where the pick gets made.</div>
+    <x-import component-from-global-scope="PG.KnockSheet" from="./knock.jsx" name="Sol" count="3" hint-size="100%,420px"></x-import>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
