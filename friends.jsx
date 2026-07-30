@@ -69,7 +69,7 @@ function FriendsRoster() {
     <Frame>
       <div style={{ position: 'absolute', inset: 0, overflow: 'auto', padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)' }}>
         <P.ScreenHeader title="Friends" />
-        <P.Section label="friends" style={{ marginTop: 'var(--space-7)' }}>
+        <P.Section style={{ marginTop: 'var(--space-7)' }}>
           {FRIENDS.map((friend, index) => (
             <P.ListRow key={friend.name}
               leading={<P.FriendDiamond size={18} tone={friend.tone} />}
@@ -155,7 +155,7 @@ function FriendsSheet() {
     </div>
   );
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', padding: 'var(--safe-top) var(--screen-gutter) var(--safe-bottom)', background: 'var(--surface-desktop)' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', padding: 0, background: 'transparent' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 160px)', gap: 'var(--space-6)' }}>
         {thumb('1 · ON THE WORLD', <FriendsWorld />)}
         {thumb('2 · THE ROSTER', <FriendsRoster />)}
