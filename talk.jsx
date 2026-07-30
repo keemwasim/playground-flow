@@ -190,7 +190,7 @@ function TalkInput({ talk, named = false, docked = false }) {
   return (
     <div style={{
       width: '100%', display: 'flex', justifyContent: 'center',
-      padding: docked ? '10px 14px 14px' : '0 0 26px',
+      padding: docked ? '10px 14px 14px' : '0 20px 26px',
       background: docked ? 'var(--paper-card)' : 'transparent',
       boxShadow: docked ? 'var(--paper-ring)' : 'none',
     }}>
