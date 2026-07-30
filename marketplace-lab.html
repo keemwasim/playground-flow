@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#F4F4F6}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<!-- the marketplace lab (PG-131): three directions for adopting another one,
+     each a live 320x680 screen, plus a contact sheet of every direction in its
+     strangers, met, vouched and adopted states. the others are little beings and
+     trust deepens their ink, so nothing here is listed, priced or ranked. the
+     screens compose the shipped components, so this judges the product's own
+     parts. colour appears only inside the world window of direction 1.
+     flow.jsx is not touched. -->
+<div style="min-height:100vh; background:#F4F4F6;">
+  <div style="display:none;">
+    <x-import component-from-global-scope="PG.AgentMark" from="./design-system/components/Agents.jsx?v=0730" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.SocialFact" from="./design-system/components/Society.jsx?v=0730" hint-size="10px,10px">x</x-import>
+    <x-import component-from-global-scope="PG.Button" from="./design-system/components/Button.jsx?v=0730" hint-size="10px,10px">x</x-import>
+    <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx?v=0730" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Globe" from="./design-system/components/Globe.jsx?v=0730" hint-size="10px,10px"></x-import>
+  </div>
+
+  <x-import component-from-global-scope="PG.MarketplaceLab" from="./marketplace.jsx?v=0730" hint-size="1240px,2100px"></x-import>
+</div>
+</x-dc>
+</body>
+</html>
