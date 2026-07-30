@@ -14,6 +14,7 @@ const TALK_SECONDS = [
   'i’ll keep that close.',
 ];
 const TALK_ASKS = /find|get me|go get|look into|someone who|book|order/i;
+const CONTACT_SCALE = 0.42;
 
 const defaultScript = (name = '') => ({
   name,
@@ -189,7 +190,7 @@ function TalkInput({ talk, named = false, docked = false }) {
   return (
     <div style={{
       width: '100%', display: 'flex', justifyContent: 'center',
-      padding: docked ? '10px 14px 14px' : 0,
+      padding: docked ? '10px 14px 14px' : '0 0 26px',
       background: docked ? 'var(--paper-card)' : 'transparent',
       boxShadow: docked ? 'var(--paper-ring)' : 'none',
     }}>
@@ -241,13 +242,13 @@ function BubblesVariant({ script, frozen = false }) {
     <div style={{ position: 'relative', width: '100%', height: '100%', background: 'var(--bg)' }}>
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ flex: 1, width: '100%', minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-          <div style={{ width: '100%', padding: '0 18px 8px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ position: 'relative', width: '100%', height: 72, padding: '0 18px 8px' }}>
             {visible.filter((item) => !item.me).length > 0 && (
-              <P.Bubble bare maxW={286} style={{ position: 'relative', left: '50%' }}>
+              <P.Bubble bare maxW={286} style={{ position: 'absolute', left: '50%', bottom: 8 }}>
                 {visible.filter((item) => !item.me).map((item, index) => (
-                <P.Line delay={index ? 420 : 0}>{item.text}</P.Line>
+                <P.Line key={`${item.text}-${index}`} delay={index ? 420 : 0}>{item.text}</P.Line>
                 ))}
-                {talk.thinking && <P.Line delay={840}><SpeechDots /></P.Line>}
+                {talk.thinking && <P.Line key="thinking" delay={840}><SpeechDots /></P.Line>}
               </P.Bubble>
             )}
           </div>
@@ -345,12 +346,12 @@ function ContactSheet() {
     { label: 'one line', Component: OneLineVariant },
   ];
   return (
-    <div className="contact-sheet">
+    <div className="contact-sheet" style={{ '--contact-scale': CONTACT_SCALE }}>
       {variants.map((variant) => SHEET_BEATS.map((beat, index) => (
         <div key={`${variant.label}-${beat.title}`} className="contact-cell">
           <div className="contact-tag">{variant.label} · {beat.title}</div>
           <div className="contact-ph">
-            <div style={{ transform: 'scale(.42)', transformOrigin: 'top left', width: 762, height: 1620 }}>
+            <div style={{ transform: `scale(${CONTACT_SCALE})`, transformOrigin: 'top left', width: 320, height: 680 }}>
               <variant.Component script={beat.script} frozen />
             </div>
           </div>

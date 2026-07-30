@@ -21,12 +21,12 @@
   .tag{font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);color:var(--text-secondary);text-transform:lowercase;margin-bottom:8px}
   .note{font:var(--text-body);color:var(--text-secondary);min-height:44px;margin:0 0 14px}
   .ph{position:relative;width:320px;height:680px;border-radius:var(--radius-frame);overflow:hidden;background:var(--bg);box-shadow:var(--paper-ring),var(--shadow-panel)}
-  .contact-sheet{display:grid;grid-template-columns:repeat(4,134px);gap:24px 14px;align-items:start}
-  .contact-cell{width:134px}
+  .contact-sheet{display:grid;grid-template-columns:repeat(4,calc(320px * var(--contact-scale)));gap:24px 14px;align-items:start}
+  .contact-cell{width:calc(320px * var(--contact-scale))}
   .contact-tag{font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);color:var(--text-secondary);text-transform:lowercase;min-height:30px;margin-bottom:6px}
-  .contact-ph{position:relative;width:134px;height:286px;border-radius:22px;overflow:hidden;background:var(--bg);box-shadow:var(--paper-ring),var(--shadow-panel)}
+  .contact-ph{position:relative;width:calc(320px * var(--contact-scale));height:calc(680px * var(--contact-scale));border-radius:22px;overflow:hidden;background:var(--bg);box-shadow:var(--paper-ring),var(--shadow-panel)}
   @media(max-width:1100px){.variants{grid-template-columns:repeat(2,320px)}}
-  @media(max-width:700px){.talk-lab{padding:28px 20px 80px}.variants{grid-template-columns:320px}.contact-sheet{grid-template-columns:repeat(2,134px)}}
+  @media(max-width:700px){.talk-lab{padding:28px 20px 80px}.variants{grid-template-columns:320px}.contact-sheet{grid-template-columns:repeat(2,calc(320px * var(--contact-scale)))}}
 </style>
 </helmet>
 <div style="display:none;">
