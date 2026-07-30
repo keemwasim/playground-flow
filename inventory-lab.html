@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#F4F4F6}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="min-height:100vh; padding:56px 44px 96px; font-family:var(--font-ui); -webkit-font-smoothing:antialiased; background:#F4F4F6;">
+
+  <div style="font:700 30px/1.1 var(--font-display); letter-spacing:-.02em; color:var(--text-primary);">inventory lab</div>
+  <div style="font:500 13.5px/1.6 var(--font-ui); color:var(--text-secondary); margin:8px 0 40px; max-width:560px;">
+    where delivered things pile up. every ask and what came back, lived-world errands, not an archive.
+    three directions at 320 by 680, mounting the real components. nothing here carries a stamp, a delivery is
+    placed by the trip that brought it.
+  </div>
+
+  <!-- the real components load first so PG.Inventory finds them mounted -->
+  <div style="display:none;">
+    <x-import component-from-global-scope="PG.ListRow" from="./design-system/components/ListRow.jsx" title="x" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.SealedNote" from="./design-system/components/Homecoming.jsx" count="1" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Section" from="./design-system/components/Scaffold.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Dock" from="./design-system/components/Dock.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Button" from="./design-system/components/Button.jsx" hint-size="10px,10px">x</x-import>
+    <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.NoteDoc" from="./design-system/components/Desk.jsx" hint-size="10px,10px"></x-import>
+  </div>
+
+  <div style="display:flex; gap:44px; flex-wrap:wrap; align-items:flex-start;">
+
+    <div style="display:flex; flex-direction:column; gap:14px; width:320px;">
+      <div style="font:700 13px var(--font-ui); color:var(--text-secondary); text-transform:lowercase;">1 · a shelf of delivered things</div>
+      <x-import component-from-global-scope="PG.Inventory" from="./inventory.jsx?v=0730c" variant="shelf" hint-size="320px,680px"></x-import>
+      <div style="font:500 12.5px/1.55 var(--font-ui); color:var(--text-secondary);">
+        one shelf, newest at the top, the thing it handed you is the row and the ask sits under it.
+        what has not been looked at yet still waits sealed at the door. tap a row and it says why it brought that one.
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px; width:320px;">
+      <div style="font:700 13px var(--font-ui); color:var(--text-secondary); text-transform:lowercase;">2 · grouped by trip</div>
+      <x-import component-from-global-scope="PG.Inventory" from="./inventory.jsx?v=0730c" variant="trips" hint-size="320px,680px"></x-import>
+      <div style="font:500 12.5px/1.55 var(--font-ui); color:var(--text-secondary);">
+        the haul stays with the walk it came off, so a delivery is placed by its trip rather than by a stamp.
+        the density law already grouped lists this way, this makes the group the subject.
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:14px; width:320px;">
+      <div style="font:700 13px var(--font-ui); color:var(--text-secondary); text-transform:lowercase;">3 · one delivery opened</div>
+      <x-import component-from-global-scope="PG.Inventory" from="./inventory.jsx?v=0730c" variant="opened" hint-size="320px,680px"></x-import>
+      <div style="font:500 12.5px/1.55 var(--font-ui); color:var(--text-secondary);">
+        the thing it handed you is the whole page, and what it rests on is checkable underneath.
+        then the companion says its piece and the verbs are Keep or Later.
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
