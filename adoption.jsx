@@ -92,24 +92,17 @@ function answerText(answers, beat) {
 }
 
 function nextBeat(beat) {
-  return Math.min(4, beat + 1);
+  return Math.min(BEATS.length - 1, beat + 1);
 }
 
-function optionConsequence(beat, value) {
-  const item = (BEATS[beat].options || []).find((x) => x[0] === value);
-  return item ? item[1] : '';
-}
-
-function Question({ beat, answers, onAnswer, onNext, compact = false }) {
+function Question({ beat, answers, onAnswer, onNext }) {
   const P = window.PG;
   const spec = BEATS[beat];
   const [ownWords, setOwnWords] = React.useState(false);
-  const [draft, setDraft] = React.useState('');
   const current = answerText(answers, spec);
 
   React.useEffect(() => {
     setOwnWords(false);
-    setDraft('');
   }, [beat]);
 
   const commit = (value) => {
@@ -119,7 +112,7 @@ function Question({ beat, answers, onAnswer, onNext, compact = false }) {
   };
 
   return (
-    <div style={{ position: 'absolute', left: 20, right: 20, bottom: compact ? 28 : 30, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+    <div style={{ position: 'absolute', left: 20, right: 20, bottom: 30, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
       <div style={{ maxWidth: 278, textAlign: 'center', font: 'var(--text-speech)', color: 'var(--text-primary)' }}>{spec.question}</div>
 
       {spec.field === 'name' || spec.field === 'creed' || ownWords ? (
@@ -127,8 +120,7 @@ function Question({ beat, answers, onAnswer, onNext, compact = false }) {
           <P.HatchInput
             key={`${spec.field}-${current}-${ownWords}`}
             placeholder={spec.field === 'name' ? 'a name' : 'say it in your words'}
-            defaultValue={ownWords ? draft : current}
-            onChange={ownWords ? (e) => setDraft(e.currentTarget.value) : undefined}
+            defaultValue={current}
             onEnter={(e) => commit(e.currentTarget.value)}
             aria-label={spec.question}
             style={{ width: spec.field === 'creed' ? 248 : 190 }}
@@ -139,13 +131,12 @@ function Question({ beat, answers, onAnswer, onNext, compact = false }) {
         </div>
       ) : (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, maxWidth: 286 }}>
-          {spec.options.map(([value]) => (
-            <div key={value} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5 }}>
+            {spec.options.map(([value]) => (
+            <div key={value}>
               <P.Chip
                 selected={current === value}
                 onClick={() => { sound('tick'); onAnswer(spec.field, value); onNext(); }}
               >{value}</P.Chip>
-              {!compact && <div style={{ maxWidth: 124, textAlign: 'center', font: 'var(--text-hint)', color: 'var(--text-secondary)' }}>{optionConsequence(beat, value)}</div>}
             </div>
           ))}
           <P.Button variant="quiet" onClick={() => setOwnWords(true)}>say it your way</P.Button>
@@ -155,7 +146,7 @@ function Question({ beat, answers, onAnswer, onNext, compact = false }) {
   );
 }
 
-function SealAction({ answers, onSeal, variant, sealed = false }) {
+function SealAction({ answers, onSeal, onReset, variant, sealed = false }) {
   const P = window.PG;
   const name = answers.name || 'the companion';
   const creed = answers.creed ? `"${answers.creed}"` : '""';
@@ -168,32 +159,32 @@ function SealAction({ answers, onSeal, variant, sealed = false }) {
         <div style={{ marginTop: 24, font: 'var(--text-body)', color: 'var(--text-primary)' }}>{traits}.</div>
         <div style={{ marginTop: 20, font: 'var(--text-speech)', color: 'var(--text-primary)' }}>{creed}</div>
         {!sealed && <P.Button style={{ marginTop: 32 }} onClick={onSeal}>seal it</P.Button>}
-        <P.Button variant="quiet" onClick={() => { sound('settle'); window.location.reload(); }}>start over</P.Button>
+        <P.Button variant="quiet" onClick={() => { sound('settle'); onReset(); }}>start over</P.Button>
       </div>
     );
   }
 
   return (
     <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '116px 28px 30px', textAlign: 'center', animation: 'pgLineIn .42s var(--ease-pop) both' }}>
-      <P.Sprite size={64} form="pebble" still />
+      <P.Sprite size={64} form="pebble" still={sealed} />
       <div style={{ marginTop: 18, maxWidth: 270, font: 'var(--text-speech)', color: 'var(--text-primary)' }}>
         i am {name}. i carry myself {answers.temperament}, speak {answers.voice}, and chase {answers.chases}.
       </div>
       <div style={{ marginTop: 18, maxWidth: 270, font: 'var(--text-body)', color: 'var(--text-primary)' }}>{creed}</div>
       {!sealed && <P.Button style={{ marginTop: 28 }} onClick={onSeal}>that's you</P.Button>}
-      <P.Button variant="quiet" onClick={() => { sound('settle'); window.location.reload(); }}>start over</P.Button>
+      <P.Button variant="quiet" onClick={() => { sound('settle'); onReset(); }}>start over</P.Button>
     </div>
   );
 }
 
-function OneQuestion({ answers, setAnswer, beat, setBeat, sealed, setSealed, frozen }) {
+function OneQuestion({ answers, setAnswer, beat, setBeat, stage, setStage, onReset, frozen }) {
   const P = window.PG;
-  if (sealed) return <SealAction answers={answers} variant="question" sealed onSeal={() => { sound('adopt'); setSealed(true); }} />;
+  if (stage !== 'asking') return <SealAction answers={answers} variant="question" sealed={stage === 'sealed'} onSeal={() => { sound('adopt'); setStage('sealed'); }} onReset={onReset} />;
 
   const commit = (field, value) => {
     setAnswer(field, value);
     if (field === 'name') sound('name');
-    if (beat < 4) sound('slide');
+    if (beat < BEATS.length - 1) sound('slide');
   };
 
   return (
@@ -201,17 +192,19 @@ function OneQuestion({ answers, setAnswer, beat, setBeat, sealed, setSealed, fro
       <div style={{ position: 'absolute', left: 0, right: 0, top: frozen ? 76 : 88, display: 'flex', justifyContent: 'center', animation: 'pgLineIn .4s var(--ease-pop) both' }}>
         <P.Sprite size={74} form="pebble" still={!!frozen} />
       </div>
-      <Question beat={beat} answers={answers} onAnswer={commit} onNext={() => { if (beat < 4) setBeat(nextBeat(beat)); else setSealed(true); }} />
+      <Question beat={beat} answers={answers} onAnswer={commit} onNext={() => { if (beat < BEATS.length - 1) setBeat(nextBeat(beat)); else setStage('seal'); }} />
     </React.Fragment>
   );
 }
 
-function ReplyCards({ answers, setAnswer, beat, setBeat, sealed, setSealed, frozen }) {
+function ReplyCards({ answers, setAnswer, beat, setBeat, stage, setStage, onReset, frozen }) {
   const P = window.PG;
   const [ownWords, setOwnWords] = React.useState(false);
-  const [draft, setDraft] = React.useState('');
   const spec = BEATS[beat];
-  if (sealed) return <SealAction answers={answers} variant="cards" sealed onSeal={() => { sound('adopt'); setSealed(true); }} />;
+  React.useEffect(() => {
+    setOwnWords(false);
+  }, [beat]);
+  if (stage !== 'asking') return <SealAction answers={answers} variant="cards" sealed={stage === 'sealed'} onSeal={() => { sound('adopt'); setStage('sealed'); }} onReset={onReset} />;
   const commit = (field, value) => {
     setAnswer(field, value);
     if (field === 'name') sound('name');
@@ -229,12 +222,11 @@ function ReplyCards({ answers, setAnswer, beat, setBeat, sealed, setSealed, froz
           <P.HatchInput
             key={`${spec.field}-${answers[spec.field]}-${ownWords}`}
             placeholder={spec.field === 'name' ? 'a name' : 'say it in your words'}
-            defaultValue={ownWords ? draft : answers[spec.field]}
-            onChange={ownWords ? (e) => setDraft(e.currentTarget.value) : undefined}
+            defaultValue={answers[spec.field]}
             onEnter={(e) => {
               if (e.currentTarget.value.length === 0) return;
               commit(spec.field, e.currentTarget.value);
-              if (beat < 4) setBeat(nextBeat(beat)); else setSealed(true);
+              if (beat < BEATS.length - 1) setBeat(nextBeat(beat)); else setStage('seal');
             }}
             aria-label={spec.question}
             style={{ alignSelf: 'center', width: spec.field === 'creed' ? 248 : 190 }}
@@ -245,7 +237,7 @@ function ReplyCards({ answers, setAnswer, beat, setBeat, sealed, setSealed, froz
               <P.Chip
                 key={value}
                 selected={answers[spec.field] === value}
-                onClick={() => { sound('tick'); commit(spec.field, value); if (beat < 4) setBeat(nextBeat(beat)); else setSealed(true); }}
+                onClick={() => { sound('tick'); commit(spec.field, value); if (beat < BEATS.length - 1) setBeat(nextBeat(beat)); else setStage('seal'); }}
                 style={{ width: '100%', minHeight: 62, padding: '12px 16px', borderRadius: 'var(--radius-row-card)', background: 'var(--paper-card)', boxShadow: 'var(--paper-ring), var(--shadow-contact)', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 5 }}
               >
                 <span style={{ font: 'var(--text-row-title)', color: 'var(--text-primary)' }}>{value}</span>
@@ -299,44 +291,46 @@ function Permit({ answers, beat, sealed, signature, onSignature, signatureReady 
   );
 }
 
-function SealMoment({ answers, setAnswer, beat, setBeat, sealed, setSealed, signature, setSignature, frozen }) {
+function SealMoment({ answers, setAnswer, beat, setBeat, stage, setStage, onReset, signature, setSignature, frozen }) {
   const P = window.PG;
   const spec = BEATS[beat];
   const [ownWords, setOwnWords] = React.useState(false);
-  const [draft, setDraft] = React.useState('');
+  const signatureReady = beat === BEATS.length - 1 && !!answers.creed;
+  React.useEffect(() => {
+    setOwnWords(false);
+  }, [beat]);
   const commit = (field, value) => {
     setAnswer(field, value);
     if (field === 'name') sound('name');
     else sound('slide');
   };
 
-  if (sealed) {
+  if (stage === 'sealed') {
     return (
       <React.Fragment>
         <Permit answers={answers} beat={beat} sealed signature={signature} onSignature={() => {}} signatureReady />
         <div style={{ position: 'absolute', left: 0, right: 0, bottom: 38, display: 'flex', justifyContent: 'center' }}>
           <P.Sprite size={60} form="pebble" still />
         </div>
-        <P.Button variant="quiet" onClick={() => { sound('settle'); window.location.reload(); }} style={{ position: 'absolute', bottom: 22, left: '50%', transform: 'translateX(-50%)' }}>start over</P.Button>
+        <P.Button variant="quiet" onClick={() => { sound('settle'); onReset(); }} style={{ position: 'absolute', bottom: 22, left: '50%', transform: 'translateX(-50%)' }}>start over</P.Button>
       </React.Fragment>
     );
   }
 
   return (
     <React.Fragment>
-      <Permit answers={answers} beat={beat} sealed={false} signature={signature} onSignature={(value) => { setSignature(value); sound('adopt'); setSealed(true); }} signatureReady={beat === 4 && !!answers.creed} />
-      <div style={{ position: 'absolute', left: 22, right: 22, bottom: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, animation: 'pgLineIn .32s var(--ease-pop) both' }}>
+      <Permit answers={answers} beat={beat} sealed={false} signature={signature} onSignature={(value) => { setSignature(value); sound('adopt'); setStage('sealed'); }} signatureReady={signatureReady} />
+      {!signatureReady && <div style={{ position: 'absolute', left: 22, right: 22, bottom: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 13, animation: 'pgLineIn .32s var(--ease-pop) both' }}>
         <div style={{ maxWidth: 276, textAlign: 'center', font: 'var(--text-speech)', color: 'var(--text-primary)' }}>{spec.question}</div>
         {spec.field === 'name' || spec.field === 'creed' || ownWords ? (
           <P.HatchInput
             key={`permit-${spec.field}-${answers[spec.field]}-${ownWords}`}
             placeholder={spec.field === 'name' ? 'a name' : 'say it in your words'}
-            defaultValue={ownWords ? draft : answers[spec.field]}
-            onChange={ownWords ? (e) => setDraft(e.currentTarget.value) : undefined}
+            defaultValue={answers[spec.field]}
             onEnter={(e) => {
               if (e.currentTarget.value.length === 0) return;
               commit(spec.field, e.currentTarget.value);
-              if (beat < 4) setBeat(nextBeat(beat));
+              if (beat < BEATS.length - 1) setBeat(nextBeat(beat));
             }}
             aria-label={spec.question}
             style={{ width: spec.field === 'creed' ? 250 : 190 }}
@@ -344,7 +338,7 @@ function SealMoment({ answers, setAnswer, beat, setBeat, sealed, setSealed, sign
         ) : (
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8 }}>
             {spec.options.map(([value]) => (
-              <P.Chip key={value} selected={answers[spec.field] === value} onClick={() => { sound('tick'); commit(spec.field, value); if (beat < 4) setBeat(nextBeat(beat)); }}>{value}</P.Chip>
+              <P.Chip key={value} selected={answers[spec.field] === value} onClick={() => { sound('tick'); commit(spec.field, value); if (beat < BEATS.length - 1) setBeat(nextBeat(beat)); }}>{value}</P.Chip>
             ))}
             <P.Button variant="quiet" onClick={() => setOwnWords(true)}>say it your way</P.Button>
           </div>
@@ -352,7 +346,7 @@ function SealMoment({ answers, setAnswer, beat, setBeat, sealed, setSealed, sign
         {ownWords && spec.field !== 'name' && spec.field !== 'creed' && (
           <P.Button variant="quiet" onClick={() => setOwnWords(false)}>choose one</P.Button>
         )}
-      </div>
+      </div>}
     </React.Fragment>
   );
 }
@@ -367,10 +361,10 @@ const VARIANTS = [
    the thumbnails are the real screens rather than drawings of them. */
 function Screen({ variant, frozen }) {
   const V = VARIANTS.find((v) => v.key === variant);
-  const frozenBeat = frozen === 'name' ? 0 : frozen === 'temperament' ? 1 : frozen === 'creed' ? 4 : 0;
+  const frozenBeat = frozen === 'name' ? 0 : frozen === 'temperament' ? 1 : frozen === 'creed' ? BEATS.length - 1 : 0;
   const [answers, setAnswers] = React.useState(() => emptyAnswers());
   const [beat, setBeat] = React.useState(frozen ? frozenBeat : 0);
-  const [sealed, setSealed] = React.useState(frozen === 'sealed');
+  const [stage, setStage] = React.useState(frozen === 'sealed' ? 'sealed' : 'asking');
   const [signature, setSignature] = React.useState(frozen === 'sealed' ? 'you' : '');
   const frozenAnswers = React.useMemo(() => {
     if (frozen === 'name') return { ...emptyAnswers(), name: 'Mara' };
@@ -381,10 +375,16 @@ function Screen({ variant, frozen }) {
   }, [frozen]);
   const model = frozenAnswers || answers;
   const setAnswer = (field, value) => setAnswers((prev) => ({ ...prev, [field]: value }));
+  const reset = () => {
+    setAnswers(emptyAnswers());
+    setBeat(0);
+    setStage('asking');
+    setSignature('');
+  };
 
   return (
     <div style={{ position: 'relative', width: W, height: H, borderRadius: FRAME_R, overflow: 'hidden', background: 'var(--bg)', boxShadow: '0 0 0 1.5px rgba(0,0,0,.14), 0 34px 90px -40px rgba(0,0,0,.45)' }}>
-      <V.Screen answers={model} setAnswer={setAnswer} beat={beat} setBeat={setBeat} sealed={sealed} setSealed={setSealed} signature={signature} setSignature={setSignature} frozen={!!frozen} />
+      <V.Screen answers={model} setAnswer={setAnswer} beat={beat} setBeat={setBeat} stage={stage} setStage={setStage} onReset={reset} signature={signature} setSignature={setSignature} frozen={!!frozen} />
       <div style={{ position: 'absolute', bottom: 9, left: '50%', transform: 'translateX(-50%)', width: 110, height: 5, borderRadius: 3, background: 'rgba(0,0,0,.3)' }} />
     </div>
   );
