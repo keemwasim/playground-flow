@@ -28,6 +28,25 @@ rulings that constrain future work are marked **LAW**.
 
 ## v5 - the flow reduced, the agent made individual
 
+### minds and runtimes: three directions, awaiting judgement
+**who** design system · **how** rejected then rendered (the pick is the design lead's)
+
+**what.** three directions built for the minds screen (the grouped list, the
+connect flow, connected minds as chips), two marks held constant across all
+three so the pick is about layout and not about the marks. in use is an INK
+RADIO, never a checkmark: connected but idle is the bare ink ring, in use fills
+it, reaching holds it at half ink. connecting is a SHIMMER WHISPER in the
+agent's own voice, never a spinner, a bar, or a percentage.
+
+**why.** a checkmark says done and put away, which is wrong twice: getting a
+runtime is not an achievement, and a check on three rows reads as three minds
+thinking at once. exactly one mind is ever in play, and a radio is the only mark
+that says so. the spinner was already banned by the time ruling, the wait had
+nothing to say it with.
+
+**proof.** `minds-lab-3up.html` (three directions at 320 by 680, live),
+`minds.jsx`, tokens `--radio-*` and `--whisper-shimmer*`.
+
 ### the flow: nine surfaces to five
 **who** design lead · **how** ruled, surface by surface, over one working session
 
