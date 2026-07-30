@@ -308,7 +308,7 @@ function OneLineVariant({ script, frozen = false }) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', background: 'var(--bg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ flex: 1, width: '100%', minHeight: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '12px 22px' }}>
-        {talk.trip && <P.World depth="Overnight" size={92} souls={1} style={{ marginBottom: 20 }} />}
+        {talk.trip && <P.World depth="Quick look" size={104} souls={1} style={{ marginBottom: 20 }} />}
         <P.Sprite size={132} mood={talk.mood} style={{ marginBottom: 24 }} />
         <div key={latest && latest.text} style={{ minHeight: 54, maxWidth: 260, textAlign: 'center', font: latest && latest.me ? 'var(--text-hint)' : 'var(--text-speech)', color: latest && latest.me ? 'var(--text-secondary)' : 'var(--bubble-ink)', animation: 'pgFadeIn var(--dur-enter) var(--ease-pop) both' }}>
           {talk.doing || (talk.thinking ? <SpeechDots /> : latest && latest.text)}
