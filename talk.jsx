@@ -193,19 +193,28 @@ function TalkInput({ talk, named = false, docked = false }) {
       background: docked ? 'var(--paper-card)' : 'transparent',
       boxShadow: docked ? 'var(--paper-ring)' : 'none',
     }}>
-      <P.HatchInput
-        value={talk.value}
-        onChange={(event) => talk.setValue(event.target.value)}
-        onEnter={() => talk.sayLine()}
-        placeholder={named ? 'say something' : 'your companion'}
-        style={{
-          width: named ? '100%' : 190,
-          maxWidth: 280,
-          background: named ? 'var(--input-bg)' : 'transparent',
-          borderRadius: named ? 'var(--radius-pill)' : 0,
-          padding: named ? '4px 14px 2px' : 0,
-        }}
-      />
+      {named ? (
+        <input
+          value={talk.value}
+          onChange={(event) => talk.setValue(event.target.value)}
+          onKeyDown={(event) => { if (event.key === 'Enter') talk.sayLine(); }}
+          placeholder="say something"
+          style={{
+            width: '100%', minWidth: 0, background: 'var(--input-bg)',
+            border: 'none', borderRadius: 'var(--input-radius)',
+            padding: 'var(--input-pad)', font: 'var(--text-body)',
+            color: 'var(--input-fg)', outline: 'none',
+          }}
+        />
+      ) : (
+        <P.HatchInput
+          value={talk.value}
+          onChange={(event) => talk.setValue(event.target.value)}
+          onEnter={() => talk.sayLine()}
+          placeholder="name me"
+          style={{ width: 190, maxWidth: '100%' }}
+        />
+      )}
     </div>
   );
 }
@@ -231,18 +240,20 @@ function BubblesVariant({ script, frozen = false }) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', background: 'var(--bg)' }}>
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ flex: 1, width: '100%', position: 'relative', minHeight: 0 }}>
-          <div style={{ position: 'absolute', left: '50%', bottom: 160, width: '90%', transform: 'translateX(-50%)' }}>
-            {visible.filter((item) => !item.me).map((item, index) => (
-              <P.Bubble bare maxW={286} key={item.text}>
+        <div style={{ flex: 1, width: '100%', minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+          <div style={{ width: '100%', padding: '0 18px 8px', display: 'flex', justifyContent: 'center' }}>
+            {visible.filter((item) => !item.me).length > 0 && (
+              <P.Bubble bare maxW={286} style={{ position: 'relative', left: '50%' }}>
+                {visible.filter((item) => !item.me).map((item, index) => (
                 <P.Line delay={index ? 420 : 0}>{item.text}</P.Line>
-                {talk.thinking && index === visible.filter((entry) => !entry.me).length - 1 && <P.Line delay={840}><SpeechDots /></P.Line>}
+                ))}
+                {talk.thinking && <P.Line delay={840}><SpeechDots /></P.Line>}
               </P.Bubble>
-            ))}
+            )}
           </div>
-        </div>
-        <div style={{ height: 154, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+          <div style={{ height: 154, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
           <P.Sprite size={86} mood={talk.mood} />
+          </div>
         </div>
         <div style={{ width: '100%', minHeight: 94, padding: '8px 18px 20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
           {latestOwner && <P.Reply key={latestOwner.text}>{latestOwner.text}</P.Reply>}
@@ -272,7 +283,7 @@ function ThreadVariant({ script, frozen = false }) {
           </div>
         </div>
       </div>
-      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '24px 18px 26px', display: 'flex', flexDirection: 'column', gap: 13 }}>
+      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '24px 18px 26px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: 13 }}>
         {talk.exchange.map((item, index) => item.me ? (
           <P.Reply key={`${item.text}-${index}`} style={{ alignSelf: 'flex-end', maxWidth: 260 }}>{item.text}</P.Reply>
         ) : (
@@ -329,9 +340,9 @@ const SHEET_BEATS = [
 
 function ContactSheet() {
   const variants = [
-    { label: 'room', render: (script) => <BubblesVariant script={script} frozen /> },
-    { label: 'thread', render: (script) => <ThreadVariant script={script} frozen /> },
-    { label: 'one line', render: (script) => <OneLineVariant script={script} frozen /> },
+    { label: 'room', Component: BubblesVariant },
+    { label: 'thread', Component: ThreadVariant },
+    { label: 'one line', Component: OneLineVariant },
   ];
   return (
     <div className="contact-sheet">
@@ -340,7 +351,7 @@ function ContactSheet() {
           <div className="contact-tag">{variant.label} · {beat.title}</div>
           <div className="contact-ph">
             <div style={{ transform: 'scale(.42)', transformOrigin: 'top left', width: 762, height: 1620 }}>
-              {variant.render(beat.script)}
+              <variant.Component script={beat.script} frozen />
             </div>
           </div>
         </div>
