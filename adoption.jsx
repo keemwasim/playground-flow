@@ -131,13 +131,12 @@ function Question({ beat, answers, onAnswer, onNext }) {
         </div>
       ) : (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, maxWidth: 286 }}>
-            {spec.options.map(([value]) => (
-            <div key={value}>
-              <P.Chip
-                selected={current === value}
-                onClick={() => { sound('tick'); onAnswer(spec.field, value); onNext(); }}
-              >{value}</P.Chip>
-            </div>
+          {spec.options.map(([value]) => (
+            <P.Chip
+              key={value}
+              selected={current === value}
+              onClick={() => { sound('tick'); onAnswer(spec.field, value); onNext(); }}
+            >{value}</P.Chip>
           ))}
           <P.Button variant="quiet" onClick={() => setOwnWords(true)}>say it your way</P.Button>
         </div>
