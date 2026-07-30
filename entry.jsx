@@ -3,19 +3,13 @@
 
 const ENTRY_KEYS = ['A', 'B', 'C'];
 
-const ENTRY_NOTES = {
-  A: 'the world fills the door, with one way in.',
-  B: 'the world is a window, and the companion waits below it.',
-  C: 'the smallest door, with only the world and its name.',
-};
-
 function EntryGlobe({ size, style, ...props }) {
   const P = window.PG || {};
   if (!P.Globe) return null;
   return <P.Globe size={size} variant="world" souls={4} phase="day" {...props} style={style} />;
 }
 
-function EntryScreen({ variant = 'A', name = 'Sol' }) {
+function EntryScreen({ variant = 'A' }) {
   const [take, setTake] = React.useState(0);
   const key = String(variant).toUpperCase();
   const P = window.PG || {};
@@ -42,7 +36,7 @@ function EntryScreen({ variant = 'A', name = 'Sol' }) {
           <P.Sprite size={112} form="pebble" still={false} mood={76} />
         </div>
         <div style={{ position: 'absolute', left: 'var(--screen-margin)', right: 'var(--screen-margin)', bottom: 38, zIndex: 'var(--z-header)', display: 'flex', justifyContent: 'center', animation: 'pgLineIn .7s var(--ease-pop) .45s both' }}>
-          <P.Button variant="quiet" aria-label={`enter ${name}`}>enter</P.Button>
+          <P.Button variant="quiet">enter</P.Button>
         </div>
       </div>
     );
@@ -74,29 +68,29 @@ function EntryScreen({ variant = 'A', name = 'Sol' }) {
       <div style={{ position: 'absolute', left: '50%', top: '43%', transform: 'translate(-50%,-50%)', width: 430, height: 430, animation: 'pgGlobeEnter 1.2s var(--ease-emerge) both' }}>
         <EntryGlobe size={430} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1 }}>
-          <P.Logo size={58} wordmark={false} color="var(--porcelain-0)" hole="var(--globe-sea)" />
+          <P.Logo size={58} wordmark={false} color="var(--ink-2)" />
         </div>
       </div>
       <div style={{ position: 'absolute', left: 'var(--screen-margin)', right: 'var(--screen-margin)', bottom: 38, display: 'flex', justifyContent: 'center', zIndex: 'var(--z-header)', animation: 'pgLineIn .8s var(--ease-pop) .45s both' }}>
-        <P.Button variant="primary" size="lg" onDark aria-label={`enter ${name}`}>enter</P.Button>
+        <P.Button variant="primary" size="lg" onDark>enter</P.Button>
       </div>
     </div>
   );
 }
 
-function EntrySheet({ name = 'Sol' }) {
+function EntrySheet() {
   const [take, setTake] = React.useState(0);
   return (
     <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start', flexWrap: 'nowrap', overflow: 'auto' }}>
       {ENTRY_KEYS.map((key) => (
-        <div key={key} style={{ width: 90, flex: '0 0 90px', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+        <div key={key} style={{ width: 134, flex: '0 0 134px', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
           <div style={{ font: 'var(--text-label)', letterSpacing: 'var(--tracking-label)', color: 'var(--text-secondary)' }}>{key}</div>
           <div
             onClick={() => setTake((n) => n + 1)}
-            style={{ position: 'relative', width: 90, height: 191, overflow: 'hidden', cursor: 'pointer' }}
+            style={{ position: 'relative', width: 134, height: 286, overflow: 'hidden', cursor: 'pointer' }}
           >
-            <div key={key + take} style={{ width: 320, height: 680, transform: 'scale(.28)', transformOrigin: 'top left' }}>
-              <EntryScreen variant={key} name={name} />
+            <div key={key + take} style={{ width: 320, height: 680, transform: 'scale(.42)', transformOrigin: 'top left' }}>
+              <EntryScreen variant={key} />
             </div>
           </div>
         </div>
@@ -105,4 +99,4 @@ function EntrySheet({ name = 'Sol' }) {
   );
 }
 
-if (typeof window !== 'undefined') window.PG = Object.assign(window.PG || {}, { EntryScreen, EntrySheet, ENTRY_KEYS, ENTRY_NOTES });
+if (typeof window !== 'undefined') window.PG = Object.assign(window.PG || {}, { EntryScreen, EntrySheet, ENTRY_KEYS });
