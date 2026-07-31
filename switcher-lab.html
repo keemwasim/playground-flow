@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the switcher, three directions</title>
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:#F4F4F6}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="min-height:100vh; display:flex; align-items:center; justify-content:center; padding:56px 24px; background:#F4F4F6;">
+  <!-- the real components, not lookalikes: the creatures the owner's own agent
+       is drawn with, its life state, and the dock the switcher hangs off. they
+       register on window.PG, the sheet composes them. -->
+  <div style="display:none;">
+    <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx?v=0731" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.AgentState" from="./design-system/components/Agents.jsx?v=0731" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Dock" from="./design-system/components/Dock.jsx?v=0731" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.ScreenHeader" from="./design-system/components/Scaffold.jsx?v=0731" hint-size="10px,10px"></x-import>
+  </div>
+  <x-import component-from-global-scope="PG.SwitcherSheet" from="./switcher.jsx?v=0731a" hint-size="1140px,760px"></x-import>
+</div>
+</x-dc>
+</body>
+</html>
