@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--surface-desktop);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .lab-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 40px 80px;
+    }
+
+    .lab-header {
+      margin-bottom: 34px;
+    }
+
+    .lab-header h1 {
+      margin: 0 0 6px;
+      font: var(--text-sheet-title);
+      letter-spacing: -.01em;
+    }
+
+    .lab-header p {
+      margin: 0;
+      color: var(--text-secondary);
+      font: var(--text-body);
+    }
+
+    .variant-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .variant-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 320px;
+    }
+
+    .variant-tag,
+    .contact-tag {
+      color: var(--text-secondary);
+      font: var(--text-mono-tag);
+      letter-spacing: var(--tracking-mono-tag);
+      text-transform: lowercase;
+    }
+
+    .variant-note {
+      min-height: 17px;
+      color: var(--text-secondary);
+      font: var(--text-hint);
+    }
+
+    .phone-frame {
+      position: relative;
+      width: 320px;
+      height: 680px;
+      overflow: hidden;
+      border-radius: var(--radius-frame);
+      background: var(--bg);
+      box-shadow: var(--paper-ring), var(--shadow-panel);
+    }
+
+    .phone-time {
+      position: absolute;
+      top: 20px;
+      left: 26px;
+      z-index: var(--z-header);
+      color: var(--text-primary);
+      font: 600 12px var(--font-ui);
+    }
+
+    .compact-island {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      z-index: var(--z-notice);
+      width: 158px;
+      height: 36px;
+      transform: translateX(-50%);
+      border-radius: var(--radius-pill);
+      background: var(--ink-0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .compact-hardware {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 144px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: var(--radius-pill);
+      background: var(--ink-0);
+    }
+
+    .compact-line-track {
+      display: block;
+      flex: 1;
+      height: 2.5px;
+      overflow: hidden;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-3);
+    }
+
+    .compact-line-fill {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-1);
+      transform-origin: left center;
+    }
+
+    .compact-pulse {
+      display: block;
+      width: 5px;
+      height: 18px;
+      flex: none;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-1);
+      animation: pgGlowPulse var(--dur-glowpulse) ease-in-out infinite;
+    }
+
+    .expanded-position,
+    .souls-position {
+      position: absolute;
+      top: var(--safe-top);
+      left: 50%;
+      z-index: var(--z-notice);
+      transform: translateX(-50%);
+    }
+
+    .phone-frame .expanded-position,
+    .phone-frame .souls-position {
+      width: calc(100% - var(--screen-gutter) * 2);
+    }
+
+    .phone-frame .expanded-position > div,
+    .phone-frame .souls-capsule {
+      width: 100% !important;
+    }
+
+    .souls-capsule {
+      position: relative;
+      width: var(--notice-w);
+      min-height: 65px;
+      overflow: hidden;
+      border-radius: var(--notice-radius-activity);
+      background: var(--globe-ink-sphere);
+      box-shadow: var(--glass-night-ring), var(--glass-night-shadow);
+    }
+
+    .souls-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 65px;
+      padding: 13px 17px 12px;
+      border-radius: var(--notice-radius-activity);
+      box-shadow: var(--glass-edge);
+    }
+
+    .souls-copy {
+      display: block;
+      flex: 1;
+      min-width: 0;
+      margin: -2px -8px -3px;
+      padding: 2px 8px 3px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(
+        90deg,
+        var(--glass-night-bg) 0%,
+        var(--glass-night-bg) 58%,
+        transparent 100%
+      );
+      backdrop-filter: var(--glass-blur-chip);
+      -webkit-backdrop-filter: var(--glass-blur-chip);
+    }
+
+    .souls-name {
+      display: block;
+      overflow: hidden;
+      color: var(--on-night-1);
+      font: 600 12.5px/1.3 var(--font-ui);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .souls-status {
+      display: block;
+      overflow: hidden;
+      margin-top: 2px;
+      color: var(--on-night-2);
+      font: 400 11px/1.4 var(--font-ui);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      animation: pgFadeIn .6s var(--ease-pop) both;
+    }
+
+    .souls-progress-track {
+      display: block;
+      height: 2.5px;
+      margin-top: 6px;
+      overflow: hidden;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-3);
+    }
+
+    .souls-progress-fill {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-1);
+      transform-origin: left center;
+    }
+
+    .souls-pulse {
+      display: block;
+      width: 7px;
+      height: 26px;
+      flex: none;
+      border-radius: var(--radius-pill);
+      background: var(--on-night-1);
+      animation: pgGlowPulse var(--dur-glowpulse) ease-in-out infinite;
+    }
+
+    .contact-section {
+      margin-top: 52px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--track);
+    }
+
+    .contact-cell {
+      min-height: 178px;
+      padding: 24px 18px;
+      background: var(--surface-desktop);
+    }
+
+    .contact-cell > .compact-island,
+    .contact-cell > .expanded-position,
+    .contact-cell > .souls-position {
+      position: relative;
+      top: auto;
+      left: auto;
+      z-index: auto;
+      margin: 24px auto 0;
+      transform: none;
+    }
+
+    .contact-cell > .compact-island {
+      width: 158px;
+    }
+
+    .contact-cell > .expanded-position,
+    .contact-cell > .souls-position {
+      width: var(--notice-w);
+    }
+
+    .contact-cell > .souls-position {
+      height: 65px;
+    }
+
+    .contact-cell > .souls-position .souls-capsule {
+      width: var(--notice-w);
+    }
+
+    .contact-tag {
+      text-align: center;
+    }
+
+    .lab-loading {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      color: var(--text-secondary);
+      font: var(--text-body);
+    }
+
+    @media (max-width: 700px) {
+      .lab-shell {
+        padding: 28px 20px 60px;
+      }
+
+      .variant-row {
+        justify-content: center;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <x-dc>
+    <helmet>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="design-system/styles.css">
+    </helmet>
+
+    <div style="display:none;">
+      <x-import
+        component-from-global-scope="PG.Globe"
+        from="./design-system/components/Globe.jsx"
+        hint-size="10px,10px">
+      </x-import>
+      <x-import
+        component-from-global-scope="PG.Sprite"
+        from="./design-system/components/Sprite.jsx"
+        hint-size="10px,10px">
+      </x-import>
+      <x-import
+        component-from-global-scope="PG.LiveActivity"
+        from="./design-system/components/Notice.jsx"
+        hint-size="10px,10px">
+      </x-import>
+      <x-import
+        component-from-global-scope="PG.Logo"
+        from="./design-system/components/Logo.jsx"
+        hint-size="10px,10px">
+      </x-import>
+    </div>
+
+    <x-import
+      component-from-global-scope="PG.LiveActivityLab"
+      from="./liveactivity.jsx"
+      hint-size="1080px,1500px">
+    </x-import>
+  </x-dc>
+</body>
+</html>
