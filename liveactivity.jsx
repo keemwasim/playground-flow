@@ -182,11 +182,11 @@ function SoulsCapsule({ status, statusIndex = 0, tripKey = 0, progress }) {
         <P.Globe
           variant="souls"
           size={360}
-          souls={5}
+          souls={6}
           style={{
             position: 'absolute',
             left: '44%',
-            top: '-125px',
+            top: '-80px',
             transform: 'translateX(-50%)',
           }}
         />
