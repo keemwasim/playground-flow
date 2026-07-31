@@ -9,17 +9,14 @@ function IconTile({ direction = 'flat', size = 220, markSize = 132, className = 
   return (
     <div className={`icon-tile icon-tile-${direction} ${className}`} style={{ '--icon-size': `${size}px` }}>
       {direction === 'flat' && <P.Logo size={markSize} color="var(--ink-2)" hole="var(--porcelain-0)" />}
-      {direction === 'listing' && (
-        <>
-          <P.Logo size={markSize} color="var(--ink-2)" hole="var(--porcelain-0)" />
-          <div className="icon-listing-line" />
-        </>
-      )}
+      {direction === 'inverse' && <P.Logo size={markSize} color="var(--porcelain-0)" hole="var(--ink-2)" />}
       {direction === 'world' && (
         <>
-          <P.Globe variant="eclipse" size={size} />
+          <div className="icon-world-globe">
+            <P.Globe variant="eclipse" size={Math.round(size * 0.78)} />
+          </div>
           <div className="icon-world-mark">
-            <P.Logo size={markSize} color="var(--ink-2)" hole="var(--porcelain-0)" />
+            <P.Logo size={markSize} color="var(--porcelain-0)" hole="var(--ink-2)" />
           </div>
         </>
       )}
@@ -27,18 +24,18 @@ function IconTile({ direction = 'flat', size = 220, markSize = 132, className = 
   );
 }
 
-function ListingFrame({ title, note, reverse = false }) {
+function ListingFrame({ title, note, screenLabel, screenLine, iconDirection = 'flat', reverse = false }) {
   const P = window.PG || {};
   return (
     <article className={`listing-frame ${reverse ? 'listing-frame-reverse' : ''}`}>
       <div className="listing-copy">
-        <IconTile direction="flat" size={72} markSize={42} />
+        <IconTile direction={iconDirection} size={72} markSize={42} />
         <div className="listing-title">{title}</div>
         <div className="listing-note">{note}</div>
       </div>
       <div className="listing-phone">
         <div className="listing-phone-top">
-          <span className="listing-phone-label">home, together</span>
+          <span className="listing-phone-label">{screenLabel}</span>
           <span className="listing-phone-dot" />
         </div>
         <div className="listing-world">
@@ -47,7 +44,7 @@ function ListingFrame({ title, note, reverse = false }) {
         <div className="listing-creature">
           <P.Sprite size={92} form="pebble" mood={55} />
         </div>
-        <div className="listing-speech">the world is awake</div>
+        <div className="listing-speech">{screenLine}</div>
         <div className="listing-handle" />
       </div>
     </article>
@@ -55,12 +52,12 @@ function ListingFrame({ title, note, reverse = false }) {
 }
 
 function ContactTile({ direction, size }) {
+  const previewSize = Math.min(size, 180);
   const isWorld = direction === 'world';
-  const markSize = Math.max(12, Math.round(size * (isWorld ? 0.34 : 0.43)));
-  const globeSize = Math.max(24, Math.round(size * 0.84));
+  const markSize = Math.max(12, Math.round(previewSize * (isWorld ? 0.34 : 0.43)));
   return (
     <div className="contact-cell">
-      <IconTile direction={direction} size={globeSize} markSize={markSize} />
+      <IconTile direction={direction} size={previewSize} markSize={markSize} />
       <div className="contact-size">{size}px</div>
     </div>
   );
@@ -80,7 +77,7 @@ function IconMarketing() {
   });
 
   if (missing.length) {
-    return <div className="icon-marketing-wait">waking the mark…</div>;
+    return <div className="icon-marketing-wait">waking the mark</div>;
   }
 
   return (
@@ -116,17 +113,29 @@ function IconMarketing() {
       <section className="direction-block">
         <div className="direction-label">03 · the listing frame</div>
         <div className="listing-grid">
-          <ListingFrame title="the world is awake" note="a small door into somewhere else." />
-          <ListingFrame title="home, together" note="a companion, looking out." reverse />
+          <ListingFrame
+            title="the world is awake"
+            note="a small door into somewhere else."
+            screenLabel="the crossing"
+            screenLine="follow the light home"
+          />
+          <ListingFrame
+            title="home, together"
+            note="a companion, looking out."
+            screenLabel="the commons"
+            screenLine="a place to meet again"
+            iconDirection="inverse"
+            reverse
+          />
         </div>
       </section>
 
       <section className="direction-block contact-sheet-block">
         <div className="direction-label">contact sheet · the mark at a glance</div>
         <div className="contact-sheet">
-          {['flat', 'world', 'listing'].map((direction, index) => (
+          {['flat', 'world', 'inverse'].map((direction, index) => (
             <div className="contact-direction" key={`${direction}-${index}`}>
-              <div className="contact-tag">{['flat ink', 'hint of world', 'listing mark'][index]}</div>
+              <div className="contact-tag">{['flat ink', 'hint of world', 'inverse ink'][index]}</div>
               <div className="contact-row">
                 {ICON_SIZES.map((size) => (
                   <ContactTile key={size} direction={direction} size={size} />
