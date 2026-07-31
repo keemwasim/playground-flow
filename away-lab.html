@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>home, while away</title>
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+ /* the lab desk. the frames are the real thing at 320x680, mounted from
+    away.jsx off window.PG, so what is on the desk is what ships. the desk is the
+    flat porcelain token rather than the desktop gradient, because a gradient
+    sized to the viewport leaves a seam where a long page runs past it. */
+ html,body{margin:0;padding:0;background:var(--bg-desk)}
+ body{font-family:var(--font-ui);color:var(--text-primary);padding:44px 40px 90px}
+ h1{font:var(--text-sheet-title);letter-spacing:-.01em;margin:0 0 6px}
+ .sub{font:var(--text-body);color:var(--text-secondary);max-width:600px}
+ .lbl{font:var(--section-label);letter-spacing:var(--tracking-label);text-transform:lowercase;color:var(--text-secondary);margin:44px 0 18px}
+ .row{display:flex;gap:44px;flex-wrap:wrap;align-items:flex-start}
+ .cell{width:320px}
+ .vtag{font:var(--text-mono-tag);letter-spacing:var(--tracking-mono-tag);color:var(--text-tertiary);margin-bottom:14px}
+ .note{font:var(--text-row-sub);color:var(--text-secondary);margin-top:16px}
+</style>
+</helmet>
+
+<h1>home, while away</h1>
+<div class="sub">the companion is out. home carries the absence: the room is quiet, word arrives on its own, and the world turns on its own clock. nothing to watch, nothing crawling to a hundred.</div>
+
+<!-- the shipped objects the frames are built from. hidden, loaded first, so
+     window.PG is populated before away.jsx asks for it. -->
+<div style="display:none;">
+  <x-import component-from-global-scope="PG.Tear" from="./design-system/components/Tear.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Whisper" from="./design-system/components/Society.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Dock" from="./design-system/components/Dock.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.ScreenHeader" from="./design-system/components/Scaffold.jsx?v=0731" hint-size="10px,10px"></x-import>
+</div>
+
+<div class="lbl">the contact sheet</div>
+<x-import component-from-global-scope="PG.AwaySheet" from="./away.jsx?v=0731e" hint-size="600px,400px"></x-import>
+
+<div class="lbl">the three, at size</div>
+<div class="row">
+  <div class="cell">
+    <div class="vtag">away · 1 · the empty room</div>
+    <x-import component-from-global-scope="PG.Away" from="./away.jsx?v=0731e" hint-size="320px,680px" variant="empty"></x-import>
+    <div class="note">the tear it left through has gone quiet rather than closed. one faint trace of where it went, the dent where it sits, nothing else.</div>
+  </div>
+  <div class="cell">
+    <div class="vtag">away · 2 · a whisper drifting in</div>
+    <x-import component-from-global-scope="PG.Away" from="./away.jsx?v=0731e" hint-size="320px,680px" variant="whisper"></x-import>
+    <div class="note">nothing to watch. word arrives instead: the newest line drifts in low, the older ones are further up and going.</div>
+  </div>
+  <div class="cell">
+    <div class="vtag">away · 3 · the world behind the tear</div>
+    <x-import component-from-global-scope="PG.Away" from="./away.jsx?v=0731e" hint-size="320px,680px" variant="world"></x-import>
+    <div class="note">the tear stays open on the wall and the world inside it turns whether anyone watches. lean on it and you peer around.</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
