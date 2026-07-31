@@ -181,13 +181,13 @@ function SoulsCapsule({ status, statusIndex = 0, tripKey = 0, progress }) {
       <div className="souls-capsule">
         <P.Globe
           variant="souls"
-          size={220}
-          souls={4}
+          size={360}
+          souls={5}
           style={{
             position: 'absolute',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%) scale(1.72)',
+            left: '44%',
+            top: '-125px',
+            transform: 'translateX(-50%)',
           }}
         />
         <div className="souls-content">

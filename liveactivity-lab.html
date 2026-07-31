@@ -148,6 +148,16 @@
       transform: translateX(-50%);
     }
 
+    .phone-frame .expanded-position,
+    .phone-frame .souls-position {
+      width: calc(100% - var(--screen-gutter) * 2);
+    }
+
+    .phone-frame .expanded-position > div,
+    .phone-frame .souls-capsule {
+      width: 100% !important;
+    }
+
     .souls-capsule {
       position: relative;
       width: var(--notice-w);
@@ -167,16 +177,24 @@
       min-height: 65px;
       padding: 13px 17px 12px;
       border-radius: var(--notice-radius-activity);
-      background: var(--glass-night-bg);
-      box-shadow: var(--glass-night-ring), var(--glass-edge);
-      backdrop-filter: var(--glass-blur-element);
-      -webkit-backdrop-filter: var(--glass-blur-element);
+      box-shadow: var(--glass-edge);
     }
 
     .souls-copy {
       display: block;
       flex: 1;
       min-width: 0;
+      margin: -2px -8px -3px;
+      padding: 2px 8px 3px;
+      border-radius: var(--radius-chip);
+      background: linear-gradient(
+        90deg,
+        var(--glass-night-bg) 0%,
+        var(--glass-night-bg) 58%,
+        transparent 100%
+      );
+      backdrop-filter: var(--glass-blur-chip);
+      -webkit-backdrop-filter: var(--glass-blur-chip);
     }
 
     .souls-name {
