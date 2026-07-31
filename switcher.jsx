@@ -28,9 +28,9 @@ const ROOMS = ['pg-room-porcelain', 'pg-room-night', 'pg-room-dusk'];
    never a time or a percentage (the time ruling). */
 const KEPT = [
   { name: 'Sol', face: 0, form: 'pebble', room: 0, mood: 74, state: 'home', line: 'here with you' },
-  { name: 'Marn', face: 1, form: 'inkling', room: 1, mood: 86, state: 'out', line: 'out on the water' },
+  { name: 'Marn', face: 1, form: 'inkling', room: 0, mood: 86, state: 'out', line: 'out on the water' },
   { name: 'Vess', face: 2, form: 'pebble', room: 2, mood: 38, state: 'resting', line: 'asleep in its room' },
-  { name: 'Ovid', face: 3, form: 'pebble', room: 0, mood: 66, state: 'findings', line: 'home with something' },
+  { name: 'Ovid', face: 3, form: 'pebble', room: 1, mood: 66, state: 'findings', line: 'home with something' },
 ];
 
 const tick = () => { if (window.pgSound) window.pgSound('tick'); };
@@ -66,18 +66,21 @@ function Kept({ agent, size = 38, chosen = false, onPick }) {
   const P = window.PG || {};
   return (
     <div onClick={() => { tick(); if (onPick) onPick(); }}
-      style={{ flex: 'none', width: size + 8, height: size + 8, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', cursor: 'pointer', opacity: chosen ? 1 : .48, transform: chosen ? 'translateY(-4px)' : 'none', transition: 'opacity .35s ease, transform .35s var(--ease-pop)' }}>
-      <P.AgentState state={agent.state}>
-        <P.Sprite size={size} form={agent.form} faceIdx={agent.face} mood={agent.mood} still />
-      </P.AgentState>
+      style={{ position: 'relative', flex: 'none', width: size + 8, height: size + 16, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', cursor: 'pointer', opacity: chosen ? 1 : .62, transform: chosen ? 'translateY(-4px)' : 'none', transition: 'opacity .35s ease, transform .35s var(--ease-pop)' }}>
+      <div style={{ marginBottom: 8 }}>
+        <P.AgentState state={agent.state}>
+          <P.Sprite size={size} form={agent.form} faceIdx={agent.face} mood={agent.mood} still />
+        </P.AgentState>
+      </div>
+      {chosen && <div style={{ position: 'absolute', bottom: 0, left: '50%', width: 6, height: 6, borderRadius: 999, background: 'var(--ink-2)', transform: 'translateX(-50%)' }} />}
     </div>
   );
 }
 
 const headerLabel = 'yours';
 
-function useKept() {
-  const [i, setI] = React.useState(0);
+function useKept(start = 0) {
+  const [i, setI] = React.useState(start);
   const pick = (n) => setI(n);
   return [KEPT[i], i, pick];
 }
@@ -88,9 +91,9 @@ function useKept() {
    possible distance between two of your own agents, and the room changes light
    under your thumb. the row sits above the dock because the dock is BACK, not
    the switcher. */
-function SwitcherRow() {
+function SwitcherRow({ start = 0 }) {
   const P = window.PG || {};
-  const [cur, idx, pick] = useKept();
+  const [cur, idx, pick] = useKept(start);
   if (!P.Sprite) return <Waking />;
   return (
     <Frame room={cur.room}>
@@ -98,7 +101,7 @@ function SwitcherRow() {
         <P.ScreenHeader label={headerLabel} title={cur.name} status={cur.line} />
       </div>
 
-      <InRoom agent={cur} style={{ position: 'absolute', left: '50%', top: 268, transform: 'translateX(-50%)' }} />
+      <InRoom agent={cur} style={{ position: 'absolute', left: '50%', top: 330, transform: 'translateX(-50%)' }} />
 
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 104, display: 'flex', gap: 14, padding: '0 24px', alignItems: 'flex-end', overflowX: 'auto', scrollbarWidth: 'none' }}>
         {KEPT.map((a, i) => (
@@ -121,9 +124,9 @@ function SwitcherRow() {
    column at the right edge, small and out of the way. the hierarchy is the
    point: you are with one companion, the rest are nearby. tapping one trades
    places with it, so the column always holds exactly the ones you are not with. */
-function SwitcherOne() {
+function SwitcherOne({ start = 0 }) {
   const P = window.PG || {};
-  const [cur, idx, pick] = useKept();
+  const [cur, idx, pick] = useKept(start);
   if (!P.Sprite) return <Waking />;
   const rest = KEPT.map((a, i) => ({ a, i })).filter((x) => x.i !== idx);
   return (
@@ -132,13 +135,13 @@ function SwitcherOne() {
         <P.ScreenHeader label={headerLabel} title={cur.name} status={cur.line} />
       </div>
 
-      <InRoom agent={cur} size={132} style={{ position: 'absolute', left: '44%', top: 296, transform: 'translateX(-50%)' }} />
+      <InRoom agent={cur} size={132} style={{ position: 'absolute', left: '38%', top: 296, transform: 'translateX(-50%)' }} />
 
-      <div style={{ position: 'absolute', right: 18, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 18, alignItems: 'center' }}>
+      <div style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', gap: 18, alignItems: 'center' }}>
         {rest.map((x) => (
-          <Kept key={x.a.name} agent={x.a} size={34} onPick={() => pick(x.i)} />
+          <Kept key={x.a.name} agent={x.a} size={40} onPick={() => pick(x.i)} />
         ))}
-        <div style={{ width: 34, height: 34, borderRadius: 999, border: '1.5px dashed var(--ink-2)', opacity: .3 }} />
+        <div style={{ width: 40, height: 40, borderRadius: 999, border: '1.5px dashed var(--ink-2)', opacity: .3 }} />
       </div>
 
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 30, display: 'flex', justifyContent: 'center' }}>
@@ -154,9 +157,9 @@ function SwitcherOne() {
    its lip. no second surface, no sheet, the wayfinder you already have grows
    into the switcher. drag it down (or tap the ground) and it is a dock again.
    the rows carry the sprite, because a name alone loses the individual. */
-function SwitcherDock() {
+function SwitcherDock({ start = 0 }) {
   const P = window.PG || {};
-  const [cur, idx, pick] = useKept();
+  const [cur, idx, pick] = useKept(start);
   const [open, setOpen] = React.useState(true);
   const drag = React.useRef(null);
   if (!P.Sprite) return <Waking />;
@@ -222,18 +225,18 @@ function Waking() {
 /* THE CONTACT SHEET. the three side by side at one scale, tagged and nothing
    else: the judging happens in the frames, not in prose beside them. */
 const SHEET = [
-  { tag: '1 · the row', C: SwitcherRow },
-  { tag: '2 · one large', C: SwitcherOne },
-  { tag: '3 · the dock pulled up', C: SwitcherDock },
+  { tag: '1 · the row', C: SwitcherRow, start: 0 },
+  { tag: '2 · one large', C: SwitcherOne, start: 3 },
+  { tag: '3 · the dock pulled up', C: SwitcherDock, start: 2 },
 ];
 
 function SwitcherSheet() {
   return (
     <div style={{ display: 'flex', gap: 44, alignItems: 'flex-start', flexWrap: 'wrap', justifyContent: 'center' }}>
-      {SHEET.map(({ tag, C }) => (
+      {SHEET.map(({ tag, C, start }) => (
         <div key={tag} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div style={{ font: '600 13px ui-monospace, Menlo, monospace', letterSpacing: '0', color: 'var(--text-tertiary)', textTransform: 'lowercase' }}>{tag}</div>
-          <C />
+          <C start={start} />
         </div>
       ))}
     </div>
