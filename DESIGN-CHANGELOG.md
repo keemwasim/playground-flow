@@ -26,18 +26,6 @@ rulings that constrain future work are marked **LAW**.
 
 ---
 
-### icon and store marketing directions
-**who** design system · **how** extracted, then rendered
-
-**what.** added the backwards-P icon, eclipse pairing, listing frames, and
-contact sheet as a standalone marketing lab using the real `window.PG`
-components.
-
-**why.** TestFlight and store surfaces need the brand to read at a glance
-without introducing a second mark or a coloured chrome language.
-
-**proof.** `icon-marketing-lab.html`.
-
 ## v5 - the flow reduced, the agent made individual
 
 ### the flow: nine surfaces to five
