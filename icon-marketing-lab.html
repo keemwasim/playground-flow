@@ -115,9 +115,11 @@ h1 {
 
 .icon-world-globe {
   position: absolute;
-  inset: 0;
+  inset: 9%;
   display: grid;
   place-items: center;
+  overflow: hidden;
+  clip-path: inset(0 round var(--icon-radius));
 }
 
 .icon-world-mark {

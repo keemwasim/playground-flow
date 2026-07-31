@@ -13,7 +13,7 @@ function IconTile({ direction = 'flat', size = 220, markSize = 132, className = 
       {direction === 'world' && (
         <>
           <div className="icon-world-globe">
-            <P.Globe variant="eclipse" size={Math.round(size * 0.78)} />
+            <P.Globe variant="eclipse" size={Math.round(size * 0.72)} />
           </div>
           <div className="icon-world-mark">
             <P.Logo size={markSize} color="var(--porcelain-0)" hole="var(--ink-2)" />
@@ -58,7 +58,7 @@ function ContactTile({ direction, size }) {
   return (
     <div className="contact-cell">
       <IconTile direction={direction} size={previewSize} markSize={markSize} />
-      <div className="contact-size">{size}px</div>
+      <div className="contact-size">{size === 1024 ? '1024px, scaled' : `${size}px`}</div>
     </div>
   );
 }
