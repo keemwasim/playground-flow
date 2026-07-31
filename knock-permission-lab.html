@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="stylesheet" href="design-system/styles.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-desk);
+      color: var(--text-primary);
+    }
+    * { box-sizing: border-box; }
+    body { font-family: var(--font-ui); }
+    .lab {
+      min-height: 100vh;
+      padding: 56px 40px 88px;
+    }
+    .lab-title {
+      margin: 0 0 28px;
+      font: var(--text-sheet-title);
+      letter-spacing: var(--tracking-display);
+    }
+    .contact-sheet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      align-items: flex-start;
+    }
+    .variant {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .variant-tag {
+      min-height: 16px;
+      padding-left: 4px;
+      color: var(--text-secondary);
+      font: var(--text-mono-tag);
+      letter-spacing: var(--tracking-mono-tag);
+      text-transform: lowercase;
+    }
+    .phone {
+      position: relative;
+      width: 320px;
+      height: 680px;
+      overflow: hidden;
+      border-radius: var(--radius-frame);
+      background: var(--bg);
+      box-shadow: var(--paper-ring), var(--shadow-panel);
+    }
+    .knock-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .knock-state {
+      position: absolute;
+      top: 22px;
+      left: 26px;
+      z-index: var(--z-header);
+      color: var(--text-secondary);
+      font: var(--text-mono-tag);
+      letter-spacing: var(--tracking-mono-tag);
+      text-transform: lowercase;
+    }
+    .knock-companion {
+      position: absolute;
+      left: 50%;
+      z-index: var(--z-creature);
+      transform: translateX(-50%);
+    }
+    .knock-companion-sheet {
+      top: 226px;
+    }
+    .knock-companion-bubble {
+      top: 300px;
+    }
+    .knock-companion-button {
+      top: 254px;
+    }
+    .knock-bubble {
+      position: absolute;
+      top: 142px;
+      left: 50%;
+      z-index: var(--z-screen);
+      transform: translateX(-50%);
+    }
+    .knock-action {
+      position: absolute;
+      right: var(--screen-gutter);
+      bottom: var(--safe-bottom);
+      left: var(--screen-gutter);
+      z-index: var(--z-screen);
+    }
+    .knock-action-button {
+      bottom: 54px;
+    }
+    .knock-sheet {
+      position: absolute;
+      right: var(--sheet-inset);
+      bottom: var(--sheet-inset);
+      left: var(--sheet-inset);
+      z-index: var(--z-sheet);
+      padding: var(--sheet-pad);
+      border-radius: var(--radius-sheet);
+      background: var(--sheet-bg);
+      box-shadow: var(--sheet-shadow);
+    }
+    .knock-grabber {
+      width: 36px;
+      height: 5px;
+      margin: 0 auto 24px;
+      border-radius: var(--radius-pill);
+      background: var(--sheet-grabber);
+    }
+    .knock-sheet-title {
+      margin-bottom: 8px;
+      font: var(--text-sheet-title);
+      letter-spacing: var(--tracking-display);
+    }
+    .knock-sheet-copy {
+      margin-bottom: 24px;
+      color: var(--text-secondary);
+      font: var(--text-body);
+    }
+  </style>
+</helmet>
+<div style="display:none;">
+  <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Button" from="./design-system/components/Button.jsx" hint-size="10px,10px">x</x-import>
+  <x-import component-from-global-scope="PG.Bubble" from="./design-system/components/Bubble.jsx" hint-size="10px,10px"></x-import>
+</div>
+<div class="lab">
+  <h1 class="lab-title">The knock</h1>
+  <div class="contact-sheet">
+    <div class="variant">
+      <div class="variant-tag">bottom sheet</div>
+      <div class="phone">
+        <x-import component-from-global-scope="PG.KnockPermission" from="./knock-permission.jsx" variant="sheet" hint-size="320px,680px"></x-import>
+      </div>
+    </div>
+    <div class="variant">
+      <div class="variant-tag">companion asks</div>
+      <div class="phone">
+        <x-import component-from-global-scope="PG.KnockPermission" from="./knock-permission.jsx" variant="bubble" hint-size="320px,680px"></x-import>
+      </div>
+    </div>
+    <div class="variant">
+      <div class="variant-tag">single action</div>
+      <div class="phone">
+        <x-import component-from-global-scope="PG.KnockPermission" from="./knock-permission.jsx" variant="button" hint-size="320px,680px"></x-import>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
