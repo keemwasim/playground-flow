@@ -28,6 +28,23 @@ rulings that constrain future work are marked **LAW**.
 
 ## v5 - the flow reduced, the agent made individual
 
+### the home screen widget, three variants rendered
+**who** design lead · **how** rejected then rendered, awaiting the pick
+
+**what.** the companion given a home screen tile, drawn at the real iOS widget
+sizes. three variants: the small square with the creature breathing, the medium
+led by its whisper line, and the world souls treatment for while it is away.
+the grammar under all three: the mark when it is home, a whisper when it is out,
+never a time string.
+
+**why.** the tile is the surface the owner sees most and the app has never had
+one. it has to say where the companion is at a glance without becoming a
+dashboard or reading like a notification.
+
+**proof.** `widget-lab.html` (contact sheet, tiles at true size, no phone
+frame), `widget.jsx`. the lab is an option board on purpose, the product still
+ships one decided tile once keem picks.
+
 ### the flow: nine surfaces to five
 **who** design lead · **how** ruled, surface by surface, over one working session
 
