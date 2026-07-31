@@ -1,4 +1,7 @@
 
+## 2026-07-31 · lab: empty states
+three empty-state variants and contact sheet mounted from the real components.
+
 ## 2026-07-22 · design: spec board brought in line with the five verdicts
 surfaces section rebuilt (flat porcelain canvases, no gradients or tints or inset rings, .05 hairlines, three honest depth tiers, night reference removed), the favicon place row removed and replaced with the imagery-led card matching the audited PlaceCard, lexicon upgraded from a ban list to a translation table (every banned word paired with its door word), voice examples rewritten grounded per society.md (no manufactured whimsy) with the real-job law added to the sidebar, README examples aligned. every section re-rendered and eyeballed.
 
