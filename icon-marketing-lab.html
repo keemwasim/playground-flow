@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./design-system/styles.css">
+<link rel="icon" href="data:,">
+<title>playground icon and store</title>
+<style>
+:root {
+  --icon-marketing-max: 1180px;
+  --icon-marketing-gap: var(--space-7);
+  --icon-radius: 22.37%;
+  --icon-porcelain: var(--porcelain-0);
+  --icon-ink: var(--ink-2);
+  --icon-muted: var(--text-secondary);
+  --icon-soft: var(--text-tertiary);
+  --icon-phone: var(--porcelain-2);
+  --icon-phone-well: var(--well);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--porcelain-2) !important;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+body { padding: var(--space-7) var(--space-5) 80px; }
+
+.icon-marketing {
+  width: min(100%, var(--icon-marketing-max));
+  margin: 0 auto;
+}
+
+.marketing-header { margin-bottom: var(--icon-marketing-gap); }
+
+.marketing-kicker,
+.direction-label,
+.contact-tag,
+.contact-size,
+.listing-phone-label {
+  font: var(--text-mono-tag);
+  color: var(--icon-muted);
+  letter-spacing: var(--tracking-mono-tag);
+}
+
+.marketing-kicker,
+.direction-label,
+.contact-tag,
+.listing-phone-label { text-transform: lowercase; }
+
+h1 {
+  margin: var(--space-2) 0 0;
+  font: var(--text-screen-title);
+  letter-spacing: var(--tracking-display);
+}
+
+.direction-block {
+  margin-top: var(--icon-marketing-gap);
+  padding: var(--space-5);
+  background: var(--paper-card);
+  border-radius: var(--radius-row-card);
+  box-shadow: var(--paper-ring), var(--shadow-contact);
+}
+
+.direction-shot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, .52fr);
+  gap: var(--space-7);
+  align-items: center;
+  padding: var(--space-7) var(--space-5) var(--space-5);
+}
+
+.direction-shot-flat { background: var(--porcelain-1); }
+.direction-shot-world { background: var(--porcelain-2); }
+
+.direction-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.direction-note,
+.listing-title {
+  font: var(--text-speech);
+  color: var(--icon-muted);
+}
+
+.icon-tile {
+  position: relative;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  max-width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--icon-radius);
+  background: var(--icon-porcelain);
+  box-shadow: var(--paper-ring), var(--shadow-element);
+}
+
+.icon-tile-world {
+  background: var(--icon-porcelain);
+}
+
+.icon-tile-world > :first-child {
+  position: absolute;
+  inset: 0;
+}
+
+.icon-world-mark {
+  position: absolute;
+  left: 9%;
+  top: 30%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 54%;
+  height: 40%;
+}
+
+.icon-world-mark svg { width: 100%; }
+
+.icon-listing-line {
+  position: absolute;
+  bottom: 16%;
+  width: 28%;
+  height: var(--space-1);
+  border-radius: var(--radius-pill);
+  background: var(--ink-4);
+}
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.listing-frame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: var(--space-5);
+  align-items: center;
+  min-height: 390px;
+  padding: var(--space-5);
+  overflow: hidden;
+  background: var(--porcelain-1);
+  border-radius: var(--radius-row-card);
+  box-shadow: var(--paper-ring), var(--shadow-contact);
+}
+
+.listing-frame-reverse { background: var(--porcelain-2); }
+
+.listing-copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.listing-title {
+  color: var(--text-primary);
+  font: var(--text-sheet-title);
+}
+
+.listing-phone {
+  position: relative;
+  width: 210px;
+  height: 360px;
+  overflow: hidden;
+  border-radius: var(--radius-frame);
+  background: var(--icon-phone);
+  box-shadow: var(--paper-ring), var(--shadow-element);
+}
+
+.listing-phone-top {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  right: var(--space-5);
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listing-phone-dot {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--ink-2);
+}
+
+.listing-world {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+}
+
+.listing-creature {
+  position: absolute;
+  left: 50%;
+  top: 148px;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+.listing-speech {
+  position: absolute;
+  left: var(--space-5);
+  right: var(--space-5);
+  bottom: 52px;
+  z-index: 3;
+  font: var(--text-speech);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.listing-handle {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-2);
+  width: 68px;
+  height: var(--space-1);
+  transform: translateX(-50%);
+  border-radius: var(--radius-pill);
+  background: var(--ink-4);
+}
+
+.contact-sheet {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.contact-direction {
+  padding: var(--space-4);
+  background: var(--porcelain-1);
+  border-radius: var(--radius-control);
+  box-shadow: var(--paper-ring), var(--shadow-contact);
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+
+.contact-cell {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.contact-cell .icon-tile {
+  box-shadow: var(--paper-ring), var(--shadow-contact);
+}
+
+.contact-size { color: var(--icon-soft); }
+
+.icon-marketing-wait {
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  font: var(--text-speech);
+  color: var(--text-secondary);
+}
+
+.component-imports {
+  display: none !important;
+  position: absolute !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 800px) {
+  body { padding: var(--space-5) var(--space-4) 60px; }
+  .direction-shot,
+  .listing-grid { grid-template-columns: 1fr; }
+  .direction-side { align-items: center; text-align: center; }
+  .direction-shot .icon-tile { margin: 0 auto; }
+  .listing-frame { grid-template-columns: 1fr; justify-items: center; }
+  .listing-copy { align-items: center; text-align: center; }
+}
+
+@media (max-width: 460px) {
+  .direction-block { padding: var(--space-4); }
+  .direction-shot { padding: var(--space-6) var(--space-2) var(--space-2); }
+  .direction-shot .icon-tile { width: min(var(--icon-size), 78vw); height: auto; }
+}
+</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+</helmet>
+<div class="component-imports">
+  <x-import component-from-global-scope="PG.Logo" from="./design-system/components/Logo.jsx" hint-size="20px,20px"></x-import>
+  <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="92px,92px"></x-import>
+  <x-import component-from-global-scope="PG.Globe" from="./design-system/components/Globe.jsx" variant="eclipse" size="300" hint-size="300px,300px"></x-import>
+</div>
+<x-import component-from-global-scope="PG.IconMarketing" from="./icon-marketing.jsx" hint-size="1180px,2200px"></x-import>
+</x-dc>
+</body>
+</html>
