@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the first light</title>
+<link rel="icon" href="data:,">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:var(--surface-desktop)}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<main style="min-height:100vh;padding:var(--space-7) var(--space-6);background:var(--surface-desktop);">
+  <header style="max-width:var(--content-card);margin:0 auto var(--space-7);">
+    <h1 style="margin:0 0 var(--space-2);font:var(--text-sheet-title);letter-spacing:var(--tracking-display);color:var(--ink-2);">the first light</h1>
+    <p style="margin:0;font:var(--text-body);color:var(--text-secondary);">three quiet ways the house wakes.</p>
+  </header>
+  <div style="display:none;">
+    <x-import component-from-global-scope="PG.Logo" from="./design-system/components/Logo.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.BootScreen" from="./design-system/components/Boot.jsx" hint-size="10px,10px"></x-import>
+    <x-import component-from-global-scope="PG.Globe" from="./design-system/components/Globe.jsx" hint-size="10px,10px"></x-import>
+  </div>
+  <x-import component-from-global-scope="PG.BootLab" from="./boot.jsx" hint-size="1120px,920px"></x-import>
+</main>
+</x-dc>
+</body>
+</html>
