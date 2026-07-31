@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the room, three ways in</title>
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+  html,body { margin:0; padding:0; background:var(--porcelain-3); }
+  * { box-sizing:border-box; }
+  .sheet { padding:56px 40px 90px; font-family:var(--font-ui); color:var(--text-primary); }
+  h1 { font:700 30px var(--font-display),sans-serif; letter-spacing:var(--tracking-display); margin:0 0 8px; }
+  .lede { font:500 15px/1.55 var(--font-ui); color:var(--text-secondary); margin:0 0 44px; max-width:720px; }
+  .grid { display:flex; flex-wrap:wrap; gap:48px 40px; }
+  .take { width:320px; }
+  .cap { display:flex; align-items:baseline; gap:10px; margin-bottom:10px; }
+  .num { font:var(--text-mono-tag); letter-spacing:var(--tracking-mono-tag); color:var(--text-tertiary); }
+  .name { font:700 15px var(--font-display),sans-serif; letter-spacing:-.01em; }
+  .why { font:500 12.5px/1.5 var(--font-ui); color:var(--text-secondary); margin:0 0 8px; min-height:80px; }
+  .cost { font:600 11px/1.5 var(--font-ui); color:var(--text-tertiary); margin:0 0 16px; min-height:46px; }
+</style>
+</helmet>
+
+<div class="sheet">
+  <h1>the room, three ways in</h1>
+  <p class="lede">the companion's own space, reached from the dock. a place, not a panel: the room is drawn as architecture and the companion lives in it, so opening the room is walking in on it. three directions on the same shell, each composing the ruled components (Sprite, NoteDoc, FriendDiamond, World, Dock). greyscale chrome throughout, the world keeps its color only inside the window.</p>
+
+  <div class="grid">
+
+    <div class="take">
+      <div class="cap"><span class="num">01</span><span class="name">the quiet room</span></div>
+      <p class="why">a faint porcelain room around the companion. one light from the upper left, the join where wall meets floor, the corner it turns at. nothing to read and nothing to operate, so the room reads as somewhere it is rather than something you use.</p>
+      <p class="cost">COSTS &#183; it gives you the least. a first-time owner may not know why the dock brought them here, and the room has to earn the trip on atmosphere alone.</p>
+      <div style="display:none;">
+        <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx" hint-size="10px,10px"></x-import>
+        <x-import component-from-global-scope="PG.NoteDoc" from="./design-system/components/Desk.jsx" hint-size="10px,10px"></x-import>
+        <x-import component-from-global-scope="PG.FriendDiamond" from="./design-system/components/Desk.jsx" hint-size="10px,10px"></x-import>
+        <x-import component-from-global-scope="PG.World" from="./design-system/components/World.jsx" hint-size="10px,10px"></x-import>
+        <x-import component-from-global-scope="PG.Dock" from="./design-system/components/Dock.jsx" hint-size="10px,10px"></x-import>
+      </div>
+      <x-import component-from-global-scope="PG.Room" from="./room.jsx?v=0731a" variant="1" name="Sol" hint-size="320px,680px"></x-import>
+    </div>
+
+    <div class="take">
+      <div class="cap"><span class="num">02</span><span class="name">its things, arranged</span></div>
+      <p class="why">the same room with what it has been given and what it brought home set down in it: notes leaning on a paper ledge, a friend from the other side, one delivery still lying flat where it was handed over. arrangement carries the history, so nothing has to be counted or labelled.</p>
+      <p class="cost">COSTS &#183; objects want captions. every thing added is one step nearer an inventory screen wearing a room as a costume, and the ledge is the line it must not cross.</p>
+      <x-import component-from-global-scope="PG.Room" from="./room.jsx?v=0731a" variant="2" name="Sol" face-idx="1" hint-size="320px,680px"></x-import>
+    </div>
+
+    <div class="take">
+      <div class="cap"><span class="num">03</span><span class="name">the window</span></div>
+      <p class="why">a way to look at the world set into the wall, with a sill under it and the light it throws lying on the floor. the companion stands under it and looks up into it. the door stays a door: you look through, you are never in the world.</p>
+      <p class="cost">COSTS &#183; it is the loudest of the three and the only one that carries color, so it competes with the entry world. the window has to stay a window and never grow into a second doorway.</p>
+      <x-import component-from-global-scope="PG.Room" from="./room.jsx?v=0731a" variant="3" name="Sol" face-idx="3" mood="62" hint-size="320px,680px"></x-import>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
