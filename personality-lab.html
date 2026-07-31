@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./design-system/sound.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="design-system/styles.css">
+<style>
+html,body{margin:0;padding:0;background:var(--surface-desktop)}
+*{box-sizing:border-box}
+.personality-lab{
+  max-width:1120px;
+  margin:0 auto;
+  padding:52px 40px 90px;
+  color:var(--text-primary);
+  font-family:var(--font-ui);
+}
+.personality-header{margin:0 0 34px}
+.personality-header h1{
+  margin:0 0 6px;
+  font:700 30px/1.15 var(--font-display);
+  letter-spacing:var(--tracking-display);
+}
+.personality-header p{
+  max-width:650px;
+  margin:0;
+  color:var(--text-secondary);
+  font:500 13.5px/1.6 var(--font-ui);
+}
+.personality-contact-sheet{
+  display:flex;
+  gap:30px;
+  align-items:flex-start;
+}
+.personality-option{width:320px;min-width:0}
+.personality-tag{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  min-height:18px;
+  margin:0 0 10px 4px;
+  color:var(--text-secondary);
+  font:600 13px/1.2 var(--font-data);
+}
+.personality-dot{
+  appearance:none;
+  padding:0;
+  width:14px;
+  height:14px;
+  flex:none;
+  border:1.5px solid var(--ink-8);
+  border-radius:var(--radius-pill);
+  cursor:pointer;
+}
+.personality-note{
+  margin:12px 4px 0;
+  color:var(--text-secondary);
+  font:500 11.5px/1.5 var(--font-ui);
+}
+.personality-phone{
+  position:relative;
+  width:320px;
+  height:680px;
+  overflow:hidden;
+  background:var(--bg);
+  border-radius:var(--radius-frame);
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.22),0 30px 70px -36px rgba(0,0,0,.45);
+}
+.personality-status{
+  position:absolute;
+  top:20px;
+  left:26px;
+  z-index:var(--z-header);
+  color:var(--text-primary);
+  font:600 12px/1 var(--font-ui);
+}
+.personality-a-copy{
+  position:absolute;
+  inset:0;
+  padding:104px 28px 0;
+}
+.personality-a-creed{
+  max-width:264px;
+  margin:0 auto;
+  color:var(--ink-2);
+  text-align:center;
+  font:600 30px/1.18 var(--font-display);
+  letter-spacing:var(--tracking-display);
+}
+.personality-a-sprite{
+  position:absolute;
+  top:304px;
+  right:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+}
+.personality-a-bubble-anchor{
+  position:absolute;
+  top:430px;
+  left:50%;
+}
+.personality-bottom{
+  position:absolute;
+  right:24px;
+  bottom:var(--safe-bottom);
+  left:24px;
+}
+.personality-b-top{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:82px var(--screen-gutter) 0;
+}
+.personality-b-title{
+  color:var(--text-primary);
+  font:600 21px/1.2 var(--font-display);
+  letter-spacing:var(--tracking-display);
+}
+.personality-b-sections{
+  padding:0 var(--screen-gutter) var(--safe-bottom);
+}
+.personality-c-sprite{
+  position:absolute;
+  top:132px;
+  right:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+}
+.personality-c-bubble-anchor{
+  position:absolute;
+  top:250px;
+  left:50%;
+}
+.personality-c-replies{
+  position:absolute;
+  right:28px;
+  top:360px;
+  left:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+}
+@media (max-width:1080px){
+  .personality-contact-sheet{flex-wrap:wrap}
+}
+@media (max-width:720px){
+  .personality-lab{padding:36px 20px 70px}
+  .personality-contact-sheet{display:block}
+  .personality-option{margin:0 auto 34px}
+}
+</style>
+</helmet>
+<div style="display:none;">
+  <x-import component-from-global-scope="PG.Sprite" from="./design-system/components/Sprite.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Bubble" from="./design-system/components/Bubble.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Line" from="./design-system/components/Bubble.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Reply" from="./design-system/components/Bubble.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.ListRow" from="./design-system/components/ListRow.jsx?v=0731" hint-size="10px,10px"></x-import>
+  <x-import component-from-global-scope="PG.Section" from="./design-system/components/Scaffold.jsx?v=0731" hint-size="10px,10px"></x-import>
+</div>
+<x-import component-from-global-scope="PG.Personality" from="./personality.jsx?v=0731" hint-size="1120px,900px"></x-import>
+</x-dc>
+</body>
+</html>
