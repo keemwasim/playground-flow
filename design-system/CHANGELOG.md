@@ -1,5 +1,11 @@
 # Playground Design System — changelog
 
+## v4.4 · 2026-07-30, the ink radio and the connecting whisper
+Minds and runtimes needed two marks the system did not have, both added as named token roles in components.css (no component was changed, `../minds.jsx` composes the existing Section, ListRow, Toggle, Chip and Whisper).
+- **`--radio-*`, the ink radio.** The in-use mark on a grouped list is a radio, never a checkmark: a check reads as done and put away, and a check on three rows reads as three minds running at once. Connected but idle is the bare ink ring, in use fills the ring, reaching holds the ring at half ink. Greyscale, hairline, no glyph inside it.
+- **`--whisper-shimmer*`, the connecting whisper.** Waiting is the companion's own line with the light sweeping through the letters (pgShimmer), never a spinner, a bar, or a percentage. Consumed by `Society.Whisper` through its `style` prop.
+- **Lab:** `../minds-lab-3up.html`, three directions on the same screen at 320 by 680, live and tappable.
+
 ## v4.3 · 2026-07-26, wide tracked uppercase micro labels removed
 - The shared label and state-tag recipes now use normal case, normal tracking, and a 13px floor.
 - Field, Scaffold, StatCard, Globe, the flow, the spec board, the gallery, live labs, and live mocks were restyled without changing the font family.

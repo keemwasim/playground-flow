@@ -130,6 +130,24 @@
   --toggle-on-bg: var(--ink-2);
   --toggle-knob: #FFFFFF;               /* 21px, shadow 0 2px 6px rgba(0,0,0,.3) */
 
+  /* Ink radio (minds and runtimes, 2026-07-30). The IN-USE mark on a grouped
+     list, and never a checkmark: a check says "done and gone", a radio says
+     "this is the one thinking for it right now", and exactly one always is.
+     Connected but idle is the bare ink ring, in use fills the ring with ink,
+     reaching is the ring at half ink (the mark has not landed yet). */
+  --radio-size: 19px;
+  --radio-ring: rgba(0,0,0,.9);
+  --radio-ring-idle: rgba(0,0,0,.2);
+  --radio-ring-reaching: rgba(0,0,0,.45);
+  --radio-dot: var(--ink-2);
+  --radio-dot-size: 9px;
+
+  /* The connecting whisper (minds and runtimes, 2026-07-30). Waiting is a
+     whisper plus a shimmer, never a spinner and never a percentage: the line
+     itself carries the light moving across it. Sweeps with pgShimmer. */
+  --whisper-shimmer: linear-gradient(90deg, rgba(0,0,0,.34) 0%, rgba(0,0,0,.34) 34%, rgba(0,0,0,.86) 50%, rgba(0,0,0,.34) 66%, rgba(0,0,0,.34) 100%);
+  --whisper-shimmer-span: 400px;   /* the sweep travels -200 to 200, see pgShimmer */
+
   /* List row (roster, settings, library) */
   --row-pad: 9px 8px;
   --row-gap: 11px;
